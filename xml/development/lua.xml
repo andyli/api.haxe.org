@@ -442,7 +442,10 @@
 		<getTime public="1" set="method" line="37">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>Returns the timestamp (in milliseconds) of the date. It might
-		only have a per-second precision depending on the platforms.</haxe_doc>
+		only have a per-second precision depending on the platforms.
+
+		For measuring time differences with millisecond accuracy on
+		all platforms, see `haxe.Timer.stamp`.</haxe_doc>
 		</getTime>
 		<getHours public="1" set="method" line="38">
 			<f a=""><x path="Int"/></f>
@@ -963,7 +966,7 @@
 			</c>
 			<meta><m n=":value"><e>Rex.flags()</e></m></meta>
 		</FLAGS>
-		<escape public="1" set="method" line="157" static="1">
+		<escape public="1" set="method" line="163" static="1">
 			<f a="s">
 				<c path="String"/>
 				<c path="String"/>
@@ -972,7 +975,7 @@
 
 		If `s` is null, the result is unspecified.</haxe_doc>
 		</escape>
-		<escapeRegExpRe expr="~/[\[\]{}()*+?.\\\^$|]/" line="160" static="1">
+		<escapeRegExpRe expr="~/[\[\]{}()*+?.\\\^$|]/" line="166" static="1">
 			<c path="EReg"/>
 			<meta><m n=":value"><e>~/[\[\]{}()*+?.\\\^$|]/</e></m></meta>
 		</escapeRegExpRe>
@@ -983,7 +986,7 @@
 	<x path="Int"/>
 	<x path="Int"/>
 </c></m>
-		<match public="1" set="method" line="53">
+		<match public="1" set="method" line="56">
 			<f a="s">
 				<c path="String"/>
 				<x path="Bool"/>
@@ -994,7 +997,7 @@
 
 		If `s` is `null`, the result is unspecified.</haxe_doc>
 		</match>
-		<matched public="1" set="method" line="60">
+		<matched public="1" set="method" line="63">
 			<f a="n">
 				<x path="Int"/>
 				<c path="String"/>
@@ -1010,7 +1013,7 @@
 
 		If `n` equals 0, the whole matched substring is returned.</haxe_doc>
 		</matched>
-		<matchedLeft public="1" set="method" line="74">
+		<matchedLeft public="1" set="method" line="77">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>Returns the part to the left of the last matched substring.
 
@@ -1022,7 +1025,7 @@
 
 		The result does not include the matched part.</haxe_doc>
 		</matchedLeft>
-		<matchedRight public="1" set="method" line="79">
+		<matchedRight public="1" set="method" line="82">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>Returns the part to the right of the last matched substring.
 
@@ -1034,7 +1037,7 @@
 
 		The result does not include the matched part.</haxe_doc>
 		</matchedRight>
-		<matchedPos public="1" set="method" line="84">
+		<matchedPos public="1" set="method" line="87">
 			<f a=""><a>
 	<pos><x path="Int"/></pos>
 	<len><x path="Int"/></len>
@@ -1049,7 +1052,7 @@
 		If the global g modifier was in place for the matching, the position and
 		length of the leftmost substring is returned.</haxe_doc>
 		</matchedPos>
-		<matchSub public="1" set="method" line="92">
+		<matchSub public="1" set="method" line="97">
 			<f a="s:pos:?len" v="::-1">
 				<c path="String"/>
 				<x path="Int"/>
@@ -1067,7 +1070,7 @@
 
 		If `s` is null, the result is unspecified.</haxe_doc>
 		</matchSub>
-		<split public="1" set="method" line="113">
+		<split public="1" set="method" line="118">
 			<f a="s">
 				<c path="String"/>
 				<c path="Array"><c path="String"/></c>
@@ -1089,7 +1092,7 @@
 
 		If `s` is null, the result is unspecified.</haxe_doc>
 		</split>
-		<replace public="1" set="method" line="123">
+		<replace public="1" set="method" line="128">
 			<f a="s:by">
 				<c path="String"/>
 				<c path="String"/>
@@ -1108,7 +1111,7 @@
 
 		If `s` or `by` are null, the result is unspecified.</haxe_doc>
 		</replace>
-		<map public="1" set="method" line="129">
+		<map public="1" set="method" line="135">
 			<f a="s:f">
 				<c path="String"/>
 				<f a="">
@@ -1901,7 +1904,7 @@
 	<c path="String"/>
 	<d/>
 </f></__oldindex>
-		<__index set="method" line="37" static="1">
+		<__index set="method" line="42" static="1">
 			<f a="s:k">
 				<d/>
 				<d/>
@@ -1912,7 +1915,7 @@
 				<m n=":keep"/>
 			</meta>
 		</__index>
-		<fromCharCode public="1" get="inline" set="null" line="129" static="1">
+		<fromCharCode public="1" get="inline" set="null" line="134" static="1">
 			<f a="code">
 				<x path="Int"/>
 				<c path="String"/>
@@ -1926,19 +1929,19 @@
 			<x path="Int"/>
 			<haxe_doc>The number of characters in `this` String.</haxe_doc>
 		</length>
-		<toUpperCase public="1" get="inline" set="null" line="51">
+		<toUpperCase public="1" get="inline" set="null" line="56">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>Returns a String where all characters of `this` String are upper case.
 
 		Affects the characters `a-z`. Other characters remain unchanged.</haxe_doc>
 		</toUpperCase>
-		<toLowerCase public="1" get="inline" set="null" line="52">
+		<toLowerCase public="1" get="inline" set="null" line="57">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>Returns a String where all characters of `this` String are lower case.
 
 		Affects the characters `A-Z`. Other characters remain unchanged.</haxe_doc>
 		</toLowerCase>
-		<indexOf public="1" get="inline" set="null" line="53">
+		<indexOf public="1" get="inline" set="null" line="58">
 			<f a="str:?startIndex">
 				<c path="String"/>
 				<x path="Int"/>
@@ -1954,7 +1957,7 @@
 
 		If `str` cannot be found, -1 is returned.</haxe_doc>
 		</indexOf>
-		<lastIndexOf public="1" get="inline" set="null" line="61">
+		<lastIndexOf public="1" get="inline" set="null" line="66">
 			<f a="str:?startIndex">
 				<c path="String"/>
 				<x path="Int"/>
@@ -1970,7 +1973,7 @@
 
 		If `str` cannot be found, -1 is returned.</haxe_doc>
 		</lastIndexOf>
-		<split public="1" get="inline" set="null" line="73">
+		<split public="1" get="inline" set="null" line="78">
 			<f a="delimiter">
 				<c path="String"/>
 				<c path="Array"><c path="String"/></c>
@@ -1994,11 +1997,11 @@
 		result `Array` contains a leading (or trailing) empty String `""` element.
 		Two subsequent delimiters also result in an empty String `""` element.</haxe_doc>
 		</split>
-		<toString public="1" get="inline" set="null" line="99">
+		<toString public="1" get="inline" set="null" line="104">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>Returns the String itself.</haxe_doc>
 		</toString>
-		<substring public="1" get="inline" set="null" line="102">
+		<substring public="1" get="inline" set="null" line="107">
 			<f a="startIndex:?endIndex">
 				<x path="Int"/>
 				<x path="Int"/>
@@ -2016,7 +2019,7 @@
 		If the (possibly swapped) `startIndex` exceeds `this.length`, the empty
 		String `""` is returned.</haxe_doc>
 		</substring>
-		<charAt public="1" get="inline" set="null" line="114">
+		<charAt public="1" get="inline" set="null" line="119">
 			<f a="index">
 				<x path="Int"/>
 				<c path="String"/>
@@ -2026,7 +2029,7 @@
 		If `index` is negative or exceeds `this.length`, the empty String `""`
 		is returned.</haxe_doc>
 		</charAt>
-		<charCodeAt public="1" get="inline" set="null" line="117">
+		<charCodeAt public="1" get="inline" set="null" line="122">
 			<f a="index">
 				<x path="Int"/>
 				<x path="Null"><x path="Int"/></x>
@@ -2039,7 +2042,7 @@
 		used instead to inline the character code at compile time. Note that
 		this only works on String literals of length 1.</haxe_doc>
 		</charCodeAt>
-		<substr public="1" get="inline" set="null" line="121">
+		<substr public="1" get="inline" set="null" line="126">
 			<f a="pos:?len">
 				<x path="Int"/>
 				<x path="Int"/>
@@ -2059,7 +2062,7 @@
 
 		If `len` is negative, the result is unspecified.</haxe_doc>
 		</substr>
-		<new public="1" get="inline" set="null" line="34">
+		<new public="1" get="inline" set="null" line="39">
 			<f a="string">
 				<c path="String"/>
 				<x path="Void"/>
@@ -2352,6 +2355,7 @@
 	abstract types.
 
 	@see https://haxe.org/manual/types-abstract-array-access.html</haxe_doc></class>
+	<typedef path="BaseString" params="" file="/home/travis/build/andyli/haxe/std/lua/_std/String.hx" module="String"><c path="lua.lib.luautf8.Utf8"/></typedef>
 	<class path="StringBuf" params="" file="/home/travis/build/andyli/haxe/std/lua/_std/StringBuf.hx">
 		<b><c path="lua.Table">
 	<x path="Int"/>
@@ -10971,14 +10975,19 @@
 			<f a=""><c path="haxe.ds._List.ListIterator"><c path="haxe.ds.List.T"/></c></f>
 			<haxe_doc>Returns an iterator on the elements of the list.</haxe_doc>
 		</iterator>
-		<toString public="1" set="method" line="171">
+		<keyValueIterator public="1" get="inline" set="null" line="168">
+			<f a=""><c path="haxe.ds._List.ListKeyValueIterator"><c path="haxe.ds.List.T"/></c></f>
+			<meta><m n=":runtime"/></meta>
+			<haxe_doc>Returns an iterator of the List indices and values.</haxe_doc>
+		</keyValueIterator>
+		<toString public="1" set="method" line="178">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>Returns a string representation of `this` List.
 
 		The result is enclosed in { } with the individual elements being
 		separated by a comma.</haxe_doc>
 		</toString>
-		<join public="1" set="method" line="192">
+		<join public="1" set="method" line="199">
 			<f a="sep">
 				<c path="String"/>
 				<c path="String"/>
@@ -10986,7 +10995,7 @@
 			<haxe_doc>Returns a string representation of `this` List, with `sep` separating
 		each element.</haxe_doc>
 		</join>
-		<filter public="1" set="method" line="211">
+		<filter public="1" set="method" line="218">
 			<f a="f">
 				<f a="">
 					<c path="haxe.ds.List.T"/>
@@ -10997,7 +11006,7 @@
 			<haxe_doc>Returns a list filtered with `f`. The returned list will contain all
 		elements for which `f(x) == true`.</haxe_doc>
 		</filter>
-		<map public="1" params="X" set="method" line="227">
+		<map public="1" params="X" set="method" line="234">
 			<f a="f">
 				<f a="">
 					<c path="haxe.ds.List.T"/>
@@ -11019,14 +11028,14 @@
 	@see https://haxe.org/manual/std-List.html</haxe_doc>
 	</class>
 	<class path="haxe.ds._List.ListNode" params="T" file="/home/travis/build/andyli/haxe/std/haxe/ds/List.hx" private="1" module="haxe.ds.List">
-		<create public="1" params="T" get="inline" set="null" line="260" static="1"><f a="item:next">
+		<create public="1" params="T" get="inline" set="null" line="267" static="1"><f a="item:next">
 	<c path="create.T"/>
 	<c path="haxe.ds._List.ListNode"><c path="create.T"/></c>
 	<c path="haxe.ds._List.ListNode"><c path="create.T"/></c>
 </f></create>
 		<item public="1"><c path="haxe.ds._List.ListNode.T"/></item>
 		<next public="1"><c path="haxe.ds._List.ListNode"><c path="haxe.ds._List.ListNode.T"/></c></next>
-		<new public="1" set="method" line="256"><f a="item:next">
+		<new public="1" set="method" line="263"><f a="item:next">
 	<c path="haxe.ds._List.ListNode.T"/>
 	<c path="haxe.ds._List.ListNode"><c path="haxe.ds._List.ListNode.T"/></c>
 	<x path="Void"/>
@@ -11034,10 +11043,23 @@
 	</class>
 	<class path="haxe.ds._List.ListIterator" params="T" file="/home/travis/build/andyli/haxe/std/haxe/ds/List.hx" private="1" module="haxe.ds.List">
 		<head><c path="haxe.ds._List.ListNode"><c path="haxe.ds._List.ListIterator.T"/></c></head>
-		<hasNext public="1" get="inline" set="null" line="273"><f a=""><x path="Bool"/></f></hasNext>
-		<next public="1" get="inline" set="null" line="277"><f a=""><c path="haxe.ds._List.ListIterator.T"/></f></next>
-		<new public="1" get="inline" set="null" line="269"><f a="head">
+		<hasNext public="1" get="inline" set="null" line="280"><f a=""><x path="Bool"/></f></hasNext>
+		<next public="1" get="inline" set="null" line="284"><f a=""><c path="haxe.ds._List.ListIterator.T"/></f></next>
+		<new public="1" get="inline" set="null" line="276"><f a="head">
 	<c path="haxe.ds._List.ListNode"><c path="haxe.ds._List.ListIterator.T"/></c>
+	<x path="Void"/>
+</f></new>
+	</class>
+	<class path="haxe.ds._List.ListKeyValueIterator" params="T" file="/home/travis/build/andyli/haxe/std/haxe/ds/List.hx" private="1" module="haxe.ds.List">
+		<idx><x path="Int"/></idx>
+		<head><c path="haxe.ds._List.ListNode"><c path="haxe.ds._List.ListKeyValueIterator.T"/></c></head>
+		<hasNext public="1" get="inline" set="null" line="300"><f a=""><x path="Bool"/></f></hasNext>
+		<next public="1" get="inline" set="null" line="304"><f a=""><a>
+	<value><c path="haxe.ds._List.ListKeyValueIterator.T"/></value>
+	<key><x path="Int"/></key>
+</a></f></next>
+		<new public="1" get="inline" set="null" line="295"><f a="head">
+	<c path="haxe.ds._List.ListNode"><c path="haxe.ds._List.ListKeyValueIterator.T"/></c>
 	<x path="Void"/>
 </f></new>
 	</class>
@@ -28127,6 +28149,15 @@
 		<meta><m n=":native"><e>"_hx_table"</e></m></meta>
 	</class>
 	<typedef path="lua.Time" params="" file="/home/travis/build/andyli/haxe/std/lua/Time.hx"><x path="Float"/></typedef>
+	<class path="lua.internal.StringImpl" params="" file="/home/travis/build/andyli/haxe/std/lua/internal/StringImpl.hx">
+		<indexOf public="1" set="method" line="30" static="1"><f a="_this:str:?startIndex">
+	<c path="String"/>
+	<c path="String"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></indexOf>
+		<haxe_doc>An implementation for some of the string logic</haxe_doc>
+	</class>
 	<class path="lua.lib.luasocket.Socket" params="" file="/home/travis/build/andyli/haxe/std/lua/lib/luasocket/Socket.hx" extern="1">
 		<_DEBUG public="1" static="1"><x path="Bool"/></_DEBUG>
 		<_VERSION public="1" static="1"><c path="String"/></_VERSION>

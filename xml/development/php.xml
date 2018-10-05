@@ -525,7 +525,10 @@
 		<getTime public="1" set="method" line="34">
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>Returns the timestamp (in milliseconds) of the date. It might
-		only have a per-second precision depending on the platforms.</haxe_doc>
+		only have a per-second precision depending on the platforms.
+
+		For measuring time differences with millisecond accuracy on
+		all platforms, see `haxe.Timer.stamp`.</haxe_doc>
 		</getTime>
 		<getPhpTime set="method" line="38"><f a=""><x path="Float"/></f></getPhpTime>
 		<getFullYear public="1" set="method" line="42">
@@ -2801,7 +2804,7 @@
 
 		If `c` is null, the result is unspecified.</haxe_doc>
 		</rpad>
-		<lpad public="1" set="method" line="76" static="1">
+		<lpad public="1" set="method" line="82" static="1">
 			<f a="s:c:l">
 				<c path="String"/>
 				<c path="String"/>
@@ -2819,7 +2822,7 @@
 
 		If `c` is null, the result is unspecified.</haxe_doc>
 		</lpad>
-		<replace public="1" set="method" line="84" static="1">
+		<replace public="1" set="method" line="96" static="1">
 			<f a="s:sub:by">
 				<c path="String"/>
 				<c path="String"/>
@@ -2835,7 +2838,7 @@
 
 		If `sub` or `by` are null, the result is unspecified.</haxe_doc>
 		</replace>
-		<hex public="1" set="method" line="91" static="1">
+		<hex public="1" set="method" line="103" static="1">
 			<f a="n:?digits">
 				<x path="Int"/>
 				<x path="Int"/>
@@ -2846,7 +2849,7 @@
 		If `digits` is specified, the resulting String is padded with "0" until
 		its `length` equals `digits`.</haxe_doc>
 		</hex>
-		<fastCodeAt public="1" get="inline" set="null" line="101" static="1">
+		<fastCodeAt public="1" set="method" line="113" static="1">
 			<f a="s:index">
 				<c path="String"/>
 				<x path="Int"/>
@@ -2865,11 +2868,11 @@
 		This operation is not guaranteed to work if `s` contains the `\0`
 		character.</haxe_doc>
 		</fastCodeAt>
-		<isEof public="1" get="inline" set="null" line="106" static="1"><f a="c">
+		<isEof public="1" get="inline" set="null" line="119" static="1"><f a="c">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></isEof>
-		<quoteUnixArg public="1" set="method" line="115" static="1">
+		<quoteUnixArg public="1" set="method" line="128" static="1">
 			<f a="argument">
 				<c path="String"/>
 				<c path="String"/>
@@ -2878,12 +2881,12 @@
 		on Unix.
 		The input will be quoted, or escaped if necessary.</haxe_doc>
 		</quoteUnixArg>
-		<winMetaCharacters public="1" expr="[&quot;;&quot;.code, &quot;,&quot;.code, &quot; &quot;.code, &quot;(&quot;.code, &quot;)&quot;.code, &quot;%&quot;.code, &quot;!&quot;.code, &quot;^&quot;.code, &quot;\&quot;&quot;.code, &quot;&lt;&quot;.code, &quot;&gt;&quot;.code, &quot;&amp;&quot;.code, &quot;|&quot;.code, &quot;\n&quot;.code, &quot;\r&quot;.code]" line="133" static="1">
+		<winMetaCharacters public="1" expr="[&quot;;&quot;.code, &quot;,&quot;.code, &quot; &quot;.code, &quot;(&quot;.code, &quot;)&quot;.code, &quot;%&quot;.code, &quot;!&quot;.code, &quot;^&quot;.code, &quot;\&quot;&quot;.code, &quot;&lt;&quot;.code, &quot;&gt;&quot;.code, &quot;&amp;&quot;.code, &quot;|&quot;.code, &quot;\n&quot;.code, &quot;\r&quot;.code]" line="146" static="1">
 			<c path="Array"><x path="Int"/></c>
 			<meta><m n=":value"><e><![CDATA[[";".code, ",".code, " ".code, "(".code, ")".code, "%".code, "!".code, "^".code, "\"".code, "<".code, ">".code, "&".code, "|".code, "\n".code, "\r".code]]]></e></m></meta>
 			<haxe_doc>Character codes of the characters that will be escaped by `quoteWinArg(_, true)`.</haxe_doc>
 		</winMetaCharacters>
-		<quoteWinArg public="1" set="method" line="148" static="1">
+		<quoteWinArg public="1" set="method" line="161" static="1">
 			<f a="argument:escapeMetaCharacters">
 				<c path="String"/>
 				<x path="Bool"/>
@@ -2945,7 +2948,7 @@
 			</f>
 			<haxe_doc><![CDATA[Generates `$left <=> $right`]]></haxe_doc>
 		</spaceship>
-		<coalesce public="1" params="T" get="inline" set="null" line="44" static="1">
+		<coalesce public="1" params="T" set="method" static="1">
 			<f a="left:right">
 				<c path="coalesce.T"/>
 				<c path="coalesce.T"/>
@@ -2953,7 +2956,7 @@
 			</f>
 			<haxe_doc>Generates `$left ?? $right`</haxe_doc>
 		</coalesce>
-		<concat public="1" get="inline" set="null" line="51" static="1">
+		<concat public="1" get="inline" set="null" line="49" static="1">
 			<f a="left:right">
 				<c path="String"/>
 				<c path="String"/>
@@ -2961,7 +2964,7 @@
 			</f>
 			<haxe_doc>Generates `$left . $right`</haxe_doc>
 		</concat>
-		<equal public="1" get="inline" set="null" line="58" static="1">
+		<equal public="1" get="inline" set="null" line="56" static="1">
 			<f a="left:right">
 				<d/>
 				<d/>
@@ -2969,7 +2972,7 @@
 			</f>
 			<haxe_doc>Generates `$left == $right`</haxe_doc>
 		</equal>
-		<strictEqual public="1" get="inline" set="null" line="65" static="1">
+		<strictEqual public="1" get="inline" set="null" line="63" static="1">
 			<f a="left:right">
 				<d/>
 				<d/>
@@ -2977,7 +2980,7 @@
 			</f>
 			<haxe_doc>Generates `$left === $right`</haxe_doc>
 		</strictEqual>
-		<notEqual public="1" get="inline" set="null" line="72" static="1">
+		<notEqual public="1" get="inline" set="null" line="70" static="1">
 			<f a="left:right">
 				<d/>
 				<d/>
@@ -2985,7 +2988,7 @@
 			</f>
 			<haxe_doc>Generates `$left != $right`</haxe_doc>
 		</notEqual>
-		<strictNotEqual public="1" get="inline" set="null" line="79" static="1">
+		<strictNotEqual public="1" get="inline" set="null" line="77" static="1">
 			<f a="left:right">
 				<d/>
 				<d/>
@@ -2993,7 +2996,7 @@
 			</f>
 			<haxe_doc>Generates `$left !== $right`</haxe_doc>
 		</strictNotEqual>
-		<add public="1" params="T" get="inline" set="null" line="86" static="1">
+		<add public="1" params="T" get="inline" set="null" line="84" static="1">
 			<f a="left:right">
 				<c path="add.T"/>
 				<c path="add.T"/>
@@ -3001,7 +3004,7 @@
 			</f>
 			<haxe_doc>Generates `$left + $right` for numbers.</haxe_doc>
 		</add>
-		<union public="1" get="inline" set="null" line="93" static="1">
+		<union public="1" get="inline" set="null" line="91" static="1">
 			<f a="left:right">
 				<x path="php.NativeArray"/>
 				<x path="php.NativeArray"/>
@@ -3009,7 +3012,7 @@
 			</f>
 			<haxe_doc>Generates `$left + $right` for php arrays.</haxe_doc>
 		</union>
-		<exp public="1" params="T" get="inline" set="null" line="100" static="1">
+		<exp public="1" params="T" get="inline" set="null" line="98" static="1">
 			<f a="left:right">
 				<c path="exp.T"/>
 				<c path="exp.T"/>
@@ -3017,7 +3020,7 @@
 			</f>
 			<haxe_doc>Generates `$left ** $right`</haxe_doc>
 		</exp>
-		<mod public="1" get="inline" set="null" line="107" static="1">
+		<mod public="1" get="inline" set="null" line="105" static="1">
 			<f a="left:right">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3025,7 +3028,7 @@
 			</f>
 			<haxe_doc>Generates `$left % $right`</haxe_doc>
 		</mod>
-		<shortTernary public="1" params="T" get="inline" set="null" line="114" static="1">
+		<shortTernary public="1" params="T" get="inline" set="null" line="112" static="1">
 			<f a="left:right">
 				<c path="shortTernary.T"/>
 				<c path="shortTernary.T"/>
@@ -3033,7 +3036,7 @@
 			</f>
 			<haxe_doc>Generates `$left ?: $right`</haxe_doc>
 		</shortTernary>
-		<xor public="1" get="inline" set="null" line="121" static="1">
+		<xor public="1" get="inline" set="null" line="119" static="1">
 			<f a="left:right">
 				<x path="Bool"/>
 				<x path="Bool"/>
@@ -3041,42 +3044,42 @@
 			</f>
 			<haxe_doc>Generates `$left xor $right`</haxe_doc>
 		</xor>
-		<int public="1" get="inline" set="null" line="128" static="1">
+		<int public="1" get="inline" set="null" line="126" static="1">
 			<f a="value">
 				<d/>
 				<x path="Int"/>
 			</f>
 			<haxe_doc>Generates `(int)$value`</haxe_doc>
 		</int>
-		<float public="1" get="inline" set="null" line="135" static="1">
+		<float public="1" get="inline" set="null" line="133" static="1">
 			<f a="value">
 				<d/>
 				<x path="Float"/>
 			</f>
 			<haxe_doc>Generates `(float)$value`</haxe_doc>
 		</float>
-		<string public="1" get="inline" set="null" line="142" static="1">
+		<string public="1" get="inline" set="null" line="140" static="1">
 			<f a="value">
 				<d/>
 				<c path="String"/>
 			</f>
 			<haxe_doc>Generates `(string)$value`</haxe_doc>
 		</string>
-		<bool public="1" get="inline" set="null" line="149" static="1">
+		<bool public="1" get="inline" set="null" line="147" static="1">
 			<f a="value">
 				<d/>
 				<x path="Bool"/>
 			</f>
 			<haxe_doc>Generates `(bool)$value`</haxe_doc>
 		</bool>
-		<object public="1" get="inline" set="null" line="156" static="1">
+		<object public="1" get="inline" set="null" line="154" static="1">
 			<f a="value">
 				<d/>
 				<c path="php.StdClass"/>
 			</f>
 			<haxe_doc>Generates `(object)$value`</haxe_doc>
 		</object>
-		<array public="1" get="inline" set="null" line="163" static="1">
+		<array public="1" get="inline" set="null" line="161" static="1">
 			<f a="value">
 				<d/>
 				<x path="php.NativeArray"/>
@@ -3259,7 +3262,7 @@
 			</f>
 			<haxe_doc>Don't let compiler to optimize away local var passed to this method.</haxe_doc>
 		</keepVar>
-		<splat public="1" get="inline" set="null" line="271" static="1">
+		<splat public="1" get="inline" set="null" line="269" static="1">
 			<f a="args">
 				<x path="haxe.extern.EitherType">
 					<x path="php.NativeArray"/>
@@ -3276,7 +3279,7 @@
 			</f>
 			<haxe_doc>Add errors suppression operator `@` before `expression`</haxe_doc>
 		</suppress>
-		<clone public="1" params="T" get="inline" set="null" line="284" static="1">
+		<clone public="1" params="T" get="inline" set="null" line="282" static="1">
 			<f a="value">
 				<c path="clone.T"/>
 				<c path="clone.T"/>
@@ -3284,7 +3287,7 @@
 			<haxe_doc>Generates `clone $value`.
         @see http://php.net/manual/en/language.oop5.cloning.php</haxe_doc>
 		</clone>
-		<yield public="1" get="inline" set="null" line="292" static="1">
+		<yield public="1" get="inline" set="null" line="290" static="1">
 			<f a="value">
 				<d/>
 				<d/>
@@ -3292,7 +3295,7 @@
 			<haxe_doc>Generates `yield $value`.
         @see http://php.net/manual/en/language.generators.syntax.php</haxe_doc>
 		</yield>
-		<yieldPair public="1" get="inline" set="null" line="300" static="1">
+		<yieldPair public="1" get="inline" set="null" line="298" static="1">
 			<f a="key:value">
 				<d/>
 				<d/>
@@ -3301,7 +3304,7 @@
 			<haxe_doc><![CDATA[Generates `yield $key => $value`.
         @see http://php.net/manual/en/language.generators.syntax.php]]></haxe_doc>
 		</yieldPair>
-		<yieldFrom public="1" get="inline" set="null" line="308" static="1">
+		<yieldFrom public="1" get="inline" set="null" line="306" static="1">
 			<f a="value">
 				<d/>
 				<d/>
@@ -5042,6 +5045,16 @@
 			</f>
 			<haxe_doc>@see http://php.net/manual/en/function.utf8-decode.php</haxe_doc>
 		</utf8_decode>
+		<mb_internal_encoding public="1" set="method" static="1">
+			<f a="?encoding">
+				<c path="String"/>
+				<x path="haxe.extern.EitherType">
+					<x path="Bool"/>
+					<c path="String"/>
+				</x>
+			</f>
+			<haxe_doc>@see http://php.net/manual/en/function.mb-internal-encoding.php</haxe_doc>
+		</mb_internal_encoding>
 		<mb_convert_encoding public="1" set="method" static="1">
 			<f a="str:to_encoding:?from_encoding">
 				<c path="String"/>
@@ -13802,14 +13815,19 @@
 			<f a=""><c path="haxe.ds._List.ListIterator"><c path="haxe.ds.List.T"/></c></f>
 			<haxe_doc>Returns an iterator on the elements of the list.</haxe_doc>
 		</iterator>
-		<toString public="1" set="method" line="171">
+		<keyValueIterator public="1" get="inline" set="null" line="168">
+			<f a=""><c path="haxe.ds._List.ListKeyValueIterator"><c path="haxe.ds.List.T"/></c></f>
+			<meta><m n=":runtime"/></meta>
+			<haxe_doc>Returns an iterator of the List indices and values.</haxe_doc>
+		</keyValueIterator>
+		<toString public="1" set="method" line="178">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>Returns a string representation of `this` List.
 
 		The result is enclosed in { } with the individual elements being
 		separated by a comma.</haxe_doc>
 		</toString>
-		<join public="1" set="method" line="192">
+		<join public="1" set="method" line="199">
 			<f a="sep">
 				<c path="String"/>
 				<c path="String"/>
@@ -13817,7 +13835,7 @@
 			<haxe_doc>Returns a string representation of `this` List, with `sep` separating
 		each element.</haxe_doc>
 		</join>
-		<filter public="1" set="method" line="211">
+		<filter public="1" set="method" line="218">
 			<f a="f">
 				<f a="">
 					<c path="haxe.ds.List.T"/>
@@ -13828,7 +13846,7 @@
 			<haxe_doc>Returns a list filtered with `f`. The returned list will contain all
 		elements for which `f(x) == true`.</haxe_doc>
 		</filter>
-		<map public="1" params="X" set="method" line="227">
+		<map public="1" params="X" set="method" line="234">
 			<f a="f">
 				<f a="">
 					<c path="haxe.ds.List.T"/>
@@ -13850,14 +13868,14 @@
 	@see https://haxe.org/manual/std-List.html</haxe_doc>
 	</class>
 	<class path="haxe.ds._List.ListNode" params="T" file="/home/travis/build/andyli/haxe/std/haxe/ds/List.hx" private="1" module="haxe.ds.List">
-		<create public="1" params="T" get="inline" set="null" line="260" static="1"><f a="item:next">
+		<create public="1" params="T" get="inline" set="null" line="267" static="1"><f a="item:next">
 	<c path="create.T"/>
 	<c path="haxe.ds._List.ListNode"><c path="create.T"/></c>
 	<c path="haxe.ds._List.ListNode"><c path="create.T"/></c>
 </f></create>
 		<item public="1"><c path="haxe.ds._List.ListNode.T"/></item>
 		<next public="1"><c path="haxe.ds._List.ListNode"><c path="haxe.ds._List.ListNode.T"/></c></next>
-		<new public="1" set="method" line="256"><f a="item:next">
+		<new public="1" set="method" line="263"><f a="item:next">
 	<c path="haxe.ds._List.ListNode.T"/>
 	<c path="haxe.ds._List.ListNode"><c path="haxe.ds._List.ListNode.T"/></c>
 	<x path="Void"/>
@@ -13865,10 +13883,23 @@
 	</class>
 	<class path="haxe.ds._List.ListIterator" params="T" file="/home/travis/build/andyli/haxe/std/haxe/ds/List.hx" private="1" module="haxe.ds.List">
 		<head><c path="haxe.ds._List.ListNode"><c path="haxe.ds._List.ListIterator.T"/></c></head>
-		<hasNext public="1" get="inline" set="null" line="273"><f a=""><x path="Bool"/></f></hasNext>
-		<next public="1" get="inline" set="null" line="277"><f a=""><c path="haxe.ds._List.ListIterator.T"/></f></next>
-		<new public="1" get="inline" set="null" line="269"><f a="head">
+		<hasNext public="1" get="inline" set="null" line="280"><f a=""><x path="Bool"/></f></hasNext>
+		<next public="1" get="inline" set="null" line="284"><f a=""><c path="haxe.ds._List.ListIterator.T"/></f></next>
+		<new public="1" get="inline" set="null" line="276"><f a="head">
 	<c path="haxe.ds._List.ListNode"><c path="haxe.ds._List.ListIterator.T"/></c>
+	<x path="Void"/>
+</f></new>
+	</class>
+	<class path="haxe.ds._List.ListKeyValueIterator" params="T" file="/home/travis/build/andyli/haxe/std/haxe/ds/List.hx" private="1" module="haxe.ds.List">
+		<idx><x path="Int"/></idx>
+		<head><c path="haxe.ds._List.ListNode"><c path="haxe.ds._List.ListKeyValueIterator.T"/></c></head>
+		<hasNext public="1" get="inline" set="null" line="300"><f a=""><x path="Bool"/></f></hasNext>
+		<next public="1" get="inline" set="null" line="304"><f a=""><a>
+	<value><c path="haxe.ds._List.ListKeyValueIterator.T"/></value>
+	<key><x path="Int"/></key>
+</a></f></next>
+		<new public="1" get="inline" set="null" line="295"><f a="head">
+	<c path="haxe.ds._List.ListNode"><c path="haxe.ds._List.ListKeyValueIterator.T"/></c>
 	<x path="Void"/>
 </f></new>
 	</class>
@@ -24019,84 +24050,48 @@
 			<meta><m n=":value"><e>{ bytePos : 0 }</e></m></meta>
 		</fromBytes>
 	</class>
-	<class path="haxe.iterators.StringIteratorUnicode" params="" file="/home/travis/build/andyli/haxe/std/haxe/iterators/StringIteratorUnicode.hx">
-		<unicodeIterator public="1" get="inline" set="null" line="66" static="1">
-			<f a="s">
-				<c path="String"/>
-				<c path="haxe.iterators.StringIteratorUnicode"/>
-			</f>
-			<haxe_doc>Convenience function which can be used as a static extension.</haxe_doc>
-		</unicodeIterator>
-		<offset expr="0">
-			<x path="Int"/>
-			<meta><m n=":value"><e>0</e></m></meta>
-		</offset>
-		<s><c path="String"/></s>
-		<hasNext public="1" get="inline" set="null" line="46">
-			<f a=""><x path="Bool"/></f>
-			<haxe_doc>See `Iterator.hasNext`</haxe_doc>
-		</hasNext>
-		<next public="1" get="inline" set="null" line="53">
-			<f a=""><x path="Int"/></f>
-			<haxe_doc>See `Iterator.next`</haxe_doc>
-		</next>
-		<new public="1" get="inline" set="null" line="39">
-			<f a="s">
-				<c path="String"/>
-				<x path="Void"/>
-			</f>
-			<haxe_doc>Create a new `StringIteratorUnicode` over String `s`.</haxe_doc>
-		</new>
-		<haxe_doc>This iterator can be used to iterate across strings in a cross-platform
-	way. It handles surrogate pairs on platforms that require it. On each
-	iteration, it returns the next character code.
-
-	Note that this has different semantics than a standard for-loop over the
-	String's length due to the fact that it deals with surrogate pairs.</haxe_doc>
-	</class>
-	<class path="haxe.iterators.StringKeyValueIteratorUnicode" params="" file="/home/travis/build/andyli/haxe/std/haxe/iterators/StringKeyValueIteratorUnicode.hx">
-		<unicodeKeyValueIterator public="1" get="inline" set="null" line="69" static="1">
-			<f a="s">
-				<c path="String"/>
-				<c path="haxe.iterators.StringKeyValueIteratorUnicode"/>
-			</f>
-			<haxe_doc>Convenience function which can be used as a static extension.</haxe_doc>
-		</unicodeKeyValueIterator>
+	<class path="haxe.iterators.StringIteratorUnicode" params="" file="/home/travis/build/andyli/haxe/std/php/_std/haxe/iterators/StringIteratorUnicode.hx">
+		<unicodeIterator public="1" get="inline" set="null" line="58" static="1"><f a="s">
+	<c path="String"/>
+	<c path="haxe.iterators.StringIteratorUnicode"/>
+</f></unicodeIterator>
 		<byteOffset expr="0">
 			<x path="Int"/>
 			<meta><m n=":value"><e>0</e></m></meta>
 		</byteOffset>
+		<totalBytes><x path="Int"/></totalBytes>
+		<s><x path="php.NativeString"/></s>
+		<hasNext public="1" get="inline" set="null" line="37"><f a=""><x path="Bool"/></f></hasNext>
+		<next public="1" get="inline" set="null" line="41"><f a=""><x path="Int"/></f></next>
+		<new public="1" get="inline" set="null" line="32"><f a="s">
+	<c path="String"/>
+	<x path="Void"/>
+</f></new>
+	</class>
+	<class path="haxe.iterators.StringKeyValueIteratorUnicode" params="" file="/home/travis/build/andyli/haxe/std/php/_std/haxe/iterators/StringKeyValueIteratorUnicode.hx">
+		<unicodeKeyValueIterator public="1" get="inline" set="null" line="59" static="1"><f a="s">
+	<c path="String"/>
+	<c path="haxe.iterators.StringKeyValueIteratorUnicode"/>
+</f></unicodeKeyValueIterator>
 		<charOffset expr="0">
 			<x path="Int"/>
 			<meta><m n=":value"><e>0</e></m></meta>
 		</charOffset>
-		<s><c path="String"/></s>
-		<hasNext public="1" get="inline" set="null" line="49">
-			<f a=""><x path="Bool"/></f>
-			<haxe_doc>See `Iterator.hasNext`</haxe_doc>
-		</hasNext>
-		<next public="1" get="inline" set="null" line="56">
-			<f a=""><a>
+		<byteOffset expr="0">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0</e></m></meta>
+		</byteOffset>
+		<totalBytes><x path="Int"/></totalBytes>
+		<s><x path="php.NativeString"/></s>
+		<hasNext public="1" get="inline" set="null" line="38"><f a=""><x path="Bool"/></f></hasNext>
+		<next public="1" get="inline" set="null" line="42"><f a=""><a>
 	<value><x path="Int"/></value>
 	<key><x path="Int"/></key>
-</a></f>
-			<haxe_doc>See `Iterator.next`</haxe_doc>
-		</next>
-		<new public="1" get="inline" set="null" line="42">
-			<f a="s">
-				<c path="String"/>
-				<x path="Void"/>
-			</f>
-			<haxe_doc>Create a new `StringKeyValueIteratorUnicode` over String `s`.</haxe_doc>
-		</new>
-		<haxe_doc>This iterator can be used to iterate across strings in a cross-platform
-	way. It handles surrogate pairs on platforms that require it. On each
-	iteration, it returns the next character offset as key and the next
-	character code as value.
-
-	Note that in the general case, because of surrogate pairs, the key values
-	should not be used as offsets for various String API operations. For the
-	same reason, the last key value returned might be less than `s.length - 1`.</haxe_doc>
+</a></f></next>
+		<new public="1" get="inline" set="null" line="33"><f a="s">
+	<c path="String"/>
+	<x path="Void"/>
+</f></new>
 	</class>
 	<abstract path="haxe.macro.ModuleCheckPolicy" params="" file="/home/travis/build/andyli/haxe/std/haxe/macro/CompilationServer.hx" module="haxe.macro.CompilationServer">
 		<this><x path="Int"/></this>
@@ -28825,12 +28820,12 @@
 			</meta>
 			<haxe_doc>Cache for closures created of static methods</haxe_doc>
 		</staticClosures>
-		<getPrefix public="1" set="method" line="82" static="1">
+		<getPrefix public="1" set="method" line="83" static="1">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>Returns root namespace based on a value of `-D php-prefix=value` compiler flag.
 		Returns empty string if no `-D php-prefix=value` provided.</haxe_doc>
 		</getPrefix>
-		<registerGetters public="1" set="method" line="89" static="1">
+		<registerGetters public="1" set="method" line="90" static="1">
 			<f a="phpClassName:list">
 				<c path="String"/>
 				<x path="php.NativeAssocArray"><x path="Bool"/></x>
@@ -28838,7 +28833,7 @@
 			</f>
 			<haxe_doc>Register list of getters to be able to call getters using reflection</haxe_doc>
 		</registerGetters>
-		<registerSetters public="1" set="method" line="96" static="1">
+		<registerSetters public="1" set="method" line="97" static="1">
 			<f a="phpClassName:list">
 				<c path="String"/>
 				<x path="php.NativeAssocArray"><x path="Bool"/></x>
@@ -28846,7 +28841,7 @@
 			</f>
 			<haxe_doc>Register list of setters to be able to call getters using reflection</haxe_doc>
 		</registerSetters>
-		<hasGetter public="1" set="method" line="103" static="1">
+		<hasGetter public="1" set="method" line="104" static="1">
 			<f a="phpClassName:property">
 				<c path="String"/>
 				<c path="String"/>
@@ -28854,7 +28849,7 @@
 			</f>
 			<haxe_doc>Check if specified property has getter</haxe_doc>
 		</hasGetter>
-		<hasSetter public="1" set="method" line="119" static="1">
+		<hasSetter public="1" set="method" line="120" static="1">
 			<f a="phpClassName:property">
 				<c path="String"/>
 				<c path="String"/>
@@ -28862,7 +28857,7 @@
 			</f>
 			<haxe_doc>Check if specified property has setter</haxe_doc>
 		</hasSetter>
-		<registerMeta public="1" set="method" line="135" static="1">
+		<registerMeta public="1" set="method" line="136" static="1">
 			<f a="phpClassName:data">
 				<c path="String"/>
 				<d/>
@@ -28870,14 +28865,14 @@
 			</f>
 			<haxe_doc>Save metadata for specified class</haxe_doc>
 		</registerMeta>
-		<getMeta public="1" set="method" line="142" static="1">
+		<getMeta public="1" set="method" line="143" static="1">
 			<f a="phpClassName">
 				<c path="String"/>
 				<x path="Null"><d/></x>
 			</f>
 			<haxe_doc>Retrieve metadata for specified class</haxe_doc>
 		</getMeta>
-		<registerClass public="1" set="method" line="150" static="1">
+		<registerClass public="1" set="method" line="151" static="1">
 			<f a="phpClassName:haxeClassName">
 				<c path="String"/>
 				<c path="String"/>
@@ -28885,15 +28880,15 @@
 			</f>
 			<haxe_doc>Associate PHP class name with Haxe class name</haxe_doc>
 		</registerClass>
-		<getRegisteredClasses public="1" set="method" line="157" static="1">
+		<getRegisteredClasses public="1" set="method" line="158" static="1">
 			<f a=""><c path="Array"><x path="Class"><d/></x></c></f>
 			<haxe_doc>Returns a list of currently loaded haxe-generated classes.</haxe_doc>
 		</getRegisteredClasses>
-		<getRegisteredAliases public="1" set="method" line="168" static="1">
+		<getRegisteredAliases public="1" set="method" line="169" static="1">
 			<f a=""><x path="php.NativeAssocArray"><c path="String"/></x></f>
 			<haxe_doc><![CDATA[Returns a list of phpName=>haxeName for currently loaded haxe-generated classes.]]></haxe_doc>
 		</getRegisteredAliases>
-		<getClass public="1" set="method" line="176" static="1">
+		<getClass public="1" set="method" line="177" static="1">
 			<f a="phpClassName">
 				<c path="String"/>
 				<c path="php._Boot.HxClass"/>
@@ -28901,29 +28896,29 @@
 			<haxe_doc><![CDATA[Get Class<T> instance for PHP fully qualified class name (E.g. '\some\pack\MyClass')
 		It's always the same instance for the same `phpClassName`]]></haxe_doc>
 		</getClass>
-		<getHxAnon public="1" get="inline" set="null" line="190" static="1">
+		<getHxAnon public="1" get="inline" set="null" line="191" static="1">
 			<f a=""><c path="php._Boot.HxClass"/></f>
 			<haxe_doc><![CDATA[Returns Class<HxAnon>]]></haxe_doc>
 		</getHxAnon>
-		<getHxClass public="1" get="inline" set="null" line="197" static="1">
+		<getHxClass public="1" get="inline" set="null" line="198" static="1">
 			<f a=""><c path="php._Boot.HxClass"/></f>
 			<haxe_doc><![CDATA[Returns Class<HxClass>]]></haxe_doc>
 		</getHxClass>
-		<getClassName public="1" set="method" line="204" static="1">
+		<getClassName public="1" set="method" line="205" static="1">
 			<f a="phpClassName">
 				<c path="String"/>
 				<c path="String"/>
 			</f>
 			<haxe_doc>Returns either Haxe class name for specified `phpClassName` or (if no such Haxe class registered) `phpClassName`.</haxe_doc>
 		</getClassName>
-		<getHaxeName public="1" set="method" line="213" static="1">
+		<getHaxeName public="1" set="method" line="214" static="1">
 			<f a="hxClass">
 				<c path="php._Boot.HxClass"/>
 				<x path="Null"><c path="String"/></x>
 			</f>
 			<haxe_doc>Returns original Haxe fully qualified class name for this type (if exists)</haxe_doc>
 		</getHaxeName>
-		<getPhpName public="1" set="method" line="242" static="1">
+		<getPhpName public="1" set="method" line="243" static="1">
 			<f a="haxeName">
 				<c path="String"/>
 				<x path="Null"><c path="String"/></x>
@@ -28931,25 +28926,25 @@
 			<haxe_doc>Find corresponding PHP class name.
 		Returns `null` if specified class does not exist.</haxe_doc>
 		</getPhpName>
-		<castClosure public="1" get="inline" set="null" line="270" static="1">
+		<castClosure public="1" get="inline" set="null" line="271" static="1">
 			<f a="value">
 				<d/>
 				<c path="php._Boot.HxClosure"/>
 			</f>
 			<haxe_doc>Unsafe cast to HxClosure</haxe_doc>
 		</castClosure>
-		<castClass public="1" get="inline" set="null" line="277" static="1">
+		<castClass public="1" get="inline" set="null" line="278" static="1">
 			<f a="cls">
 				<x path="Class"><d/></x>
 				<c path="php._Boot.HxClass"/>
 			</f>
 			<haxe_doc>Unsafe cast to HxClass</haxe_doc>
 		</castClass>
-		<closureHxClass public="1" get="inline" set="null" line="284" static="1">
+		<closureHxClass public="1" get="inline" set="null" line="285" static="1">
 			<f a=""><c path="php._Boot.HxClass"/></f>
 			<haxe_doc><![CDATA[Returns `Class<T>` for `HxClosure`]]></haxe_doc>
 		</closureHxClass>
-		<typedCast public="1" set="method" line="292" static="1">
+		<typedCast public="1" set="method" line="293" static="1">
 			<f a="hxClass:value">
 				<c path="php._Boot.HxClass"/>
 				<d/>
@@ -28958,18 +28953,18 @@
 			<haxe_doc><![CDATA[Implementation for `cast(value, Class<Dynamic>)`
 		@throws HxException if `value` cannot be casted to this type]]></haxe_doc>
 		</typedCast>
-		<stringify public="1" set="method" line="325" static="1">
+		<stringify public="1" set="method" line="326" static="1">
 			<f a="value">
 				<d/>
 				<c path="String"/>
 			</f>
 			<haxe_doc>Returns string representation of `value`</haxe_doc>
 		</stringify>
-		<isNumber public="1" get="inline" set="null" line="375" static="1"><f a="value">
+		<isNumber public="1" get="inline" set="null" line="376" static="1"><f a="value">
 	<d/>
 	<x path="Bool"/>
 </f></isNumber>
-		<equal public="1" set="method" line="382" static="1">
+		<equal public="1" set="method" line="383" static="1">
 			<f a="left:right">
 				<d/>
 				<d/>
@@ -28977,7 +28972,7 @@
 			</f>
 			<haxe_doc>Check if specified values are equal</haxe_doc>
 		</equal>
-		<addOrConcat public="1" set="method" line="396" static="1">
+		<addOrConcat public="1" set="method" line="397" static="1">
 			<f a="left:right">
 				<d/>
 				<d/>
@@ -28986,7 +28981,7 @@
 			<haxe_doc>Concat `left` and `right` if both are strings or string and null.
 		Otherwise return sum of `left` and `right`.</haxe_doc>
 		</addOrConcat>
-		<is public="1" set="method" line="406" static="1">
+		<is public="1" set="method" line="407" static="1">
 			<f a="value:type">
 				<d/>
 				<c path="php._Boot.HxClass"/>
@@ -28994,35 +28989,35 @@
 			</f>
 			<haxe_doc>`Std.is()` implementation</haxe_doc>
 		</is>
-		<isClass public="1" get="inline" set="null" line="450" static="1">
+		<isClass public="1" get="inline" set="null" line="451" static="1">
 			<f a="value">
 				<d/>
 				<x path="Bool"/>
 			</f>
 			<haxe_doc><![CDATA[Check if `value` is a `Class<T>`]]></haxe_doc>
 		</isClass>
-		<isEnumValue public="1" get="inline" set="null" line="457" static="1">
+		<isEnumValue public="1" get="inline" set="null" line="458" static="1">
 			<f a="value">
 				<d/>
 				<x path="Bool"/>
 			</f>
 			<haxe_doc>Check if `value` is an enum constructor instance</haxe_doc>
 		</isEnumValue>
-		<isFunction public="1" get="inline" set="null" line="464" static="1">
+		<isFunction public="1" get="inline" set="null" line="465" static="1">
 			<f a="value">
 				<d/>
 				<x path="Bool"/>
 			</f>
 			<haxe_doc>Check if `value` is a function</haxe_doc>
 		</isFunction>
-		<isHxClosure public="1" get="inline" set="null" line="471" static="1">
+		<isHxClosure public="1" get="inline" set="null" line="472" static="1">
 			<f a="value">
 				<d/>
 				<x path="Bool"/>
 			</f>
 			<haxe_doc>Check if `value` is an instance of `HxClosure`</haxe_doc>
 		</isHxClosure>
-		<shiftRightUnsigned public="1" set="method" line="478" static="1">
+		<shiftRightUnsigned public="1" set="method" line="479" static="1">
 			<f a="left:right">
 				<x path="Int"/>
 				<x path="Int"/>
@@ -29030,7 +29025,7 @@
 			</f>
 			<haxe_doc><![CDATA[Performs `left >>> right` operation]]></haxe_doc>
 		</shiftRightUnsigned>
-		<deref public="1" set="method" line="494" static="1">
+		<deref public="1" set="method" line="495" static="1">
 			<f a="value">
 				<d/>
 				<d/>
@@ -29040,21 +29035,21 @@
 		(new MyClass()).fieldName = 'value';
 		```</haxe_doc>
 		</deref>
-		<createAnon public="1" get="inline" set="null" line="501" static="1">
+		<createAnon public="1" get="inline" set="null" line="502" static="1">
 			<f a="data">
 				<x path="php.NativeArray"/>
 				<d/>
 			</f>
 			<haxe_doc>Create Haxe-compatible anonymous structure of `data` associative array</haxe_doc>
 		</createAnon>
-		<ensureLoaded public="1" get="inline" set="null" line="508" static="1">
+		<ensureLoaded public="1" get="inline" set="null" line="509" static="1">
 			<f a="phpClassName">
 				<c path="String"/>
 				<x path="Bool"/>
 			</f>
 			<haxe_doc>Make sure specified class is loaded</haxe_doc>
 		</ensureLoaded>
-		<dynamicField public="1" set="method" line="515" static="1">
+		<dynamicField public="1" set="method" line="516" static="1">
 			<f a="value:field">
 				<d/>
 				<c path="String"/>
@@ -29062,11 +29057,11 @@
 			</f>
 			<haxe_doc>Get `field` of a dynamic `value` in a safe manner (avoid exceptions on trying to get a method)</haxe_doc>
 		</dynamicField>
-		<dynamicString public="1" set="method" line="525" static="1"><f a="str">
+		<dynamicString public="1" set="method" line="526" static="1"><f a="str">
 	<c path="String"/>
 	<c path="php._Boot.HxDynamicStr"/>
 </f></dynamicString>
-		<getInstanceClosure public="1" set="method" line="533" static="1">
+		<getInstanceClosure public="1" set="method" line="534" static="1">
 			<f a="obj:methodName">
 				<a><__hx_closureCache>
 	<x path="Null"><x path="php.NativeAssocArray"><c path="php._Boot.HxClosure"/></x></x>
@@ -29078,7 +29073,7 @@
 			<haxe_doc>Creates Haxe-compatible closure of an instance method.
 		@param obj - any object</haxe_doc>
 		</getInstanceClosure>
-		<getStaticClosure public="1" set="method" line="549" static="1">
+		<getStaticClosure public="1" set="method" line="550" static="1">
 			<f a="phpClassName:methodName">
 				<c path="String"/>
 				<c path="String"/>
@@ -29086,7 +29081,7 @@
 			</f>
 			<haxe_doc>Creates Haxe-compatible closure of a static method.</haxe_doc>
 		</getStaticClosure>
-		<closure public="1" get="inline" set="null" line="567" static="1">
+		<closure public="1" get="inline" set="null" line="568" static="1">
 			<f a="target:func">
 				<d/>
 				<c path="String"/>
@@ -29096,6 +29091,13 @@
 		@param type `this` for instance methods; full php class name for static methods
 		@param func Method name</haxe_doc>
 		</closure>
+		<unsafeOrd public="1" get="inline" set="null" line="575" static="1">
+			<f a="s">
+				<x path="php.NativeString"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Get UTF-8 code of che first character in `s` without any checks</haxe_doc>
+		</unsafeOrd>
 		<haxe_doc><![CDATA[Various Haxe->PHP compatibility utilities.
 	You should not use this class directly.]]></haxe_doc>
 		<meta>
@@ -29105,7 +29107,7 @@
 	</class>
 	<class path="php._Boot.HxClass" params="" file="/home/travis/build/andyli/haxe/std/php/Boot.hx" private="1" module="php.Boot">
 		<phpClassName public="1" set="null"><c path="String"/></phpClassName>
-		<__call set="method" line="589">
+		<__call set="method" line="606">
 			<f a="method:args">
 				<c path="String"/>
 				<x path="php.NativeArray"/>
@@ -29114,7 +29116,7 @@
 			<meta><m n=":phpMagic"/></meta>
 			<haxe_doc>Magic method to call static methods of this class, when `HxClass` instance is in a `Dynamic` variable.</haxe_doc>
 		</__call>
-		<__get set="method" line="598">
+		<__get set="method" line="615">
 			<f a="property">
 				<c path="String"/>
 				<d/>
@@ -29122,7 +29124,7 @@
 			<meta><m n=":phpMagic"/></meta>
 			<haxe_doc>Magic method to get static vars of this class, when `HxClass` instance is in a `Dynamic` variable.</haxe_doc>
 		</__get>
-		<__set set="method" line="614">
+		<__set set="method" line="631">
 			<f a="property:value">
 				<c path="String"/>
 				<d/>
@@ -29131,7 +29133,7 @@
 			<meta><m n=":phpMagic"/></meta>
 			<haxe_doc>Magic method to set static vars of this class, when `HxClass` instance is in a `Dynamic` variable.</haxe_doc>
 		</__set>
-		<new public="1" set="method" line="581"><f a="phpClassName">
+		<new public="1" set="method" line="598"><f a="phpClassName">
 	<c path="String"/>
 	<x path="Void"/>
 </f></new>
@@ -29145,16 +29147,16 @@
 		<tag><c path="String"/></tag>
 		<index><x path="Int"/></index>
 		<params><x path="php.NativeArray"/></params>
-		<toString public="1" set="method" line="643">
+		<toString public="1" set="method" line="660">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>Get string representation of this `Class`</haxe_doc>
 		</toString>
-		<__toString public="1" set="method" line="651">
+		<__toString public="1" set="method" line="668">
 			<f a=""><c path="String"/></f>
 			<meta><m n=":phpMagic"/></meta>
 			<haxe_doc>PHP magic method to get string representation of this `Class`</haxe_doc>
 		</__toString>
-		<new public="1" set="method" line="634">
+		<new public="1" set="method" line="651">
 			<f a="tag:index:?arguments" v="::null">
 				<c path="String"/>
 				<x path="Int"/>
@@ -29170,25 +29172,25 @@
 		</meta>
 	</class>
 	<class path="php._Boot.HxString" params="" file="/home/travis/build/andyli/haxe/std/php/Boot.hx" private="1" module="php.Boot">
-		<toUpperCase public="1" set="method" line="669" static="1"><f a="str">
+		<toUpperCase public="1" set="method" line="686" static="1"><f a="str">
 	<c path="String"/>
 	<c path="String"/>
 </f></toUpperCase>
-		<toLowerCase public="1" set="method" line="673" static="1"><f a="str">
+		<toLowerCase public="1" set="method" line="690" static="1"><f a="str">
 	<c path="String"/>
 	<c path="String"/>
 </f></toLowerCase>
-		<charAt public="1" set="method" line="677" static="1"><f a="str:index">
+		<charAt public="1" set="method" line="694" static="1"><f a="str:index">
 	<c path="String"/>
 	<x path="Int"/>
 	<c path="String"/>
 </f></charAt>
-		<charCodeAt public="1" set="method" line="681" static="1"><f a="str:index">
+		<charCodeAt public="1" set="method" line="698" static="1"><f a="str:index">
 	<c path="String"/>
 	<x path="Int"/>
 	<x path="Null"><x path="Int"/></x>
 </f></charCodeAt>
-		<indexOf public="1" set="method" line="689" static="1">
+		<indexOf public="1" set="method" line="709" static="1">
 			<f a="str:search:?startIndex" v="::null">
 				<c path="String"/>
 				<c path="String"/>
@@ -29197,7 +29199,7 @@
 			</f>
 			<meta><m n=":value"><e>{ startIndex : null }</e></m></meta>
 		</indexOf>
-		<lastIndexOf public="1" set="method" line="699" static="1">
+		<lastIndexOf public="1" set="method" line="719" static="1">
 			<f a="str:search:?startIndex" v="::null">
 				<c path="String"/>
 				<c path="String"/>
@@ -29206,28 +29208,28 @@
 			</f>
 			<meta><m n=":value"><e>{ startIndex : null }</e></m></meta>
 		</lastIndexOf>
-		<split public="1" set="method" line="716" static="1"><f a="str:delimiter">
+		<split public="1" set="method" line="736" static="1"><f a="str:delimiter">
 	<c path="String"/>
 	<c path="String"/>
 	<c path="Array"><c path="String"/></c>
 </f></split>
-		<substr public="1" set="method" line="726" static="1"><f a="str:pos:?len">
+		<substr public="1" set="method" line="746" static="1"><f a="str:pos:?len">
 	<c path="String"/>
 	<x path="Int"/>
 	<x path="Int"/>
 	<c path="String"/>
 </f></substr>
-		<substring public="1" set="method" line="730" static="1"><f a="str:startIndex:?endIndex">
+		<substring public="1" set="method" line="750" static="1"><f a="str:startIndex:?endIndex">
 	<c path="String"/>
 	<x path="Int"/>
 	<x path="Int"/>
 	<c path="String"/>
 </f></substring>
-		<toString public="1" set="method" line="751" static="1"><f a="str">
+		<toString public="1" set="method" line="771" static="1"><f a="str">
 	<c path="String"/>
 	<c path="String"/>
 </f></toString>
-		<fromCharCode public="1" set="method" line="755" static="1"><f a="code">
+		<fromCharCode public="1" set="method" line="775" static="1"><f a="code">
 	<x path="Int"/>
 	<c path="String"/>
 </f></fromCharCode>
@@ -29250,12 +29252,12 @@
 			<x path="Any"/>
 			<haxe_doc>A callable value, which can be invoked by PHP</haxe_doc>
 		</callable>
-		<__invoke public="1" set="method" line="891">
+		<__invoke public="1" set="method" line="911">
 			<f a=""><unknown/></f>
 			<meta><m n=":phpMagic"/></meta>
 			<haxe_doc>@see http://php.net/manual/en/language.oop5.magic.php#object.invoke</haxe_doc>
 		</__invoke>
-		<getCallback public="1" set="method" line="898">
+		<getCallback public="1" set="method" line="918">
 			<f a="?eThis" v="null">
 				<d/>
 				<x path="php.NativeIndexedArray"><d/></x>
@@ -29263,14 +29265,14 @@
 			<meta><m n=":value"><e>{ eThis : null }</e></m></meta>
 			<haxe_doc>Generates callable value for PHP</haxe_doc>
 		</getCallback>
-		<equals public="1" set="method" line="911">
+		<equals public="1" set="method" line="931">
 			<f a="closure">
 				<c path="php._Boot.HxClosure"/>
 				<x path="Bool"/>
 			</f>
 			<haxe_doc>Check if this is the same closure</haxe_doc>
 		</equals>
-		<callWith public="1" set="method" line="918">
+		<callWith public="1" set="method" line="938">
 			<f a="newThis:args">
 				<d/>
 				<x path="php.NativeArray"/>
@@ -29278,7 +29280,7 @@
 			</f>
 			<haxe_doc>Invoke this closure with `newThis` instead of `this`</haxe_doc>
 		</callWith>
-		<new public="1" set="method" line="877"><f a="target:func">
+		<new public="1" set="method" line="897"><f a="target:func">
 	<d/>
 	<c path="String"/>
 	<x path="Void"/>
@@ -29291,11 +29293,11 @@
 	</class>
 	<class path="php._Boot.HxDynamicStr" params="" file="/home/travis/build/andyli/haxe/std/php/Boot.hx" private="1" module="php.Boot">
 		<extends path="php._Boot.HxClosure"/>
-		<hxString expr="((cast HxString : HxClass)).phpClassName" line="768" static="1">
+		<hxString expr="((cast HxString : HxClass)).phpClassName" line="788" static="1">
 			<c path="String"/>
 			<meta><m n=":value"><e>((cast HxString : HxClass)).phpClassName</e></m></meta>
 		</hxString>
-		<wrap set="method" line="774" static="1">
+		<wrap set="method" line="794" static="1">
 			<f a="value">
 				<d/>
 				<d/>
@@ -29303,20 +29305,20 @@
 			<haxe_doc>Returns HxDynamicStr instance if `value` is a string.
 		Otherwise returns `value` as-is.</haxe_doc>
 		</wrap>
-		<invoke get="inline" set="null" line="782" static="1"><f a="str:method:args">
+		<invoke get="inline" set="null" line="802" static="1"><f a="str:method:args">
 	<c path="String"/>
 	<c path="String"/>
 	<x path="php.NativeArray"/>
 	<d/>
 </f></invoke>
-		<__get set="method" line="792">
+		<__get set="method" line="812">
 			<f a="field">
 				<c path="String"/>
 				<d/>
 			</f>
 			<meta><m n=":phpMagic"/></meta>
 		</__get>
-		<__call set="method" line="803">
+		<__call set="method" line="823">
 			<f a="method:args">
 				<c path="String"/>
 				<x path="php.NativeArray"/>
@@ -29324,12 +29326,12 @@
 			</f>
 			<meta><m n=":phpMagic"/></meta>
 		</__call>
-		<__invoke public="1" set="method" line="811" override="1">
+		<__invoke public="1" set="method" line="831" override="1">
 			<f a=""><unknown/></f>
 			<meta><m n=":phpMagic"/></meta>
 			<haxe_doc>@see http://php.net/manual/en/language.oop5.magic.php#object.invoke</haxe_doc>
 		</__invoke>
-		<getCallback public="1" set="method" line="818" override="1">
+		<getCallback public="1" set="method" line="838" override="1">
 			<f a="?eThis" v="null">
 				<d/>
 				<x path="php.NativeIndexedArray"><d/></x>
@@ -29337,7 +29339,7 @@
 			<meta><m n=":value"><e>{ eThis : null }</e></m></meta>
 			<haxe_doc>Generates callable value for PHP</haxe_doc>
 		</getCallback>
-		<callWith public="1" set="method" line="828" override="1">
+		<callWith public="1" set="method" line="848" override="1">
 			<f a="newThis:args">
 				<d/>
 				<x path="php.NativeArray"/>
@@ -29345,7 +29347,7 @@
 			</f>
 			<haxe_doc>Invoke this closure with `newThis` instead of `this`</haxe_doc>
 		</callWith>
-		<new set="method" line="787"><f a="str">
+		<new set="method" line="807"><f a="str">
 	<c path="String"/>
 	<x path="Void"/>
 </f></new>
@@ -29366,14 +29368,14 @@
 	</class>
 	<class path="php._Boot.HxAnon" params="" file="/home/travis/build/andyli/haxe/std/php/Boot.hx" private="1" module="php.Boot">
 		<extends path="php.StdClass"/>
-		<__get set="method" line="852">
+		<__get set="method" line="872">
 			<f a="name">
 				<c path="String"/>
 				<unknown/>
 			</f>
 			<meta><m n=":phpMagic"/></meta>
 		</__get>
-		<__call set="method" line="857">
+		<__call set="method" line="877">
 			<f a="name:args">
 				<c path="String"/>
 				<x path="php.NativeArray"/>
@@ -29381,7 +29383,7 @@
 			</f>
 			<meta><m n=":phpMagic"/></meta>
 		</__call>
-		<new public="1" set="method" line="844">
+		<new public="1" set="method" line="864">
 			<f a="?fields" v="null">
 				<x path="php.NativeArray"/>
 				<x path="Void"/>
@@ -29425,7 +29427,7 @@
 	<class path="php._Boot.HxException" params="" file="/home/travis/build/andyli/haxe/std/php/Boot.hx" private="1" module="php.Boot">
 		<extends path="php.Exception"/>
 		<e><d/></e>
-		<new public="1" set="method" line="930"><f a="e">
+		<new public="1" set="method" line="950"><f a="e">
 	<d/>
 	<x path="Void"/>
 </f></new>

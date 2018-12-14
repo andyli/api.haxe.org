@@ -1730,6 +1730,7 @@
 				<x path="Int"/>
 				<c path="String"/>
 			</f>
+			<meta><m n=":has_untyped"/></meta>
 			<haxe_doc>Returns the String corresponding to the character code `code`.
 
 		If `code` is negative or has another invalid value, the result is
@@ -1741,15 +1742,11 @@
 		</length>
 		<toUpperCase public="1" set="method">
 			<f a=""><c path="String"/></f>
-			<haxe_doc>Returns a String where all characters of `this` String are upper case.
-
-		Affects the characters `a-z`. Other characters remain unchanged.</haxe_doc>
+			<haxe_doc>Returns a String where all characters of `this` String are upper case.</haxe_doc>
 		</toUpperCase>
 		<toLowerCase public="1" set="method">
 			<f a=""><c path="String"/></f>
-			<haxe_doc>Returns a String where all characters of `this` String are lower case.
-
-		Affects the characters `A-Z`. Other characters remain unchanged.</haxe_doc>
+			<haxe_doc>Returns a String where all characters of `this` String are lower case.</haxe_doc>
 		</toLowerCase>
 		<charAt public="1" set="method">
 			<f a="index">
@@ -1771,9 +1768,13 @@
 		String.
 
 		If `startIndex` is given, the search is performed within the substring
-		of `this` String starting from `startIndex`. Otherwise the search is
-		performed within `this` String. In either case, the returned position
-		is relative to the beginning of `this` String.
+		of `this` String starting from `startIndex` (if `startIndex` is posivite
+		or 0) or `max(this.length + startIndex, 0)` (if `startIndex` is negative).
+
+		If `startIndex` exceeds `this.length`, -1 is returned.
+
+		Otherwise the search is performed within `this` String. In either case,
+		the returned position is relative to the beginning of `this` String.
 
 		If `str` cannot be found, -1 is returned.</haxe_doc>
 		</indexOf>
@@ -1888,7 +1889,7 @@
 
 	String can be concatenated by using the `+` operator. If an operand is not a
 	String, it is passed through `Std.string()` first.
-	
+
 	@see https://haxe.org/manual/std-String.html</haxe_doc>
 		<meta><m n=":coreApi"/></meta>
 	</class>
@@ -4064,6 +4065,10 @@
 </f></remove>
 		<keys public="1" set="method"><f a=""><t path="Iterator"><c path="haxe.IMap.K"/></t></f></keys>
 		<iterator public="1" set="method"><f a=""><t path="Iterator"><c path="haxe.IMap.V"/></t></f></iterator>
+		<keyValueIterator public="1" set="method"><f a=""><t path="KeyValueIterator">
+	<c path="haxe.IMap.K"/>
+	<c path="haxe.IMap.V"/>
+</t></f></keyValueIterator>
 		<copy public="1" set="method"><f a=""><c path="haxe.IMap">
 	<c path="haxe.IMap.K"/>
 	<c path="haxe.IMap.V"/>
@@ -4602,6 +4607,16 @@
 		<haxe_doc>Int32 provides a 32-bit integer with consistent overflow behavior across
  	all platforms.</haxe_doc>
 		<impl><class path="haxe._Int32.Int32_Impl_" params="" file="/home/travis/build/andyli/haxe/std/haxe/Int32.hx" private="1" module="haxe.Int32">
+	<negate get="inline" set="null" line="29" static="1">
+		<f a="this">
+			<x path="Int"/>
+			<x path="haxe.Int32"/>
+		</f>
+		<meta>
+			<m n=":impl"/>
+			<m n=":op"><e>-A</e></m>
+		</meta>
+	</negate>
 	<preIncrement get="inline" set="null" line="31" static="1">
 		<f a="this">
 			<x path="Int"/>
@@ -4740,6 +4755,16 @@
 </class></impl>
 	</abstract>
 	<class path="haxe._Int32.Int32_Impl_" params="" file="/home/travis/build/andyli/haxe/std/haxe/Int32.hx" private="1" module="haxe.Int32">
+		<negate get="inline" set="null" line="29" static="1">
+			<f a="this">
+				<x path="Int"/>
+				<x path="haxe.Int32"/>
+			</f>
+			<meta>
+				<m n=":impl"/>
+				<m n=":op"><e>-A</e></m>
+			</meta>
+		</negate>
 		<preIncrement get="inline" set="null" line="31" static="1">
 			<f a="this">
 				<x path="Int"/>
@@ -9955,17 +9980,25 @@
 
 		This operation is performed in-order.</haxe_doc>
 		</iterator>
-		<keys public="1" set="method" line="126">
+		<keyValueIterator public="1" get="inline" set="null" line="124">
+			<f a=""><t path="KeyValueIterator">
+	<c path="haxe.ds.BalancedTree.K"/>
+	<c path="haxe.ds.BalancedTree.V"/>
+</t></f>
+			<meta><m n=":runtime"/></meta>
+			<haxe_doc>See `Map.keyValueIterator`</haxe_doc>
+		</keyValueIterator>
+		<keys public="1" set="method" line="133">
 			<f a=""><t path="Iterator"><c path="haxe.ds.BalancedTree.K"/></t></f>
 			<haxe_doc>Iterates over the keys of `this` BalancedTree.
 
 		This operation is performed in-order.</haxe_doc>
 		</keys>
-		<copy public="1" set="method" line="132"><f a=""><c path="haxe.ds.BalancedTree">
+		<copy public="1" set="method" line="139"><f a=""><c path="haxe.ds.BalancedTree">
 	<c path="haxe.ds.BalancedTree.K"/>
 	<c path="haxe.ds.BalancedTree.V"/>
 </c></f></copy>
-		<setLoop set="method" line="138"><f a="k:v:node">
+		<setLoop set="method" line="145"><f a="k:v:node">
 	<c path="haxe.ds.BalancedTree.K"/>
 	<c path="haxe.ds.BalancedTree.V"/>
 	<c path="haxe.ds.TreeNode">
@@ -9977,7 +10010,7 @@
 		<c path="haxe.ds.BalancedTree.V"/>
 	</c>
 </f></setLoop>
-		<removeLoop set="method" line="151"><f a="k:node">
+		<removeLoop set="method" line="158"><f a="k:node">
 	<c path="haxe.ds.BalancedTree.K"/>
 	<c path="haxe.ds.TreeNode">
 		<c path="haxe.ds.BalancedTree.K"/>
@@ -9988,7 +10021,7 @@
 		<c path="haxe.ds.BalancedTree.V"/>
 	</c>
 </f></removeLoop>
-		<iteratorLoop set="method" line="159"><f a="node:acc">
+		<iteratorLoop set="method" line="166"><f a="node:acc">
 	<c path="haxe.ds.TreeNode">
 		<c path="haxe.ds.BalancedTree.K"/>
 		<c path="haxe.ds.BalancedTree.V"/>
@@ -9996,7 +10029,7 @@
 	<c path="Array"><c path="haxe.ds.BalancedTree.V"/></c>
 	<x path="Void"/>
 </f></iteratorLoop>
-		<keysLoop set="method" line="167"><f a="node:acc">
+		<keysLoop set="method" line="174"><f a="node:acc">
 	<c path="haxe.ds.TreeNode">
 		<c path="haxe.ds.BalancedTree.K"/>
 		<c path="haxe.ds.BalancedTree.V"/>
@@ -10004,7 +10037,7 @@
 	<c path="Array"><c path="haxe.ds.BalancedTree.K"/></c>
 	<x path="Void"/>
 </f></keysLoop>
-		<merge set="method" line="175"><f a="t1:t2">
+		<merge set="method" line="182"><f a="t1:t2">
 	<c path="haxe.ds.TreeNode">
 		<c path="haxe.ds.BalancedTree.K"/>
 		<c path="haxe.ds.BalancedTree.V"/>
@@ -10018,7 +10051,7 @@
 		<c path="haxe.ds.BalancedTree.V"/>
 	</c>
 </f></merge>
-		<minBinding set="method" line="182"><f a="t">
+		<minBinding set="method" line="189"><f a="t">
 	<c path="haxe.ds.TreeNode">
 		<c path="haxe.ds.BalancedTree.K"/>
 		<c path="haxe.ds.BalancedTree.V"/>
@@ -10028,7 +10061,7 @@
 		<c path="haxe.ds.BalancedTree.V"/>
 	</c>
 </f></minBinding>
-		<removeMinBinding set="method" line="188"><f a="t">
+		<removeMinBinding set="method" line="195"><f a="t">
 	<c path="haxe.ds.TreeNode">
 		<c path="haxe.ds.BalancedTree.K"/>
 		<c path="haxe.ds.BalancedTree.V"/>
@@ -10038,7 +10071,7 @@
 		<c path="haxe.ds.BalancedTree.V"/>
 	</c>
 </f></removeMinBinding>
-		<balance set="method" line="193"><f a="l:k:v:r">
+		<balance set="method" line="200"><f a="l:k:v:r">
 	<c path="haxe.ds.TreeNode">
 		<c path="haxe.ds.BalancedTree.K"/>
 		<c path="haxe.ds.BalancedTree.V"/>
@@ -10054,12 +10087,12 @@
 		<c path="haxe.ds.BalancedTree.V"/>
 	</c>
 </f></balance>
-		<compare set="method" line="207"><f a="k1:k2">
+		<compare set="method" line="214"><f a="k1:k2">
 	<c path="haxe.ds.BalancedTree.K"/>
 	<c path="haxe.ds.BalancedTree.K"/>
 	<x path="Int"/>
 </f></compare>
-		<toString public="1" set="method" line="211"><f a=""><c path="String"/></f></toString>
+		<toString public="1" set="method" line="218"><f a=""><c path="String"/></f></toString>
 		<new public="1" set="method" line="41">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>Creates a new BalancedTree, which is initially empty.</haxe_doc>
@@ -10085,9 +10118,9 @@
 		<key public="1"><c path="haxe.ds.TreeNode.K"/></key>
 		<value public="1"><c path="haxe.ds.TreeNode.V"/></value>
 		<_height><x path="Int"/></_height>
-		<get_height public="1" get="inline" set="null" line="240"><f a=""><x path="Int"/></f></get_height>
-		<toString public="1" set="method" line="242"><f a=""><c path="String"/></f></toString>
-		<new public="1" set="method" line="229">
+		<get_height public="1" get="inline" set="null" line="247"><f a=""><x path="Int"/></f></get_height>
+		<toString public="1" set="method" line="249"><f a=""><c path="String"/></f></toString>
+		<new public="1" set="method" line="236">
 			<f a="l:k:v:r:?h" v="::::-1">
 				<c path="haxe.ds.TreeNode">
 					<c path="haxe.ds.TreeNode.K"/>
@@ -10136,6 +10169,10 @@
 	<d/>
 	<x path="Int"/>
 </f></compareArg>
+		<copy public="1" set="method" line="62" override="1"><f a=""><c path="haxe.ds.EnumValueMap">
+	<c path="haxe.ds.EnumValueMap.K"/>
+	<c path="haxe.ds.EnumValueMap.V"/>
+</c></f></copy>
 		<new public="1" set="method" line="31"><f a=""><x path="Void"/></f></new>
 		<haxe_doc>EnumValueMap allows mapping of enum value keys to arbitrary values.
 
@@ -10474,11 +10511,19 @@
 			<meta><m n=":has_untyped"/></meta>
 			<haxe_doc>See `Map.iterator`</haxe_doc>
 		</iterator>
-		<copy public="1" set="method" line="65">
+		<keyValueIterator public="1" get="inline" set="null" line="65">
+			<f a=""><t path="KeyValueIterator">
+	<x path="Int"/>
+	<c path="haxe.ds.IntMap.T"/>
+</t></f>
+			<meta><m n=":runtime"/></meta>
+			<haxe_doc>See `Map.keyValueIterator`</haxe_doc>
+		</keyValueIterator>
+		<copy public="1" set="method" line="69">
 			<f a=""><c path="haxe.ds.IntMap"><c path="haxe.ds.IntMap.T"/></c></f>
 			<haxe_doc>See `Map.copy`</haxe_doc>
 		</copy>
-		<toString public="1" set="method" line="71">
+		<toString public="1" set="method" line="75">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>See `Map.toString`</haxe_doc>
 		</toString>
@@ -10848,7 +10893,23 @@
 
 		The order of values is undefined.</haxe_doc>
 	</iterator>
-	<copy public="1" get="inline" set="null" line="132" static="1">
+	<keyValueIterator public="1" get="inline" set="null" line="132" static="1">
+		<f a="this">
+			<c path="haxe.IMap">
+				<c path="haxe.ds.Map.K"/>
+				<c path="haxe.ds.Map.V"/>
+			</c>
+			<t path="KeyValueIterator">
+				<c path="haxe.ds.Map.K"/>
+				<c path="haxe.ds.Map.V"/>
+			</t>
+		</f>
+		<meta><m n=":impl"/></meta>
+		<haxe_doc>Returns an Iterator over the keys and values of `this` Map.
+
+		The order of values is undefined.</haxe_doc>
+	</keyValueIterator>
+	<copy public="1" get="inline" set="null" line="141" static="1">
 		<f a="this">
 			<c path="haxe.IMap">
 				<c path="haxe.ds.Map.K"/>
@@ -10864,7 +10925,7 @@
 
 		The order of values is undefined.</haxe_doc>
 	</copy>
-	<toString public="1" get="inline" set="null" line="141" static="1">
+	<toString public="1" get="inline" set="null" line="150" static="1">
 		<f a="this">
 			<c path="haxe.IMap">
 				<c path="haxe.ds.Map.K"/>
@@ -10877,7 +10938,7 @@
 
 		The exact representation depends on the platform and key-type.</haxe_doc>
 	</toString>
-	<arrayWrite public="1" get="inline" set="null" line="145" static="1">
+	<arrayWrite public="1" get="inline" set="null" line="154" static="1">
 		<f a="this:k:v">
 			<c path="haxe.IMap">
 				<c path="haxe.ds.Map.K"/>
@@ -10893,7 +10954,7 @@
 			<m n=":noCompletion"/>
 		</meta>
 	</arrayWrite>
-	<toStringMap params="K:V" get="inline" set="null" line="150" static="1">
+	<toStringMap params="K:V" get="inline" set="null" line="159" static="1">
 		<f a="t">
 			<c path="haxe.IMap">
 				<c path="toStringMap.K"/>
@@ -10906,7 +10967,7 @@
 			<m n=":to"/>
 		</meta>
 	</toStringMap>
-	<toIntMap params="K:V" get="inline" set="null" line="154" static="1">
+	<toIntMap params="K:V" get="inline" set="null" line="163" static="1">
 		<f a="t">
 			<c path="haxe.IMap">
 				<c path="toIntMap.K"/>
@@ -10919,7 +10980,7 @@
 			<m n=":to"/>
 		</meta>
 	</toIntMap>
-	<toEnumValueMapMap params="K:V" get="inline" set="null" line="158" static="1">
+	<toEnumValueMapMap params="K:V" get="inline" set="null" line="167" static="1">
 		<f a="t">
 			<c path="haxe.IMap">
 				<c path="toEnumValueMapMap.K"/>
@@ -10935,7 +10996,7 @@
 			<m n=":to"/>
 		</meta>
 	</toEnumValueMapMap>
-	<toObjectMap params="K:V" get="inline" set="null" line="162" static="1">
+	<toObjectMap params="K:V" get="inline" set="null" line="171" static="1">
 		<f a="t">
 			<c path="haxe.IMap">
 				<c path="toObjectMap.K"/>
@@ -10951,7 +11012,7 @@
 			<m n=":to"/>
 		</meta>
 	</toObjectMap>
-	<fromStringMap params="V" get="inline" set="null" line="166" static="1">
+	<fromStringMap params="V" get="inline" set="null" line="175" static="1">
 		<f a="map">
 			<c path="haxe.ds.StringMap"><c path="fromStringMap.V"/></c>
 			<x path="haxe.ds.Map">
@@ -10961,7 +11022,7 @@
 		</f>
 		<meta><m n=":from"/></meta>
 	</fromStringMap>
-	<fromIntMap params="V" get="inline" set="null" line="170" static="1">
+	<fromIntMap params="V" get="inline" set="null" line="179" static="1">
 		<f a="map">
 			<c path="haxe.ds.IntMap"><c path="fromIntMap.V"/></c>
 			<x path="haxe.ds.Map">
@@ -10971,7 +11032,7 @@
 		</f>
 		<meta><m n=":from"/></meta>
 	</fromIntMap>
-	<fromObjectMap params="K:V" get="inline" set="null" line="174" static="1">
+	<fromObjectMap params="K:V" get="inline" set="null" line="183" static="1">
 		<f a="map">
 			<c path="haxe.ds.ObjectMap">
 				<c path="fromObjectMap.K"/>
@@ -11108,7 +11169,23 @@
 
 		The order of values is undefined.</haxe_doc>
 		</iterator>
-		<copy public="1" get="inline" set="null" line="132" static="1">
+		<keyValueIterator public="1" get="inline" set="null" line="132" static="1">
+			<f a="this">
+				<c path="haxe.IMap">
+					<c path="haxe.ds.Map.K"/>
+					<c path="haxe.ds.Map.V"/>
+				</c>
+				<t path="KeyValueIterator">
+					<c path="haxe.ds.Map.K"/>
+					<c path="haxe.ds.Map.V"/>
+				</t>
+			</f>
+			<meta><m n=":impl"/></meta>
+			<haxe_doc>Returns an Iterator over the keys and values of `this` Map.
+
+		The order of values is undefined.</haxe_doc>
+		</keyValueIterator>
+		<copy public="1" get="inline" set="null" line="141" static="1">
 			<f a="this">
 				<c path="haxe.IMap">
 					<c path="haxe.ds.Map.K"/>
@@ -11124,7 +11201,7 @@
 
 		The order of values is undefined.</haxe_doc>
 		</copy>
-		<toString public="1" get="inline" set="null" line="141" static="1">
+		<toString public="1" get="inline" set="null" line="150" static="1">
 			<f a="this">
 				<c path="haxe.IMap">
 					<c path="haxe.ds.Map.K"/>
@@ -11137,7 +11214,7 @@
 
 		The exact representation depends on the platform and key-type.</haxe_doc>
 		</toString>
-		<arrayWrite public="1" get="inline" set="null" line="145" static="1">
+		<arrayWrite public="1" get="inline" set="null" line="154" static="1">
 			<f a="this:k:v">
 				<c path="haxe.IMap">
 					<c path="haxe.ds.Map.K"/>
@@ -11153,7 +11230,7 @@
 				<m n=":noCompletion"/>
 			</meta>
 		</arrayWrite>
-		<toStringMap params="K:V" get="inline" set="null" line="150" static="1">
+		<toStringMap params="K:V" get="inline" set="null" line="159" static="1">
 			<f a="t">
 				<c path="haxe.IMap">
 					<c path="toStringMap.K"/>
@@ -11166,7 +11243,7 @@
 				<m n=":to"/>
 			</meta>
 		</toStringMap>
-		<toIntMap params="K:V" get="inline" set="null" line="154" static="1">
+		<toIntMap params="K:V" get="inline" set="null" line="163" static="1">
 			<f a="t">
 				<c path="haxe.IMap">
 					<c path="toIntMap.K"/>
@@ -11179,7 +11256,7 @@
 				<m n=":to"/>
 			</meta>
 		</toIntMap>
-		<toEnumValueMapMap params="K:V" get="inline" set="null" line="158" static="1">
+		<toEnumValueMapMap params="K:V" get="inline" set="null" line="167" static="1">
 			<f a="t">
 				<c path="haxe.IMap">
 					<c path="toEnumValueMapMap.K"/>
@@ -11195,7 +11272,7 @@
 				<m n=":to"/>
 			</meta>
 		</toEnumValueMapMap>
-		<toObjectMap params="K:V" get="inline" set="null" line="162" static="1">
+		<toObjectMap params="K:V" get="inline" set="null" line="171" static="1">
 			<f a="t">
 				<c path="haxe.IMap">
 					<c path="toObjectMap.K"/>
@@ -11211,7 +11288,7 @@
 				<m n=":to"/>
 			</meta>
 		</toObjectMap>
-		<fromStringMap params="V" get="inline" set="null" line="166" static="1">
+		<fromStringMap params="V" get="inline" set="null" line="175" static="1">
 			<f a="map">
 				<c path="haxe.ds.StringMap"><c path="fromStringMap.V"/></c>
 				<x path="haxe.ds.Map">
@@ -11221,7 +11298,7 @@
 			</f>
 			<meta><m n=":from"/></meta>
 		</fromStringMap>
-		<fromIntMap params="V" get="inline" set="null" line="170" static="1">
+		<fromIntMap params="V" get="inline" set="null" line="179" static="1">
 			<f a="map">
 				<c path="haxe.ds.IntMap"><c path="fromIntMap.V"/></c>
 				<x path="haxe.ds.Map">
@@ -11231,7 +11308,7 @@
 			</f>
 			<meta><m n=":from"/></meta>
 		</fromIntMap>
-		<fromObjectMap params="K:V" get="inline" set="null" line="174" static="1">
+		<fromObjectMap params="K:V" get="inline" set="null" line="183" static="1">
 			<f a="map">
 				<c path="haxe.ds.ObjectMap">
 					<c path="fromObjectMap.K"/>
@@ -11309,14 +11386,22 @@
 			<meta><m n=":has_untyped"/></meta>
 			<haxe_doc>See `Map.iterator`</haxe_doc>
 		</iterator>
-		<copy public="1" set="method" line="91">
+		<keyValueIterator public="1" get="inline" set="null" line="91">
+			<f a=""><t path="KeyValueIterator">
+	<c path="haxe.ds.ObjectMap.K"/>
+	<c path="haxe.ds.ObjectMap.V"/>
+</t></f>
+			<meta><m n=":runtime"/></meta>
+			<haxe_doc>See `Map.keyValueIterator`</haxe_doc>
+		</keyValueIterator>
+		<copy public="1" set="method" line="95">
 			<f a=""><c path="haxe.ds.ObjectMap">
 	<c path="haxe.ds.ObjectMap.K"/>
 	<c path="haxe.ds.ObjectMap.V"/>
 </c></f>
 			<haxe_doc>See `Map.copy`</haxe_doc>
 		</copy>
-		<toString public="1" set="method" line="97">
+		<toString public="1" set="method" line="101">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>See `Map.toString`</haxe_doc>
 		</toString>
@@ -11491,11 +11576,19 @@
 			<f a=""><t path="Iterator"><c path="haxe.ds.StringMap.T"/></t></f>
 			<haxe_doc>See `Map.iterator`</haxe_doc>
 		</iterator>
-		<copy public="1" set="method" line="128">
+		<keyValueIterator public="1" get="inline" set="null" line="128">
+			<f a=""><t path="KeyValueIterator">
+	<c path="String"/>
+	<c path="haxe.ds.StringMap.T"/>
+</t></f>
+			<meta><m n=":runtime"/></meta>
+			<haxe_doc>See `Map.keyValueIterator`</haxe_doc>
+		</keyValueIterator>
+		<copy public="1" set="method" line="132">
 			<f a=""><c path="haxe.ds.StringMap"><c path="haxe.ds.StringMap.T"/></c></f>
 			<haxe_doc>See `Map.copy`</haxe_doc>
 		</copy>
-		<toString public="1" set="method" line="134">
+		<toString public="1" set="method" line="138">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>See `Map.toString`</haxe_doc>
 		</toString>
@@ -11950,14 +12043,21 @@
 			<f a=""><t path="Iterator"><c path="haxe.ds.WeakMap.V"/></t></f>
 			<haxe_doc>See `Map.iterator`</haxe_doc>
 		</iterator>
-		<copy public="1" set="method" line="87">
+		<keyValueIterator public="1" get="inline" set="null" line="87">
+			<f a=""><t path="KeyValueIterator">
+	<c path="haxe.ds.WeakMap.K"/>
+	<c path="haxe.ds.WeakMap.V"/>
+</t></f>
+			<haxe_doc>See `Map.keyValueIterator`</haxe_doc>
+		</keyValueIterator>
+		<copy public="1" set="method" line="94">
 			<f a=""><c path="haxe.ds.WeakMap">
 	<c path="haxe.ds.WeakMap.K"/>
 	<c path="haxe.ds.WeakMap.V"/>
 </c></f>
 			<haxe_doc>See `Map.copy`</haxe_doc>
 		</copy>
-		<toString public="1" set="method" line="94">
+		<toString public="1" set="method" line="101">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>See `Map.toString`</haxe_doc>
 		</toString>
@@ -20020,7 +20120,7 @@
 
 		If `path` is `null`, the result is unspecified.</haxe_doc>
 		</normalize>
-		<addTrailingSlash public="1" set="method" line="260" static="1">
+		<addTrailingSlash public="1" set="method" line="264" static="1">
 			<f a="path">
 				<c path="String"/>
 				<c path="String"/>
@@ -20036,7 +20136,7 @@
 
 		If `path` is `null`, the result is unspecified.</haxe_doc>
 		</addTrailingSlash>
-		<removeTrailingSlashes public="1" set="method" line="285" static="1">
+		<removeTrailingSlashes public="1" set="method" line="289" static="1">
 			<f a="path">
 				<c path="String"/>
 				<c path="String"/>
@@ -20051,7 +20151,7 @@
 
 		If `path` is `null`, the result is unspecified.</haxe_doc>
 		</removeTrailingSlashes>
-		<isAbsolute public="1" set="method" line="299" static="1">
+		<isAbsolute public="1" set="method" line="303" static="1">
 			<f a="path">
 				<c path="String"/>
 				<x path="Bool"/>
@@ -20059,11 +20159,11 @@
 			<meta><m n=":require"><e><![CDATA[haxe_ver >= 3.2]]></e></m></meta>
 			<haxe_doc>Returns `true` if the path is an absolute path, and `false` otherwise.</haxe_doc>
 		</isAbsolute>
-		<unescape set="method" line="306" static="1"><f a="path">
+		<unescape set="method" line="310" static="1"><f a="path">
 	<c path="String"/>
 	<c path="String"/>
 </f></unescape>
-		<escape set="method" line="311" static="1">
+		<escape set="method" line="315" static="1">
 			<f a="path:?allowSlashes" v=":false">
 				<c path="String"/>
 				<x path="Bool"/>
@@ -20915,6 +21015,36 @@
 			<meta><m n=":value"><e>{ bytePos : 0 }</e></m></meta>
 		</fromBytes>
 		<meta><m n=":coreApi"/></meta>
+	</class>
+	<class path="haxe.iterators.MapKeyValueIterator" params="K:V" file="/home/travis/build/andyli/haxe/std/haxe/iterators/MapKeyValueIterator.hx">
+		<map><c path="haxe.IMap">
+	<c path="haxe.iterators.MapKeyValueIterator.K"/>
+	<c path="haxe.iterators.MapKeyValueIterator.V"/>
+</c></map>
+		<keys><t path="Iterator"><c path="haxe.iterators.MapKeyValueIterator.K"/></t></keys>
+		<hasNext public="1" get="inline" set="null" line="42">
+			<f a=""><x path="Bool"/></f>
+			<haxe_doc>See `Iterator.hasNext`</haxe_doc>
+		</hasNext>
+		<next public="1" get="inline" set="null" line="49">
+			<f a=""><a>
+	<value><c path="haxe.iterators.MapKeyValueIterator.V"/></value>
+	<key><c path="haxe.iterators.MapKeyValueIterator.K"/></key>
+</a></f>
+			<haxe_doc>See `Iterator.next`</haxe_doc>
+		</next>
+		<new public="1" get="inline" set="null" line="34"><f a="map">
+	<c path="haxe.IMap">
+		<c path="haxe.iterators.MapKeyValueIterator.K"/>
+		<c path="haxe.iterators.MapKeyValueIterator.V"/>
+	</c>
+	<x path="Void"/>
+</f></new>
+		<haxe_doc>This Key/Value iterator can be used to iterate across maps.</haxe_doc>
+		<meta><m n=":ifFeature">
+	<e>"anon_read.keyValueIterator"</e>
+	<e>"dynamic_read.keyValueIterator"</e>
+</m></meta>
 	</class>
 	<class path="haxe.iterators.StringIteratorUnicode" params="" file="/home/travis/build/andyli/haxe/std/haxe/iterators/StringIteratorUnicode.hx">
 		<unicodeIterator public="1" get="inline" set="null" line="66" static="1">
@@ -22422,6 +22552,10 @@
 			</f>
 			<meta><m n=":value"><e>{ prefix : "" }</e></m></meta>
 		</opt>
+		<printExprWithPositions public="1" set="method" line="339"><f a="e">
+	<t path="haxe.macro.Expr"/>
+	<c path="String"/>
+</f></printExprWithPositions>
 		<new public="1" set="method" line="37">
 			<f a="?tabString" v="&quot;\t&quot;">
 				<c path="String"/>
@@ -23210,8 +23344,7 @@
 			<extra set="null">
 				<x path="Null"><a>
 	<params><c path="Array"><t path="haxe.macro.TypeParameter"/></c></params>
-	<isInline><x path="Bool"/></isInline>
-	<expr><t path="haxe.macro.TypedExpr"/></expr>
+	<expr><x path="Null"><t path="haxe.macro.TypedExpr"/></x></expr>
 </a></x>
 				<haxe_doc>Special information which is internally used to keep track of closure.
 		information</haxe_doc>
@@ -23255,7 +23388,7 @@
 			</expr>
 			<args>
 				<c path="Array"><a>
-	<value><x path="Null"><e path="haxe.macro.TConstant"/></x></value>
+	<value><x path="Null"><t path="haxe.macro.TypedExpr"/></x></value>
 	<v><t path="haxe.macro.TVar"/></v>
 </a></c>
 				<haxe_doc>A list of function arguments identified by an argument variable `v` and
@@ -25606,87 +25739,152 @@
 		<meta><m n=":native"><e>"Error"</e></m></meta>
 	</class>
 	<class path="js.Object" params="" file="/home/travis/build/andyli/haxe/std/js/Object.hx" extern="1">
-		<assign public="1" params="T" set="method" static="1"><f a="target:sources">
-	<c path="assign.T"/>
-	<x path="haxe.extern.Rest"><a/></x>
-	<c path="assign.T"/>
-</f></assign>
-		<create public="1" params="T" set="method" static="1"><f a="proto:?propertiesObject">
-	<a/>
-	<x path="haxe.DynamicAccess"><t path="js.ObjectPropertyDescriptor"/></x>
-	<c path="create.T"/>
-</f></create>
-		<defineProperties public="1" params="T" set="method" static="1"><f a="obj:props">
-	<c path="defineProperties.T"/>
-	<x path="haxe.DynamicAccess"><t path="js.ObjectPropertyDescriptor"/></x>
-	<c path="defineProperties.T"/>
-</f></defineProperties>
-		<defineProperty public="1" params="T" set="method" static="1"><f a="obj:prop:descriptor">
-	<c path="defineProperty.T"/>
-	<c path="String"/>
-	<t path="js.ObjectPropertyDescriptor"/>
-	<c path="defineProperty.T"/>
-</f></defineProperty>
-		<freeze public="1" params="T" set="method" static="1"><f a="obj">
-	<c path="freeze.T"/>
-	<c path="freeze.T"/>
-</f></freeze>
-		<getOwnPropertyDescriptor public="1" set="method" static="1"><f a="obj:prop">
-	<a/>
-	<c path="String"/>
-	<x path="Null"><t path="js.ObjectPropertyDescriptor"/></x>
-</f></getOwnPropertyDescriptor>
-		<getOwnPropertyNames public="1" set="method" static="1"><f a="obj">
-	<a/>
-	<c path="Array"><c path="String"/></c>
-</f></getOwnPropertyNames>
-		<getOwnPropertySymbols public="1" set="method" static="1"><f a="obj">
-	<a/>
-	<c path="Array"><c path="js.Symbol"/></c>
-</f></getOwnPropertySymbols>
-		<getPrototypeOf public="1" params="TProto" set="method" static="1"><f a="obj">
-	<a/>
-	<x path="Null"><c path="getPrototypeOf.TProto"/></x>
-</f></getPrototypeOf>
-		<is public="1" params="T" set="method" static="1"><f a="value1:value2">
-	<c path="is.T"/>
-	<c path="is.T"/>
-	<x path="Bool"/>
-</f></is>
-		<isExtensible public="1" set="method" static="1"><f a="obj">
-	<a/>
-	<x path="Bool"/>
-</f></isExtensible>
-		<isFrozen public="1" set="method" static="1"><f a="obj">
-	<a/>
-	<x path="Bool"/>
-</f></isFrozen>
-		<isSealed public="1" set="method" static="1"><f a="obj">
-	<a/>
-	<x path="Bool"/>
-</f></isSealed>
-		<keys public="1" set="method" static="1"><f a="obj">
-	<a/>
-	<c path="Array"><c path="String"/></c>
-</f></keys>
-		<preventExtensions public="1" params="T" set="method" static="1"><f a="obj">
-	<c path="preventExtensions.T"/>
-	<c path="preventExtensions.T"/>
-</f></preventExtensions>
-		<seal public="1" params="T" set="method" static="1"><f a="obj">
-	<c path="seal.T"/>
-	<c path="seal.T"/>
-</f></seal>
-		<setPrototypeOf public="1" params="T" set="method" static="1"><f a="obj:prototype">
-	<c path="setPrototypeOf.T"/>
-	<x path="Null"><a/></x>
-	<c path="setPrototypeOf.T"/>
-</f></setPrototypeOf>
-		<prototype public="1" set="null" static="1"><t path="js.ObjectPrototype"/></prototype>
-		<new public="1" set="method"><f a="?value">
-	<x path="Any"/>
-	<x path="Void"/>
-</f></new>
+		<assign public="1" params="T" set="method" static="1">
+			<f a="target:sources">
+				<c path="assign.T"/>
+				<x path="haxe.extern.Rest"><a/></x>
+				<c path="assign.T"/>
+			</f>
+			<haxe_doc>Copies the values of all enumerable own properties from one or more 
+		source objects to a target object.</haxe_doc>
+		</assign>
+		<create public="1" params="T" set="method" static="1">
+			<f a="proto:?propertiesObject">
+				<a/>
+				<x path="haxe.DynamicAccess"><t path="js.ObjectPropertyDescriptor"/></x>
+				<c path="create.T"/>
+			</f>
+			<haxe_doc>Creates a new object with the specified prototype object and properties.</haxe_doc>
+		</create>
+		<defineProperties public="1" params="T" set="method" static="1">
+			<f a="obj:props">
+				<c path="defineProperties.T"/>
+				<x path="haxe.DynamicAccess"><t path="js.ObjectPropertyDescriptor"/></x>
+				<c path="defineProperties.T"/>
+			</f>
+			<haxe_doc>Adds the named properties described by the given descriptors to an object.</haxe_doc>
+		</defineProperties>
+		<defineProperty public="1" params="T" set="method" static="1">
+			<f a="obj:prop:descriptor">
+				<c path="defineProperty.T"/>
+				<c path="String"/>
+				<t path="js.ObjectPropertyDescriptor"/>
+				<c path="defineProperty.T"/>
+			</f>
+			<haxe_doc>Adds the named property described by a given descriptor to an object.</haxe_doc>
+		</defineProperty>
+		<freeze public="1" params="T" set="method" static="1">
+			<f a="obj">
+				<c path="freeze.T"/>
+				<c path="freeze.T"/>
+			</f>
+			<haxe_doc>Freezes an object: other code can't delete or change any properties.</haxe_doc>
+		</freeze>
+		<getOwnPropertyDescriptor public="1" set="method" static="1">
+			<f a="obj:prop">
+				<a/>
+				<c path="String"/>
+				<x path="Null"><t path="js.ObjectPropertyDescriptor"/></x>
+			</f>
+			<haxe_doc>Returns a property descriptor for a named property on an object.</haxe_doc>
+		</getOwnPropertyDescriptor>
+		<getOwnPropertyNames public="1" set="method" static="1">
+			<f a="obj">
+				<a/>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>Returns an array containing the names of all of the given object's own 
+		enumerable and non-enumerable properties.</haxe_doc>
+		</getOwnPropertyNames>
+		<getOwnPropertySymbols public="1" set="method" static="1">
+			<f a="obj">
+				<a/>
+				<c path="Array"><c path="js.Symbol"/></c>
+			</f>
+			<haxe_doc>Returns an array of all symbol properties found directly upon a given object.</haxe_doc>
+		</getOwnPropertySymbols>
+		<getPrototypeOf public="1" params="TProto" set="method" static="1">
+			<f a="obj">
+				<a/>
+				<x path="Null"><c path="getPrototypeOf.TProto"/></x>
+			</f>
+			<haxe_doc>Returns the prototype of the specified object.</haxe_doc>
+		</getPrototypeOf>
+		<is public="1" params="T" set="method" static="1">
+			<f a="value1:value2">
+				<c path="is.T"/>
+				<c path="is.T"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Compares if two values are the same value. Equates all NaN values 
+		(which differs from both Abstract Equality Comparison and 
+		Strict Equality Comparison).</haxe_doc>
+		</is>
+		<isExtensible public="1" set="method" static="1">
+			<f a="obj">
+				<a/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Determines if extending of an object is allowed.</haxe_doc>
+		</isExtensible>
+		<isFrozen public="1" set="method" static="1">
+			<f a="obj">
+				<a/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Determines if an object was frozen.</haxe_doc>
+		</isFrozen>
+		<isSealed public="1" set="method" static="1">
+			<f a="obj">
+				<a/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Determines if an object is sealed.</haxe_doc>
+		</isSealed>
+		<keys public="1" set="method" static="1">
+			<f a="obj">
+				<a/>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>Returns an array containing the names of all of the given object's own 
+		enumerable string properties.</haxe_doc>
+		</keys>
+		<preventExtensions public="1" params="T" set="method" static="1">
+			<f a="obj">
+				<c path="preventExtensions.T"/>
+				<c path="preventExtensions.T"/>
+			</f>
+			<haxe_doc>Prevents any extensions of an object.</haxe_doc>
+		</preventExtensions>
+		<seal public="1" params="T" set="method" static="1">
+			<f a="obj">
+				<c path="seal.T"/>
+				<c path="seal.T"/>
+			</f>
+			<haxe_doc>Prevents other code from deleting properties of an object.</haxe_doc>
+		</seal>
+		<setPrototypeOf public="1" params="T" set="method" static="1">
+			<f a="obj:prototype">
+				<c path="setPrototypeOf.T"/>
+				<x path="Null"><a/></x>
+				<c path="setPrototypeOf.T"/>
+			</f>
+			<haxe_doc>Sets the prototype (i.e., the internal Prototype property).</haxe_doc>
+		</setPrototypeOf>
+		<prototype public="1" set="null" static="1">
+			<t path="js.ObjectPrototype"/>
+			<haxe_doc>Allows the addition of properties to all objects of type Object.</haxe_doc>
+		</prototype>
+		<new public="1" set="method">
+			<f a="?value">
+				<x path="Any"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>The Object constructor creates an object wrapper.</haxe_doc>
+		</new>
+		<haxe_doc>The `js.Object` constructor creates an object wrapper.
+	
+	Documentation [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object$history), licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).</haxe_doc>
 		<meta><m n=":native"><e>"Object"</e></m></meta>
 	</class>
 	<class path="js._Boot.HaxeError" params="" file="/home/travis/build/andyli/haxe/std/js/Boot.hx" private="1" module="js.Boot">
@@ -26298,14 +26496,21 @@
 		</new>
 		<meta><m n=":native"><e>"Function"</e></m></meta>
 	</class>
-	<typedef path="js.JsIterator" params="T" file="/home/travis/build/andyli/haxe/std/js/JsIterator.hx"><a><next set="method"><f a=""><t path="js.JsIteratorStep"><c path="js.JsIterator.T"/></t></f></next></a></typedef>
-	<typedef path="js.JsIteratorStep" params="T" file="/home/travis/build/andyli/haxe/std/js/JsIterator.hx" module="js.JsIterator"><a>
-	<value>
-		<x path="Null"><c path="js.JsIteratorStep.T"/></x>
-		<meta><m n=":optional"/></meta>
-	</value>
-	<done><x path="Bool"/></done>
-</a></typedef>
+	<typedef path="js.JsIterator" params="T" file="/home/travis/build/andyli/haxe/std/js/JsIterator.hx">
+		<a><next set="method"><f a=""><t path="js.JsIteratorStep"><c path="js.JsIterator.T"/></t></f></next></a>
+		<haxe_doc>JsIterator is prefixed with Js to avoid name clashes with standard 
+	Iterator structure.</haxe_doc>
+	</typedef>
+	<typedef path="js.JsIteratorStep" params="T" file="/home/travis/build/andyli/haxe/std/js/JsIterator.hx" module="js.JsIterator">
+		<a>
+			<value>
+				<x path="Null"><c path="js.JsIteratorStep.T"/></x>
+				<meta><m n=":optional"/></meta>
+			</value>
+			<done><x path="Bool"/></done>
+		</a>
+		<haxe_doc>Object returned by `JsIterator.next`.</haxe_doc>
+	</typedef>
 	<class path="js.Lib" params="" file="/home/travis/build/andyli/haxe/std/js/Lib.hx">
 		<debug public="1" get="inline" set="null" line="33" static="1">
 			<f a=""><x path="Void"/></f>
@@ -26411,55 +26616,108 @@
 	for the JavaScript target.</haxe_doc>
 	</class>
 	<class path="js.Map" params="K:V" file="/home/travis/build/andyli/haxe/std/js/Map.hx" extern="1">
-		<size public="1" set="null"><x path="Int"/></size>
-		<has public="1" set="method"><f a="key">
-	<c path="js.Map.K"/>
-	<x path="Bool"/>
-</f></has>
-		<get public="1" set="method"><f a="key">
-	<c path="js.Map.K"/>
-	<x path="Null"><c path="js.Map.V"/></x>
-</f></get>
-		<set public="1" set="method"><f a="key:value">
+		<size public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>The number of key/value pairs in the `js.Map` object.</haxe_doc>
+		</size>
+		<has public="1" set="method">
+			<f a="key">
+				<c path="js.Map.K"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>A boolean asserting whether a value has been associated to the key in 
+		the `js.Map` object or not.</haxe_doc>
+		</has>
+		<get public="1" set="method">
+			<f a="key">
+				<c path="js.Map.K"/>
+				<x path="Null"><c path="js.Map.V"/></x>
+			</f>
+			<haxe_doc>The value associated to the key, or `null` if there is none.</haxe_doc>
+		</get>
+		<set public="1" set="method">
+			<f a="key:value">
+				<c path="js.Map.K"/>
+				<c path="js.Map.V"/>
+				<c path="js.Map">
+					<c path="js.Map.K"/>
+					<c path="js.Map.V"/>
+				</c>
+			</f>
+			<haxe_doc>Sets the value for the key in the Map object. 
+		Returns the `js.Map` object.</haxe_doc>
+		</set>
+		<delete public="1" set="method">
+			<f a="key">
+				<c path="js.Map.K"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Returns `true` if an element in the `js.Map` object existed and has been
+		removed, or `false` if the element does not exist. 
+		`has(key)` will return `false` afterwards.</haxe_doc>
+		</delete>
+		<clear public="1" set="method">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>Removes all key/value pairs from the Map object.</haxe_doc>
+		</clear>
+		<forEach public="1" set="method">
+			<f a="callback:?thisArg">
+				<f a="value:key:map">
+					<c path="js.Map.V"/>
+					<c path="js.Map.K"/>
+					<c path="js.Map">
+						<c path="js.Map.K"/>
+						<c path="js.Map.V"/>
+					</c>
+					<x path="Void"/>
+				</f>
+				<x path="Any"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Calls `callback` once for each key-value pair present in the `js.Map` 
+		object, in insertion order. 
+		
+		If a `thisArg` parameter is provided to forEach, it will be used as the
+		`this` value for each callback.</haxe_doc>
+		</forEach>
+		<keys public="1" set="method">
+			<f a=""><t path="js.JsIterator"><c path="js.Map.K"/></t></f>
+			<haxe_doc>Returns a new `JsIterator` object that contains the keys for each element 
+		in the `js.Map` object in insertion order.</haxe_doc>
+		</keys>
+		<values public="1" set="method">
+			<f a=""><t path="js.JsIterator"><c path="js.Map.V"/></t></f>
+			<haxe_doc>Returns a new `JsIterator` object that contains the values for each 
+		element in the `js.Map` object in insertion order.</haxe_doc>
+		</values>
+		<entries public="1" set="method">
+			<f a=""><t path="js.JsIterator"><x path="js.MapEntry">
 	<c path="js.Map.K"/>
 	<c path="js.Map.V"/>
-	<c path="js.Map">
-		<c path="js.Map.K"/>
-		<c path="js.Map.V"/>
-	</c>
-</f></set>
-		<delete public="1" set="method"><f a="key">
-	<c path="js.Map.K"/>
-	<x path="Bool"/>
-</f></delete>
-		<clear public="1" set="method"><f a=""><x path="Void"/></f></clear>
-		<forEach public="1" set="method"><f a="callback:?thisArg">
-	<f a="value:key:map">
-		<c path="js.Map.V"/>
-		<c path="js.Map.K"/>
-		<c path="js.Map">
-			<c path="js.Map.K"/>
-			<c path="js.Map.V"/>
-		</c>
-		<x path="Void"/>
-	</f>
-	<x path="Any"/>
-	<x path="Void"/>
-</f></forEach>
-		<keys public="1" set="method"><f a=""><t path="js.JsIterator"><c path="js.Map.K"/></t></f></keys>
-		<values public="1" set="method"><f a=""><t path="js.JsIterator"><c path="js.Map.V"/></t></f></values>
-		<entries public="1" set="method"><f a=""><t path="js.JsIterator"><x path="js.MapEntry">
-	<c path="js.Map.K"/>
-	<c path="js.Map.V"/>
-</x></t></f></entries>
-		<new public="1" set="method"><f a="?iterable">
-	<x path="Any"/>
-	<x path="Void"/>
-</f></new>
+</x></t></f>
+			<haxe_doc>Returns a new `JsIterator` object that contains an array of `MapEntry`
+		for each element in the `js.Map` object in insertion order.</haxe_doc>
+		</entries>
+		<new public="1" set="method">
+			<f a="?iterable">
+				<x path="Any"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>An Array or other iterable object whose elements are key-value pairs 
+		(arrays with two elements, e.g. `[[ 1, 'one' ],[ 2, 'two' ]]`).
+		Each key-value pair is added to the new `js.Map`; 
+		null values are treated as undefined.</haxe_doc>
+		</new>
+		<haxe_doc>The (native) JavaScript Map object holds key-value pairs. 
+	Any value (both objects and primitive values) may be used as either a key
+	or a value.
+	
+	Documentation [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map$history), licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).</haxe_doc>
 		<meta><m n=":native"><e>"Map"</e></m></meta>
 	</class>
 	<abstract path="js.MapEntry" params="K:V" file="/home/travis/build/andyli/haxe/std/js/Map.hx" module="js.Map">
 		<this><c path="Array"><x path="Any"/></c></this>
+		<haxe_doc>Key/value access helper for `js.Map.entries()` and `js.Set.entries()`.</haxe_doc>
 		<impl><class path="js._Map.MapEntry_Impl_" params="" file="/home/travis/build/andyli/haxe/std/js/Map.hx" private="1" module="js.Map">
 	<key public="1" get="accessor" set="null" static="1">
 		<c path="js.MapEntry.K"/>
@@ -26469,14 +26727,14 @@
 		<c path="js.MapEntry.V"/>
 		<meta><m n=":impl"/></meta>
 	</value>
-	<get_key get="inline" set="null" line="42" static="1">
+	<get_key get="inline" set="null" line="109" static="1">
 		<f a="this">
 			<c path="Array"><x path="Any"/></c>
 			<c path="js.MapEntry.K"/>
 		</f>
 		<meta><m n=":impl"/></meta>
 	</get_key>
-	<get_value get="inline" set="null" line="43" static="1">
+	<get_value get="inline" set="null" line="110" static="1">
 		<f a="this">
 			<c path="Array"><x path="Any"/></c>
 			<c path="js.MapEntry.V"/>
@@ -26494,14 +26752,14 @@
 			<c path="js.MapEntry.V"/>
 			<meta><m n=":impl"/></meta>
 		</value>
-		<get_key get="inline" set="null" line="42" static="1">
+		<get_key get="inline" set="null" line="109" static="1">
 			<f a="this">
 				<c path="Array"><x path="Any"/></c>
 				<c path="js.MapEntry.K"/>
 			</f>
 			<meta><m n=":impl"/></meta>
 		</get_key>
-		<get_value get="inline" set="null" line="43" static="1">
+		<get_value get="inline" set="null" line="110" static="1">
 			<f a="this">
 				<c path="Array"><x path="Any"/></c>
 				<c path="js.MapEntry.V"/>
@@ -26509,104 +26767,181 @@
 			<meta><m n=":impl"/></meta>
 		</get_value>
 	</class>
-	<typedef path="js.ObjectPrototype" params="" file="/home/travis/build/andyli/haxe/std/js/Object.hx" module="js.Object"><a>
-	<valueOf set="null"><c path="js.Function"/></valueOf>
-	<toString set="null"><c path="js.Function"/></toString>
-	<toLocaleString set="null"><c path="js.Function"/></toLocaleString>
-	<propertyIsEnumerable set="null"><c path="js.Function"/></propertyIsEnumerable>
-	<isPrototypeOf set="null"><c path="js.Function"/></isPrototypeOf>
-	<hasOwnProperty set="null"><c path="js.Function"/></hasOwnProperty>
-</a></typedef>
-	<typedef path="js.ObjectPropertyDescriptor" params="" file="/home/travis/build/andyli/haxe/std/js/Object.hx" module="js.Object"><a>
-	<writable>
-		<x path="Null"><x path="Bool"/></x>
-		<meta><m n=":optional"/></meta>
-	</writable>
-	<value>
-		<x path="Null"><x path="Any"/></x>
-		<meta><m n=":optional"/></meta>
-	</value>
-	<set>
-		<x path="Null"><f a="">
+	<typedef path="js.ObjectPrototype" params="" file="/home/travis/build/andyli/haxe/std/js/Object.hx" module="js.Object">
+		<a>
+			<valueOf set="null">
+				<c path="js.Function"/>
+				<haxe_doc>Returns the primitive value of the specified object.</haxe_doc>
+			</valueOf>
+			<toString set="null">
+				<c path="js.Function"/>
+				<haxe_doc>Returns a string representation of the object.</haxe_doc>
+			</toString>
+			<toLocaleString set="null">
+				<c path="js.Function"/>
+				<haxe_doc>Calls `toString()`.</haxe_doc>
+			</toLocaleString>
+			<propertyIsEnumerable set="null">
+				<c path="js.Function"/>
+				<haxe_doc>Returns a boolean indicating if the internal enumerable attribute is set.</haxe_doc>
+			</propertyIsEnumerable>
+			<isPrototypeOf set="null">
+				<c path="js.Function"/>
+				<haxe_doc>Returns a boolean indicating whether the object this method is called 
+		upon is in the prototype chain of the specified object.</haxe_doc>
+			</isPrototypeOf>
+			<hasOwnProperty set="null">
+				<c path="js.Function"/>
+				<haxe_doc>Returns a boolean indicating whether an object contains the specified 
+		property as a direct property of that object and not inherited through 
+		the prototype chain.</haxe_doc>
+			</hasOwnProperty>
+		</a>
+		<haxe_doc><![CDATA[Type for 
+	@see <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object>]]></haxe_doc>
+	</typedef>
+	<typedef path="js.ObjectPropertyDescriptor" params="" file="/home/travis/build/andyli/haxe/std/js/Object.hx" module="js.Object">
+		<a>
+			<writable>
+				<x path="Null"><x path="Bool"/></x>
+				<meta><m n=":optional"/></meta>
+				<haxe_doc>`true` if and only if the value associated with the property may be 
+		changed with an assignment operator.
+		
+		Defaults to `false`.</haxe_doc>
+			</writable>
+			<value>
+				<x path="Null"><x path="Any"/></x>
+				<meta><m n=":optional"/></meta>
+				<haxe_doc>The value associated with the property. 
+		Can be any valid JavaScript value (number, object, function, etc).</haxe_doc>
+			</value>
+			<set>
+				<x path="Null"><f a="">
 	<x path="Any"/>
 	<x path="Void"/>
 </f></x>
-		<meta><m n=":optional"/></meta>
-	</set>
-	<get>
-		<x path="Null"><f a=""><x path="Any"/></f></x>
-		<meta><m n=":optional"/></meta>
-	</get>
-	<enumerable>
-		<x path="Null"><x path="Bool"/></x>
-		<meta><m n=":optional"/></meta>
-	</enumerable>
-	<configurable>
-		<x path="Null"><x path="Bool"/></x>
-		<meta><m n=":optional"/></meta>
-	</configurable>
-</a></typedef>
+				<meta><m n=":optional"/></meta>
+				<haxe_doc>A function which serves as a setter for the property, or undefined if
+		there is no setter. When the property is assigned to, this function 
+		is called with one argument (the value being assigned to the property)
+		and with `this` set to the object through which the property is assigned.</haxe_doc>
+			</set>
+			<get>
+				<x path="Null"><f a=""><x path="Any"/></f></x>
+				<meta><m n=":optional"/></meta>
+				<haxe_doc>A function which serves as a getter for the property, or `undefined` if 
+		there is no getter. When the property is accessed, this function is 
+		called without arguments and with `this` set to the object through which 
+		the property is accessed (this may not be the object on which the 
+		property is defined due to inheritance). 
+		The return value will be used as the value of the property.</haxe_doc>
+			</get>
+			<enumerable>
+				<x path="Null"><x path="Bool"/></x>
+				<meta><m n=":optional"/></meta>
+				<haxe_doc>`true` if and only if this property shows up during enumeration of the
+		properties on the corresponding object.
+		
+		Defaults to `false`.</haxe_doc>
+			</enumerable>
+			<configurable>
+				<x path="Null"><x path="Bool"/></x>
+				<meta><m n=":optional"/></meta>
+				<haxe_doc>`true` if and only if the type of this property descriptor may be 
+		changed and if the property may be deleted from the corresponding object.
+		
+		Defaults to `false`.</haxe_doc>
+			</configurable>
+		</a>
+		<haxe_doc><![CDATA[@see <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty>]]></haxe_doc>
+	</typedef>
 	<class path="js.Promise" params="T" file="/home/travis/build/andyli/haxe/std/js/Promise.hx" extern="1">
 		<resolve public="1" params="T" set="method" static="1">
-			<f a="?value">
-				<c path="resolve.T"/>
+			<f a="thenable">
+				<x path="js.Thenable"><c path="resolve.T"/></x>
 				<c path="js.Promise"><c path="resolve.T"/></c>
 			</f>
-			<overloads>
-				<resolve public="1" params="T" set="method"><f a="promise">
-	<c path="js.Promise"><c path="resolve.T"/></c>
-	<c path="js.Promise"><c path="resolve.T"/></c>
-</f></resolve>
-				<resolve public="1" params="T" set="method"><f a="thenable">
-	<t path="js.Thenable"><c path="resolve.T"/></t>
-	<c path="js.Promise"><c path="resolve.T"/></c>
-</f></resolve>
-			</overloads>
+			<haxe_doc>Returns a Promise object that is resolved with the given value. If the
+		value is Thenable, the returned promise will "follow" that
+		thenable, adopting its eventual state;
+		otherwise the returned promise will be fulfilled with the value.
+		Generally, when it's unknown when value is a promise or not,
+		use `Promise.resolve(value)` instead and work with the return value as
+		a promise.</haxe_doc>
+			<overloads><resolve public="1" params="T" set="method">
+	<f a="?value">
+		<c path="resolve.T"/>
+		<c path="js.Promise"><c path="resolve.T"/></c>
+	</f>
+	<haxe_doc>Returns a Promise object that is resolved with the given value. If the
+		value is Thenable, the returned promise will "follow" that
+		thenable, adopting its eventual state;
+		otherwise the returned promise will be fulfilled with the value.
+		Generally, when it's unknown when value is a promise or not,
+		use `Promise.resolve(value)` instead and work with the return value as
+		a promise.</haxe_doc>
+</resolve></overloads>
 		</resolve>
-		<reject public="1" params="T" set="method" static="1"><f a="?reason">
-	<d/>
-	<c path="js.Promise"><c path="reject.T"/></c>
-</f></reject>
-		<all public="1" set="method" static="1"><f a="iterable">
-	<c path="Array"><d/></c>
-	<c path="js.Promise"><c path="Array"><d/></c></c>
-</f></all>
-		<race public="1" set="method" static="1"><f a="iterable">
-	<c path="Array"><d/></c>
-	<c path="js.Promise"><d/></c>
-</f></race>
-		<then public="1" params="TOut" set="method"><f a="fulfillCallback:?rejectCallback">
-	<x path="Null"><t path="js.PromiseCallback">
+		<reject public="1" params="T" set="method" static="1">
+			<f a="?reason">
+				<d/>
+				<c path="js.Promise"><c path="reject.T"/></c>
+			</f>
+			<haxe_doc>Returns a Promise object that is rejected with the given reason.</haxe_doc>
+		</reject>
+		<all public="1" set="method" static="1">
+			<f a="iterable">
+				<c path="Array"><d/></c>
+				<c path="js.Promise"><c path="Array"><d/></c></c>
+			</f>
+			<haxe_doc>Returns a promise that either fulfills when all of the promises in the
+		iterable argument have fulfilled or rejects as soon as one of the
+		promises in the iterable argument rejects. If the returned promise
+		fulfills, it is fulfilled with an array of the values from the
+		fulfilled promises in the same order as defined in the iterable.
+		If the returned promise rejects, it is rejected with the reason from
+		the first promise in the iterable that rejected. This method can be
+		useful for aggregating results of multiple promises.</haxe_doc>
+		</all>
+		<race public="1" set="method" static="1">
+			<f a="iterable">
+				<c path="Array"><d/></c>
+				<c path="js.Promise"><d/></c>
+			</f>
+			<haxe_doc>Returns a promise that fulfills or rejects as soon as one of the
+		promises in the iterable fulfills or rejects, with the value or reason
+		from that promise.</haxe_doc>
+		</race>
+		<then public="1" params="TOut" set="method">
+			<f a="onFulfilled:?onRejected">
+				<x path="Null"><x path="js.PromiseHandler">
 	<c path="js.Promise.T"/>
 	<c path="then.TOut"/>
-</t></x>
-	<x path="haxe.extern.EitherType">
-		<f a="">
-			<d/>
-			<x path="Void"/>
-		</f>
-		<t path="js.PromiseCallback">
-			<d/>
-			<c path="then.TOut"/>
-		</t>
-	</x>
-	<c path="js.Promise"><c path="then.TOut"/></c>
-</f></then>
+</x></x>
+				<x path="js.PromiseHandler">
+					<d/>
+					<c path="then.TOut"/>
+				</x>
+				<c path="js.Promise"><c path="then.TOut"/></c>
+			</f>
+			<haxe_doc>Appends fulfillment and rejection handlers to the promise and returns a
+		new promise resolving to the return value of the called handler, or to
+		its original settled value if the promise was not handled
+		(i.e. if the relevant handler onFulfilled or onRejected is not a function).</haxe_doc>
+		</then>
 		<catchError public="1" params="TOut" set="method">
-			<f a="rejectCallback">
-				<x path="haxe.extern.EitherType">
-					<f a="">
-						<d/>
-						<x path="Void"/>
-					</f>
-					<t path="js.PromiseCallback">
-						<d/>
-						<c path="catchError.TOut"/>
-					</t>
+			<f a="onRejected">
+				<x path="js.PromiseHandler">
+					<d/>
+					<c path="catchError.TOut"/>
 				</x>
 				<c path="js.Promise"><c path="catchError.TOut"/></c>
 			</f>
 			<meta><m n=":native"><e>"catch"</e></m></meta>
+			<haxe_doc>Appends a rejection handler callback to the promise, and returns a new
+		promise resolving to the return value of the callback if it is called,
+		or to its original fulfillment value if the promise is instead fulfilled.</haxe_doc>
 		</catchError>
 		<new public="1" set="method">
 			<f a="init">
@@ -26625,28 +26960,53 @@
 			</f>
 			<haxe_doc>@throws DOMError</haxe_doc>
 		</new>
+		<haxe_doc>The Promise object represents the eventual completion (or failure) of an
+	asynchronous operation and its resulting value.
+
+	Documentation [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise$history), licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).</haxe_doc>
 		<meta><m n=":native"><e>"Promise"</e></m></meta>
 	</class>
-	<typedef path="js.PromiseCallback" params="T:TOut" file="/home/travis/build/andyli/haxe/std/js/Promise.hx" module="js.Promise"><x path="haxe.extern.EitherType">
-	<f a="">
-		<c path="js.PromiseCallback.T"/>
-		<c path="js.PromiseCallback.TOut"/>
-	</f>
-	<f a="">
-		<c path="js.PromiseCallback.T"/>
-		<c path="js.Promise"><c path="js.PromiseCallback.TOut"/></c>
-	</f>
-</x></typedef>
-	<typedef path="js.Thenable" params="T" file="/home/travis/build/andyli/haxe/std/js/Promise.hx" module="js.Promise"><a><then set="method"><f a="resolve:?reject">
-	<f a="">
-		<c path="js.Thenable.T"/>
-		<x path="Void"/>
-	</f>
-	<f a="">
+	<abstract path="js.PromiseHandler" params="T:TOut" file="/home/travis/build/andyli/haxe/std/js/Promise.hx" module="js.Promise">
+		<from>
+			<icast><f a="">
+	<c path="js.PromiseHandler.T"/>
+	<c path="js.Promise"><c path="js.PromiseHandler.TOut"/></c>
+</f></icast>
+			<icast><f a="">
+	<c path="js.PromiseHandler.T"/>
+	<x path="js.Thenable"><c path="js.PromiseHandler.TOut"/></x>
+</f></icast>
+			<icast><f a="">
+	<c path="js.PromiseHandler.T"/>
+	<c path="js.PromiseHandler.TOut"/>
+</f></icast>
+		</from>
+		<this><f a="">
+	<c path="js.PromiseHandler.T"/>
+	<d/>
+</f></this>
+		<haxe_doc>Handler type for the Promise object.</haxe_doc>
+		<impl><class path="js._Promise.PromiseHandler_Impl_" params="" file="/home/travis/build/andyli/haxe/std/js/Promise.hx" private="1" module="js.Promise" extern="1"/></impl>
+	</abstract>
+	<class path="js._Promise.PromiseHandler_Impl_" params="" file="/home/travis/build/andyli/haxe/std/js/Promise.hx" private="1" module="js.Promise" extern="1"/>
+	<abstract path="js.Thenable" params="T" file="/home/travis/build/andyli/haxe/std/js/Promise.hx" module="js.Promise">
+		<from><icast><t path="js.ThenableStruct"><c path="js.Thenable.T"/></t></icast></from>
+		<this><t path="js.ThenableStruct"><c path="js.Thenable.T"/></t></this>
+		<haxe_doc>A value with a `then` method.</haxe_doc>
+		<meta><m n=":forward"/></meta>
+		<impl><class path="js._Promise.Thenable_Impl_" params="" file="/home/travis/build/andyli/haxe/std/js/Promise.hx" private="1" module="js.Promise" extern="1"/></impl>
+	</abstract>
+	<class path="js._Promise.Thenable_Impl_" params="" file="/home/travis/build/andyli/haxe/std/js/Promise.hx" private="1" module="js.Promise" extern="1"/>
+	<typedef path="js.ThenableStruct" params="T" file="/home/travis/build/andyli/haxe/std/js/Promise.hx" module="js.Promise"><a><then params="TOut" set="method"><f a="onFulfilled:?onRejected">
+	<x path="Null"><x path="js.PromiseHandler">
+	<c path="js.ThenableStruct.T"/>
+	<c path="then.TOut"/>
+</x></x>
+	<x path="js.PromiseHandler">
 		<d/>
-		<x path="Void"/>
-	</f>
-	<x path="Void"/>
+		<c path="then.TOut"/>
+	</x>
+	<x path="js.Thenable"><c path="then.TOut"/></x>
 </f></then></a></typedef>
 	<class path="js.RegExpMatch" params="" file="/home/travis/build/andyli/haxe/std/js/RegExp.hx" module="js.RegExp" extern="1">
 		<extends path="Array"><c path="String"/></extends>
@@ -26679,40 +27039,89 @@
 </f></new>
 	</class>
 	<class path="js.Set" params="T" file="/home/travis/build/andyli/haxe/std/js/Set.hx" extern="1">
-		<size public="1" set="null"><x path="Int"/></size>
-		<has public="1" set="method"><f a="value">
+		<size public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>The number of values in the `js.Set` object.</haxe_doc>
+		</size>
+		<has public="1" set="method">
+			<f a="value">
+				<c path="js.Set.T"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Returns a boolean asserting whether an element is present with the given
+		value in the `js.Set` object or not.</haxe_doc>
+		</has>
+		<add public="1" set="method">
+			<f a="value">
+				<c path="js.Set.T"/>
+				<c path="js.Set"><c path="js.Set.T"/></c>
+			</f>
+			<haxe_doc>Appends a new element with the given value to the `js.Set` object. 
+		Returns the `js.Set` object.</haxe_doc>
+		</add>
+		<delete public="1" set="method">
+			<f a="value">
+				<c path="js.Set.T"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Removes the element associated to the value and returns the value that
+		`has(value)` would have previously returned. 
+		`has(value)` will return `false` afterwards.</haxe_doc>
+		</delete>
+		<clear public="1" set="method">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>Removes all elements from the `js.Set` object.</haxe_doc>
+		</clear>
+		<forEach public="1" set="method">
+			<f a="callback:?thisArg">
+				<f a="value:key:set">
+					<c path="js.Set.T"/>
+					<c path="js.Set.T"/>
+					<c path="js.Set"><c path="js.Set.T"/></c>
+					<x path="Void"/>
+				</f>
+				<x path="Any"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Calls `callback` once for each key-value pair present in the `js.Set` 
+		object, in insertion order. 
+		
+		If a `thisArg` parameter is provided to forEach, it will be used as the
+		`this` value for each callback.</haxe_doc>
+		</forEach>
+		<keys public="1" set="method">
+			<f a=""><t path="js.JsIterator"><c path="js.Set.T"/></t></f>
+			<haxe_doc>Returns a new `JsIterator` object that contains the keys for each element 
+		in the `js.Set` object in insertion order.</haxe_doc>
+		</keys>
+		<values public="1" set="method">
+			<f a=""><t path="js.JsIterator"><c path="js.Set.T"/></t></f>
+			<haxe_doc>Returns a new `JsIterator` object that contains the values for each 
+		element in the `js.Set` object in insertion order.</haxe_doc>
+		</values>
+		<entries public="1" set="method">
+			<f a=""><t path="js.JsIterator"><x path="js.MapEntry">
 	<c path="js.Set.T"/>
-	<x path="Bool"/>
-</f></has>
-		<add public="1" set="method"><f a="value">
 	<c path="js.Set.T"/>
-	<c path="js.Set"><c path="js.Set.T"/></c>
-</f></add>
-		<delete public="1" set="method"><f a="value">
-	<c path="js.Set.T"/>
-	<x path="Bool"/>
-</f></delete>
-		<clear public="1" set="method"><f a=""><x path="Void"/></f></clear>
-		<forEach public="1" set="method"><f a="callback:?thisArg">
-	<f a="value:key:set">
-		<c path="js.Set.T"/>
-		<c path="js.Set.T"/>
-		<c path="js.Set"><c path="js.Set.T"/></c>
-		<x path="Void"/>
-	</f>
-	<x path="Any"/>
-	<x path="Void"/>
-</f></forEach>
-		<keys public="1" set="method"><f a=""><t path="js.JsIterator"><c path="js.Set.T"/></t></f></keys>
-		<values public="1" set="method"><f a=""><t path="js.JsIterator"><c path="js.Set.T"/></t></f></values>
-		<entries public="1" set="method"><f a=""><t path="js.JsIterator"><x path="js.MapEntry">
-	<c path="js.Set.T"/>
-	<c path="js.Set.T"/>
-</x></t></f></entries>
-		<new public="1" set="method"><f a="?iterable">
-	<x path="Any"/>
-	<x path="Void"/>
-</f></new>
+</x></t></f>
+			<haxe_doc>Returns a new `JsIterator` object that contains an array of 
+		`[value, value]` for each element in the `js.Set` object, in insertion 
+		order. 
+		This is kept similar to the `js.Map` object, so that each entry has the 
+		same value for its key and value here.</haxe_doc>
+		</entries>
+		<new public="1" set="method">
+			<f a="?iterable">
+				<x path="Any"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>If an iterable object is passed, all of its elements will be added to 
+		the new `js.Set`.</haxe_doc>
+		</new>
+		<haxe_doc>The `js.Set` object lets you store unique values of any type, whether 
+	primitive values or object references.
+	
+	Documentation [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set$history), licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).</haxe_doc>
 		<meta><m n=":native"><e>"Set"</e></m></meta>
 	</class>
 	<class path="js.Symbol" params="" file="/home/travis/build/andyli/haxe/std/js/Symbol.hx" extern="1">
@@ -29282,7 +29691,7 @@
 		<onbeforeprint public="1"><x path="haxe.Function"/></onbeforeprint>
 		<onbeforeunload public="1"><f a="">
 	<c path="js.html.Event"/>
-	<c path="String"/>
+	<x path="Null"><c path="String"/></x>
 </f></onbeforeunload>
 		<onhashchange public="1"><x path="haxe.Function"/></onhashchange>
 		<onlanguagechange public="1"><x path="haxe.Function"/></onlanguagechange>
@@ -36959,7 +37368,7 @@
 				<c path="String"/>
 				<f a="">
 					<c path="String"/>
-					<c path="String"/>
+					<x path="Null"><c path="String"/></x>
 				</f>
 				<c path="js.html.XPathExpression"/>
 			</f>
@@ -36993,7 +37402,7 @@
 				<c path="js.html.Node"/>
 				<f a="">
 					<c path="String"/>
-					<c path="String"/>
+					<x path="Null"><c path="String"/></x>
 				</f>
 				<x path="Int"/>
 				<d/>
@@ -39914,7 +40323,7 @@
 		<onbeforeprint public="1"><x path="haxe.Function"/></onbeforeprint>
 		<onbeforeunload public="1"><f a="">
 	<c path="js.html.Event"/>
-	<c path="String"/>
+	<x path="Null"><c path="String"/></x>
 </f></onbeforeunload>
 		<onhashchange public="1"><x path="haxe.Function"/></onhashchange>
 		<onlanguagechange public="1"><x path="haxe.Function"/></onlanguagechange>
@@ -46365,6 +46774,10 @@
 			<c path="String"/>
 			<haxe_doc>Returns the build identifier of the browser (e.g., "2006090803").</haxe_doc>
 		</buildID>
+		<serviceWorker public="1" set="null">
+			<c path="js.html.ServiceWorkerContainer"/>
+			<haxe_doc>Returns a `ServiceWorkerContainer` object, which provides access to registration, removal, upgrade, and communication with the `ServiceWorker` objects for the associated document.</haxe_doc>
+		</serviceWorker>
 		<hardwareConcurrency public="1" set="null"><x path="Int"/></hardwareConcurrency>
 		<geolocation public="1" set="null">
 			<t path="js.html.Geolocation"/>
@@ -49392,6 +49805,16 @@
 		</STRICT_ORIGIN_WHEN_CROSS_ORIGIN>
 		<meta><m n=":enum"/></meta>
 	</class>
+	<typedef path="js.html.RegistrationOptions" params="" file="/home/travis/build/andyli/haxe/std/js/html/RegistrationOptions.hx"><a>
+	<updateViaCache>
+		<x path="Null"><x path="js.html.ServiceWorkerUpdateViaCache"/></x>
+		<meta><m n=":optional"/></meta>
+	</updateViaCache>
+	<scope>
+		<x path="Null"><c path="String"/></x>
+		<meta><m n=":optional"/></meta>
+	</scope>
+</a></typedef>
 	<class path="js.html.Request" params="" file="/home/travis/build/andyli/haxe/std/js/html/Request.hx" extern="1">
 		<method public="1" set="null">
 			<c path="String"/>
@@ -51326,6 +51749,52 @@
 
 	@see <https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker>]]></haxe_doc>
 		<meta><m n=":native"><e>"ServiceWorker"</e></m></meta>
+	</class>
+	<class path="js.html.ServiceWorkerContainer" params="" file="/home/travis/build/andyli/haxe/std/js/html/ServiceWorkerContainer.hx" extern="1">
+		<extends path="js.html.EventTarget"/>
+		<controller public="1" set="null">
+			<c path="js.html.ServiceWorker"/>
+			<haxe_doc>Returns a `ServiceWorker` object if its state is `activated` (the same object returned by `ServiceWorkerRegistration.active`). This property returns `null` during a force-refresh request (Shift + refresh) or if there is no active worker.</haxe_doc>
+		</controller>
+		<ready public="1" set="null">
+			<c path="js.Promise"><c path="js.html.ServiceWorkerRegistration"/></c>
+			<haxe_doc>Provides a way of delaying code execution until a service worker is active. It returns a `Promise` that will never reject, and which waits indefinitely until the `ServiceWorkerRegistration` associated with the current page has an `ServiceWorkerRegistration.active` worker. Once that condition is met, it resolves with the `ServiceWorkerRegistration`.</haxe_doc>
+		</ready>
+		<oncontrollerchange public="1">
+			<x path="haxe.Function"/>
+			<haxe_doc>Fired whenever a `controllerchange` event occurs — when the document's associated `ServiceWorkerRegistration` acquires a new `ServiceWorkerRegistration.active` worker.</haxe_doc>
+		</oncontrollerchange>
+		<onerror public="1">
+			<x path="haxe.Function"/>
+			<haxe_doc>Fired whenever an `error` event occurs in the associated service workers.</haxe_doc>
+		</onerror>
+		<onmessage public="1">
+			<x path="haxe.Function"/>
+			<haxe_doc>Fired whenever a `message` event occurs — when incoming messages are received to the `ServiceWorkerContainer` object (e.g. via a `MessagePort.postMessage()` call.)</haxe_doc>
+		</onmessage>
+		<register public="1" set="method"><f a="scriptURL:?options">
+	<c path="String"/>
+	<t path="js.html.RegistrationOptions"/>
+	<c path="js.Promise"><c path="js.html.ServiceWorkerRegistration"/></c>
+</f></register>
+		<getRegistration public="1" set="method">
+			<f a="?documentURL" v="&quot;&quot;">
+				<c path="String"/>
+				<c path="js.Promise"><d/></c>
+			</f>
+			<meta><m n=":value"><e>{ documentURL : "" }</e></m></meta>
+			<haxe_doc>Gets a `ServiceWorkerRegistration` object whose scope matches the provided document URL.  If the method can't return a `ServiceWorkerRegistration`, it returns a `Promise`. </haxe_doc>
+		</getRegistration>
+		<getRegistrations public="1" set="method">
+			<f a=""><c path="js.Promise"><c path="Array"><c path="js.html.ServiceWorkerRegistration"/></c></c></f>
+			<haxe_doc>Returns all `ServiceWorkerRegistration` objects associated with a `ServiceWorkerContainer` in an array.  If the method can't return `ServiceWorkerRegistration` objects, it returns a `Promise`. </haxe_doc>
+		</getRegistrations>
+		<haxe_doc><![CDATA[The `ServiceWorkerContainer` interface of the ServiceWorker API provides an object representing the service worker as an overall unit in the network ecosystem, including facilities to register, unregister and update service workers, and access the state of service workers and their registrations.
+
+	Documentation [ServiceWorkerContainer](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer$history), licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+
+	@see <https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer>]]></haxe_doc>
+		<meta><m n=":native"><e>"ServiceWorkerContainer"</e></m></meta>
 	</class>
 	<class path="js.html.ServiceWorkerGlobalScope" params="" file="/home/travis/build/andyli/haxe/std/js/html/ServiceWorkerGlobalScope.hx" extern="1">
 		<extends path="js.html.WorkerGlobalScope"/>
@@ -56568,7 +57037,7 @@
 		<onbeforeprint public="1"><x path="haxe.Function"/></onbeforeprint>
 		<onbeforeunload public="1"><f a="">
 	<c path="js.html.Event"/>
-	<c path="String"/>
+	<x path="Null"><c path="String"/></x>
 </f></onbeforeunload>
 		<onhashchange public="1"><x path="haxe.Function"/></onhashchange>
 		<onlanguagechange public="1"><x path="haxe.Function"/></onlanguagechange>
@@ -57763,7 +58232,7 @@
 				<c path="String"/>
 				<f a="">
 					<c path="String"/>
-					<c path="String"/>
+					<x path="Null"><c path="String"/></x>
 				</f>
 				<c path="js.html.XPathExpression"/>
 			</f>
@@ -57797,7 +58266,7 @@
 				<c path="js.html.Node"/>
 				<f a="">
 					<c path="String"/>
-					<c path="String"/>
+					<x path="Null"><c path="String"/></x>
 				</f>
 				<x path="Int"/>
 				<d/>

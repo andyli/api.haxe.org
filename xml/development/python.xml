@@ -2362,16 +2362,12 @@
 		<toUpperCase public="1" get="inline" set="null" line="32">
 			<f a=""><c path="String"/></f>
 			<meta><m n=":runtime"/></meta>
-			<haxe_doc>Returns a String where all characters of `this` String are upper case.
-
-		Affects the characters `a-z`. Other characters remain unchanged.</haxe_doc>
+			<haxe_doc>Returns a String where all characters of `this` String are upper case.</haxe_doc>
 		</toUpperCase>
 		<toLowerCase public="1" get="inline" set="null" line="36">
 			<f a=""><c path="String"/></f>
 			<meta><m n=":runtime"/></meta>
-			<haxe_doc>Returns a String where all characters of `this` String are lower case.
-
-		Affects the characters `A-Z`. Other characters remain unchanged.</haxe_doc>
+			<haxe_doc>Returns a String where all characters of `this` String are lower case.</haxe_doc>
 		</toLowerCase>
 		<charAt public="1" get="inline" set="null" line="40">
 			<f a="index">
@@ -2406,9 +2402,13 @@
 		String.
 
 		If `startIndex` is given, the search is performed within the substring
-		of `this` String starting from `startIndex`. Otherwise the search is
-		performed within `this` String. In either case, the returned position
-		is relative to the beginning of `this` String.
+		of `this` String starting from `startIndex` (if `startIndex` is posivite
+		or 0) or `max(this.length + startIndex, 0)` (if `startIndex` is negative).
+
+		If `startIndex` exceeds `this.length`, -1 is returned.
+
+		Otherwise the search is performed within `this` String. In either case,
+		the returned position is relative to the beginning of `this` String.
 
 		If `str` cannot be found, -1 is returned.</haxe_doc>
 		</indexOf>
@@ -2511,7 +2511,7 @@
 
 	String can be concatenated by using the `+` operator. If an operand is not a
 	String, it is passed through `Std.string()` first.
-	
+
 	@see https://haxe.org/manual/std-String.html</haxe_doc>
 		<meta>
 			<m n=":coreApi"/>
@@ -3136,6 +3136,10 @@
 </f></remove>
 		<keys public="1" set="method"><f a=""><t path="Iterator"><c path="haxe.IMap.K"/></t></f></keys>
 		<iterator public="1" set="method"><f a=""><t path="Iterator"><c path="haxe.IMap.V"/></t></f></iterator>
+		<keyValueIterator public="1" set="method"><f a=""><t path="KeyValueIterator">
+	<c path="haxe.IMap.K"/>
+	<c path="haxe.IMap.V"/>
+</t></f></keyValueIterator>
 		<copy public="1" set="method"><f a=""><c path="haxe.IMap">
 	<c path="haxe.IMap.K"/>
 	<c path="haxe.IMap.V"/>
@@ -3170,8 +3174,15 @@
 </f></remove>
 		<keys public="1" set="method" line="53"><f a=""><t path="Iterator"><c path="String"/></t></f></keys>
 		<iterator public="1" set="method" line="57"><f a=""><t path="Iterator"><c path="haxe.ds.StringMap.T"/></t></f></iterator>
-		<copy public="1" set="method" line="61"><f a=""><c path="haxe.ds.StringMap"><c path="haxe.ds.StringMap.T"/></c></f></copy>
-		<toString public="1" set="method" line="67"><f a=""><c path="String"/></f></toString>
+		<keyValueIterator public="1" get="inline" set="null" line="61">
+			<f a=""><t path="KeyValueIterator">
+	<c path="String"/>
+	<c path="haxe.ds.StringMap.T"/>
+</t></f>
+			<meta><m n=":runtime"/></meta>
+		</keyValueIterator>
+		<copy public="1" set="method" line="65"><f a=""><c path="haxe.ds.StringMap"><c path="haxe.ds.StringMap.T"/></c></f></copy>
+		<toString public="1" set="method" line="71"><f a=""><c path="String"/></f></toString>
 		<new public="1" set="method" line="31"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="python.Dict" params="K:V" file="/home/travis/build/andyli/haxe/std/python/Dict.hx" extern="1">
@@ -5830,6 +5841,16 @@
 		<haxe_doc>Int32 provides a 32-bit integer with consistent overflow behavior across
  	all platforms.</haxe_doc>
 		<impl><class path="haxe._Int32.Int32_Impl_" params="" file="/home/travis/build/andyli/haxe/std/haxe/Int32.hx" private="1" module="haxe.Int32">
+	<negate get="inline" set="null" line="29" static="1">
+		<f a="this">
+			<x path="Int"/>
+			<x path="haxe.Int32"/>
+		</f>
+		<meta>
+			<m n=":impl"/>
+			<m n=":op"><e>-A</e></m>
+		</meta>
+	</negate>
 	<preIncrement get="inline" set="null" line="31" static="1">
 		<f a="this">
 			<x path="Int"/>
@@ -6050,6 +6071,16 @@
 </class></impl>
 	</abstract>
 	<class path="haxe._Int32.Int32_Impl_" params="" file="/home/travis/build/andyli/haxe/std/haxe/Int32.hx" private="1" module="haxe.Int32">
+		<negate get="inline" set="null" line="29" static="1">
+			<f a="this">
+				<x path="Int"/>
+				<x path="haxe.Int32"/>
+			</f>
+			<meta>
+				<m n=":impl"/>
+				<m n=":op"><e>-A</e></m>
+			</meta>
+		</negate>
 		<preIncrement get="inline" set="null" line="31" static="1">
 			<f a="this">
 				<x path="Int"/>
@@ -11249,17 +11280,25 @@
 
 		This operation is performed in-order.</haxe_doc>
 		</iterator>
-		<keys public="1" set="method" line="126">
+		<keyValueIterator public="1" get="inline" set="null" line="124">
+			<f a=""><t path="KeyValueIterator">
+	<c path="haxe.ds.BalancedTree.K"/>
+	<c path="haxe.ds.BalancedTree.V"/>
+</t></f>
+			<meta><m n=":runtime"/></meta>
+			<haxe_doc>See `Map.keyValueIterator`</haxe_doc>
+		</keyValueIterator>
+		<keys public="1" set="method" line="133">
 			<f a=""><t path="Iterator"><c path="haxe.ds.BalancedTree.K"/></t></f>
 			<haxe_doc>Iterates over the keys of `this` BalancedTree.
 
 		This operation is performed in-order.</haxe_doc>
 		</keys>
-		<copy public="1" set="method" line="132"><f a=""><c path="haxe.ds.BalancedTree">
+		<copy public="1" set="method" line="139"><f a=""><c path="haxe.ds.BalancedTree">
 	<c path="haxe.ds.BalancedTree.K"/>
 	<c path="haxe.ds.BalancedTree.V"/>
 </c></f></copy>
-		<setLoop set="method" line="138"><f a="k:v:node">
+		<setLoop set="method" line="145"><f a="k:v:node">
 	<c path="haxe.ds.BalancedTree.K"/>
 	<c path="haxe.ds.BalancedTree.V"/>
 	<c path="haxe.ds.TreeNode">
@@ -11271,7 +11310,7 @@
 		<c path="haxe.ds.BalancedTree.V"/>
 	</c>
 </f></setLoop>
-		<removeLoop set="method" line="151"><f a="k:node">
+		<removeLoop set="method" line="158"><f a="k:node">
 	<c path="haxe.ds.BalancedTree.K"/>
 	<c path="haxe.ds.TreeNode">
 		<c path="haxe.ds.BalancedTree.K"/>
@@ -11282,7 +11321,7 @@
 		<c path="haxe.ds.BalancedTree.V"/>
 	</c>
 </f></removeLoop>
-		<iteratorLoop set="method" line="159"><f a="node:acc">
+		<iteratorLoop set="method" line="166"><f a="node:acc">
 	<c path="haxe.ds.TreeNode">
 		<c path="haxe.ds.BalancedTree.K"/>
 		<c path="haxe.ds.BalancedTree.V"/>
@@ -11290,7 +11329,7 @@
 	<c path="Array"><c path="haxe.ds.BalancedTree.V"/></c>
 	<x path="Void"/>
 </f></iteratorLoop>
-		<keysLoop set="method" line="167"><f a="node:acc">
+		<keysLoop set="method" line="174"><f a="node:acc">
 	<c path="haxe.ds.TreeNode">
 		<c path="haxe.ds.BalancedTree.K"/>
 		<c path="haxe.ds.BalancedTree.V"/>
@@ -11298,7 +11337,7 @@
 	<c path="Array"><c path="haxe.ds.BalancedTree.K"/></c>
 	<x path="Void"/>
 </f></keysLoop>
-		<merge set="method" line="175"><f a="t1:t2">
+		<merge set="method" line="182"><f a="t1:t2">
 	<c path="haxe.ds.TreeNode">
 		<c path="haxe.ds.BalancedTree.K"/>
 		<c path="haxe.ds.BalancedTree.V"/>
@@ -11312,7 +11351,7 @@
 		<c path="haxe.ds.BalancedTree.V"/>
 	</c>
 </f></merge>
-		<minBinding set="method" line="182"><f a="t">
+		<minBinding set="method" line="189"><f a="t">
 	<c path="haxe.ds.TreeNode">
 		<c path="haxe.ds.BalancedTree.K"/>
 		<c path="haxe.ds.BalancedTree.V"/>
@@ -11322,7 +11361,7 @@
 		<c path="haxe.ds.BalancedTree.V"/>
 	</c>
 </f></minBinding>
-		<removeMinBinding set="method" line="188"><f a="t">
+		<removeMinBinding set="method" line="195"><f a="t">
 	<c path="haxe.ds.TreeNode">
 		<c path="haxe.ds.BalancedTree.K"/>
 		<c path="haxe.ds.BalancedTree.V"/>
@@ -11332,7 +11371,7 @@
 		<c path="haxe.ds.BalancedTree.V"/>
 	</c>
 </f></removeMinBinding>
-		<balance set="method" line="193"><f a="l:k:v:r">
+		<balance set="method" line="200"><f a="l:k:v:r">
 	<c path="haxe.ds.TreeNode">
 		<c path="haxe.ds.BalancedTree.K"/>
 		<c path="haxe.ds.BalancedTree.V"/>
@@ -11348,12 +11387,12 @@
 		<c path="haxe.ds.BalancedTree.V"/>
 	</c>
 </f></balance>
-		<compare set="method" line="207"><f a="k1:k2">
+		<compare set="method" line="214"><f a="k1:k2">
 	<c path="haxe.ds.BalancedTree.K"/>
 	<c path="haxe.ds.BalancedTree.K"/>
 	<x path="Int"/>
 </f></compare>
-		<toString public="1" set="method" line="211"><f a=""><c path="String"/></f></toString>
+		<toString public="1" set="method" line="218"><f a=""><c path="String"/></f></toString>
 		<new public="1" set="method" line="41">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>Creates a new BalancedTree, which is initially empty.</haxe_doc>
@@ -11379,9 +11418,9 @@
 		<key public="1"><c path="haxe.ds.TreeNode.K"/></key>
 		<value public="1"><c path="haxe.ds.TreeNode.V"/></value>
 		<_height><x path="Int"/></_height>
-		<get_height public="1" get="inline" set="null" line="240"><f a=""><x path="Int"/></f></get_height>
-		<toString public="1" set="method" line="242"><f a=""><c path="String"/></f></toString>
-		<new public="1" set="method" line="229">
+		<get_height public="1" get="inline" set="null" line="247"><f a=""><x path="Int"/></f></get_height>
+		<toString public="1" set="method" line="249"><f a=""><c path="String"/></f></toString>
+		<new public="1" set="method" line="236">
 			<f a="l:k:v:r:?h" v="::::-1">
 				<c path="haxe.ds.TreeNode">
 					<c path="haxe.ds.TreeNode.K"/>
@@ -11430,6 +11469,10 @@
 	<d/>
 	<x path="Int"/>
 </f></compareArg>
+		<copy public="1" set="method" line="62" override="1"><f a=""><c path="haxe.ds.EnumValueMap">
+	<c path="haxe.ds.EnumValueMap.K"/>
+	<c path="haxe.ds.EnumValueMap.V"/>
+</c></f></copy>
 		<new public="1" set="method" line="31"><f a=""><x path="Void"/></f></new>
 		<haxe_doc>EnumValueMap allows mapping of enum value keys to arbitrary values.
 
@@ -11751,8 +11794,15 @@
 </f></remove>
 		<keys public="1" set="method" line="53"><f a=""><t path="Iterator"><x path="Int"/></t></f></keys>
 		<iterator public="1" set="method" line="57"><f a=""><t path="Iterator"><c path="haxe.ds.IntMap.T"/></t></f></iterator>
-		<copy public="1" set="method" line="61"><f a=""><c path="haxe.ds.IntMap"><c path="haxe.ds.IntMap.T"/></c></f></copy>
-		<toString public="1" set="method" line="67"><f a=""><c path="String"/></f></toString>
+		<keyValueIterator public="1" get="inline" set="null" line="61">
+			<f a=""><t path="KeyValueIterator">
+	<x path="Int"/>
+	<c path="haxe.ds.IntMap.T"/>
+</t></f>
+			<meta><m n=":runtime"/></meta>
+		</keyValueIterator>
+		<copy public="1" set="method" line="65"><f a=""><c path="haxe.ds.IntMap"><c path="haxe.ds.IntMap.T"/></c></f></copy>
+		<toString public="1" set="method" line="71"><f a=""><c path="String"/></f></toString>
 		<new public="1" set="method" line="30"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ds.List" params="T" file="/home/travis/build/andyli/haxe/std/haxe/ds/List.hx">
@@ -12110,7 +12160,23 @@
 
 		The order of values is undefined.</haxe_doc>
 	</iterator>
-	<copy public="1" get="inline" set="null" line="132" static="1">
+	<keyValueIterator public="1" get="inline" set="null" line="132" static="1">
+		<f a="this">
+			<c path="haxe.IMap">
+				<c path="haxe.ds.Map.K"/>
+				<c path="haxe.ds.Map.V"/>
+			</c>
+			<t path="KeyValueIterator">
+				<c path="haxe.ds.Map.K"/>
+				<c path="haxe.ds.Map.V"/>
+			</t>
+		</f>
+		<meta><m n=":impl"/></meta>
+		<haxe_doc>Returns an Iterator over the keys and values of `this` Map.
+
+		The order of values is undefined.</haxe_doc>
+	</keyValueIterator>
+	<copy public="1" get="inline" set="null" line="141" static="1">
 		<f a="this">
 			<c path="haxe.IMap">
 				<c path="haxe.ds.Map.K"/>
@@ -12126,7 +12192,7 @@
 
 		The order of values is undefined.</haxe_doc>
 	</copy>
-	<toString public="1" get="inline" set="null" line="141" static="1">
+	<toString public="1" get="inline" set="null" line="150" static="1">
 		<f a="this">
 			<c path="haxe.IMap">
 				<c path="haxe.ds.Map.K"/>
@@ -12139,7 +12205,7 @@
 
 		The exact representation depends on the platform and key-type.</haxe_doc>
 	</toString>
-	<arrayWrite public="1" get="inline" set="null" line="145" static="1">
+	<arrayWrite public="1" get="inline" set="null" line="154" static="1">
 		<f a="this:k:v">
 			<c path="haxe.IMap">
 				<c path="haxe.ds.Map.K"/>
@@ -12155,7 +12221,7 @@
 			<m n=":noCompletion"/>
 		</meta>
 	</arrayWrite>
-	<toStringMap params="K:V" get="inline" set="null" line="150" static="1">
+	<toStringMap params="K:V" get="inline" set="null" line="159" static="1">
 		<f a="t">
 			<c path="haxe.IMap">
 				<c path="toStringMap.K"/>
@@ -12168,7 +12234,7 @@
 			<m n=":to"/>
 		</meta>
 	</toStringMap>
-	<toIntMap params="K:V" get="inline" set="null" line="154" static="1">
+	<toIntMap params="K:V" get="inline" set="null" line="163" static="1">
 		<f a="t">
 			<c path="haxe.IMap">
 				<c path="toIntMap.K"/>
@@ -12181,7 +12247,7 @@
 			<m n=":to"/>
 		</meta>
 	</toIntMap>
-	<toEnumValueMapMap params="K:V" get="inline" set="null" line="158" static="1">
+	<toEnumValueMapMap params="K:V" get="inline" set="null" line="167" static="1">
 		<f a="t">
 			<c path="haxe.IMap">
 				<c path="toEnumValueMapMap.K"/>
@@ -12197,7 +12263,7 @@
 			<m n=":to"/>
 		</meta>
 	</toEnumValueMapMap>
-	<toObjectMap params="K:V" get="inline" set="null" line="162" static="1">
+	<toObjectMap params="K:V" get="inline" set="null" line="171" static="1">
 		<f a="t">
 			<c path="haxe.IMap">
 				<c path="toObjectMap.K"/>
@@ -12213,7 +12279,7 @@
 			<m n=":to"/>
 		</meta>
 	</toObjectMap>
-	<fromStringMap params="V" get="inline" set="null" line="166" static="1">
+	<fromStringMap params="V" get="inline" set="null" line="175" static="1">
 		<f a="map">
 			<c path="haxe.ds.StringMap"><c path="fromStringMap.V"/></c>
 			<x path="haxe.ds.Map">
@@ -12223,7 +12289,7 @@
 		</f>
 		<meta><m n=":from"/></meta>
 	</fromStringMap>
-	<fromIntMap params="V" get="inline" set="null" line="170" static="1">
+	<fromIntMap params="V" get="inline" set="null" line="179" static="1">
 		<f a="map">
 			<c path="haxe.ds.IntMap"><c path="fromIntMap.V"/></c>
 			<x path="haxe.ds.Map">
@@ -12233,7 +12299,7 @@
 		</f>
 		<meta><m n=":from"/></meta>
 	</fromIntMap>
-	<fromObjectMap params="K:V" get="inline" set="null" line="174" static="1">
+	<fromObjectMap params="K:V" get="inline" set="null" line="183" static="1">
 		<f a="map">
 			<c path="haxe.ds.ObjectMap">
 				<c path="fromObjectMap.K"/>
@@ -12370,7 +12436,23 @@
 
 		The order of values is undefined.</haxe_doc>
 		</iterator>
-		<copy public="1" get="inline" set="null" line="132" static="1">
+		<keyValueIterator public="1" get="inline" set="null" line="132" static="1">
+			<f a="this">
+				<c path="haxe.IMap">
+					<c path="haxe.ds.Map.K"/>
+					<c path="haxe.ds.Map.V"/>
+				</c>
+				<t path="KeyValueIterator">
+					<c path="haxe.ds.Map.K"/>
+					<c path="haxe.ds.Map.V"/>
+				</t>
+			</f>
+			<meta><m n=":impl"/></meta>
+			<haxe_doc>Returns an Iterator over the keys and values of `this` Map.
+
+		The order of values is undefined.</haxe_doc>
+		</keyValueIterator>
+		<copy public="1" get="inline" set="null" line="141" static="1">
 			<f a="this">
 				<c path="haxe.IMap">
 					<c path="haxe.ds.Map.K"/>
@@ -12386,7 +12468,7 @@
 
 		The order of values is undefined.</haxe_doc>
 		</copy>
-		<toString public="1" get="inline" set="null" line="141" static="1">
+		<toString public="1" get="inline" set="null" line="150" static="1">
 			<f a="this">
 				<c path="haxe.IMap">
 					<c path="haxe.ds.Map.K"/>
@@ -12399,7 +12481,7 @@
 
 		The exact representation depends on the platform and key-type.</haxe_doc>
 		</toString>
-		<arrayWrite public="1" get="inline" set="null" line="145" static="1">
+		<arrayWrite public="1" get="inline" set="null" line="154" static="1">
 			<f a="this:k:v">
 				<c path="haxe.IMap">
 					<c path="haxe.ds.Map.K"/>
@@ -12415,7 +12497,7 @@
 				<m n=":noCompletion"/>
 			</meta>
 		</arrayWrite>
-		<toStringMap params="K:V" get="inline" set="null" line="150" static="1">
+		<toStringMap params="K:V" get="inline" set="null" line="159" static="1">
 			<f a="t">
 				<c path="haxe.IMap">
 					<c path="toStringMap.K"/>
@@ -12428,7 +12510,7 @@
 				<m n=":to"/>
 			</meta>
 		</toStringMap>
-		<toIntMap params="K:V" get="inline" set="null" line="154" static="1">
+		<toIntMap params="K:V" get="inline" set="null" line="163" static="1">
 			<f a="t">
 				<c path="haxe.IMap">
 					<c path="toIntMap.K"/>
@@ -12441,7 +12523,7 @@
 				<m n=":to"/>
 			</meta>
 		</toIntMap>
-		<toEnumValueMapMap params="K:V" get="inline" set="null" line="158" static="1">
+		<toEnumValueMapMap params="K:V" get="inline" set="null" line="167" static="1">
 			<f a="t">
 				<c path="haxe.IMap">
 					<c path="toEnumValueMapMap.K"/>
@@ -12457,7 +12539,7 @@
 				<m n=":to"/>
 			</meta>
 		</toEnumValueMapMap>
-		<toObjectMap params="K:V" get="inline" set="null" line="162" static="1">
+		<toObjectMap params="K:V" get="inline" set="null" line="171" static="1">
 			<f a="t">
 				<c path="haxe.IMap">
 					<c path="toObjectMap.K"/>
@@ -12473,7 +12555,7 @@
 				<m n=":to"/>
 			</meta>
 		</toObjectMap>
-		<fromStringMap params="V" get="inline" set="null" line="166" static="1">
+		<fromStringMap params="V" get="inline" set="null" line="175" static="1">
 			<f a="map">
 				<c path="haxe.ds.StringMap"><c path="fromStringMap.V"/></c>
 				<x path="haxe.ds.Map">
@@ -12483,7 +12565,7 @@
 			</f>
 			<meta><m n=":from"/></meta>
 		</fromStringMap>
-		<fromIntMap params="V" get="inline" set="null" line="170" static="1">
+		<fromIntMap params="V" get="inline" set="null" line="179" static="1">
 			<f a="map">
 				<c path="haxe.ds.IntMap"><c path="fromIntMap.V"/></c>
 				<x path="haxe.ds.Map">
@@ -12493,7 +12575,7 @@
 			</f>
 			<meta><m n=":from"/></meta>
 		</fromIntMap>
-		<fromObjectMap params="K:V" get="inline" set="null" line="174" static="1">
+		<fromObjectMap params="K:V" get="inline" set="null" line="183" static="1">
 			<f a="map">
 				<c path="haxe.ds.ObjectMap">
 					<c path="fromObjectMap.K"/>
@@ -12535,11 +12617,18 @@
 </f></remove>
 		<keys public="1" set="method" line="54"><f a=""><t path="Iterator"><c path="haxe.ds.ObjectMap.K"/></t></f></keys>
 		<iterator public="1" set="method" line="58"><f a=""><t path="Iterator"><c path="haxe.ds.ObjectMap.V"/></t></f></iterator>
-		<copy public="1" set="method" line="62"><f a=""><c path="haxe.ds.ObjectMap">
+		<keyValueIterator public="1" get="inline" set="null" line="62">
+			<f a=""><t path="KeyValueIterator">
+	<c path="haxe.ds.ObjectMap.K"/>
+	<c path="haxe.ds.ObjectMap.V"/>
+</t></f>
+			<meta><m n=":runtime"/></meta>
+		</keyValueIterator>
+		<copy public="1" set="method" line="66"><f a=""><c path="haxe.ds.ObjectMap">
 	<c path="haxe.ds.ObjectMap.K"/>
 	<c path="haxe.ds.ObjectMap.V"/>
 </c></f></copy>
-		<toString public="1" set="method" line="68"><f a=""><c path="String"/></f></toString>
+		<toString public="1" set="method" line="72"><f a=""><c path="String"/></f></toString>
 		<new public="1" set="method" line="31"><f a=""><x path="Void"/></f></new>
 	</class>
 	<enum path="haxe.ds.Option" params="T" file="/home/travis/build/andyli/haxe/std/haxe/ds/Option.hx">
@@ -13052,14 +13141,21 @@
 			<f a=""><t path="Iterator"><c path="haxe.ds.WeakMap.V"/></t></f>
 			<haxe_doc>See `Map.iterator`</haxe_doc>
 		</iterator>
-		<copy public="1" set="method" line="87">
+		<keyValueIterator public="1" get="inline" set="null" line="87">
+			<f a=""><t path="KeyValueIterator">
+	<c path="haxe.ds.WeakMap.K"/>
+	<c path="haxe.ds.WeakMap.V"/>
+</t></f>
+			<haxe_doc>See `Map.keyValueIterator`</haxe_doc>
+		</keyValueIterator>
+		<copy public="1" set="method" line="94">
 			<f a=""><c path="haxe.ds.WeakMap">
 	<c path="haxe.ds.WeakMap.K"/>
 	<c path="haxe.ds.WeakMap.V"/>
 </c></f>
 			<haxe_doc>See `Map.copy`</haxe_doc>
 		</copy>
-		<toString public="1" set="method" line="94">
+		<toString public="1" set="method" line="101">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>See `Map.toString`</haxe_doc>
 		</toString>
@@ -21013,7 +21109,7 @@
 
 		If `path` is `null`, the result is unspecified.</haxe_doc>
 		</normalize>
-		<addTrailingSlash public="1" set="method" line="260" static="1">
+		<addTrailingSlash public="1" set="method" line="264" static="1">
 			<f a="path">
 				<c path="String"/>
 				<c path="String"/>
@@ -21029,7 +21125,7 @@
 
 		If `path` is `null`, the result is unspecified.</haxe_doc>
 		</addTrailingSlash>
-		<removeTrailingSlashes public="1" set="method" line="285" static="1">
+		<removeTrailingSlashes public="1" set="method" line="289" static="1">
 			<f a="path">
 				<c path="String"/>
 				<c path="String"/>
@@ -21044,7 +21140,7 @@
 
 		If `path` is `null`, the result is unspecified.</haxe_doc>
 		</removeTrailingSlashes>
-		<isAbsolute public="1" set="method" line="299" static="1">
+		<isAbsolute public="1" set="method" line="303" static="1">
 			<f a="path">
 				<c path="String"/>
 				<x path="Bool"/>
@@ -21052,11 +21148,11 @@
 			<meta><m n=":require"><e><![CDATA[haxe_ver >= 3.2]]></e></m></meta>
 			<haxe_doc>Returns `true` if the path is an absolute path, and `false` otherwise.</haxe_doc>
 		</isAbsolute>
-		<unescape set="method" line="306" static="1"><f a="path">
+		<unescape set="method" line="310" static="1"><f a="path">
 	<c path="String"/>
 	<c path="String"/>
 </f></unescape>
-		<escape set="method" line="311" static="1">
+		<escape set="method" line="315" static="1">
 			<f a="path:?allowSlashes" v=":false">
 				<c path="String"/>
 				<x path="Bool"/>
@@ -21899,6 +21995,36 @@
 			</f>
 			<meta><m n=":value"><e>{ bytePos : 0 }</e></m></meta>
 		</fromBytes>
+	</class>
+	<class path="haxe.iterators.MapKeyValueIterator" params="K:V" file="/home/travis/build/andyli/haxe/std/haxe/iterators/MapKeyValueIterator.hx">
+		<map><c path="haxe.IMap">
+	<c path="haxe.iterators.MapKeyValueIterator.K"/>
+	<c path="haxe.iterators.MapKeyValueIterator.V"/>
+</c></map>
+		<keys><t path="Iterator"><c path="haxe.iterators.MapKeyValueIterator.K"/></t></keys>
+		<hasNext public="1" get="inline" set="null" line="42">
+			<f a=""><x path="Bool"/></f>
+			<haxe_doc>See `Iterator.hasNext`</haxe_doc>
+		</hasNext>
+		<next public="1" get="inline" set="null" line="49">
+			<f a=""><a>
+	<value><c path="haxe.iterators.MapKeyValueIterator.V"/></value>
+	<key><c path="haxe.iterators.MapKeyValueIterator.K"/></key>
+</a></f>
+			<haxe_doc>See `Iterator.next`</haxe_doc>
+		</next>
+		<new public="1" get="inline" set="null" line="34"><f a="map">
+	<c path="haxe.IMap">
+		<c path="haxe.iterators.MapKeyValueIterator.K"/>
+		<c path="haxe.iterators.MapKeyValueIterator.V"/>
+	</c>
+	<x path="Void"/>
+</f></new>
+		<haxe_doc>This Key/Value iterator can be used to iterate across maps.</haxe_doc>
+		<meta><m n=":ifFeature">
+	<e>"anon_read.keyValueIterator"</e>
+	<e>"dynamic_read.keyValueIterator"</e>
+</m></meta>
 	</class>
 	<class path="haxe.iterators.StringIteratorUnicode" params="" file="/home/travis/build/andyli/haxe/std/haxe/iterators/StringIteratorUnicode.hx">
 		<unicodeIterator public="1" get="inline" set="null" line="66" static="1">
@@ -23398,6 +23524,10 @@
 			</f>
 			<meta><m n=":value"><e>{ prefix : "" }</e></m></meta>
 		</opt>
+		<printExprWithPositions public="1" set="method" line="339"><f a="e">
+	<t path="haxe.macro.Expr"/>
+	<c path="String"/>
+</f></printExprWithPositions>
 		<new public="1" set="method" line="37">
 			<f a="?tabString" v="&quot;\t&quot;">
 				<c path="String"/>
@@ -24186,8 +24316,7 @@
 			<extra set="null">
 				<x path="Null"><a>
 	<params><c path="Array"><t path="haxe.macro.TypeParameter"/></c></params>
-	<isInline><x path="Bool"/></isInline>
-	<expr><t path="haxe.macro.TypedExpr"/></expr>
+	<expr><x path="Null"><t path="haxe.macro.TypedExpr"/></x></expr>
 </a></x>
 				<haxe_doc>Special information which is internally used to keep track of closure.
 		information</haxe_doc>
@@ -24231,7 +24360,7 @@
 			</expr>
 			<args>
 				<c path="Array"><a>
-	<value><x path="Null"><e path="haxe.macro.TConstant"/></x></value>
+	<value><x path="Null"><t path="haxe.macro.TypedExpr"/></x></value>
 	<v><t path="haxe.macro.TVar"/></v>
 </a></c>
 				<haxe_doc>A list of function arguments identified by an argument variable `v` and
@@ -27263,25 +27392,27 @@
 	</class>
 	<typedef path="python.PySys" params="" file="/home/travis/build/andyli/haxe/std/python/Lib.hx" module="python.Lib"><c path="python.lib.Sys"/></typedef>
 	<class path="python.Lib" params="" file="/home/travis/build/andyli/haxe/std/python/Lib.hx">
-		<print public="1" get="inline" set="null" line="39" static="1">
+		<__name__ public="1" get="accessor" set="null" static="1"><c path="String"/></__name__>
+		<get___name__ get="inline" set="null" line="38" static="1"><f a=""><c path="String"/></f></get___name__>
+		<print public="1" get="inline" set="null" line="43" static="1">
 			<f a="v">
 				<d/>
 				<x path="Void"/>
 			</f>
 			<haxe_doc>Print the specified value on the default output.</haxe_doc>
 		</print>
-		<printString set="method" line="43" static="1"><f a="str">
+		<printString set="method" line="47" static="1"><f a="str">
 	<c path="String"/>
 	<x path="Void"/>
 </f></printString>
-		<println public="1" get="inline" set="null" line="51" static="1">
+		<println public="1" get="inline" set="null" line="55" static="1">
 			<f a="v">
 				<d/>
 				<x path="Void"/>
 			</f>
 			<haxe_doc>Print the specified value on the default output followed by a newline character.</haxe_doc>
 		</println>
-		<dictToAnon public="1" set="method" line="59" static="1">
+		<dictToAnon public="1" set="method" line="63" static="1">
 			<f a="v">
 				<c path="python.Dict">
 					<c path="String"/>
@@ -27291,7 +27422,7 @@
 			</f>
 			<haxe_doc>Returns an anonymous Object which holds the same data as the Dictionary `v`.</haxe_doc>
 		</dictToAnon>
-		<anonToDict public="1" set="method" line="68" static="1">
+		<anonToDict public="1" set="method" line="72" static="1">
 			<f a="o">
 				<a/>
 				<c path="python.Dict">
@@ -27302,7 +27433,7 @@
 			<meta><m n=":access"><e>python.Boot.isAnonObject</e></m></meta>
 			<haxe_doc>Returns a flat copy of the underlying Dictionary of `o`.</haxe_doc>
 		</anonToDict>
-		<anonAsDict public="1" set="method" line="82" static="1">
+		<anonAsDict public="1" set="method" line="86" static="1">
 			<f a="o">
 				<a/>
 				<c path="python.Dict">
@@ -27314,7 +27445,7 @@
 			<haxe_doc>Returns the underlying Dictionary of the anonymous object `o`.
 	 	Modifications to this dictionary are reflected in the anonymous Object too.</haxe_doc>
 		</anonAsDict>
-		<dictAsAnon public="1" get="inline" set="null" line="94" static="1">
+		<dictAsAnon public="1" get="inline" set="null" line="98" static="1">
 			<f a="d">
 				<c path="python.Dict">
 					<c path="String"/>
@@ -27325,21 +27456,21 @@
 			<haxe_doc>Returns the Dictionary `d` as an anonymous Object.
 	 	Modifications to the object are reflected in the Dictionary too.</haxe_doc>
 		</dictAsAnon>
-		<toPythonIterable public="1" params="T" set="method" line="101" static="1">
+		<toPythonIterable public="1" params="T" set="method" line="105" static="1">
 			<f a="it">
 				<t path="Iterable"><c path="toPythonIterable.T"/></t>
 				<x path="python.NativeIterable"><c path="toPythonIterable.T"/></x>
 			</f>
 			<haxe_doc>Return Python native iterable from Haxe iterable.</haxe_doc>
 		</toPythonIterable>
-		<toHaxeIterable public="1" params="T" get="inline" set="null" line="124" static="1">
+		<toHaxeIterable public="1" params="T" get="inline" set="null" line="128" static="1">
 			<f a="it">
 				<x path="python.NativeIterable"><c path="toHaxeIterable.T"/></x>
 				<c path="python.HaxeIterable"><c path="toHaxeIterable.T"/></c>
 			</f>
 			<haxe_doc>Return Haxe iterable from Python native iterable.</haxe_doc>
 		</toHaxeIterable>
-		<toHaxeIterator public="1" params="T" get="inline" set="null" line="131" static="1">
+		<toHaxeIterator public="1" params="T" get="inline" set="null" line="135" static="1">
 			<f a="it">
 				<x path="python.NativeIterator"><c path="toHaxeIterator.T"/></x>
 				<c path="python.HaxeIterator"><c path="toHaxeIterator.T"/></c>
@@ -31628,7 +31759,7 @@
 			</a>
 			<meta><m n=":value"><e>null</e></m></meta>
 		</PROXY>
-		<requestUrl public="1" set="method" line="447" static="1">
+		<requestUrl public="1" set="method" line="456" static="1">
 			<f a="url">
 				<c path="String"/>
 				<c path="String"/>
@@ -31692,12 +31823,12 @@
 	<c path="String"/>
 	<x path="Void"/>
 </f></customRequest>
-		<readHttpResponse set="method" line="240"><f a="api:sock">
+		<readHttpResponse set="method" line="249"><f a="api:sock">
 	<c path="haxe.io.Output"/>
 	<c path="sys.net.Socket"/>
 	<x path="Void"/>
 </f></readHttpResponse>
-		<readChunk set="method" line="382"><f a="chunk_re:api:buf:len">
+		<readChunk set="method" line="391"><f a="chunk_re:api:buf:len">
 	<c path="EReg"/>
 	<c path="haxe.io.Output"/>
 	<c path="haxe.io.Bytes"/>

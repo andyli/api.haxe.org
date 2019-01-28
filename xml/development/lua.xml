@@ -22589,8 +22589,22 @@
 	</typedef>
 	<class path="haxe.macro.MacroStringTools" params="" file="/home/travis/build/andyli/haxe/std/haxe/macro/MacroStringTools.hx">
 		<toFieldExpr public="1" set="method" line="85" static="1">
-			<f a="sl">
+			<f a="sl:?pos">
 				<c path="Array"><c path="String"/></c>
+				<a>
+					<min>
+						<x path="Int"/>
+						<haxe_doc>Position of the first character.</haxe_doc>
+					</min>
+					<max>
+						<x path="Int"/>
+						<haxe_doc>Position of the last character.</haxe_doc>
+					</max>
+					<file>
+						<c path="String"/>
+						<haxe_doc>Reference to the filename.</haxe_doc>
+					</file>
+				</a>
 				<t path="haxe.macro.Expr"/>
 			</f>
 			<haxe_doc>Converts an array of Strings `sl` to a field expression.
@@ -22603,7 +22617,7 @@
 
 		If `sl` is null, the result is unspecified.</haxe_doc>
 		</toFieldExpr>
-		<toDotPath public="1" set="method" line="100" static="1">
+		<toDotPath public="1" set="method" line="108" static="1">
 			<f a="pack:name">
 				<c path="Array"><c path="String"/></c>
 				<c path="String"/>
@@ -22619,7 +22633,7 @@
 		Otherwise the elements of `pack` are joined with a separating dot, with
 		an appended dot separating the result from `name`.</haxe_doc>
 		</toDotPath>
-		<toComplex public="1" set="method" line="104" static="1"><f a="path">
+		<toComplex public="1" set="method" line="112" static="1"><f a="path">
 	<c path="String"/>
 	<e path="haxe.macro.ComplexType"/>
 </f></toComplex>
@@ -25537,7 +25551,7 @@
 			</f>
 			<meta><m n=":value"><e>{ p : 0 }</e></m></meta>
 		</doParse>
-		<isValidChar get="inline" set="null" line="448" static="1"><f a="c">
+		<isValidChar get="inline" set="null" line="454" static="1"><f a="c">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></isValidChar>
@@ -30229,7 +30243,7 @@
 			</a>
 			<meta><m n=":value"><e>null</e></m></meta>
 		</PROXY>
-		<requestUrl public="1" set="method" line="456" static="1">
+		<requestUrl public="1" set="method" line="457" static="1">
 			<f a="url">
 				<c path="String"/>
 				<c path="String"/>
@@ -30298,7 +30312,7 @@
 	<c path="sys.net.Socket"/>
 	<x path="Void"/>
 </f></readHttpResponse>
-		<readChunk set="method" line="391"><f a="chunk_re:api:buf:len">
+		<readChunk set="method" line="392"><f a="chunk_re:api:buf:len">
 	<c path="EReg"/>
 	<c path="haxe.io.Output"/>
 	<c path="haxe.io.Bytes"/>
@@ -30927,7 +30941,14 @@
 	</class>
 	<class path="sys.net.UdpSocket" params="" file="/home/travis/build/andyli/haxe/std/sys/net/UdpSocket.hx">
 		<extends path="sys.net.Socket"/>
-		<sendTo public="1" set="method" line="37">
+		<setBroadcast public="1" set="method" line="37">
+			<f a="b">
+				<x path="Bool"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Allows the socket to send to broadcast addresses.</haxe_doc>
+		</setBroadcast>
+		<sendTo public="1" set="method" line="44">
 			<f a="buf:pos:len:addr">
 				<c path="haxe.io.Bytes"/>
 				<x path="Int"/>
@@ -30937,7 +30958,7 @@
 			</f>
 			<haxe_doc>Sends data to the specified target host/port address.</haxe_doc>
 		</sendTo>
-		<readFrom public="1" set="method" line="44">
+		<readFrom public="1" set="method" line="51">
 			<f a="buf:pos:len:addr">
 				<c path="haxe.io.Bytes"/>
 				<x path="Int"/>

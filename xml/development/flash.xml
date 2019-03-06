@@ -393,6 +393,7 @@
 
 	@see https://haxe.org/manual/std-Array.html
 	@see https://haxe.org/manual/lf-array-comprehension.html</haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<abstract path="Class" params="T" file="/home/travis/build/andyli/haxe/std/Class.hx">
 		<this><x path="Class"><c path="Class.T"/></x></this>
@@ -1926,7 +1927,10 @@
 		If `x <= 1`, the result is always 0.]]></haxe_doc>
 		</random>
 		<haxe_doc>The Std class provides standard methods for manipulating basic types.</haxe_doc>
-		<meta><m n=":coreApi"/></meta>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":coreApi"/>
+		</meta>
 	</class>
 	<abstract path="Void" params="" file="/home/travis/build/andyli/haxe/std/StdTypes.hx" module="StdTypes">
 		<this><x path="Void"/></this>
@@ -1977,12 +1981,15 @@
 		<from><icast><c path="Null.T"/></icast></from>
 		<this><x path="Null"><c path="Null.T"/></x></this>
 		<to><icast><c path="Null.T"/></icast></to>
-		<haxe_doc>`Null` can be useful in two cases. In order to document some methods
-	that accept or can return a `null` value, or for the Flash compiler and AS3
-	generator to distinguish between base values that can be `null` and others that
-	can't.
+		<haxe_doc><![CDATA[`Null<T>` is a wrapper that can be used to make the basic types `Int`,
+	`Float` and `Bool` nullable on static targets.
 
-	@see https://haxe.org/manual/types-nullability.html</haxe_doc>
+	If null safety is enabled, only types wrapped in `Null<T>` are nullable.
+
+	Otherwise, it has no effect on non-basic-types, but it can be useful as a way to document
+	that `null` is an acceptable value for a method argument, return value or variable.
+
+	@see https://haxe.org/manual/types-nullability.html]]></haxe_doc>
 		<meta>
 			<m n=":forward"/>
 			<m n=":coreType"/>
@@ -2013,6 +2020,7 @@
 
 	@see https://haxe.org/manual/types-dynamic.html</haxe_doc>
 		<meta>
+			<m n=":valueUsed"/>
 			<m n=":coreType"/>
 			<m n=":runtimeValue"/>
 		</meta>
@@ -2154,8 +2162,8 @@
 		String.
 
 		If `startIndex` is given, the search is performed within the substring
-		of `this` String from 0 to `startIndex`. Otherwise the search is
-		performed within `this` String. In either case, the returned position
+		of `this` String from 0 to `startIndex + str.length`. Otherwise the search
+		is performed within `this` String. In either case, the returned position
 		is relative to the beginning of `this` String.
 
 		If `str` cannot be found, -1 is returned.</haxe_doc>
@@ -2244,7 +2252,10 @@
 	String, it is passed through `Std.string()` first.
 
 	@see https://haxe.org/manual/std-String.html</haxe_doc>
-		<meta><m n=":coreApi"/></meta>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":coreApi"/>
+		</meta>
 	</class>
 	<class path="StringBuf" params="" file="/home/travis/build/andyli/haxe/std/StringBuf.hx">
 		<b><c path="String"/></b>
@@ -2527,14 +2538,15 @@
 		This operation is not guaranteed to work if `s` contains the `\0`
 		character.</haxe_doc>
 		</fastCodeAt>
-		<isEof public="1" get="inline" set="null" line="483" static="1">
+		<isEof public="1" get="inline" set="null" line="487" static="1">
 			<f a="c">
 				<x path="Int"/>
 				<x path="Bool"/>
 			</f>
 			<meta><m n=":noUsing"/></meta>
+			<haxe_doc>Tells if `c` represents the end-of-file (EOF) character.</haxe_doc>
 		</isEof>
-		<quoteUnixArg public="1" set="method" line="506" static="1">
+		<quoteUnixArg public="1" set="method" line="510" static="1">
 			<f a="argument">
 				<c path="String"/>
 				<c path="String"/>
@@ -2543,12 +2555,12 @@
 		on Unix.
 		The input will be quoted, or escaped if necessary.</haxe_doc>
 		</quoteUnixArg>
-		<winMetaCharacters public="1" expr="[&quot; &quot;.code, &quot;(&quot;.code, &quot;)&quot;.code, &quot;%&quot;.code, &quot;!&quot;.code, &quot;^&quot;.code, &quot;\&quot;&quot;.code, &quot;&lt;&quot;.code, &quot;&gt;&quot;.code, &quot;&amp;&quot;.code, &quot;|&quot;.code, &quot;\n&quot;.code, &quot;\r&quot;.code, &quot;,&quot;.code, &quot;;&quot;.code]" line="524" static="1">
+		<winMetaCharacters public="1" expr="[&quot; &quot;.code, &quot;(&quot;.code, &quot;)&quot;.code, &quot;%&quot;.code, &quot;!&quot;.code, &quot;^&quot;.code, &quot;\&quot;&quot;.code, &quot;&lt;&quot;.code, &quot;&gt;&quot;.code, &quot;&amp;&quot;.code, &quot;|&quot;.code, &quot;\n&quot;.code, &quot;\r&quot;.code, &quot;,&quot;.code, &quot;;&quot;.code]" line="528" static="1">
 			<c path="Array"><x path="Int"/></c>
 			<meta><m n=":value"><e><![CDATA[[" ".code, "(".code, ")".code, "%".code, "!".code, "^".code, "\"".code, "<".code, ">".code, "&".code, "|".code, "\n".code, "\r".code, ",".code, ";".code]]]></e></m></meta>
 			<haxe_doc>Character codes of the characters that will be escaped by `quoteWinArg(_, true)`.</haxe_doc>
 		</winMetaCharacters>
-		<quoteWinArg public="1" set="method" line="539" static="1">
+		<quoteWinArg public="1" set="method" line="543" static="1">
 			<f a="argument:escapeMetaCharacters">
 				<c path="String"/>
 				<x path="Bool"/>
@@ -2561,7 +2573,7 @@
 		http://msdn.microsoft.com/en-us/library/ms880421
 
 		Examples:
-		```
+		```haxe
 		quoteWinArg("abc") == "abc";
 		quoteWinArg("ab c") == '"ab c"';
 		```</haxe_doc>
@@ -2783,11 +2795,12 @@
 				<x path="Class"><d/></x>
 				<c path="Array"><c path="String"/></c>
 			</f>
-			<haxe_doc>Returns a list of the instance fields of class `c`.
+			<haxe_doc>Returns a list of the instance fields of class `c`, including
+		inherited fields.
 
 		This only includes fields which are known at compile-time. In
-		particular, using getInstanceFields(getClass(obj)) will not include
-		any fields which were added to obj at runtime.
+		particular, using `getInstanceFields(getClass(obj))` will not include
+		any fields which were added to `obj` at runtime.
 
 		The order of the fields in the returned Array is unspecified.
 
@@ -4414,6 +4427,7 @@
 		<prevScene public="1" set="method"><f a=""><x path="Void"/></f></prevScene>
 		<stop public="1" set="method"><f a=""><x path="Void"/></f></stop>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
+		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<class path="flash.Boot" params="" file="/home/travis/build/andyli/haxe/std/flash/Boot.hx">
 		<extends path="flash.display.MovieClip"/>
@@ -4497,6 +4511,7 @@
 		<init set="method" line="79"><f a=""><x path="Void"/></f></init>
 		<new public="1" set="method" line="46"><f a=""><x path="Void"/></f></new>
 		<meta>
+			<m n=":directlyUsed"/>
 			<m n=":dox"><e>hide</e></m>
 			<m n=":keep"/>
 		</meta>
@@ -4572,6 +4587,7 @@
 </f></traceToConsole>
 		<haxe_doc>Platform-specific Flash Library. Provides some platform-specific 
 	functions for the Flash target.</haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<class path="flash.Memory" params="" file="/home/travis/build/andyli/haxe/std/flash/Memory.hx" extern="1">
 		<select public="1" get="inline" set="null" line="26" static="1"><f a="b">
@@ -5155,6 +5171,7 @@
 			</f>
 			<meta><m n=":value"><e>{ cancelable : false, bubbles : false }</e></m></meta>
 		</new>
+		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<class path="flash.automation.StageCaptureEvent" params="" file="/home/travis/build/andyli/haxe/std/flash/automation/StageCaptureEvent.hx" extern="1">
 		<extends path="flash.events.Event"/>
@@ -5192,10 +5209,7 @@
 	<c path="flash.concurrent.Mutex"/>
 	<x path="Void"/>
 </f></new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash11_4</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash11_4</e></m></meta>
 	</class>
 	<class path="flash.concurrent.Mutex" params="" file="/home/travis/build/andyli/haxe/std/flash/concurrent/Mutex.hx" extern="1">
 		<isSupported public="1" set="null" static="1"><x path="Bool"/></isSupported>
@@ -5203,10 +5217,7 @@
 		<tryLock public="1" set="method"><f a=""><x path="Bool"/></f></tryLock>
 		<unlock public="1" set="method"><f a=""><x path="Void"/></f></unlock>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash11_4</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash11_4</e></m></meta>
 	</class>
 	<class path="flash.desktop.Clipboard" params="" file="/home/travis/build/andyli/haxe/std/flash/desktop/Clipboard.hx" extern="1">
 		<generalClipboard public="1" set="null" static="1"><c path="flash.desktop.Clipboard"/></generalClipboard>
@@ -5729,7 +5740,6 @@
 	<x path="Int"/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<enum path="flash.display.GradientType" params="" file="/home/travis/build/andyli/haxe/std/flash/display/GradientType.hx">
 		<LINEAR/>
@@ -5947,7 +5957,6 @@
 			</meta>
 		</readGraphicsData>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.display.IGraphicsFill" params="" file="/home/travis/build/andyli/haxe/std/flash/display/IGraphicsFill.hx" extern="1" interface="1"/>
 	<class path="flash.display.IGraphicsData" params="" file="/home/travis/build/andyli/haxe/std/flash/display/IGraphicsData.hx" extern="1" interface="1"/>
@@ -5968,7 +5977,6 @@
 			</f>
 			<meta><m n=":value"><e>{ smooth : false, repeat : true }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.display.GraphicsEndFill" params="" file="/home/travis/build/andyli/haxe/std/flash/display/GraphicsEndFill.hx" extern="1">
 		<implements path="flash.display.IGraphicsFill"/>
@@ -6000,7 +6008,6 @@
 			</f>
 			<meta><m n=":value"><e>{ focalPointRatio : 0 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.display.IGraphicsPath" params="" file="/home/travis/build/andyli/haxe/std/flash/display/IGraphicsPath.hx" extern="1" interface="1"/>
 	<class path="flash.display.GraphicsPath" params="" file="/home/travis/build/andyli/haxe/std/flash/display/GraphicsPath.hx" extern="1">
@@ -6054,7 +6061,6 @@
 	<e path="flash.display.GraphicsPathWinding"/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.display.GraphicsPathCommand" params="" file="/home/travis/build/andyli/haxe/std/flash/display/GraphicsPathCommand.hx" extern="1">
 		<LINE_TO public="1" get="inline" set="null" expr="2" line="4" static="1">
@@ -6107,7 +6113,6 @@
 	<c path="flash.geom.Matrix"/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.display.GraphicsSolidFill" params="" file="/home/travis/build/andyli/haxe/std/flash/display/GraphicsSolidFill.hx" extern="1">
 		<implements path="flash.display.IGraphicsFill"/>
@@ -6122,7 +6127,6 @@
 			</f>
 			<meta><m n=":value"><e>{ alpha : 1, color : 0 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.display.IGraphicsStroke" params="" file="/home/travis/build/andyli/haxe/std/flash/display/IGraphicsStroke.hx" extern="1" interface="1"/>
 	<class path="flash.display.GraphicsStroke" params="" file="/home/travis/build/andyli/haxe/std/flash/display/GraphicsStroke.hx" extern="1">
@@ -6148,7 +6152,6 @@
 			</f>
 			<meta><m n=":value"><e>{ miterLimit : 3, pixelHinting : false, thickness : 0. }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.display.GraphicsTrianglePath" params="" file="/home/travis/build/andyli/haxe/std/flash/display/GraphicsTrianglePath.hx" extern="1">
 		<implements path="flash.display.IGraphicsPath"/>
@@ -6164,7 +6167,6 @@
 	<e path="flash.display.TriangleCulling"/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.display.IBitmapCompressOptions" params="" file="/home/travis/build/andyli/haxe/std/flash/display/IBitmapCompressOptions.hx" extern="1" interface="1"/>
 	<class path="flash.display.IDrawCommand" params="" file="/home/travis/build/andyli/haxe/std/flash/display/IDrawCommand.hx" extern="1" interface="1"/>
@@ -6186,7 +6188,6 @@
 			</f>
 			<meta><m n=":value"><e>{ quality : 80 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.display.JPEGEncoderOptions" params="" file="/home/travis/build/andyli/haxe/std/flash/display/JPEGEncoderOptions.hx" extern="1">
 		<quality public="1"><x path="UInt"/></quality>
@@ -6197,7 +6198,6 @@
 			</f>
 			<meta><m n=":value"><e>{ quality : 80 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.display.JPEGXRCompressOptions" params="" file="/home/travis/build/andyli/haxe/std/flash/display/JPEGXRCompressOptions.hx" extern="1">
 		<implements path="flash.display.IBitmapCompressOptions"/>
@@ -6213,7 +6213,6 @@
 			</f>
 			<meta><m n=":value"><e>{ trimFlexBits : 0, quantization : 20 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.display.JPEGXREncoderOptions" params="" file="/home/travis/build/andyli/haxe/std/flash/display/JPEGXREncoderOptions.hx" extern="1">
 		<colorSpace public="1"><e path="flash.display.BitmapEncodingColorSpace"/></colorSpace>
@@ -6228,7 +6227,6 @@
 			</f>
 			<meta><m n=":value"><e>{ trimFlexBits : 0, quantization : 20 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<enum path="flash.display.JointStyle" params="" file="/home/travis/build/andyli/haxe/std/flash/display/JointStyle.hx">
 		<BEVEL/>
@@ -6316,7 +6314,6 @@
 			</f>
 			<meta><m n=":value"><e>{ fastCompression : false }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<enum path="flash.display.PixelSnapping" params="" file="/home/travis/build/andyli/haxe/std/flash/display/PixelSnapping.hx">
 		<ALWAYS/>
@@ -6351,7 +6348,6 @@
 	<x path="Int"/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.display.Shader" params="" file="/home/travis/build/andyli/haxe/std/flash/display/Shader.hx" extern="1">
 		<byteCode public="1" get="null"><c path="flash.utils.ByteArray"/></byteCode>
@@ -6374,7 +6370,6 @@
 		<input public="1"><d/></input>
 		<width public="1"><x path="Int"/></width>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.display.ShaderJob" params="" file="/home/travis/build/andyli/haxe/std/flash/display/ShaderJob.hx" extern="1">
 		<extends path="flash.events.EventDispatcher"/>
@@ -6406,7 +6401,6 @@
 		<index public="1" set="null"><x path="Int"/></index>
 		<type public="1" set="null"><e path="flash.display.ShaderParameterType"/></type>
 		<value public="1"><c path="Array"><d/></c></value>
-		<meta><m n=":final"/></meta>
 	</class>
 	<enum path="flash.display.ShaderParameterType" params="" file="/home/travis/build/andyli/haxe/std/flash/display/ShaderParameterType.hx">
 		<BOOL/>
@@ -6605,10 +6599,7 @@
 		<scaleMode public="1"><c path="String"/></scaleMode>
 		<viewport public="1"><c path="flash.geom.Rectangle"/></viewport>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta>
-			<m n=":require"><e>flash11_2</e></m>
-			<m n=":final"/>
-		</meta>
+		<meta><m n=":require"><e>flash11_2</e></m></meta>
 	</class>
 	<enum path="flash.display.TriangleCulling" params="" file="/home/travis/build/andyli/haxe/std/flash/display/TriangleCulling.hx">
 		<NEGATIVE/>
@@ -6629,10 +6620,7 @@
 </f></load>
 		<unload public="1" set="method"><f a=""><x path="Void"/></f></unload>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta>
-			<m n=":require"><e>flash11_2</e></m>
-			<m n=":final"/>
-		</meta>
+		<meta><m n=":require"><e>flash11_2</e></m></meta>
 	</class>
 	<class path="flash.display3D.Context3D" params="" file="/home/travis/build/andyli/haxe/std/flash/display3D/Context3D.hx" extern="1">
 		<extends path="flash.events.EventDispatcher"/>
@@ -6852,7 +6840,6 @@
 			</f>
 			<meta><m n=":value"><e>{ bufferOffset : 0 }</e></m></meta>
 		</setVertexBufferAt>
-		<meta><m n=":final"/></meta>
 	</class>
 	<enum path="flash.display3D.Context3DBlendFactor" params="" file="/home/travis/build/andyli/haxe/std/flash/display3D/Context3DBlendFactor.hx">
 		<DESTINATION_ALPHA/>
@@ -7029,7 +7016,6 @@
 	<x path="Int"/>
 	<x path="Void"/>
 </f></uploadFromVector>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.display3D.Program3D" params="" file="/home/travis/build/andyli/haxe/std/flash/display3D/Program3D.hx" extern="1">
 		<dispose public="1" set="method"><f a=""><x path="Void"/></f></dispose>
@@ -7038,7 +7024,6 @@
 	<c path="flash.utils.ByteArray"/>
 	<x path="Void"/>
 </f></upload>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.display3D.VertexBuffer3D" params="" file="/home/travis/build/andyli/haxe/std/flash/display3D/VertexBuffer3D.hx" extern="1">
 		<dispose public="1" set="method"><f a=""><x path="Void"/></f></dispose>
@@ -7090,7 +7075,6 @@
 			</f>
 			<meta><m n=":value"><e>{ miplevel : 0 }</e></m></meta>
 		</uploadFromByteArray>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.display3D.textures.RectangleTexture" params="" file="/home/travis/build/andyli/haxe/std/flash/display3D/textures/RectangleTexture.hx" extern="1">
 		<extends path="flash.display3D.textures.TextureBase"/>
@@ -7104,7 +7088,6 @@
 	<x path="Void"/>
 </f></uploadFromByteArray>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.display3D.textures.Texture" params="" file="/home/travis/build/andyli/haxe/std/flash/display3D/textures/Texture.hx" extern="1">
 		<extends path="flash.display3D.textures.TextureBase"/>
@@ -7134,7 +7117,6 @@
 			</f>
 			<meta><m n=":value"><e>{ miplevel : 0 }</e></m></meta>
 		</uploadFromByteArray>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.display3D.textures.VideoTexture" params="" file="/home/travis/build/andyli/haxe/std/flash/display3D/textures/VideoTexture.hx" extern="1">
 		<extends path="flash.display3D.textures.TextureBase"/>
@@ -7149,7 +7131,6 @@
 	<x path="Void"/>
 </f></attachNetStream>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.errors.Error" params="" file="/home/travis/build/andyli/haxe/std/flash/errors/Error.hx" extern="1">
 		<length public="1" set="null" static="1"><x path="Int"/></length>
@@ -7911,10 +7892,7 @@
 			</f>
 			<meta><m n=":value"><e>{ cancelable : false, bubbles : false }</e></m></meta>
 		</new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash11_8</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash11_8</e></m></meta>
 	</class>
 	<class path="flash.events.GeolocationEvent" params="" file="/home/travis/build/andyli/haxe/std/flash/events/GeolocationEvent.hx" extern="1">
 		<extends path="flash.events.Event"/>
@@ -8680,7 +8658,6 @@
 			</f>
 			<meta><m n=":value"><e>{ knockout : false, quality : 1, strength : 1, blurY : 4, blurX : 4, shadowAlpha : 1, shadowColor : 0, highlightAlpha : 1, highlightColor : 0xFFFFFF, angle : 45, distance : 4 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.filters.BitmapFilterQuality" params="" file="/home/travis/build/andyli/haxe/std/flash/filters/BitmapFilterQuality.hx" extern="1">
 		<HIGH public="1" get="inline" set="null" expr="3" line="4" static="1">
@@ -8719,7 +8696,6 @@
 			</f>
 			<meta><m n=":value"><e>{ quality : 1, blurY : 4, blurX : 4 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.filters.ColorMatrixFilter" params="" file="/home/travis/build/andyli/haxe/std/flash/filters/ColorMatrixFilter.hx" extern="1">
 		<extends path="flash.filters.BitmapFilter"/>
@@ -8728,7 +8704,6 @@
 	<c path="Array"><d/></c>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.filters.ConvolutionFilter" params="" file="/home/travis/build/andyli/haxe/std/flash/filters/ConvolutionFilter.hx" extern="1">
 		<extends path="flash.filters.BitmapFilter"/>
@@ -8783,7 +8758,6 @@
 			</f>
 			<meta><m n=":value"><e>{ alpha : 0, color : 0, scaleY : 0, scaleX : 0, componentY : 0, componentX : 0 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<enum path="flash.filters.DisplacementMapFilterMode" params="" file="/home/travis/build/andyli/haxe/std/flash/filters/DisplacementMapFilterMode.hx">
 		<CLAMP/>
@@ -8825,7 +8799,6 @@
 			</f>
 			<meta><m n=":value"><e>{ hideObject : false, knockout : false, inner : false, quality : 1, strength : 1, blurY : 4, blurX : 4, alpha : 1, color : 0, angle : 45, distance : 4 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.filters.GlowFilter" params="" file="/home/travis/build/andyli/haxe/std/flash/filters/GlowFilter.hx" extern="1">
 		<extends path="flash.filters.BitmapFilter"/>
@@ -8851,7 +8824,7 @@
 			</f>
 			<meta><m n=":value"><e>{ knockout : false, inner : false, quality : 1, strength : 2, blurY : 6, blurX : 6, alpha : 1, color : 16711680 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
+		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<class path="flash.filters.GradientBevelFilter" params="" file="/home/travis/build/andyli/haxe/std/flash/filters/GradientBevelFilter.hx" extern="1">
 		<extends path="flash.filters.BitmapFilter"/>
@@ -8883,7 +8856,6 @@
 			</f>
 			<meta><m n=":value"><e>{ knockout : false, quality : 1, strength : 1, blurY : 4, blurX : 4, angle : 45, distance : 4 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.filters.GradientGlowFilter" params="" file="/home/travis/build/andyli/haxe/std/flash/filters/GradientGlowFilter.hx" extern="1">
 		<extends path="flash.filters.BitmapFilter"/>
@@ -8915,7 +8887,6 @@
 			</f>
 			<meta><m n=":value"><e>{ knockout : false, quality : 1, strength : 1, blurY : 4, blurX : 4, angle : 45, distance : 4 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.filters.ShaderFilter" params="" file="/home/travis/build/andyli/haxe/std/flash/filters/ShaderFilter.hx" extern="1">
 		<extends path="flash.filters.BitmapFilter"/>
@@ -9597,10 +9568,7 @@
 	<e path="flash.globalization.CollatorMode"/>
 	<x path="Void"/>
 </f></new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash10_1</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash10_1</e></m></meta>
 	</class>
 	<enum path="flash.globalization.CollatorMode" params="" file="/home/travis/build/andyli/haxe/std/flash/globalization/CollatorMode.hx">
 		<MATCHING/>
@@ -9653,10 +9621,7 @@
 	<c path="String"/>
 	<x path="Void"/>
 </f></new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash10_1</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash10_1</e></m></meta>
 	</class>
 	<class path="flash.globalization.CurrencyParseResult" params="" file="/home/travis/build/andyli/haxe/std/flash/globalization/CurrencyParseResult.hx" extern="1">
 		<currencyString public="1" set="null"><c path="String"/></currencyString>
@@ -9669,7 +9634,6 @@
 			</f>
 			<meta><m n=":value"><e>{ value : 0. }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.globalization.DateTimeFormatter" params="" file="/home/travis/build/andyli/haxe/std/flash/globalization/DateTimeFormatter.hx" extern="1">
 		<getAvailableLocaleIDNames public="1" set="method" static="1"><f a=""><c path="flash.Vector"><c path="String"/></c></f></getAvailableLocaleIDNames>
@@ -9713,10 +9677,7 @@
 	<e path="flash.globalization.DateTimeStyle"/>
 	<x path="Void"/>
 </f></new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash10_1</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash10_1</e></m></meta>
 	</class>
 	<enum path="flash.globalization.DateTimeNameContext" params="" file="/home/travis/build/andyli/haxe/std/flash/globalization/DateTimeNameContext.hx">
 		<FORMAT/>
@@ -9789,10 +9750,7 @@
 	<c path="String"/>
 	<x path="Void"/>
 </f></new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash10_1</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash10_1</e></m></meta>
 	</class>
 	<enum path="flash.globalization.NationalDigitsType" params="" file="/home/travis/build/andyli/haxe/std/flash/globalization/NationalDigitsType.hx">
 		<ARABIC_INDIC/>
@@ -9871,10 +9829,7 @@
 	<c path="String"/>
 	<x path="Void"/>
 </f></new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash10_1</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash10_1</e></m></meta>
 	</class>
 	<class path="flash.globalization.NumberParseResult" params="" file="/home/travis/build/andyli/haxe/std/flash/globalization/NumberParseResult.hx" extern="1">
 		<endIndex public="1" set="null"><x path="Int"/></endIndex>
@@ -9889,10 +9844,7 @@
 			</f>
 			<meta><m n=":value"><e>{ endIndex : 2147483647, startIndex : 2147483647, value : 0. }</e></m></meta>
 		</new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash10_1</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash10_1</e></m></meta>
 	</class>
 	<class path="flash.globalization.StringTools" params="" file="/home/travis/build/andyli/haxe/std/flash/globalization/StringTools.hx" extern="1">
 		<getAvailableLocaleIDNames public="1" set="method" static="1"><f a=""><c path="flash.Vector"><c path="String"/></c></f></getAvailableLocaleIDNames>
@@ -9911,10 +9863,7 @@
 	<c path="String"/>
 	<x path="Void"/>
 </f></new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash10_1</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash10_1</e></m></meta>
 	</class>
 	<class path="flash.media.AVABRParameters" params="" file="/home/travis/build/andyli/haxe/std/flash/media/AVABRParameters.hx" extern="1">
 		<AGGRESSIVE public="1" set="null" static="1"><c path="String"/></AGGRESSIVE>
@@ -10722,7 +10671,6 @@
 	<x path="Void"/>
 </f></setQuality>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.media.H264Level" params="" file="/home/travis/build/andyli/haxe/std/flash/media/H264Level.hx" extern="1">
 		<LEVEL_1 public="1" set="null" static="1"><c path="String"/></LEVEL_1>
@@ -10793,7 +10741,6 @@
 		<track public="1"><c path="String"/></track>
 		<year public="1"><c path="String"/></year>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.media.Microphone" params="" file="/home/travis/build/andyli/haxe/std/flash/media/Microphone.hx" extern="1">
 		<extends path="flash.events.EventDispatcher"/>
@@ -10873,7 +10820,6 @@
 	<x path="Void"/>
 </f></setUseEchoSuppression>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<enum path="flash.media.MicrophoneEnhancedMode" params="" file="/home/travis/build/andyli/haxe/std/flash/media/MicrophoneEnhancedMode.hx">
 		<FULL_DUPLEX/>
@@ -10894,10 +10840,7 @@
 		<mode public="1"><e path="flash.media.MicrophoneEnhancedMode"/></mode>
 		<nonLinearProcessing public="1"><x path="Bool"/></nonLinearProcessing>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash10_2</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash10_2</e></m></meta>
 	</class>
 	<class path="flash.media.Sound" params="" file="/home/travis/build/andyli/haxe/std/flash/media/Sound.hx" extern="1">
 		<extends path="flash.events.EventDispatcher"/>
@@ -10974,7 +10917,6 @@
 		<soundTransform public="1"><c path="flash.media.SoundTransform"/></soundTransform>
 		<stop public="1" set="method"><f a=""><x path="Void"/></f></stop>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<enum path="flash.media.SoundCodec" params="" file="/home/travis/build/andyli/haxe/std/flash/media/SoundCodec.hx">
 		<NELLYMOSER/>
@@ -11030,7 +10972,6 @@
 			</f>
 			<meta><m n=":value"><e>{ panning : 0, vol : 1 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.media.StageVideo" params="" file="/home/travis/build/andyli/haxe/std/flash/media/StageVideo.hx" extern="1">
 		<extends path="flash.events.EventDispatcher"/>
@@ -11135,7 +11076,6 @@
 	<c path="String"/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.net.FileReference" params="" file="/home/travis/build/andyli/haxe/std/flash/net/FileReference.hx" extern="1">
 		<extends path="flash.events.EventDispatcher"/>
@@ -11466,10 +11406,7 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash10_1</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash10_1</e></m></meta>
 	</class>
 	<class path="flash.net.NetGroupReceiveMode" params="" file="/home/travis/build/andyli/haxe/std/flash/net/NetGroupReceiveMode.hx" extern="1">
 		<EXACT public="1" set="null" static="1"><c path="String"/></EXACT>
@@ -11796,7 +11733,6 @@
 			</f>
 			<meta><m n=":value"><e>{ isLive : true }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.net.NetStreamMulticastInfo" params="" file="/home/travis/build/andyli/haxe/std/flash/net/NetStreamMulticastInfo.hx" extern="1">
 		<bytesPushedFromPeers public="1" set="null"><x path="Float"/></bytesPushedFromPeers>
@@ -11841,10 +11777,7 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash10_1</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash10_1</e></m></meta>
 	</class>
 	<class path="flash.net.NetStreamPlayOptions" params="" file="/home/travis/build/andyli/haxe/std/flash/net/NetStreamPlayOptions.hx" extern="1">
 		<extends path="flash.events.EventDispatcher"/>
@@ -12171,7 +12104,6 @@
 	<c path="String"/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.net.URLRequestHeader" params="" file="/home/travis/build/andyli/haxe/std/flash/net/URLRequestHeader.hx" extern="1">
 		<name public="1"><c path="String"/></name>
@@ -12181,7 +12113,6 @@
 	<c path="String"/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.net.URLRequestMethod" params="" file="/home/travis/build/andyli/haxe/std/flash/net/URLRequestMethod.hx" extern="1">
 		<DELETE public="1" set="null" static="1">
@@ -12322,7 +12253,6 @@
 		<name public="1"><c path="String"/></name>
 		<serverURL public="1" set="null"><c path="String"/></serverURL>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.net.drm.DRMManager" params="" file="/home/travis/build/andyli/haxe/std/flash/net/drm/DRMManager.hx" extern="1">
 		<extends path="flash.events.EventDispatcher"/>
@@ -12489,7 +12419,6 @@
 		<domain public="1" set="null"><c path="String"/></domain>
 		<policyID public="1" set="null"><c path="String"/></policyID>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.printing.PrintJob" params="" file="/home/travis/build/andyli/haxe/std/flash/printing/PrintJob.hx" extern="1">
 		<extends path="flash.events.EventDispatcher"/>
@@ -12685,7 +12614,6 @@
 		<extends path="flash.sampler.Sample"/>
 		<id public="1" set="null"><x path="Float"/></id>
 		<size public="1" set="null"><x path="Float"/></size>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.sampler.NewObjectSample" params="" file="/home/travis/build/andyli/haxe/std/flash/sampler/NewObjectSample.hx" extern="1">
 		<extends path="flash.sampler.Sample"/>
@@ -12696,7 +12624,6 @@
 			<meta><m n=":require"><e>flash10_1</e></m></meta>
 		</size>
 		<type public="1" set="null"><x path="Class"><d/></x></type>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.sampler.StackFrame" params="" file="/home/travis/build/andyli/haxe/std/flash/sampler/StackFrame.hx" extern="1">
 		<file public="1" set="null"><c path="String"/></file>
@@ -12707,7 +12634,6 @@
 			<meta><m n=":require"><e>flash10_1</e></m></meta>
 		</scriptID>
 		<toString public="1" set="method"><f a=""><c path="String"/></f></toString>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.security.CertificateStatus" params="" file="/home/travis/build/andyli/haxe/std/flash/security/CertificateStatus.hx" extern="1">
 		<EXPIRED public="1" set="null" static="1"><c path="String"/></EXPIRED>
@@ -12796,7 +12722,6 @@
 	<c path="flash.system.ApplicationDomain"/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.system.ApplicationInstaller" params="" file="/home/travis/build/andyli/haxe/std/flash/system/ApplicationInstaller.hx" extern="1">
 		<extends path="flash.events.EventDispatcher"/>
@@ -12814,10 +12739,7 @@
 	<x path="Void"/>
 </f></install>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash11_3</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash11_3</e></m></meta>
 	</class>
 	<enum path="flash.system.ApplicationInstallerMode" params="" file="/home/travis/build/andyli/haxe/std/flash/system/ApplicationInstallerMode.hx">
 		<INSTALL_ONLY/>
@@ -12877,10 +12799,7 @@
 			<meta><m n=":require"><e>flash11_4</e></m></meta>
 		</isNegativeToken>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash11_3</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash11_3</e></m></meta>
 	</class>
 	<class path="flash.system.AuthorizedFeaturesLoader" params="" file="/home/travis/build/andyli/haxe/std/flash/system/AuthorizedFeaturesLoader.hx" extern="1">
 		<extends path="flash.events.EventDispatcher"/>
@@ -12898,10 +12817,7 @@
 			<meta><m n=":require"><e>flash11_4</e></m></meta>
 		</makeGlobal>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash11_3</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash11_3</e></m></meta>
 	</class>
 	<class path="flash.system.Capabilities" params="" file="/home/travis/build/andyli/haxe/std/flash/system/Capabilities.hx" extern="1">
 		<_internal public="1" set="null" static="1"><x path="UInt"/></_internal>
@@ -12984,7 +12900,6 @@
 	<d/>
 </f></manualAdd>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.system.DomainMemoryWithStage3D" params="" file="/home/travis/build/andyli/haxe/std/flash/system/DomainMemoryWithStage3D.hx" extern="1"><new public="1" set="method"><f a=""><x path="Void"/></f></new></class>
 	<class path="flash.system.FSCommand" params="" file="/home/travis/build/andyli/haxe/std/flash/system/FSCommand.hx" extern="1"><_fscommand public="1" set="method" static="1"><f a="command:args">
@@ -13109,10 +13024,7 @@
 			</f>
 			<meta><m n=":value"><e>{ queueLimit : -1 }</e></m></meta>
 		</send>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash11_4</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash11_4</e></m></meta>
 	</class>
 	<class path="flash.system.MessageChannelState" params="" file="/home/travis/build/andyli/haxe/std/flash/system/MessageChannelState.hx" extern="1">
 		<CLOSED public="1" set="null" static="1"><c path="String"/></CLOSED>
@@ -13295,10 +13207,7 @@
 </f></setSharedProperty>
 		<start public="1" set="method"><f a=""><x path="Void"/></f></start>
 		<terminate public="1" set="method"><f a=""><x path="Bool"/></f></terminate>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash11_4</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash11_4</e></m></meta>
 	</class>
 	<class path="flash.system.WorkerDomain" params="" file="/home/travis/build/andyli/haxe/std/flash/system/WorkerDomain.hx" extern="1">
 		<current public="1" set="null" static="1"><c path="flash.system.WorkerDomain"/></current>
@@ -13313,10 +13222,7 @@
 		</createWorker>
 		<listWorkers public="1" set="method"><f a=""><c path="flash.Vector"><c path="flash.system.Worker"/></c></f></listWorkers>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash11_4</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash11_4</e></m></meta>
 	</class>
 	<enum path="flash.system.WorkerState" params="" file="/home/travis/build/andyli/haxe/std/flash/system/WorkerState.hx">
 		<NEW/>
@@ -13345,7 +13251,6 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.text.Font" params="" file="/home/travis/build/andyli/haxe/std/flash/text/Font.hx" extern="1">
 		<enumerateFonts public="1" set="method" static="1">
@@ -13400,7 +13305,6 @@
 		<extends path="flash.display.DisplayObject"/>
 		<text public="1" set="null"><c path="String"/></text>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.text.StyleSheet" params="" file="/home/travis/build/andyli/haxe/std/flash/text/StyleSheet.hx" extern="1">
 		<extends path="flash.events.EventDispatcher"/>
@@ -13627,6 +13531,7 @@
 			<meta><m n=":value"><e>{ endIndex : -1, beginIndex : -1 }</e></m></meta>
 		</setTextFormat>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
+		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<enum path="flash.text.TextFieldAutoSize" params="" file="/home/travis/build/andyli/haxe/std/flash/text/TextFieldAutoSize.hx">
 		<CENTER/>
@@ -13634,6 +13539,7 @@
 		<NONE/>
 		<RIGHT/>
 		<meta>
+			<m n=":directlyUsed"/>
 			<m n=":flatEnum"/>
 			<m n=":fakeEnum"><e>String</e></m>
 		</meta>
@@ -13890,7 +13796,6 @@
 	<e path="flash.text.engine.JustificationStyle"/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.text.engine.ElementFormat" params="" file="/home/travis/build/andyli/haxe/std/flash/text/engine/ElementFormat.hx" extern="1">
 		<alignmentBaseline public="1"><e path="flash.text.engine.TextBaseline"/></alignmentBaseline>
@@ -13936,7 +13841,6 @@
 			</f>
 			<meta><m n=":value"><e>{ trackingLeft : 0, trackingRight : 0, baselineShift : 0, alpha : 1, color : 0, fontSize : 12 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.text.engine.FontDescription" params="" file="/home/travis/build/andyli/haxe/std/flash/text/engine/FontDescription.hx" extern="1">
 		<isDeviceFontCompatible public="1" set="method" static="1">
@@ -13971,7 +13875,6 @@
 	<e path="flash.text.engine.CFFHinting"/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<enum path="flash.text.engine.FontLookup" params="" file="/home/travis/build/andyli/haxe/std/flash/text/engine/FontLookup.hx">
 		<DEVICE/>
@@ -14008,7 +13911,6 @@
 			</f>
 			<meta><m n=":value"><e>{ lineGap : 0 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<enum path="flash.text.engine.FontPosture" params="" file="/home/travis/build/andyli/haxe/std/flash/text/engine/FontPosture.hx">
 		<ITALIC/>
@@ -14043,7 +13945,6 @@
 			</f>
 			<meta><m n=":value"><e>{ elementHeight : 15, elementWidth : 15 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.text.engine.GroupElement" params="" file="/home/travis/build/andyli/haxe/std/flash/text/engine/GroupElement.hx" extern="1">
 		<extends path="flash.text.engine.ContentElement"/>
@@ -14096,7 +13997,6 @@
 	<e path="flash.text.engine.TextRotation"/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<enum path="flash.text.engine.JustificationStyle" params="" file="/home/travis/build/andyli/haxe/std/flash/text/engine/JustificationStyle.hx">
 		<PRIORITIZE_LEAST_ADJUSTMENT/>
@@ -14169,7 +14069,6 @@
 			</f>
 			<meta><m n=":value"><e>{ letterSpacing : false }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<enum path="flash.text.engine.TabAlignment" params="" file="/home/travis/build/andyli/haxe/std/flash/text/engine/TabAlignment.hx">
 		<CENTER/>
@@ -14194,7 +14093,6 @@
 			</f>
 			<meta><m n=":value"><e>{ position : 0 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<enum path="flash.text.engine.TextBaseline" params="" file="/home/travis/build/andyli/haxe/std/flash/text/engine/TextBaseline.hx">
 		<ASCENT/>
@@ -14293,7 +14191,6 @@
 			</f>
 			<meta><m n=":value"><e>{ baselineFontSize : 12, applyNonLinearFontScaling : true, bidiLevel : 0 }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.text.engine.TextElement" params="" file="/home/travis/build/andyli/haxe/std/flash/text/engine/TextElement.hx" extern="1">
 		<extends path="flash.text.engine.ContentElement"/>
@@ -14310,7 +14207,6 @@
 	<e path="flash.text.engine.TextRotation"/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.text.engine.TextLine" params="" file="/home/travis/build/andyli/haxe/std/flash/text/engine/TextLine.hx" extern="1">
 		<extends path="flash.display.DisplayObjectContainer"/>
@@ -14390,7 +14286,6 @@
 	<c path="flash.text.engine.TextLineMirrorRegion"/>
 </f></getMirrorRegion>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<enum path="flash.text.engine.TextLineCreationResult" params="" file="/home/travis/build/andyli/haxe/std/flash/text/engine/TextLineCreationResult.hx">
 		<COMPLETE/>
@@ -14410,7 +14305,6 @@
 		<previousRegion public="1" set="null"><c path="flash.text.engine.TextLineMirrorRegion"/></previousRegion>
 		<textLine public="1" set="null"><c path="flash.text.engine.TextLine"/></textLine>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<enum path="flash.text.engine.TextLineValidity" params="" file="/home/travis/build/andyli/haxe/std/flash/text/engine/TextLineValidity.hx">
 		<INVALID/>
@@ -14458,7 +14352,6 @@
 	<x path="Bool"/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.text.ime.IIMEClient" params="" file="/home/travis/build/andyli/haxe/std/flash/text/ime/IIMEClient.hx" extern="1" interface="1">
 		<compositionEndIndex public="1" set="null"><x path="Int"/></compositionEndIndex>
@@ -14549,7 +14442,6 @@
 		<clone public="1" set="method"><f a=""><c path="flash.ui.ContextMenu"/></f></clone>
 		<hideBuiltInItems public="1" set="method"><f a=""><x path="Void"/></f></hideBuiltInItems>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.ui.ContextMenuBuiltInItems" params="" file="/home/travis/build/andyli/haxe/std/flash/ui/ContextMenuBuiltInItems.hx" extern="1">
 		<forwardAndBack public="1"><x path="Bool"/></forwardAndBack>
@@ -14562,7 +14454,6 @@
 		<zoom public="1"><x path="Bool"/></zoom>
 		<clone public="1" set="method"><f a=""><c path="flash.ui.ContextMenuBuiltInItems"/></f></clone>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.ui.ContextMenuClipboardItems" params="" file="/home/travis/build/andyli/haxe/std/flash/ui/ContextMenuClipboardItems.hx" extern="1">
 		<clear public="1"><x path="Bool"/></clear>
@@ -14572,7 +14463,6 @@
 		<selectAll public="1"><x path="Bool"/></selectAll>
 		<clone public="1" set="method"><f a=""><c path="flash.ui.ContextMenuClipboardItems"/></f></clone>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.ui.ContextMenuItem" params="" file="/home/travis/build/andyli/haxe/std/flash/ui/ContextMenuItem.hx" extern="1">
 		<extends path="flash.display.NativeMenuItem"/>
@@ -14590,7 +14480,6 @@
 			</f>
 			<meta><m n=":value"><e>{ visible : true, enabled : true, separatorBefore : false }</e></m></meta>
 		</new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.ui.GameInput" params="" file="/home/travis/build/andyli/haxe/std/flash/ui/GameInput.hx" extern="1">
 		<extends path="flash.events.EventDispatcher"/>
@@ -14649,10 +14538,7 @@
 </f></startCachingSamples>
 		<stopCachingSamples public="1" set="method"><f a=""><x path="Void"/></f></stopCachingSamples>
 		<new public="1"><f a=""><x path="Void"/></f></new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash11_8</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash11_8</e></m></meta>
 	</class>
 	<enum path="flash.ui.GameInputFinger" params="" file="/home/travis/build/andyli/haxe/std/flash/ui/GameInputFinger.hx">
 		<INDEX/>
@@ -15706,10 +15592,7 @@
 		<frameRate public="1"><x path="Float"/></frameRate>
 		<hotSpot public="1"><c path="flash.geom.Point"/></hotSpot>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta>
-			<m n=":final"/>
-			<m n=":require"><e>flash10_2</e></m>
-		</meta>
+		<meta><m n=":require"><e>flash10_2</e></m></meta>
 	</class>
 	<class path="flash.ui.Multitouch" params="" file="/home/travis/build/andyli/haxe/std/flash/ui/Multitouch.hx" extern="1">
 		<inputMode public="1" static="1"><e path="flash.ui.MultitouchInputMode"/></inputMode>
@@ -15867,6 +15750,7 @@
 	<x path="Void"/>
 </f></writeUnsignedInt>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
+		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<enum path="flash.utils.CompressionAlgorithm" params="" file="/home/travis/build/andyli/haxe/std/flash/utils/CompressionAlgorithm.hx">
 		<DEFLATE/>
@@ -15878,17 +15762,21 @@
 			<m n=":require"><e>flash11</e></m>
 		</meta>
 	</enum>
-	<class path="flash.utils.Dictionary" params="" file="/home/travis/build/andyli/haxe/std/flash/utils/Dictionary.hx" extern="1"><new public="1" set="method">
-	<f a="?weakKeys" v="false">
-		<x path="Bool"/>
-		<x path="Void"/>
-	</f>
-	<meta><m n=":value"><e>{ weakKeys : false }</e></m></meta>
-</new></class>
+	<class path="flash.utils.Dictionary" params="" file="/home/travis/build/andyli/haxe/std/flash/utils/Dictionary.hx" extern="1">
+		<new public="1" set="method">
+			<f a="?weakKeys" v="false">
+				<x path="Bool"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ weakKeys : false }</e></m></meta>
+		</new>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
 	<enum path="flash.utils.Endian" params="" file="/home/travis/build/andyli/haxe/std/flash/utils/Endian.hx">
 		<BIG_ENDIAN/>
 		<LITTLE_ENDIAN/>
 		<meta>
+			<m n=":directlyUsed"/>
 			<m n=":flatEnum"/>
 			<m n=":fakeEnum"><e>String</e></m>
 		</meta>
@@ -15929,7 +15817,6 @@
 	<d/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<typedef path="flash.utils.Object" params="" file="/home/travis/build/andyli/haxe/std/flash/utils/Object.hx"><d/></typedef>
 	<class path="flash.utils.ObjectInput" params="" file="/home/travis/build/andyli/haxe/std/flash/utils/ObjectInput.hx" extern="1">
@@ -16115,7 +16002,6 @@
 	<d/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.utils.Timer" params="" file="/home/travis/build/andyli/haxe/std/flash/utils/Timer.hx" extern="1">
 		<extends path="flash.events.EventDispatcher"/>
@@ -16149,7 +16035,6 @@
 	<c path="Array"><d/></c>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.utils.Telemetry" params="" file="/home/travis/build/andyli/haxe/std/flash/utils/Telemetry.hx" extern="1">
 		<extends path="flash.events.EventDispatcher"/>
@@ -16301,7 +16186,6 @@
 	<d/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.xml.XMLNode" params="" file="/home/travis/build/andyli/haxe/std/flash/xml/XMLNode.hx" extern="1">
 		<attributes public="1"><d/></attributes>
@@ -16476,7 +16360,6 @@
 	<d/>
 	<x path="Void"/>
 </f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<enum path="flash.xml.XMLNodeType" params="" file="/home/travis/build/andyli/haxe/std/flash/xml/XMLNodeType.hx">
 		<CDATA_NODE/>
@@ -16502,7 +16385,6 @@
 	<x path="Void"/>
 </f></startParse>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<class path="flash.xml.XMLTag" params="" file="/home/travis/build/andyli/haxe/std/flash/xml/XMLTag.hx" extern="1">
 		<attrs public="1"><d/></attrs>
@@ -16510,7 +16392,6 @@
 		<type public="1"><e path="flash.xml.XMLNodeType"/></type>
 		<value public="1"><c path="String"/></value>
 		<new public="1" set="method"><f a=""><x path="Void"/></f></new>
-		<meta><m n=":final"/></meta>
 	</class>
 	<enum path="haxe.StackItem" params="" file="/home/travis/build/andyli/haxe/std/haxe/CallStack.hx" module="haxe.CallStack">
 		<CFunction/>
@@ -16636,7 +16517,7 @@
 
 	Basically, it wraps `Reflect` calls in a `Map`-like interface.</haxe_doc>
 		<impl><class path="haxe._DynamicAccess.DynamicAccess_Impl_" params="" file="/home/travis/build/andyli/haxe/std/haxe/DynamicAccess.hx" private="1" module="haxe.DynamicAccess">
-	<_new public="1" get="inline" set="null" line="37" static="1">
+	<_new public="1" get="inline" set="null" line="40" static="1">
 		<f a=""><x path="haxe.DynamicAccess"><c path="haxe.DynamicAccess.T"/></x></f>
 		<meta>
 			<m n=":impl"/>
@@ -16644,7 +16525,7 @@
 		</meta>
 		<haxe_doc>Creates a new structure.</haxe_doc>
 	</_new>
-	<get public="1" get="inline" set="null" line="47" static="1">
+	<get public="1" get="inline" set="null" line="50" static="1">
 		<f a="this:key">
 			<d><c path="haxe.DynamicAccess.T"/></d>
 			<c path="String"/>
@@ -16656,11 +16537,11 @@
 		</meta>
 		<haxe_doc>Returns a value by specified `key`.
 
-		If the structure does not contain the given key, null is returned.
+		If the structure does not contain the given key, `null` is returned.
 
-		If `key` is null, the result is unspecified.</haxe_doc>
+		If `key` is `null`, the result is unspecified.</haxe_doc>
 	</get>
-	<set public="1" get="inline" set="null" line="65" static="1">
+	<set public="1" get="inline" set="null" line="68" static="1">
 		<f a="this:key:value">
 			<d><c path="haxe.DynamicAccess.T"/></d>
 			<c path="String"/>
@@ -16677,9 +16558,9 @@
 
 		Returns the given value.
 
-		If `key` is null, the result is unspecified.</haxe_doc>
+		If `key` is `null`, the result is unspecified.</haxe_doc>
 	</set>
-	<exists public="1" get="inline" set="null" line="79" static="1">
+	<exists public="1" get="inline" set="null" line="82" static="1">
 		<f a="this:key">
 			<d><c path="haxe.DynamicAccess.T"/></d>
 			<c path="String"/>
@@ -16688,9 +16569,9 @@
 		<meta><m n=":impl"/></meta>
 		<haxe_doc>Tells if the structure contains a specified `key`.
 
-		If `key` is null, the result is unspecified.</haxe_doc>
+		If `key` is `null`, the result is unspecified.</haxe_doc>
 	</exists>
-	<remove public="1" get="inline" set="null" line="88" static="1">
+	<remove public="1" get="inline" set="null" line="91" static="1">
 		<f a="this:key">
 			<d><c path="haxe.DynamicAccess.T"/></d>
 			<c path="String"/>
@@ -16701,9 +16582,9 @@
 
 		Returns true, if `key` was present in structure, or false otherwise.
 
-		If `key` is null, the result is unspecified.</haxe_doc>
+		If `key` is `null`, the result is unspecified.</haxe_doc>
 	</remove>
-	<keys public="1" get="inline" set="null" line="93" static="1">
+	<keys public="1" get="inline" set="null" line="96" static="1">
 		<f a="this">
 			<d><c path="haxe.DynamicAccess.T"/></d>
 			<c path="Array"><c path="String"/></c>
@@ -16711,7 +16592,7 @@
 		<meta><m n=":impl"/></meta>
 		<haxe_doc>Returns an array of `keys` in a structure.</haxe_doc>
 	</keys>
-	<copy public="1" get="inline" set="null" line="98" static="1">
+	<copy public="1" get="inline" set="null" line="101" static="1">
 		<f a="this">
 			<d><c path="haxe.DynamicAccess.T"/></d>
 			<x path="haxe.DynamicAccess"><c path="haxe.DynamicAccess.T"/></x>
@@ -16719,10 +16600,30 @@
 		<meta><m n=":impl"/></meta>
 		<haxe_doc>Returns a shallow copy of the structure</haxe_doc>
 	</copy>
+	<iterator public="1" get="inline" set="null" line="108" static="1">
+		<f a="this">
+			<d><c path="haxe.DynamicAccess.T"/></d>
+			<c path="haxe.iterators.DynamicAccessIterator"><c path="haxe.DynamicAccess.T"/></c>
+		</f>
+		<meta><m n=":impl"/></meta>
+		<haxe_doc>Returns an Iterator over the values of this `DynamicAccess`.
+
+		The order of values is undefined.</haxe_doc>
+	</iterator>
+	<keyValueIterator public="1" get="inline" set="null" line="117" static="1">
+		<f a="this">
+			<d><c path="haxe.DynamicAccess.T"/></d>
+			<c path="haxe.iterators.DynamicAccessKeyValueIterator"><c path="haxe.DynamicAccess.T"/></c>
+		</f>
+		<meta><m n=":impl"/></meta>
+		<haxe_doc>Returns an Iterator over the keys and values of this `DynamicAccess`.
+
+		The order of values is undefined.</haxe_doc>
+	</keyValueIterator>
 </class></impl>
 	</abstract>
 	<class path="haxe._DynamicAccess.DynamicAccess_Impl_" params="" file="/home/travis/build/andyli/haxe/std/haxe/DynamicAccess.hx" private="1" module="haxe.DynamicAccess">
-		<_new public="1" get="inline" set="null" line="37" static="1">
+		<_new public="1" get="inline" set="null" line="40" static="1">
 			<f a=""><x path="haxe.DynamicAccess"><c path="haxe.DynamicAccess.T"/></x></f>
 			<meta>
 				<m n=":impl"/>
@@ -16730,7 +16631,7 @@
 			</meta>
 			<haxe_doc>Creates a new structure.</haxe_doc>
 		</_new>
-		<get public="1" get="inline" set="null" line="47" static="1">
+		<get public="1" get="inline" set="null" line="50" static="1">
 			<f a="this:key">
 				<d><c path="haxe.DynamicAccess.T"/></d>
 				<c path="String"/>
@@ -16742,11 +16643,11 @@
 			</meta>
 			<haxe_doc>Returns a value by specified `key`.
 
-		If the structure does not contain the given key, null is returned.
+		If the structure does not contain the given key, `null` is returned.
 
-		If `key` is null, the result is unspecified.</haxe_doc>
+		If `key` is `null`, the result is unspecified.</haxe_doc>
 		</get>
-		<set public="1" get="inline" set="null" line="65" static="1">
+		<set public="1" get="inline" set="null" line="68" static="1">
 			<f a="this:key:value">
 				<d><c path="haxe.DynamicAccess.T"/></d>
 				<c path="String"/>
@@ -16763,9 +16664,9 @@
 
 		Returns the given value.
 
-		If `key` is null, the result is unspecified.</haxe_doc>
+		If `key` is `null`, the result is unspecified.</haxe_doc>
 		</set>
-		<exists public="1" get="inline" set="null" line="79" static="1">
+		<exists public="1" get="inline" set="null" line="82" static="1">
 			<f a="this:key">
 				<d><c path="haxe.DynamicAccess.T"/></d>
 				<c path="String"/>
@@ -16774,9 +16675,9 @@
 			<meta><m n=":impl"/></meta>
 			<haxe_doc>Tells if the structure contains a specified `key`.
 
-		If `key` is null, the result is unspecified.</haxe_doc>
+		If `key` is `null`, the result is unspecified.</haxe_doc>
 		</exists>
-		<remove public="1" get="inline" set="null" line="88" static="1">
+		<remove public="1" get="inline" set="null" line="91" static="1">
 			<f a="this:key">
 				<d><c path="haxe.DynamicAccess.T"/></d>
 				<c path="String"/>
@@ -16787,9 +16688,9 @@
 
 		Returns true, if `key` was present in structure, or false otherwise.
 
-		If `key` is null, the result is unspecified.</haxe_doc>
+		If `key` is `null`, the result is unspecified.</haxe_doc>
 		</remove>
-		<keys public="1" get="inline" set="null" line="93" static="1">
+		<keys public="1" get="inline" set="null" line="96" static="1">
 			<f a="this">
 				<d><c path="haxe.DynamicAccess.T"/></d>
 				<c path="Array"><c path="String"/></c>
@@ -16797,7 +16698,7 @@
 			<meta><m n=":impl"/></meta>
 			<haxe_doc>Returns an array of `keys` in a structure.</haxe_doc>
 		</keys>
-		<copy public="1" get="inline" set="null" line="98" static="1">
+		<copy public="1" get="inline" set="null" line="101" static="1">
 			<f a="this">
 				<d><c path="haxe.DynamicAccess.T"/></d>
 				<x path="haxe.DynamicAccess"><c path="haxe.DynamicAccess.T"/></x>
@@ -16805,6 +16706,26 @@
 			<meta><m n=":impl"/></meta>
 			<haxe_doc>Returns a shallow copy of the structure</haxe_doc>
 		</copy>
+		<iterator public="1" get="inline" set="null" line="108" static="1">
+			<f a="this">
+				<d><c path="haxe.DynamicAccess.T"/></d>
+				<c path="haxe.iterators.DynamicAccessIterator"><c path="haxe.DynamicAccess.T"/></c>
+			</f>
+			<meta><m n=":impl"/></meta>
+			<haxe_doc>Returns an Iterator over the values of this `DynamicAccess`.
+
+		The order of values is undefined.</haxe_doc>
+		</iterator>
+		<keyValueIterator public="1" get="inline" set="null" line="117" static="1">
+			<f a="this">
+				<d><c path="haxe.DynamicAccess.T"/></d>
+				<c path="haxe.iterators.DynamicAccessKeyValueIterator"><c path="haxe.DynamicAccess.T"/></c>
+			</f>
+			<meta><m n=":impl"/></meta>
+			<haxe_doc>Returns an Iterator over the keys and values of this `DynamicAccess`.
+
+		The order of values is undefined.</haxe_doc>
+		</keyValueIterator>
 	</class>
 	<class path="haxe.EntryPoint" params="" file="/home/travis/build/andyli/haxe/std/haxe/EntryPoint.hx">
 		<pending expr="new Array&lt;Void&gt;()" line="49" static="1">
@@ -18627,9 +18548,9 @@
 	</class>
 	<typedef path="haxe._Int64.__Int64" params="" file="/home/travis/build/andyli/haxe/std/haxe/Int64.hx" private="1" module="haxe.Int64">
 		<c path="haxe._Int64.___Int64"/>
-		<haxe_doc>* This typedef will fool @:coreApi into thinking that we are using
-  * the same underlying type, even though it might be different on
-  * specific platforms.</haxe_doc>
+		<haxe_doc>This typedef will fool `@:coreApi` into thinking that we are using
+	the same underlying type, even though it might be different on
+	specific platforms.</haxe_doc>
 	</typedef>
 	<class path="haxe._Int64.___Int64" params="" file="/home/travis/build/andyli/haxe/std/haxe/Int64.hx" private="1" module="haxe.Int64">
 		<high public="1"><x path="haxe.Int32"/></high>
@@ -18637,8 +18558,8 @@
 		<toString public="1" set="method" line="469">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>We also define toString here to ensure we always get a pretty string
-		when tracing or calling Std.string. This tends not to happen when
-		toString is only in the abstract.</haxe_doc>
+		when tracing or calling `Std.string`. This tends not to happen when
+		`toString` is only in the abstract.</haxe_doc>
 		</toString>
 		<new public="1" get="inline" set="null" line="459"><f a="high:low">
 	<x path="haxe.Int32"/>
@@ -18819,7 +18740,10 @@
 			<f a=""><x path="Float"/></f>
 			<haxe_doc>Run the pending events. Return the time for next event.</haxe_doc>
 		</tick>
-		<meta><m n=":access"><e>haxe.MainEvent</e></m></meta>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":access"><e>haxe.MainEvent</e></m>
+		</meta>
 	</class>
 	<typedef path="haxe.PosInfos" params="" file="/home/travis/build/andyli/haxe/std/haxe/PosInfos.hx">
 		<a>
@@ -20167,7 +20091,7 @@
 		<haxe_doc>Allows one to encode/decode String and bytes using a power of two base dictionary.</haxe_doc>
 	</class>
 	<class path="haxe.crypto.Crc32" params="" file="/home/travis/build/andyli/haxe/std/haxe/crypto/Crc32.hx">
-		<make public="1" set="method" line="67" static="1">
+		<make public="1" set="method" line="59" static="1">
 			<f a="data">
 				<c path="haxe.io.Bytes"/>
 				<x path="Int"/>
@@ -20175,18 +20099,18 @@
 			<haxe_doc>Calculates the CRC32 of the given data bytes</haxe_doc>
 		</make>
 		<crc><x path="Int"/></crc>
-		<byte public="1" set="method" line="35"><f a="b">
+		<byte public="1" get="inline" set="null" line="35"><f a="b">
 	<x path="Int"/>
 	<x path="Void"/>
 </f></byte>
-		<update public="1" set="method" line="46"><f a="b:pos:len">
+		<update public="1" get="inline" set="null" line="42"><f a="b:pos:len">
 	<c path="haxe.io.Bytes"/>
 	<x path="Int"/>
 	<x path="Int"/>
 	<x path="Void"/>
 </f></update>
-		<get public="1" set="method" line="60"><f a=""><x path="Int"/></f></get>
-		<new public="1" set="method" line="31"><f a=""><x path="Void"/></f></new>
+		<get public="1" get="inline" set="null" line="52"><f a=""><x path="Int"/></f></get>
+		<new public="1" get="inline" set="null" line="31"><f a=""><x path="Void"/></f></new>
 		<haxe_doc>Calculates the Crc32 of the given Bytes.</haxe_doc>
 	</class>
 	<enum path="haxe.crypto.HashMethod" params="" file="/home/travis/build/andyli/haxe/std/haxe/crypto/Hmac.hx" module="haxe.crypto.Hmac">
@@ -23216,7 +23140,7 @@
 	A Map can be instantiated without explicit type parameters. Type inference
 	will then determine the type parameters from the usage.
 
-	Maps can also be created with `key1 => value1, key2 => value2` syntax.
+	Maps can also be created with `[key1 => value1, key2 => value2]` syntax.
 
 	Map is an abstract type, it is not available at runtime.
 
@@ -23237,13 +23161,13 @@
 		This becomes a constructor call to one of the specialization types in
 		the output. The rules for that are as follows:
 
-		1. if K is a `String`, `haxe.ds.StringMap` is used
-		2. if K is an `Int`, `haxe.ds.IntMap` is used
-		3. if K is an `EnumValue`, `haxe.ds.EnumValueMap` is used
-		4. if K is any other class or structure, `haxe.ds.ObjectMap` is used
-		5. if K is any other type, it causes a compile-time error
+		1. if `K` is a `String`, `haxe.ds.StringMap` is used
+		2. if `K` is an `Int`, `haxe.ds.IntMap` is used
+		3. if `K` is an `EnumValue`, `haxe.ds.EnumValueMap` is used
+		4. if `K` is any other class or structure, `haxe.ds.ObjectMap` is used
+		5. if `K` is any other type, it causes a compile-time error
 
-		(Cpp) Map does not use weak keys on ObjectMap by default.</haxe_doc>
+		(Cpp) Map does not use weak keys on `ObjectMap` by default.</haxe_doc>
 	</_new>
 	<set public="1" get="inline" set="null" line="75" static="1">
 		<f a="this:key:value">
@@ -23260,7 +23184,7 @@
 
 		If `key` already has a mapping, the previous value disappears.
 
-		If `key` is null, the result is unspecified.</haxe_doc>
+		If `key` is `null`, the result is unspecified.</haxe_doc>
 	</set>
 	<get public="1" get="inline" set="null" line="92" static="1">
 		<f a="this:key">
@@ -23277,7 +23201,7 @@
 		</meta>
 		<haxe_doc>Returns the current mapping of `key`.
 
-		If no such mapping exists, null is returned.
+		If no such mapping exists, `null` is returned.
 
 		Note that a check like `map.get(key) == null` can hold for two reasons:
 
@@ -23287,7 +23211,7 @@
 		If it is important to distinguish these cases, `exists()` should be
 		used.
 
-		If `key` is null, the result is unspecified.</haxe_doc>
+		If `key` is `null`, the result is unspecified.</haxe_doc>
 	</get>
 	<exists public="1" get="inline" set="null" line="99" static="1">
 		<f a="this:key">
@@ -23301,7 +23225,7 @@
 		<meta><m n=":impl"/></meta>
 		<haxe_doc>Returns true if `key` has a mapping, false otherwise.
 
-		If `key` is null, the result is unspecified.</haxe_doc>
+		If `key` is `null`, the result is unspecified.</haxe_doc>
 	</exists>
 	<remove public="1" get="inline" set="null" line="107" static="1">
 		<f a="this:key">
@@ -23316,7 +23240,7 @@
 		<haxe_doc>Removes the mapping of `key` and returns true if such a mapping existed,
 		false otherwise.
 
-		If `key` is null, the result is unspecified.</haxe_doc>
+		If `key` is `null`, the result is unspecified.</haxe_doc>
 	</remove>
 	<keys public="1" get="inline" set="null" line="114" static="1">
 		<f a="this">
@@ -23513,13 +23437,13 @@
 		This becomes a constructor call to one of the specialization types in
 		the output. The rules for that are as follows:
 
-		1. if K is a `String`, `haxe.ds.StringMap` is used
-		2. if K is an `Int`, `haxe.ds.IntMap` is used
-		3. if K is an `EnumValue`, `haxe.ds.EnumValueMap` is used
-		4. if K is any other class or structure, `haxe.ds.ObjectMap` is used
-		5. if K is any other type, it causes a compile-time error
+		1. if `K` is a `String`, `haxe.ds.StringMap` is used
+		2. if `K` is an `Int`, `haxe.ds.IntMap` is used
+		3. if `K` is an `EnumValue`, `haxe.ds.EnumValueMap` is used
+		4. if `K` is any other class or structure, `haxe.ds.ObjectMap` is used
+		5. if `K` is any other type, it causes a compile-time error
 
-		(Cpp) Map does not use weak keys on ObjectMap by default.</haxe_doc>
+		(Cpp) Map does not use weak keys on `ObjectMap` by default.</haxe_doc>
 		</_new>
 		<set public="1" get="inline" set="null" line="75" static="1">
 			<f a="this:key:value">
@@ -23536,7 +23460,7 @@
 
 		If `key` already has a mapping, the previous value disappears.
 
-		If `key` is null, the result is unspecified.</haxe_doc>
+		If `key` is `null`, the result is unspecified.</haxe_doc>
 		</set>
 		<get public="1" get="inline" set="null" line="92" static="1">
 			<f a="this:key">
@@ -23553,7 +23477,7 @@
 			</meta>
 			<haxe_doc>Returns the current mapping of `key`.
 
-		If no such mapping exists, null is returned.
+		If no such mapping exists, `null` is returned.
 
 		Note that a check like `map.get(key) == null` can hold for two reasons:
 
@@ -23563,7 +23487,7 @@
 		If it is important to distinguish these cases, `exists()` should be
 		used.
 
-		If `key` is null, the result is unspecified.</haxe_doc>
+		If `key` is `null`, the result is unspecified.</haxe_doc>
 		</get>
 		<exists public="1" get="inline" set="null" line="99" static="1">
 			<f a="this:key">
@@ -23577,7 +23501,7 @@
 			<meta><m n=":impl"/></meta>
 			<haxe_doc>Returns true if `key` has a mapping, false otherwise.
 
-		If `key` is null, the result is unspecified.</haxe_doc>
+		If `key` is `null`, the result is unspecified.</haxe_doc>
 		</exists>
 		<remove public="1" get="inline" set="null" line="107" static="1">
 			<f a="this:key">
@@ -23592,7 +23516,7 @@
 			<haxe_doc>Removes the mapping of `key` and returns true if such a mapping existed,
 		false otherwise.
 
-		If `key` is null, the result is unspecified.</haxe_doc>
+		If `key` is `null`, the result is unspecified.</haxe_doc>
 		</remove>
 		<keys public="1" get="inline" set="null" line="114" static="1">
 			<f a="this">
@@ -27533,7 +27457,7 @@
 		<this><c path="String"/></this>
 		<to><icast><c path="String"/></icast></to>
 		<haxe_doc>Html MimeType Enum
-    @see : http://www.sitepoint.com/web-foundations/mime-types-complete-list/</haxe_doc>
+    @see http://www.sitepoint.com/web-foundations/mime-types-complete-list/</haxe_doc>
 		<meta><m n=":enum"/></meta>
 		<impl><class path="haxe.io._Mime.Mime_Impl_" params="" file="/home/travis/build/andyli/haxe/std/haxe/io/Mime.hx" private="1" module="haxe.io.Mime" extern="1">
 	<XWorldX3dmf public="1" get="inline" set="null" expr="cast &quot;x-world/x-3dmf&quot;" line="9" static="1">
@@ -32587,14 +32511,14 @@
 			</f>
 			<haxe_doc>Returns the extension of `path`.
 
-		If the extension is `null`, the empty String `""` is returned.
+		If `path` has no extension, the empty String `""` is returned.
 
 		If `path` is `null`, the result is unspecified.</haxe_doc>
 		</extension>
 		<withExtension public="1" set="method" line="175" static="1">
 			<f a="path:ext">
 				<c path="String"/>
-				<c path="String"/>
+				<x path="Null"><c path="String"/></x>
 				<c path="String"/>
 			</f>
 			<haxe_doc>Returns a String representation of `path` where the extension is `ext`.
@@ -32679,7 +32603,7 @@
 			<meta><m n=":value"><e>{ allowSlashes : false }</e></m></meta>
 		</escape>
 		<dir public="1">
-			<c path="String"/>
+			<x path="Null"><c path="String"/></x>
 			<haxe_doc>The directory.
 
 		This is the leading part of the path that is not part of the file name
@@ -32699,7 +32623,7 @@
 		is the empty String `""`.</haxe_doc>
 		</file>
 		<ext public="1">
-			<c path="String"/>
+			<x path="Null"><c path="String"/></x>
 			<haxe_doc>The file extension.
 
 		It is separated from the file name by a dot. This dot is not part of
@@ -33514,6 +33438,45 @@
 			<meta><m n=":value"><e>{ bytePos : 0 }</e></m></meta>
 		</fromBytes>
 	</class>
+	<class path="haxe.iterators.DynamicAccessIterator" params="T" file="/home/travis/build/andyli/haxe/std/haxe/iterators/DynamicAccessIterator.hx">
+		<access final="1"><x path="haxe.DynamicAccess"><c path="haxe.iterators.DynamicAccessIterator.T"/></x></access>
+		<keys final="1"><c path="Array"><c path="String"/></c></keys>
+		<index><x path="Int"/></index>
+		<hasNext public="1" get="inline" set="null" line="41">
+			<f a=""><x path="Bool"/></f>
+			<haxe_doc>See `Iterator.hasNext`</haxe_doc>
+		</hasNext>
+		<next public="1" get="inline" set="null" line="48">
+			<f a=""><c path="haxe.iterators.DynamicAccessIterator.T"/></f>
+			<haxe_doc>See `Iterator.next`</haxe_doc>
+		</next>
+		<new public="1" get="inline" set="null" line="32"><f a="access">
+	<x path="haxe.DynamicAccess"><c path="haxe.iterators.DynamicAccessIterator.T"/></x>
+	<x path="Void"/>
+</f></new>
+		<haxe_doc>This iterator can be used to iterate over the values of `haxe.DynamicAccess`.</haxe_doc>
+	</class>
+	<class path="haxe.iterators.DynamicAccessKeyValueIterator" params="T" file="/home/travis/build/andyli/haxe/std/haxe/iterators/DynamicAccessKeyValueIterator.hx">
+		<access final="1"><x path="haxe.DynamicAccess"><c path="haxe.iterators.DynamicAccessKeyValueIterator.T"/></x></access>
+		<keys final="1"><c path="Array"><c path="String"/></c></keys>
+		<index><x path="Int"/></index>
+		<hasNext public="1" get="inline" set="null" line="41">
+			<f a=""><x path="Bool"/></f>
+			<haxe_doc>See `Iterator.hasNext`</haxe_doc>
+		</hasNext>
+		<next public="1" get="inline" set="null" line="48">
+			<f a=""><a>
+	<value><c path="haxe.iterators.DynamicAccessKeyValueIterator.T"/></value>
+	<key><c path="String"/></key>
+</a></f>
+			<haxe_doc>See `Iterator.next`</haxe_doc>
+		</next>
+		<new public="1" get="inline" set="null" line="32"><f a="access">
+	<x path="haxe.DynamicAccess"><c path="haxe.iterators.DynamicAccessKeyValueIterator.T"/></x>
+	<x path="Void"/>
+</f></new>
+		<haxe_doc>This Key/Value iterator can be used to iterate over `haxe.DynamicAccess`.</haxe_doc>
+	</class>
 	<class path="haxe.iterators.MapKeyValueIterator" params="K:V" file="/home/travis/build/andyli/haxe/std/haxe/iterators/MapKeyValueIterator.hx">
 		<map><c path="haxe.IMap">
 	<c path="haxe.iterators.MapKeyValueIterator.K"/>
@@ -33793,7 +33756,7 @@
 				<d/>
 				<d/>
 			</f>
-			<haxe_doc>A conditional compiler flag can be set command line using
+			<haxe_doc>A conditional compilation flag can be set on the command line using
 		`-D key=value`.
 
 		Returns the value of a compiler flag.
@@ -33803,6 +33766,9 @@
 
 		If the compiler flag is not defined, `Compiler.getDefine` returns
 		`null`.
+
+		Note: This is a macro and cannot be called from within other macros. Refer
+		to `haxe.macro.Context.definedValue` to obtain defined values in macro context.
 
 		@see https://haxe.org/manual/lf-condition-compilation.html</haxe_doc>
 		</getDefine>
@@ -33814,7 +33780,7 @@
 		<to><icast><c path="String"/></icast></to>
 		<meta><m n=":enum"/></meta>
 		<impl><class path="haxe.macro._Compiler.IncludePosition_Impl_" params="" file="/home/travis/build/andyli/haxe/std/haxe/macro/Compiler.hx" private="1" module="haxe.macro.Compiler" extern="1">
-	<Top public="1" get="inline" set="null" expr="cast &quot;top&quot;" line="457" static="1">
+	<Top public="1" get="inline" set="null" expr="cast &quot;top&quot;" line="470" static="1">
 		<x path="haxe.macro.IncludePosition"/>
 		<meta>
 			<m n=":value"><e>cast "top"</e></m>
@@ -33823,7 +33789,7 @@
 		</meta>
 		<haxe_doc>Prepend the file content to the output file.</haxe_doc>
 	</Top>
-	<Closure public="1" get="inline" set="null" expr="cast &quot;closure&quot;" line="463" static="1">
+	<Closure public="1" get="inline" set="null" expr="cast &quot;closure&quot;" line="476" static="1">
 		<x path="haxe.macro.IncludePosition"/>
 		<meta>
 			<m n=":value"><e>cast "closure"</e></m>
@@ -33834,7 +33800,7 @@
 
 		Since the closure is in strict-mode, there may be run-time error if the input is not strict-mode-compatible.</haxe_doc>
 	</Closure>
-	<Inline public="1" get="inline" set="null" expr="cast &quot;inline&quot;" line="467" static="1">
+	<Inline public="1" get="inline" set="null" expr="cast &quot;inline&quot;" line="480" static="1">
 		<x path="haxe.macro.IncludePosition"/>
 		<meta>
 			<m n=":value"><e>cast "inline"</e></m>
@@ -33847,7 +33813,7 @@
 </class></impl>
 	</abstract>
 	<class path="haxe.macro._Compiler.IncludePosition_Impl_" params="" file="/home/travis/build/andyli/haxe/std/haxe/macro/Compiler.hx" private="1" module="haxe.macro.Compiler" extern="1">
-		<Top public="1" get="inline" set="null" expr="cast &quot;top&quot;" line="457" static="1">
+		<Top public="1" get="inline" set="null" expr="cast &quot;top&quot;" line="470" static="1">
 			<x path="haxe.macro.IncludePosition"/>
 			<meta>
 				<m n=":value"><e>cast "top"</e></m>
@@ -33856,7 +33822,7 @@
 			</meta>
 			<haxe_doc>Prepend the file content to the output file.</haxe_doc>
 		</Top>
-		<Closure public="1" get="inline" set="null" expr="cast &quot;closure&quot;" line="463" static="1">
+		<Closure public="1" get="inline" set="null" expr="cast &quot;closure&quot;" line="476" static="1">
 			<x path="haxe.macro.IncludePosition"/>
 			<meta>
 				<m n=":value"><e>cast "closure"</e></m>
@@ -33867,7 +33833,7 @@
 
 		Since the closure is in strict-mode, there may be run-time error if the input is not strict-mode-compatible.</haxe_doc>
 		</Closure>
-		<Inline public="1" get="inline" set="null" expr="cast &quot;inline&quot;" line="467" static="1">
+		<Inline public="1" get="inline" set="null" expr="cast &quot;inline&quot;" line="480" static="1">
 			<x path="haxe.macro.IncludePosition"/>
 			<meta>
 				<m n=":value"><e>cast "inline"</e></m>
@@ -33876,6 +33842,99 @@
 			</meta>
 			<haxe_doc>Directly inject the file content at the call site.</haxe_doc>
 		</Inline>
+		<meta><m n=":enum"/></meta>
+	</class>
+	<abstract path="haxe.macro.NullSafetyMode" params="" file="/home/travis/build/andyli/haxe/std/haxe/macro/Compiler.hx" module="haxe.macro.Compiler">
+		<this><c path="String"/></this>
+		<to><icast><c path="String"/></icast></to>
+		<meta><m n=":enum"/></meta>
+		<impl><class path="haxe.macro._Compiler.NullSafetyMode_Impl_" params="" file="/home/travis/build/andyli/haxe/std/haxe/macro/Compiler.hx" private="1" module="haxe.macro.Compiler" extern="1">
+	<Off public="1" get="inline" set="null" expr="cast &quot;Off&quot;" line="1" static="1">
+		<x path="haxe.macro.NullSafetyMode"/>
+		<meta>
+			<m n=":value"><e>cast "Off"</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+		<haxe_doc>Disable null safety.</haxe_doc>
+	</Off>
+	<Strict public="1" get="inline" set="null" expr="cast &quot;Strict&quot;" line="1" static="1">
+		<x path="haxe.macro.NullSafetyMode"/>
+		<meta>
+			<m n=":value"><e>cast "Strict"</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+		<haxe_doc>Full scale null safety.</haxe_doc>
+	</Strict>
+	<Loose public="1" get="inline" set="null" expr="cast &quot;Loose&quot;" line="1" static="1">
+		<x path="haxe.macro.NullSafetyMode"/>
+		<meta>
+			<m n=":value"><e>cast "Loose"</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+		<haxe_doc><![CDATA[Loose safety.
+		If an expression is checked ` != null`, then it's considered safe even if it could be modified after the check.
+		E.g.
+		```haxe
+		function example(o:{field:Null<String>}) {
+			if(o.field != null) {
+				mutate(o);
+				var notNullable:String = o.field; //no error
+			}
+		}
+
+		function mutate(o:{field:Null<String>}) {
+			o.field = null;
+		}
+		```]]></haxe_doc>
+	</Loose>
+	<meta><m n=":enum"/></meta>
+</class></impl>
+	</abstract>
+	<class path="haxe.macro._Compiler.NullSafetyMode_Impl_" params="" file="/home/travis/build/andyli/haxe/std/haxe/macro/Compiler.hx" private="1" module="haxe.macro.Compiler" extern="1">
+		<Off public="1" get="inline" set="null" expr="cast &quot;Off&quot;" line="1" static="1">
+			<x path="haxe.macro.NullSafetyMode"/>
+			<meta>
+				<m n=":value"><e>cast "Off"</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
+			<haxe_doc>Disable null safety.</haxe_doc>
+		</Off>
+		<Strict public="1" get="inline" set="null" expr="cast &quot;Strict&quot;" line="1" static="1">
+			<x path="haxe.macro.NullSafetyMode"/>
+			<meta>
+				<m n=":value"><e>cast "Strict"</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
+			<haxe_doc>Full scale null safety.</haxe_doc>
+		</Strict>
+		<Loose public="1" get="inline" set="null" expr="cast &quot;Loose&quot;" line="1" static="1">
+			<x path="haxe.macro.NullSafetyMode"/>
+			<meta>
+				<m n=":value"><e>cast "Loose"</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
+			<haxe_doc><![CDATA[Loose safety.
+		If an expression is checked ` != null`, then it's considered safe even if it could be modified after the check.
+		E.g.
+		```haxe
+		function example(o:{field:Null<String>}) {
+			if(o.field != null) {
+				mutate(o);
+				var notNullable:String = o.field; //no error
+			}
+		}
+
+		function mutate(o:{field:Null<String>}) {
+			o.field = null;
+		}
+		```]]></haxe_doc>
+		</Loose>
 		<meta><m n=":enum"/></meta>
 	</class>
 	<class path="haxe.macro.ComplexTypeTools" params="" file="/home/travis/build/andyli/haxe/std/haxe/macro/ComplexTypeTools.hx">
@@ -34703,7 +34762,7 @@
 					ExprTools.map(e, capitalizeStrings);
 			}
 		}
-		```haxe</haxe_doc>
+		```</haxe_doc>
 		</map>
 		<getValue public="1" set="method" line="234" static="1">
 			<f a="e">
@@ -36868,10 +36927,10 @@
 			</f>
 			<haxe_doc>Returns the `haxe.rtti.CType.Classdef` corresponding to class `c`.
 
-		If `c` has no runtime type information, e.g. because no `@:rtti@` was
-		added, `null` is returned.
+		If `c` has no runtime type information, e.g. because no `@:rtti` was
+		added, an exception of type `String` is thrown.
 
-		If `c` is null, the result is unspecified.</haxe_doc>
+		If `c` is `null`, the result is unspecified.</haxe_doc>
 		</getRtti>
 		<hasRtti public="1" params="T" set="method" line="59" static="1">
 			<f a="c">
@@ -36880,7 +36939,7 @@
 			</f>
 			<haxe_doc>Tells if `c` has runtime type information.
 
-		If `c` is null, the result is unspecified.</haxe_doc>
+		If `c` is `null`, the result is unspecified.</haxe_doc>
 		</hasRtti>
 		<haxe_doc><![CDATA[Rtti is a helper class which supplements the `@:rtti` metadata.
 
@@ -37670,107 +37729,343 @@
 		<x path="haxe.xml.Access"/>
 		<meta><m n=":deprecated"/></meta>
 	</typedef>
-	<class path="haxe.xml._Parser.S" params="" file="/home/travis/build/andyli/haxe/std/haxe/xml/Parser.hx" private="1" module="haxe.xml.Parser" extern="1">
-		<IGNORE_SPACES public="1" get="inline" set="null" expr="0" line="28" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>0</e></m></meta>
+	<abstract path="haxe.xml._Parser.S" params="" file="/home/travis/build/andyli/haxe/std/haxe/xml/Parser.hx" private="1" module="haxe.xml.Parser">
+		<this><x path="Int"/></this>
+		<meta><m n=":enum"/></meta>
+		<impl><class path="haxe.xml._Parser.S_Impl_" params="" file="/home/travis/build/andyli/haxe/std/haxe/xml/Parser.hx" private="1" module="haxe.xml.Parser" extern="1">
+	<IGNORE_SPACES public="1" get="inline" set="null" expr="cast 0" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 0</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</IGNORE_SPACES>
+	<BEGIN public="1" get="inline" set="null" expr="cast 1" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 1</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</BEGIN>
+	<BEGIN_NODE public="1" get="inline" set="null" expr="cast 2" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 2</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</BEGIN_NODE>
+	<TAG_NAME public="1" get="inline" set="null" expr="cast 3" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 3</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</TAG_NAME>
+	<BODY public="1" get="inline" set="null" expr="cast 4" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 4</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</BODY>
+	<ATTRIB_NAME public="1" get="inline" set="null" expr="cast 5" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 5</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</ATTRIB_NAME>
+	<EQUALS public="1" get="inline" set="null" expr="cast 6" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 6</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</EQUALS>
+	<ATTVAL_BEGIN public="1" get="inline" set="null" expr="cast 7" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 7</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</ATTVAL_BEGIN>
+	<ATTRIB_VAL public="1" get="inline" set="null" expr="cast 8" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 8</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</ATTRIB_VAL>
+	<CHILDS public="1" get="inline" set="null" expr="cast 9" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 9</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</CHILDS>
+	<CLOSE public="1" get="inline" set="null" expr="cast 10" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 10</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</CLOSE>
+	<WAIT_END public="1" get="inline" set="null" expr="cast 11" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 11</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</WAIT_END>
+	<WAIT_END_RET public="1" get="inline" set="null" expr="cast 12" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 12</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</WAIT_END_RET>
+	<PCDATA public="1" get="inline" set="null" expr="cast 13" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 13</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</PCDATA>
+	<HEADER public="1" get="inline" set="null" expr="cast 14" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 14</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</HEADER>
+	<COMMENT public="1" get="inline" set="null" expr="cast 15" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 15</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</COMMENT>
+	<DOCTYPE public="1" get="inline" set="null" expr="cast 16" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 16</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</DOCTYPE>
+	<CDATA public="1" get="inline" set="null" expr="cast 17" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 17</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</CDATA>
+	<ESCAPE public="1" get="inline" set="null" expr="cast 18" line="1" static="1">
+		<x path="haxe.xml._Parser.S"/>
+		<meta>
+			<m n=":value"><e>cast 18</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+	</ESCAPE>
+	<meta><m n=":enum"/></meta>
+</class></impl>
+	</abstract>
+	<class path="haxe.xml._Parser.S_Impl_" params="" file="/home/travis/build/andyli/haxe/std/haxe/xml/Parser.hx" private="1" module="haxe.xml.Parser" extern="1">
+		<IGNORE_SPACES public="1" get="inline" set="null" expr="cast 0" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 0</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</IGNORE_SPACES>
-		<BEGIN public="1" get="inline" set="null" expr="1" line="29" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>1</e></m></meta>
+		<BEGIN public="1" get="inline" set="null" expr="cast 1" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 1</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</BEGIN>
-		<BEGIN_NODE public="1" get="inline" set="null" expr="2" line="30" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>2</e></m></meta>
+		<BEGIN_NODE public="1" get="inline" set="null" expr="cast 2" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 2</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</BEGIN_NODE>
-		<TAG_NAME public="1" get="inline" set="null" expr="3" line="31" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>3</e></m></meta>
+		<TAG_NAME public="1" get="inline" set="null" expr="cast 3" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 3</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</TAG_NAME>
-		<BODY public="1" get="inline" set="null" expr="4" line="32" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>4</e></m></meta>
+		<BODY public="1" get="inline" set="null" expr="cast 4" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 4</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</BODY>
-		<ATTRIB_NAME public="1" get="inline" set="null" expr="5" line="33" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>5</e></m></meta>
+		<ATTRIB_NAME public="1" get="inline" set="null" expr="cast 5" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 5</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</ATTRIB_NAME>
-		<EQUALS public="1" get="inline" set="null" expr="6" line="34" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>6</e></m></meta>
+		<EQUALS public="1" get="inline" set="null" expr="cast 6" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 6</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</EQUALS>
-		<ATTVAL_BEGIN public="1" get="inline" set="null" expr="7" line="35" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>7</e></m></meta>
+		<ATTVAL_BEGIN public="1" get="inline" set="null" expr="cast 7" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 7</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</ATTVAL_BEGIN>
-		<ATTRIB_VAL public="1" get="inline" set="null" expr="8" line="36" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>8</e></m></meta>
+		<ATTRIB_VAL public="1" get="inline" set="null" expr="cast 8" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 8</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</ATTRIB_VAL>
-		<CHILDS public="1" get="inline" set="null" expr="9" line="37" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>9</e></m></meta>
+		<CHILDS public="1" get="inline" set="null" expr="cast 9" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 9</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</CHILDS>
-		<CLOSE public="1" get="inline" set="null" expr="10" line="38" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>10</e></m></meta>
+		<CLOSE public="1" get="inline" set="null" expr="cast 10" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 10</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</CLOSE>
-		<WAIT_END public="1" get="inline" set="null" expr="11" line="39" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>11</e></m></meta>
+		<WAIT_END public="1" get="inline" set="null" expr="cast 11" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 11</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</WAIT_END>
-		<WAIT_END_RET public="1" get="inline" set="null" expr="12" line="40" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>12</e></m></meta>
+		<WAIT_END_RET public="1" get="inline" set="null" expr="cast 12" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 12</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</WAIT_END_RET>
-		<PCDATA public="1" get="inline" set="null" expr="13" line="41" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>13</e></m></meta>
+		<PCDATA public="1" get="inline" set="null" expr="cast 13" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 13</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</PCDATA>
-		<HEADER public="1" get="inline" set="null" expr="14" line="42" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>14</e></m></meta>
+		<HEADER public="1" get="inline" set="null" expr="cast 14" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 14</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</HEADER>
-		<COMMENT public="1" get="inline" set="null" expr="15" line="43" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>15</e></m></meta>
+		<COMMENT public="1" get="inline" set="null" expr="cast 15" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 15</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</COMMENT>
-		<DOCTYPE public="1" get="inline" set="null" expr="16" line="44" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>16</e></m></meta>
+		<DOCTYPE public="1" get="inline" set="null" expr="cast 16" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 16</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</DOCTYPE>
-		<CDATA public="1" get="inline" set="null" expr="17" line="45" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>17</e></m></meta>
+		<CDATA public="1" get="inline" set="null" expr="cast 17" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 17</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</CDATA>
-		<ESCAPE public="1" get="inline" set="null" expr="18" line="46" static="1">
-			<x path="Int"/>
-			<meta><m n=":value"><e>18</e></m></meta>
+		<ESCAPE public="1" get="inline" set="null" expr="cast 18" line="1" static="1">
+			<x path="haxe.xml._Parser.S"/>
+			<meta>
+				<m n=":value"><e>cast 18</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
 		</ESCAPE>
+		<meta><m n=":enum"/></meta>
 	</class>
 	<class path="haxe.xml.XmlParserException" params="" file="/home/travis/build/andyli/haxe/std/haxe/xml/Parser.hx" module="haxe.xml.Parser">
 		<message public="1">
 			<c path="String"/>
-			<haxe_doc>* the XML parsing error message</haxe_doc>
+			<haxe_doc>the XML parsing error message</haxe_doc>
 		</message>
 		<lineNumber public="1">
 			<x path="Int"/>
-			<haxe_doc>* the line number at which the XML parsing error occurred</haxe_doc>
+			<haxe_doc>the line number at which the XML parsing error occurred</haxe_doc>
 		</lineNumber>
 		<positionAtLine public="1">
 			<x path="Int"/>
-			<haxe_doc>* the character position in the reported line at which the parsing error occurred</haxe_doc>
+			<haxe_doc>the character position in the reported line at which the parsing error occurred</haxe_doc>
 		</positionAtLine>
 		<position public="1">
 			<x path="Int"/>
-			<haxe_doc>* the character position in the XML string at which the parsing error occurred</haxe_doc>
+			<haxe_doc>the character position in the XML string at which the parsing error occurred</haxe_doc>
 		</position>
 		<xml public="1">
 			<c path="String"/>
-			<haxe_doc>* the invalid XML string</haxe_doc>
+			<haxe_doc>the invalid XML string</haxe_doc>
 		</xml>
-		<toString public="1" set="method" line="96"><f a=""><c path="String"/></f></toString>
-		<new public="1" set="method" line="76"><f a="message:xml:position">
+		<toString public="1" set="method" line="95"><f a=""><c path="String"/></f></toString>
+		<new public="1" set="method" line="75"><f a="message:xml:position">
 	<c path="String"/>
 	<c path="String"/>
 	<x path="Int"/>
@@ -37786,7 +38081,7 @@
 	h.set(&quot;quot&quot;, &quot;\&quot;&quot;);
 	h.set(&quot;apos&quot;, &quot;&apos;&quot;);
 	h;
-}" line="104" static="1">
+}" line="103" static="1">
 			<c path="haxe.ds.StringMap"><c path="String"/></c>
 			<meta><m n=":value"><e><![CDATA[{
 	var h = new haxe.ds.StringMap();
@@ -37798,18 +38093,18 @@
 	h;
 }]]></e></m></meta>
 		</escapes>
-		<parse public="1" set="method" line="119" static="1">
+		<parse public="1" set="method" line="118" static="1">
 			<f a="str:?strict" v=":false">
 				<c path="String"/>
 				<x path="Bool"/>
 				<c path="Xml"/>
 			</f>
 			<meta><m n=":value"><e>{ strict : false }</e></m></meta>
-			<haxe_doc>* Parses the String into an XML Document. Set strict parsing to true in order to enable a strict check of XML attributes and entities.
-	 *
-	 * @throws haxe.xml.XmlParserException</haxe_doc>
+			<haxe_doc>Parses the String into an XML Document. Set strict parsing to true in order to enable a strict check of XML attributes and entities.
+		
+		@throws haxe.xml.XmlParserException</haxe_doc>
 		</parse>
-		<doParse set="method" line="126" static="1">
+		<doParse set="method" line="125" static="1">
 			<f a="str:strict:?p:?parent" v="::0:">
 				<c path="String"/>
 				<x path="Bool"/>
@@ -37819,7 +38114,7 @@
 			</f>
 			<meta><m n=":value"><e>{ p : 0 }</e></m></meta>
 		</doParse>
-		<isValidChar get="inline" set="null" line="454" static="1"><f a="c">
+		<isValidChar get="inline" set="null" line="453" static="1"><f a="c">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></isValidChar>
@@ -38201,10 +38496,18 @@
 		<CENTRAL_DIRECTORY_RECORD_FIELDS_SIZE get="inline" set="null" expr="46" line="35" static="1">
 			<x path="Int"/>
 			<meta><m n=":value"><e>46</e></m></meta>
+			<haxe_doc>The next constant is required for computing the Central
+		Directory Record(CDR) size. CDR consists of some fields
+		of constant size and a filename. Constant represents
+		total length of all fields with constant size for each
+		file in archive</haxe_doc>
 		</CENTRAL_DIRECTORY_RECORD_FIELDS_SIZE>
 		<LOCAL_FILE_HEADER_FIELDS_SIZE get="inline" set="null" expr="30" line="42" static="1">
 			<x path="Int"/>
 			<meta><m n=":value"><e>30</e></m></meta>
+			<haxe_doc>The following constant is the total size of all fields
+		of Local File Header. It's required for calculating
+		offset of start of central directory record</haxe_doc>
 		</LOCAL_FILE_HEADER_FIELDS_SIZE>
 		<o><c path="haxe.io.Output"/></o>
 		<files><c path="haxe.ds.List"><a>

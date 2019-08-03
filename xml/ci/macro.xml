@@ -1031,7 +1031,7 @@
 		<map public="1" params="A:B" get="inline" set="null" line="69" static="1">
 			<f a="it:f">
 				<t path="Iterable"><c path="map.A"/></t>
-				<f a="">
+				<f a="item">
 					<c path="map.A"/>
 					<c path="map.B"/>
 				</f>
@@ -1044,7 +1044,7 @@
 		<mapi public="1" params="A:B" get="inline" set="null" line="78" static="1">
 			<f a="it:f">
 				<t path="Iterable"><c path="mapi.A"/></t>
-				<f a=":">
+				<f a="index:item">
 					<x path="Int"/>
 					<c path="mapi.A"/>
 					<c path="mapi.B"/>
@@ -1066,7 +1066,7 @@
 		<flatMap public="1" params="A:B" get="inline" set="null" line="96" static="1">
 			<f a="it:f">
 				<t path="Iterable"><c path="flatMap.A"/></t>
-				<f a="">
+				<f a="item">
 					<c path="flatMap.A"/>
 					<t path="Iterable"><c path="flatMap.B"/></t>
 				</f>
@@ -1092,7 +1092,7 @@
 		<exists public="1" params="A" set="method" line="125" static="1">
 			<f a="it:f">
 				<t path="Iterable"><c path="exists.A"/></t>
-				<f a="">
+				<f a="item">
 					<c path="exists.A"/>
 					<x path="Bool"/>
 				</f>
@@ -1110,7 +1110,7 @@
 		<foreach public="1" params="A" set="method" line="144" static="1">
 			<f a="it:f">
 				<t path="Iterable"><c path="foreach.A"/></t>
-				<f a="">
+				<f a="item">
 					<c path="foreach.A"/>
 					<x path="Bool"/>
 				</f>
@@ -1130,7 +1130,7 @@
 		<iter public="1" params="A" set="method" line="156" static="1">
 			<f a="it:f">
 				<t path="Iterable"><c path="iter.A"/></t>
-				<f a="">
+				<f a="item">
 					<c path="iter.A"/>
 					<x path="Void"/>
 				</f>
@@ -1143,7 +1143,7 @@
 		<filter public="1" params="A" set="method" line="167" static="1">
 			<f a="it:f">
 				<t path="Iterable"><c path="filter.A"/></t>
-				<f a="">
+				<f a="item">
 					<c path="filter.A"/>
 					<x path="Bool"/>
 				</f>
@@ -1157,7 +1157,7 @@
 		<fold public="1" params="A:B" set="method" line="183" static="1">
 			<f a="it:f:first">
 				<t path="Iterable"><c path="fold.A"/></t>
-				<f a=":">
+				<f a="item:result">
 					<c path="fold.A"/>
 					<c path="fold.B"/>
 					<c path="fold.B"/>
@@ -1179,7 +1179,7 @@
 		<count public="1" params="A" set="method" line="195" static="1">
 			<f a="it:?pred">
 				<t path="Iterable"><c path="count.A"/></t>
-				<f a="">
+				<f a="item">
 					<c path="count.A"/>
 					<x path="Bool"/>
 				</f>
@@ -1212,7 +1212,7 @@
 		<find public="1" params="T" set="method" line="241" static="1">
 			<f a="it:f">
 				<t path="Iterable"><c path="find.T"/></t>
-				<f a="">
+				<f a="item">
 					<c path="find.T"/>
 					<x path="Bool"/>
 				</f>
@@ -7176,37 +7176,37 @@
 	<p><c path="String"/></p>
 </a></typedef>
 	<class path="haxe.Template" params="" file="/home/vsts/work/1/s/std/haxe/Template.hx">
-		<splitter expr="~/(::[A-Za-z0-9_ ()&amp;|!+=/&gt;&lt;*.&quot;-]+::|\$\$([A-Za-z0-9_-]+)\()/" line="56" static="1">
+		<splitter expr="~/(::[A-Za-z0-9_ ()&amp;|!+=/&gt;&lt;*.&quot;-]+::|\$\$([A-Za-z0-9_-]+)\()/" line="58" static="1">
 			<c path="EReg"/>
 			<meta><m n=":value"><e><![CDATA[~/(::[A-Za-z0-9_ ()&|!+=/><*."-]+::|\$\$([A-Za-z0-9_-]+)\()/]]></e></m></meta>
 		</splitter>
 		<expr_splitter expr="~/(\(|\)|[ 
 	]*&quot;[^&quot;]*&quot;[ 
-	]*|[!+=/&gt;&lt;*.&amp;|-]+)/" line="57" static="1">
+	]*|[!+=/&gt;&lt;*.&amp;|-]+)/" line="59" static="1">
 			<c path="EReg"/>
 			<meta><m n=":value"><e><![CDATA[~/(\(|\)|[ 
 	]*"[^"]*"[ 
 	]*|[!+=/><*.&|-]+)/]]></e></m></meta>
 		</expr_splitter>
-		<expr_trim expr="~/^[ ]*([^ ]+)[ ]*$/" line="58" static="1">
+		<expr_trim expr="~/^[ ]*([^ ]+)[ ]*$/" line="60" static="1">
 			<c path="EReg"/>
 			<meta><m n=":value"><e>~/^[ ]*([^ ]+)[ ]*$/</e></m></meta>
 		</expr_trim>
-		<expr_int expr="~/^[0-9]+$/" line="59" static="1">
+		<expr_int expr="~/^[0-9]+$/" line="61" static="1">
 			<c path="EReg"/>
 			<meta><m n=":value"><e>~/^[0-9]+$/</e></m></meta>
 		</expr_int>
-		<expr_float expr="~/^([+-]?)(?=\d|,\d)\d*(,\d*)?([Ee]([+-]?\d+))?$/" line="60" static="1">
+		<expr_float expr="~/^([+-]?)(?=\d|,\d)\d*(,\d*)?([Ee]([+-]?\d+))?$/" line="62" static="1">
 			<c path="EReg"/>
 			<meta><m n=":value"><e>~/^([+-]?)(?=\d|,\d)\d*(,\d*)?([Ee]([+-]?\d+))?$/</e></m></meta>
 		</expr_float>
-		<globals public="1" expr="{ }" line="66" static="1">
+		<globals public="1" expr="{ }" line="68" static="1">
 			<d/>
 			<meta><m n=":value"><e>{ }</e></m></meta>
 			<haxe_doc>Global replacements which are used across all Template instances. This
 		has lower priority than the context argument of execute().</haxe_doc>
 		</globals>
-		<hxKeepArrayIterator expr="[].iterator()" line="69" static="1">
+		<hxKeepArrayIterator expr="[].iterator()" line="71" static="1">
 			<t path="Iterator"><unknown/></t>
 			<meta>
 				<m n=":value"><e>[].iterator()</e></m>
@@ -7218,7 +7218,7 @@
 		<macros><d/></macros>
 		<stack><c path="haxe.ds.List"><d/></c></stack>
 		<buf><c path="StringBuf"/></buf>
-		<execute public="1" set="method" line="110">
+		<execute public="1" set="method" line="112">
 			<f a="context:?macros">
 				<d/>
 				<d/>
@@ -7239,48 +7239,52 @@
 		If `context` is null, the result is unspecified. If `macros` is null,
 		no macros are used.</haxe_doc>
 		</execute>
-		<resolve set="method" line="119"><f a="v">
+		<resolve set="method" line="121"><f a="v">
 	<c path="String"/>
 	<d/>
 </f></resolve>
-		<parseTokens set="method" line="133"><f a="data">
+		<parseTokens set="method" line="135"><f a="data">
 	<c path="String"/>
 	<c path="haxe.ds.List"><t path="haxe._Template.Token"/></c>
 </f></parseTokens>
-		<parseBlock set="method" line="180"><f a="tokens">
+		<parseBlock set="method" line="182"><f a="tokens">
 	<c path="haxe.ds.List"><t path="haxe._Template.Token"/></c>
 	<e path="haxe._Template.TemplateExpr"/>
 </f></parseBlock>
-		<parse set="method" line="195"><f a="tokens">
+		<parse set="method" line="197"><f a="tokens">
 	<c path="haxe.ds.List"><t path="haxe._Template.Token"/></c>
 	<e path="haxe._Template.TemplateExpr"/>
 </f></parse>
-		<parseExpr set="method" line="245"><f a="data">
+		<parseExpr set="method" line="263"><f a="data">
 	<c path="String"/>
 	<f a=""><unknown/></f>
 </f></parseExpr>
-		<makeConst set="method" line="276"><f a="v">
+		<makeConst set="method" line="302"><f a="v">
 	<c path="String"/>
 	<f a=""><d/></f>
 </f></makeConst>
-		<makePath set="method" line="301"><f a="e:l">
+		<makePath set="method" line="327"><f a="e:l">
 	<f a=""><d/></f>
 	<c path="haxe.ds.List"><t path="haxe._Template.ExprToken"/></c>
 	<f a=""><d/></f>
 </f></makePath>
-		<makeExpr set="method" line="317"><f a="l">
+		<makeExpr set="method" line="343"><f a="l">
 	<c path="haxe.ds.List"><t path="haxe._Template.ExprToken"/></c>
 	<f a=""><d/></f>
 </f></makeExpr>
-		<makeExpr2 set="method" line="321"><f a="l">
+		<skipSpaces set="method" line="347"><f a="l">
+	<c path="haxe.ds.List"><t path="haxe._Template.ExprToken"/></c>
+	<x path="Void"/>
+</f></skipSpaces>
+		<makeExpr2 set="method" line="360"><f a="l">
 	<c path="haxe.ds.List"><t path="haxe._Template.ExprToken"/></c>
 	<f a=""><d/></f>
 </f></makeExpr2>
-		<run set="method" line="393"><f a="e">
+		<run set="method" line="439"><f a="e">
 	<e path="haxe._Template.TemplateExpr"/>
 	<x path="Void"/>
 </f></run>
-		<new public="1" set="method" line="87">
+		<new public="1" set="method" line="89">
 			<f a="str">
 				<c path="String"/>
 				<x path="Void"/>
@@ -22080,7 +22084,11 @@
 	<x path="Int"/>
 	<d/>
 </f></load>
-		<includeFile public="1" set="method" line="461" static="1">
+		<flushDiskCache public="1" set="method" line="459" static="1">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>Clears cached results of file lookups</haxe_doc>
+		</flushDiskCache>
+		<includeFile public="1" set="method" line="471" static="1">
 			<f a="file:?position" v=":Top">
 				<c path="String"/>
 				<x path="haxe.macro.IncludePosition"/>
@@ -22103,7 +22111,7 @@
 		<to><icast><c path="String"/></icast></to>
 		<meta><m n=":enum"/></meta>
 		<impl><class path="haxe.macro._Compiler.IncludePosition_Impl_" params="" file="/home/vsts/work/1/s/std/haxe/macro/Compiler.hx" private="1" module="haxe.macro.Compiler" extern="1">
-	<Top public="1" get="inline" set="null" expr="cast &quot;top&quot;" line="485" static="1">
+	<Top public="1" get="inline" set="null" expr="cast &quot;top&quot;" line="495" static="1">
 		<x path="haxe.macro.IncludePosition"/>
 		<meta>
 			<m n=":value"><e>cast "top"</e></m>
@@ -22112,7 +22120,7 @@
 		</meta>
 		<haxe_doc>Prepend the file content to the output file.</haxe_doc>
 	</Top>
-	<Closure public="1" get="inline" set="null" expr="cast &quot;closure&quot;" line="492" static="1">
+	<Closure public="1" get="inline" set="null" expr="cast &quot;closure&quot;" line="502" static="1">
 		<x path="haxe.macro.IncludePosition"/>
 		<meta>
 			<m n=":value"><e>cast "closure"</e></m>
@@ -22123,7 +22131,7 @@
 
 		Since the closure is in strict-mode, there may be run-time error if the input is not strict-mode-compatible.</haxe_doc>
 	</Closure>
-	<Inline public="1" get="inline" set="null" expr="cast &quot;inline&quot;" line="497" static="1">
+	<Inline public="1" get="inline" set="null" expr="cast &quot;inline&quot;" line="507" static="1">
 		<x path="haxe.macro.IncludePosition"/>
 		<meta>
 			<m n=":value"><e>cast "inline"</e></m>
@@ -22136,7 +22144,7 @@
 </class></impl>
 	</abstract>
 	<class path="haxe.macro._Compiler.IncludePosition_Impl_" params="" file="/home/vsts/work/1/s/std/haxe/macro/Compiler.hx" private="1" module="haxe.macro.Compiler" extern="1">
-		<Top public="1" get="inline" set="null" expr="cast &quot;top&quot;" line="485" static="1">
+		<Top public="1" get="inline" set="null" expr="cast &quot;top&quot;" line="495" static="1">
 			<x path="haxe.macro.IncludePosition"/>
 			<meta>
 				<m n=":value"><e>cast "top"</e></m>
@@ -22145,7 +22153,7 @@
 			</meta>
 			<haxe_doc>Prepend the file content to the output file.</haxe_doc>
 		</Top>
-		<Closure public="1" get="inline" set="null" expr="cast &quot;closure&quot;" line="492" static="1">
+		<Closure public="1" get="inline" set="null" expr="cast &quot;closure&quot;" line="502" static="1">
 			<x path="haxe.macro.IncludePosition"/>
 			<meta>
 				<m n=":value"><e>cast "closure"</e></m>
@@ -22156,7 +22164,7 @@
 
 		Since the closure is in strict-mode, there may be run-time error if the input is not strict-mode-compatible.</haxe_doc>
 		</Closure>
-		<Inline public="1" get="inline" set="null" expr="cast &quot;inline&quot;" line="497" static="1">
+		<Inline public="1" get="inline" set="null" expr="cast &quot;inline&quot;" line="507" static="1">
 			<x path="haxe.macro.IncludePosition"/>
 			<meta>
 				<m n=":value"><e>cast "inline"</e></m>

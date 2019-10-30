@@ -16625,7 +16625,7 @@
 	<c path="haxe.io.Bytes"/>
 	<x path="Void"/>
 </f></success>
-		<get_responseData set="method" line="240"><f a=""><x path="Null"><c path="String"/></x></f></get_responseData>
+		<get_responseData set="method" line="241"><f a=""><x path="Null"><c path="String"/></x></f></get_responseData>
 		<new public="1" set="method" line="71">
 			<f a="url">
 				<c path="String"/>
@@ -31057,10 +31057,7 @@
 		Calling this is only possible inside a catch statement.</haxe_doc>
 		</getOriginalException>
 		<getNextHaxeUID get="inline" set="null" line="138" static="1">
-			<f a=""><a><nextId set="method"><f a="counterName">
-	<c path="String"/>
-	<x path="Int"/>
-</f></nextId></a></f>
+			<f a=""><x path="Int"/></f>
 			<meta>
 				<m n=":has_untyped"/>
 				<m n=":allow"><e>haxe.ds.ObjectMap.assignId</e></m>

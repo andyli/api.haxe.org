@@ -1023,7 +1023,7 @@
 			</c>
 			<meta><m n=":value"><e>Rex.flags()</e></m></meta>
 		</FLAGS>
-		<escape public="1" set="method" line="172" static="1">
+		<escape public="1" set="method" line="203" static="1">
 			<f a="s">
 				<c path="String"/>
 				<c path="String"/>
@@ -1032,7 +1032,7 @@
 
 		If `s` is null, the result is unspecified.</haxe_doc>
 		</escape>
-		<escapeRegExpRe expr="~/[\[\]{}()*+?.\\\^$|]/" line="176" static="1">
+		<escapeRegExpRe expr="~/[\[\]{}()*+?.\\\^$|]/" line="207" static="1">
 			<c path="EReg"/>
 			<meta><m n=":value"><e>~/[\[\]{}()*+?.\\\^$|]/</e></m></meta>
 		</escapeRegExpRe>
@@ -1054,7 +1054,12 @@
 
 		If `s` is `null`, the result is unspecified.</haxe_doc>
 		</match>
-		<matched public="1" set="method" line="71">
+		<matchFromByte get="inline" set="null" line="67"><f a="s:offset">
+	<c path="String"/>
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></matchFromByte>
+		<matched public="1" set="method" line="75">
 			<f a="n">
 				<x path="Int"/>
 				<c path="String"/>
@@ -1070,7 +1075,7 @@
 
 		If `n` equals 0, the whole matched substring is returned.</haxe_doc>
 		</matched>
-		<matchedLeft public="1" set="method" line="87">
+		<matchedLeft public="1" set="method" line="91">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>Returns the part to the left of the last matched substring.
 
@@ -1082,7 +1087,7 @@
 
 		The result does not include the matched part.</haxe_doc>
 		</matchedLeft>
-		<matchedRight public="1" set="method" line="93">
+		<matchedRight public="1" set="method" line="97">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>Returns the part to the right of the last matched substring.
 
@@ -1094,7 +1099,7 @@
 
 		The result does not include the matched part.</haxe_doc>
 		</matchedRight>
-		<matchedPos public="1" set="method" line="99">
+		<matchedPos public="1" set="method" line="103">
 			<f a=""><a>
 	<pos><x path="Int"/></pos>
 	<len><x path="Int"/></len>
@@ -1109,7 +1114,7 @@
 		If the global g modifier was in place for the matching, the position and
 		length of the leftmost substring is returned.</haxe_doc>
 		</matchedPos>
-		<matchSub public="1" set="method" line="110">
+		<matchSub public="1" set="method" line="114">
 			<f a="s:pos:?len" v="::-1">
 				<c path="String"/>
 				<x path="Int"/>
@@ -1127,7 +1132,7 @@
 
 		If `s` is null, the result is unspecified.</haxe_doc>
 		</matchSub>
-		<split public="1" set="method" line="130">
+		<split public="1" set="method" line="134">
 			<f a="s">
 				<c path="String"/>
 				<c path="Array"><c path="String"/></c>
@@ -1149,7 +1154,7 @@
 
 		If `s` is null, the result is unspecified.</haxe_doc>
 		</split>
-		<replace public="1" set="method" line="140">
+		<replace public="1" set="method" line="144">
 			<f a="s:by">
 				<c path="String"/>
 				<c path="String"/>
@@ -1168,7 +1173,7 @@
 
 		If `s` or `by` are null, the result is unspecified.</haxe_doc>
 		</replace>
-		<map public="1" set="method" line="147">
+		<map public="1" set="method" line="151">
 			<f a="s:f">
 				<c path="String"/>
 				<f a="">
@@ -1190,6 +1195,14 @@
 
 		If `s` or `f` are null, the result is unspecified.</haxe_doc>
 		</map>
+		<map_old set="method" line="178"><f a="s:f">
+	<c path="String"/>
+	<f a="">
+		<c path="EReg"/>
+		<c path="String"/>
+	</f>
+	<c path="String"/>
+</f></map_old>
 		<new public="1" set="method" line="38">
 			<f a="r:opt">
 				<c path="String"/>
@@ -16313,7 +16326,7 @@
 	<c path="haxe.io.Bytes"/>
 	<x path="Void"/>
 </f></success>
-		<get_responseData set="method" line="240"><f a=""><x path="Null"><c path="String"/></x></f></get_responseData>
+		<get_responseData set="method" line="241"><f a=""><x path="Null"><c path="String"/></x></f></get_responseData>
 		<new public="1" set="method" line="71">
 			<f a="url">
 				<c path="String"/>
@@ -30308,14 +30321,14 @@
 			<meta><m n=":has_untyped"/></meta>
 			<haxe_doc>A 32 bit clamp function for numbers</haxe_doc>
 		</clampInt32>
-		<strDate public="1" set="method" line="321" static="1">
+		<strDate public="1" set="method" line="311" static="1">
 			<f a="s">
 				<c path="String"/>
 				<c path="Date"/>
 			</f>
 			<haxe_doc>Create a standard date object from a lua string representation</haxe_doc>
 		</strDate>
-		<extendsOrImplements public="1" set="method" line="342" static="1">
+		<extendsOrImplements public="1" set="method" line="332" static="1">
 			<f a="cl1:cl2">
 				<x path="Class"><d/></x>
 				<x path="Class"><d/></x>
@@ -30324,7 +30337,7 @@
 			<meta><m n=":has_untyped"/></meta>
 			<haxe_doc>Helper method to determine if class cl1 extends, implements, or otherwise equals cl2</haxe_doc>
 		</extendsOrImplements>
-		<shellEscapeCmd public="1" set="method" line="362" static="1">
+		<shellEscapeCmd public="1" set="method" line="352" static="1">
 			<f a="cmd:?args">
 				<c path="String"/>
 				<c path="Array"><c path="String"/></c>
@@ -30332,11 +30345,11 @@
 			</f>
 			<haxe_doc>Returns a shell escaped version of "cmd" along with any args</haxe_doc>
 		</shellEscapeCmd>
-		<tempFile public="1" set="method" line="380" static="1">
+		<tempFile public="1" set="method" line="370" static="1">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>Returns a temp file path that can be used for reading and writing</haxe_doc>
 		</tempFile>
-		<fieldIterator public="1" set="method" line="389" static="1">
+		<fieldIterator public="1" set="method" line="379" static="1">
 			<f a="o">
 				<c path="lua.Table">
 					<c path="String"/>
@@ -30346,14 +30359,14 @@
 			</f>
 			<meta><m n=":has_untyped"/></meta>
 		</fieldIterator>
-		<os_patterns expr="[&quot;Windows&quot; =&gt; [&quot;windows&quot;, &quot;^mingw&quot;, &quot;^cygwin&quot;], &quot;Linux&quot; =&gt; [&quot;linux&quot;], &quot;Mac&quot; =&gt; [&quot;mac&quot;, &quot;darwin&quot;, &quot;osx&quot;], &quot;BSD&quot; =&gt; [&quot;bsd$&quot;], &quot;Solaris&quot; =&gt; [&quot;SunOS&quot;]]" line="415" static="1">
+		<os_patterns expr="[&quot;Windows&quot; =&gt; [&quot;windows&quot;, &quot;^mingw&quot;, &quot;^cygwin&quot;], &quot;Linux&quot; =&gt; [&quot;linux&quot;], &quot;Mac&quot; =&gt; [&quot;mac&quot;, &quot;darwin&quot;, &quot;osx&quot;], &quot;BSD&quot; =&gt; [&quot;bsd$&quot;], &quot;Solaris&quot; =&gt; [&quot;SunOS&quot;]]" line="405" static="1">
 			<x path="haxe.ds.Map">
 				<c path="String"/>
 				<c path="Array"><c path="String"/></c>
 			</x>
 			<meta><m n=":value"><e><![CDATA[["Windows" => ["windows", "^mingw", "^cygwin"], "Linux" => ["linux"], "Mac" => ["mac", "darwin", "osx"], "BSD" => ["bsd$"], "Solaris" => ["SunOS"]]]]></e></m></meta>
 		</os_patterns>
-		<systemName public="1" set="method" line="423" static="1">
+		<systemName public="1" set="method" line="413" static="1">
 			<f a=""><c path="String"/></f>
 			<meta><m n=":has_untyped"/></meta>
 		</systemName>

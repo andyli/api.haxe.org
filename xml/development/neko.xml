@@ -226,7 +226,7 @@
 	<x path="Int"/>
 	<c path="Array"><c path="new1.T"/></c>
 </f></new1>
-		<__hx_toString_depth expr="0" line="96" static="1">
+		<__hx_toString_depth expr="0" line="85" static="1">
 			<x path="Int"/>
 			<meta><m n=":value"><e>0</e></m></meta>
 		</__hx_toString_depth>
@@ -260,12 +260,11 @@
 		`a[i] == a.copy()[i]` is true for any valid `i`. However,
 		`a == a.copy()` is always false.</haxe_doc>
 		</copy>
-		<iterator public="1" set="method" line="54">
-			<f a=""><t path="Iterator"><c path="Array.T"/></t></f>
-			<meta><m n=":has_untyped"/></meta>
+		<iterator public="1" get="inline" set="null" line="54">
+			<f a=""><c path="haxe.iterators.ArrayIterator"><c path="Array.T"/></c></f>
 			<haxe_doc>Returns an iterator of the Array values.</haxe_doc>
 		</iterator>
-		<insert public="1" set="method" line="69">
+		<insert public="1" set="method" line="58">
 			<f a="pos:x">
 				<x path="Int"/>
 				<c path="Array.T"/>
@@ -287,7 +286,7 @@
 		and including that offset to the end of `this` Array are moved one index
 		ahead.</haxe_doc>
 		</insert>
-		<join public="1" set="method" line="84">
+		<join public="1" set="method" line="73">
 			<f a="sep">
 				<c path="String"/>
 				<c path="String"/>
@@ -304,7 +303,7 @@
 
 		If `sep` is null, the result is unspecified.</haxe_doc>
 		</join>
-		<toString public="1" set="method" line="98">
+		<toString public="1" set="method" line="87">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>Returns a string representation of `this` Array.
 
@@ -313,7 +312,7 @@
 		use `Std.string()` to get a String representation that is consistent
 		across platforms.</haxe_doc>
 		</toString>
-		<pop public="1" set="method" line="121">
+		<pop public="1" set="method" line="110">
 			<f a=""><x path="Null"><c path="Array.T"/></x></f>
 			<haxe_doc>Removes the last element of `this` Array and returns it.
 
@@ -324,7 +323,7 @@
 		If `this` is the empty Array `[]`, null is returned and the length
 		remains 0.</haxe_doc>
 		</pop>
-		<push public="1" set="method" line="130">
+		<push public="1" set="method" line="119">
 			<f a="x">
 				<c path="Array.T"/>
 				<x path="Int"/>
@@ -336,7 +335,7 @@
 
 		`this.length` increases by 1.</haxe_doc>
 		</push>
-		<unshift public="1" set="method" line="137">
+		<unshift public="1" set="method" line="126">
 			<f a="x">
 				<c path="Array.T"/>
 				<x path="Void"/>
@@ -347,7 +346,7 @@
 
 		`this.length` and the index of each Array element increases by 1.</haxe_doc>
 		</unshift>
-		<remove public="1" set="method" line="145">
+		<remove public="1" set="method" line="134">
 			<f a="x">
 				<c path="Array.T"/>
 				<x path="Bool"/>
@@ -363,7 +362,17 @@
 		If `x` is not found, `this` Array is not changed and the function
 		returns false.</haxe_doc>
 		</remove>
-		<indexOf public="1" set="method" line="162">
+		<contains public="1" set="method" line="151">
+			<f a="x">
+				<c path="Array.T"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Returns whether `this` Array contains `x`.
+
+		If `x` is found by checking standard equality, the function returns `true`, otherwise
+		the function returns `false`.</haxe_doc>
+		</contains>
+		<indexOf public="1" set="method" line="164">
 			<f a="x:?fromIndex">
 				<c path="Array.T"/>
 				<x path="Int"/>
@@ -381,7 +390,7 @@
 		starting index is less than 0, the whole array will be searched, if it is greater than
 		or equal to the length of `this` Array, the function returns -1.</haxe_doc>
 		</indexOf>
-		<lastIndexOf public="1" set="method" line="179">
+		<lastIndexOf public="1" set="method" line="181">
 			<f a="x:?fromIndex">
 				<c path="Array.T"/>
 				<x path="Int"/>
@@ -399,7 +408,7 @@
 		given or computed starting index is greater than or equal to the length of `this` Array,
 		the whole array will be searched, if it is less than 0, the function returns -1.</haxe_doc>
 		</lastIndexOf>
-		<reverse public="1" set="method" line="195">
+		<reverse public="1" set="method" line="197">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc><![CDATA[Reverse the order of elements of `this` Array.
 
@@ -407,7 +416,7 @@
 
 		If `this.length < 2`, `this` remains unchanged.]]></haxe_doc>
 		</reverse>
-		<shift public="1" set="method" line="209">
+		<shift public="1" set="method" line="211">
 			<f a=""><x path="Null"><c path="Array.T"/></x></f>
 			<haxe_doc>Removes the first element of `this` Array and returns it.
 
@@ -419,7 +428,7 @@
 		If `this` is the empty Array `[]`, `null` is returned and the length
 		remains 0.</haxe_doc>
 		</shift>
-		<slice public="1" set="method" line="222">
+		<slice public="1" set="method" line="224">
 			<f a="pos:?end">
 				<x path="Int"/>
 				<x path="Int"/>
@@ -442,7 +451,7 @@
 		If `pos` exceeds `this.length` or if `end` is less than or equals
 		`pos`, the result is `[]`.</haxe_doc>
 		</slice>
-		<sort public="1" set="method" line="240">
+		<sort public="1" set="method" line="242">
 			<f a="f">
 				<f a=":">
 					<c path="Array.T"/>
@@ -463,7 +472,7 @@
 
 		If `f` is null, the result is unspecified.]]></haxe_doc>
 		</sort>
-		<splice public="1" set="method" line="263">
+		<splice public="1" set="method" line="265">
 			<f a="pos:len">
 				<x path="Int"/>
 				<x path="Int"/>
@@ -490,7 +499,7 @@
 		words, each element of the original `this` Array either remains in
 		`this` Array or becomes an element of the returned Array.]]></haxe_doc>
 		</splice>
-		<map public="1" params="S" get="inline" set="null" line="289">
+		<map public="1" params="S" get="inline" set="null" line="291">
 			<f a="f">
 				<f a="">
 					<c path="Array.T"/>
@@ -504,7 +513,7 @@
 
 		If `f` is null, the result is unspecified.</haxe_doc>
 		</map>
-		<filter public="1" get="inline" set="null" line="298">
+		<filter public="1" get="inline" set="null" line="300">
 			<f a="f">
 				<f a="">
 					<c path="Array.T"/>
@@ -519,7 +528,7 @@
 
 		If `f` is null, the result is unspecified.</haxe_doc>
 		</filter>
-		<resize public="1" set="method" line="306">
+		<resize public="1" set="method" line="308">
 			<f a="len">
 				<x path="Int"/>
 				<x path="Void"/>
@@ -535,20 +544,20 @@
 		- 0, 0.0 or false for Int, Float and Bool respectively on static targets
 		- null for other types on static targets</haxe_doc>
 		</resize>
-		<__get set="method" line="318"><f a="pos">
+		<__get set="method" line="320"><f a="pos">
 	<x path="Int"/>
 	<c path="Array.T"/>
 </f></__get>
-		<__set set="method" line="322"><f a="pos:v">
+		<__set set="method" line="324"><f a="pos:v">
 	<x path="Int"/>
 	<c path="Array.T"/>
 	<c path="Array.T"/>
 </f></__set>
-		<__grow set="method" line="343"><f a="l">
+		<__grow set="method" line="345"><f a="l">
 	<x path="Int"/>
 	<x path="Void"/>
 </f></__grow>
-		<__neko set="method" line="359"><f a=""><c path="neko.NativeArray"><c path="Array.T"/></c></f></__neko>
+		<__neko set="method" line="361"><f a=""><c path="neko.NativeArray"><c path="Array.T"/></c></f></__neko>
 		<new public="1" set="method" line="27">
 			<f a=""><x path="Void"/></f>
 			<haxe_doc>Creates a new Array.</haxe_doc>
@@ -1516,7 +1525,23 @@
 
 		If `it` or `f` are null, the result is unspecified.</haxe_doc>
 		</fold>
-		<count public="1" params="A" set="method" line="195" static="1">
+		<foldi public="1" params="A:B" set="method" line="194" static="1">
+			<f a="it:f:first">
+				<t path="Iterable"><c path="foldi.A"/></t>
+				<f a="item:result:index">
+					<c path="foldi.A"/>
+					<c path="foldi.B"/>
+					<x path="Int"/>
+					<c path="foldi.B"/>
+				</f>
+				<c path="foldi.B"/>
+				<c path="foldi.B"/>
+			</f>
+			<haxe_doc>Similar to fold, but also passes the index of each element to `f`.
+
+		If `it` or `f` are null, the result is unspecified.</haxe_doc>
+		</foldi>
+		<count public="1" params="A" set="method" line="209" static="1">
 			<f a="it:?pred">
 				<t path="Iterable"><c path="count.A"/></t>
 				<f a="item">
@@ -1530,14 +1555,14 @@
 
 		This function traverses all elements.</haxe_doc>
 		</count>
-		<empty public="1" params="T" set="method" line="210" static="1">
+		<empty public="1" params="T" set="method" line="224" static="1">
 			<f a="it">
 				<t path="Iterable"><c path="empty.T"/></t>
 				<x path="Bool"/>
 			</f>
 			<haxe_doc>Tells if Iterable `it` does not contain any element.</haxe_doc>
 		</empty>
-		<indexOf public="1" params="T" set="method" line="221" static="1">
+		<indexOf public="1" params="T" set="method" line="235" static="1">
 			<f a="it:v">
 				<t path="Iterable"><c path="indexOf.T"/></t>
 				<c path="indexOf.T"/>
@@ -1549,7 +1574,7 @@
 
 		If `v` does not exist in `it`, the result is -1.</haxe_doc>
 		</indexOf>
-		<find public="1" params="T" set="method" line="241" static="1">
+		<find public="1" params="T" set="method" line="255" static="1">
 			<f a="it:f">
 				<t path="Iterable"><c path="find.T"/></t>
 				<f a="item">
@@ -1567,7 +1592,25 @@
 
 		If `f` is null, the result is unspecified.</haxe_doc>
 		</find>
-		<concat public="1" params="T" set="method" line="255" static="1">
+		<findIndex public="1" params="T" set="method" line="273" static="1">
+			<f a="it:f">
+				<t path="Iterable"><c path="findIndex.T"/></t>
+				<f a="item">
+					<c path="findIndex.T"/>
+					<x path="Bool"/>
+				</f>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Returns the index of the first element of `it` for which `f` is true.
+
+		This function returns as soon as an element is found for which a call to
+		`f` returns true.
+
+		If no such element is found, the result is -1.
+
+		If `f` is null, the result is unspecified.</haxe_doc>
+		</findIndex>
+		<concat public="1" params="T" set="method" line="289" static="1">
 			<f a="a:b">
 				<t path="Iterable"><c path="concat.T"/></t>
 				<t path="Iterable"><c path="concat.T"/></t>
@@ -1963,10 +2006,7 @@
 		If the field is defined as a property, its accessors are ignored. Refer
 		to `Reflect.getProperty` for a function supporting property accessors.
 
-		If `field` is null, the result is unspecified.
-
-		(As3) If used on a property field, the getter will be invoked. It is
-		not possible to obtain the value directly.</haxe_doc>
+		If `field` is null, the result is unspecified.</haxe_doc>
 		</field>
 		<setField public="1" get="inline" set="null" line="33" static="1">
 			<f a="o:field:value">
@@ -1981,10 +2021,7 @@
 		If `o` has no field named `field`, this function is only guaranteed to
 		work for anonymous structures.
 
-		If `o` or `field` are null, the result is unspecified.
-
-		(As3) If used on a property field, the setter will be invoked. It is
-		not possible to set the value directly.</haxe_doc>
+		If `o` or `field` are null, the result is unspecified.</haxe_doc>
 		</setField>
 		<getProperty public="1" get="inline" set="null" line="39" static="1">
 			<f a="o:field">
@@ -2326,21 +2363,31 @@
 		</meta>
 	</class>
 	<class path="Std" params="" file="/home/vsts/work/1/s/std/neko/_std/Std.hx">
-		<is public="1" set="method" line="24" static="1">
+		<is public="1" get="inline" set="null" line="24" static="1">
 			<f a="v:t">
 				<d/>
 				<d/>
 				<x path="Bool"/>
 			</f>
-			<meta>
-				<m n=":has_untyped"/>
-				<m n=":ifFeature"><e>"typed_cast"</e></m>
-			</meta>
-			<haxe_doc>Tells if a value `v` is of the type `t`. Returns `false` if `v` or `t` are null.
+			<meta><m n=":ifFeature"><e>"typed_cast"</e></m></meta>
+			<haxe_doc>DEPRECATED. Use `Std.isOfType(v, t)` instead.
+
+		Tells if a value `v` is of the type `t`. Returns `false` if `v` or `t` are null.
 
 		If `t` is a class or interface with `@:generic` meta, the result is `false`.</haxe_doc>
 		</is>
-		<downcast public="1" params="T:S" set="method" line="28" static="1">
+		<isOfType public="1" set="method" line="28" static="1">
+			<f a="v:t">
+				<d/>
+				<d/>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":has_untyped"/></meta>
+			<haxe_doc>Tells if a value `v` is of the type `t`. Returns `false` if `v` or `t` are null.
+
+		If `t` is a class or interface with `@:generic` meta, the result is `false`.</haxe_doc>
+		</isOfType>
+		<downcast public="1" params="T:S" set="method" line="32" static="1">
 			<f a="value:c">
 				<c path="downcast.T"/>
 				<x path="Class"><c path="downcast.S"/></x>
@@ -2361,7 +2408,7 @@
 		If `value` is null, the result is null. If `c` is null, the result is
 		unspecified.</haxe_doc>
 		</downcast>
-		<instance public="1" params="T:S" set="method" line="33" static="1">
+		<instance public="1" params="T:S" set="method" line="37" static="1">
 			<f a="value:c">
 				<c path="instance.T"/>
 				<x path="Class"><c path="instance.S"/></x>
@@ -2369,7 +2416,7 @@
 			</f>
 			<meta><m n=":deprecated"><e>"Std.instance() is deprecated. Use Std.downcast() instead."</e></m></meta>
 		</instance>
-		<string public="1" set="method" line="37" static="1">
+		<string public="1" set="method" line="41" static="1">
 			<f a="s">
 				<d/>
 				<c path="String"/>
@@ -2392,7 +2439,7 @@
 
 		If s is null, "null" is returned.</haxe_doc>
 		</string>
-		<int public="1" set="method" line="41" static="1">
+		<int public="1" set="method" line="45" static="1">
 			<f a="x">
 				<x path="Float"/>
 				<x path="Int"/>
@@ -2401,7 +2448,7 @@
 
 		If `x` is outside of the signed Int32 range, or is `NaN`, `NEGATIVE_INFINITY` or `POSITIVE_INFINITY`, the result is unspecified.</haxe_doc>
 		</int>
-		<parseInt public="1" set="method" line="47" static="1">
+		<parseInt public="1" set="method" line="51" static="1">
 			<f a="x">
 				<c path="String"/>
 				<x path="Null"><x path="Int"/></x>
@@ -2427,7 +2474,7 @@
 		If `x` is null, the result is unspecified.
 		If `x` cannot be parsed as integer, the result is `null`.</haxe_doc>
 		</parseInt>
-		<parseFloat public="1" set="method" line="59" static="1">
+		<parseFloat public="1" set="method" line="63" static="1">
 			<f a="x">
 				<c path="String"/>
 				<x path="Float"/>
@@ -2440,7 +2487,7 @@
 
 		Additionally, decimal notation may contain a single `.` to denote the start of the fractions.</haxe_doc>
 		</parseFloat>
-		<random public="1" set="method" line="69" static="1">
+		<random public="1" set="method" line="73" static="1">
 			<f a="x">
 				<x path="Int"/>
 				<x path="Int"/>
@@ -4148,9 +4195,7 @@
 
 		The order of the fields in the returned Array is unspecified.
 
-		If `c` is null, the result is unspecified.
-
-		(As3) This method only returns instance fields that are public.</haxe_doc>
+		If `c` is null, the result is unspecified.</haxe_doc>
 		</getInstanceFields>
 		<getClassFields public="1" set="method" line="153" static="1">
 			<f a="c">
@@ -4163,9 +4208,7 @@
 
 		The order of the fields in the returned Array is unspecified.
 
-		If `c` is null, the result is unspecified.
-
-		(As3) This method only returns class fields that are public.</haxe_doc>
+		If `c` is null, the result is unspecified.</haxe_doc>
 		</getClassFields>
 		<getEnumConstructs public="1" set="method" line="169" static="1">
 			<f a="e">
@@ -5481,19 +5524,19 @@
 		the place the last exception was thrown and the place it was
 		caught, or an empty array if not available.</haxe_doc>
 		</exceptionStack>
-		<toString public="1" set="method" line="259" static="1">
+		<toString public="1" set="method" line="257" static="1">
 			<f a="stack">
 				<c path="Array"><e path="haxe.StackItem"/></c>
 				<c path="String"/>
 			</f>
 			<haxe_doc>Returns a representation of the stack as a printable string.</haxe_doc>
 		</toString>
-		<itemToString set="method" line="268" static="1"><f a="b:s">
+		<itemToString set="method" line="266" static="1"><f a="b:s">
 	<c path="StringBuf"/>
 	<e path="haxe.StackItem"/>
 	<x path="Void"/>
 </f></itemToString>
-		<makeStack set="method" line="302" static="1">
+		<makeStack set="method" line="300" static="1">
 			<f a="s">
 				<d/>
 				<c path="Array"><e path="haxe.StackItem"/></c>
@@ -6566,14 +6609,21 @@
 		<haxe_doc>Returns an Int with the value of the Int64 `x`.
 		Throws an exception  if `x` cannot be represented in 32 bits.</haxe_doc>
 	</toInt>
-	<is public="1" get="inline" set="null" line="71" static="1">
+	<is public="1" get="inline" set="null" line="69" static="1">
+		<f a="val">
+			<d/>
+			<x path="Bool"/>
+		</f>
+		<meta><m n=":deprecated"><e>"haxe.Int64.is() is deprecated. Use haxe.Int64.isInt64() instead"</e></m></meta>
+	</is>
+	<isInt64 public="1" get="inline" set="null" line="76" static="1">
 		<f a="val">
 			<d/>
 			<x path="Bool"/>
 		</f>
 		<haxe_doc>Returns whether the value `val` is of type `haxe.Int64`</haxe_doc>
-	</is>
-	<getHigh public="1" get="inline" set="null" line="78" static="1">
+	</isInt64>
+	<getHigh public="1" get="inline" set="null" line="83" static="1">
 		<f a="x">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int32"/>
@@ -6581,7 +6631,7 @@
 		<meta><m n=":deprecated"><e>"Use high instead"</e></m></meta>
 		<haxe_doc>Returns the high 32-bit word of `x`.</haxe_doc>
 	</getHigh>
-	<getLow public="1" get="inline" set="null" line="85" static="1">
+	<getLow public="1" get="inline" set="null" line="90" static="1">
 		<f a="x">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int32"/>
@@ -6589,21 +6639,21 @@
 		<meta><m n=":deprecated"><e>"Use low instead"</e></m></meta>
 		<haxe_doc>Returns the low 32-bit word of `x`.</haxe_doc>
 	</getLow>
-	<isNeg public="1" get="inline" set="null" line="91" static="1">
+	<isNeg public="1" get="inline" set="null" line="96" static="1">
 		<f a="x">
 			<x path="haxe.Int64"/>
 			<x path="Bool"/>
 		</f>
 		<haxe_doc>Returns `true` if `x` is less than zero.</haxe_doc>
 	</isNeg>
-	<isZero public="1" get="inline" set="null" line="97" static="1">
+	<isZero public="1" get="inline" set="null" line="102" static="1">
 		<f a="x">
 			<x path="haxe.Int64"/>
 			<x path="Bool"/>
 		</f>
 		<haxe_doc>Returns `true` if `x` is exactly zero.</haxe_doc>
 	</isZero>
-	<compare public="1" get="inline" set="null" line="105" static="1">
+	<compare public="1" get="inline" set="null" line="110" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6613,7 +6663,7 @@
 		Returns a negative value if `a < b`, positive if `a > b`,
 		or 0 if `a == b`.]]></haxe_doc>
 	</compare>
-	<ucompare public="1" get="inline" set="null" line="116" static="1">
+	<ucompare public="1" get="inline" set="null" line="121" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6623,29 +6673,29 @@
 		Returns a negative value if `a < b`, positive if `a > b`,
 		or 0 if `a == b`.]]></haxe_doc>
 	</ucompare>
-	<toStr public="1" get="inline" set="null" line="124" static="1">
+	<toStr public="1" get="inline" set="null" line="129" static="1">
 		<f a="x">
 			<x path="haxe.Int64"/>
 			<c path="String"/>
 		</f>
 		<haxe_doc>Returns a signed decimal `String` representation of `x`.</haxe_doc>
 	</toStr>
-	<toString set="method" line="127" static="1">
+	<toString set="method" line="132" static="1">
 		<f a="this">
 			<t path="haxe._Int64.__Int64"/>
 			<c path="String"/>
 		</f>
 		<meta><m n=":impl"/></meta>
 	</toString>
-	<parseString public="1" get="inline" set="null" line="153" static="1"><f a="sParam">
+	<parseString public="1" get="inline" set="null" line="158" static="1"><f a="sParam">
 	<c path="String"/>
 	<x path="haxe.Int64"/>
 </f></parseString>
-	<fromFloat public="1" get="inline" set="null" line="157" static="1"><f a="f">
+	<fromFloat public="1" get="inline" set="null" line="162" static="1"><f a="f">
 	<x path="Float"/>
 	<x path="haxe.Int64"/>
 </f></fromFloat>
-	<divMod public="1" set="method" line="165" static="1">
+	<divMod public="1" set="method" line="170" static="1">
 		<f a="dividend:divisor">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6657,7 +6707,7 @@
 		<haxe_doc>Performs signed integer divison of `dividend` by `divisor`.
 		Returns `{ quotient : Int64, modulus : Int64 }`.</haxe_doc>
 	</divMod>
-	<neg public="1" get="inline" set="null" line="215" static="1">
+	<neg public="1" get="inline" set="null" line="220" static="1">
 		<f a="x">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6665,7 +6715,7 @@
 		<meta><m n=":op"><e>-A</e></m></meta>
 		<haxe_doc>Returns the negative of `x`.</haxe_doc>
 	</neg>
-	<preIncrement get="inline" set="null" line="223" static="1">
+	<preIncrement get="inline" set="null" line="228" static="1">
 		<f a="this">
 			<t path="haxe._Int64.__Int64"/>
 			<x path="haxe.Int64"/>
@@ -6675,7 +6725,7 @@
 			<m n=":op"><e>++A</e></m>
 		</meta>
 	</preIncrement>
-	<postIncrement get="inline" set="null" line="231" static="1">
+	<postIncrement get="inline" set="null" line="236" static="1">
 		<f a="this">
 			<t path="haxe._Int64.__Int64"/>
 			<x path="haxe.Int64"/>
@@ -6685,7 +6735,7 @@
 			<m n=":op"><e>A++</e></m>
 		</meta>
 	</postIncrement>
-	<preDecrement get="inline" set="null" line="237" static="1">
+	<preDecrement get="inline" set="null" line="242" static="1">
 		<f a="this">
 			<t path="haxe._Int64.__Int64"/>
 			<x path="haxe.Int64"/>
@@ -6695,7 +6745,7 @@
 			<m n=":op"><e>--A</e></m>
 		</meta>
 	</preDecrement>
-	<postDecrement get="inline" set="null" line="245" static="1">
+	<postDecrement get="inline" set="null" line="250" static="1">
 		<f a="this">
 			<t path="haxe._Int64.__Int64"/>
 			<x path="haxe.Int64"/>
@@ -6705,7 +6755,7 @@
 			<m n=":op"><e>A--</e></m>
 		</meta>
 	</postDecrement>
-	<add public="1" get="inline" set="null" line="254" static="1">
+	<add public="1" get="inline" set="null" line="259" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6714,7 +6764,7 @@
 		<meta><m n=":op"><e>A + B</e></m></meta>
 		<haxe_doc>Returns the sum of `a` and `b`.</haxe_doc>
 	</add>
-	<addInt get="inline" set="null" line="262" static="1">
+	<addInt get="inline" set="null" line="267" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="Int"/>
@@ -6725,7 +6775,7 @@
 			<m n=":commutative"/>
 		</meta>
 	</addInt>
-	<sub public="1" get="inline" set="null" line="268" static="1">
+	<sub public="1" get="inline" set="null" line="273" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6734,7 +6784,7 @@
 		<meta><m n=":op"><e>A - B</e></m></meta>
 		<haxe_doc>Returns `a` minus `b`.</haxe_doc>
 	</sub>
-	<subInt get="inline" set="null" line="276" static="1">
+	<subInt get="inline" set="null" line="281" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="Int"/>
@@ -6742,7 +6792,7 @@
 		</f>
 		<meta><m n=":op"><e>A - B</e></m></meta>
 	</subInt>
-	<intSub get="inline" set="null" line="279" static="1">
+	<intSub get="inline" set="null" line="284" static="1">
 		<f a="a:b">
 			<x path="Int"/>
 			<x path="haxe.Int64"/>
@@ -6750,7 +6800,7 @@
 		</f>
 		<meta><m n=":op"><e>A - B</e></m></meta>
 	</intSub>
-	<mul public="1" get="inline" set="null" line="286" static="1">
+	<mul public="1" get="inline" set="null" line="291" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6759,7 +6809,7 @@
 		<meta><m n=":op"><e>A * B</e></m></meta>
 		<haxe_doc>Returns the product of `a` and `b`.</haxe_doc>
 	</mul>
-	<mulInt get="inline" set="null" line="308" static="1">
+	<mulInt get="inline" set="null" line="313" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="Int"/>
@@ -6770,7 +6820,7 @@
 			<m n=":commutative"/>
 		</meta>
 	</mulInt>
-	<div public="1" get="inline" set="null" line="314" static="1">
+	<div public="1" get="inline" set="null" line="319" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6779,7 +6829,7 @@
 		<meta><m n=":op"><e>A / B</e></m></meta>
 		<haxe_doc>Returns the quotient of `a` divided by `b`.</haxe_doc>
 	</div>
-	<divInt get="inline" set="null" line="317" static="1">
+	<divInt get="inline" set="null" line="322" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="Int"/>
@@ -6787,7 +6837,7 @@
 		</f>
 		<meta><m n=":op"><e>A / B</e></m></meta>
 	</divInt>
-	<intDiv get="inline" set="null" line="320" static="1">
+	<intDiv get="inline" set="null" line="325" static="1">
 		<f a="a:b">
 			<x path="Int"/>
 			<x path="haxe.Int64"/>
@@ -6795,7 +6845,7 @@
 		</f>
 		<meta><m n=":op"><e>A / B</e></m></meta>
 	</intDiv>
-	<mod public="1" get="inline" set="null" line="326" static="1">
+	<mod public="1" get="inline" set="null" line="331" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6804,7 +6854,7 @@
 		<meta><m n=":op"><e>A % B</e></m></meta>
 		<haxe_doc>Returns the modulus of `a` divided by `b`.</haxe_doc>
 	</mod>
-	<modInt get="inline" set="null" line="329" static="1">
+	<modInt get="inline" set="null" line="334" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="Int"/>
@@ -6812,7 +6862,7 @@
 		</f>
 		<meta><m n=":op"><e>A % B</e></m></meta>
 	</modInt>
-	<intMod get="inline" set="null" line="332" static="1">
+	<intMod get="inline" set="null" line="337" static="1">
 		<f a="a:b">
 			<x path="Int"/>
 			<x path="haxe.Int64"/>
@@ -6820,7 +6870,7 @@
 		</f>
 		<meta><m n=":op"><e>A % B</e></m></meta>
 	</intMod>
-	<eq public="1" get="inline" set="null" line="338" static="1">
+	<eq public="1" get="inline" set="null" line="343" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6829,7 +6879,7 @@
 		<meta><m n=":op"><e>A == B</e></m></meta>
 		<haxe_doc>Returns `true` if `a` is equal to `b`.</haxe_doc>
 	</eq>
-	<eqInt get="inline" set="null" line="341" static="1">
+	<eqInt get="inline" set="null" line="346" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="Int"/>
@@ -6840,7 +6890,7 @@
 			<m n=":commutative"/>
 		</meta>
 	</eqInt>
-	<neq public="1" get="inline" set="null" line="347" static="1">
+	<neq public="1" get="inline" set="null" line="352" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6849,7 +6899,7 @@
 		<meta><m n=":op"><e>A != B</e></m></meta>
 		<haxe_doc>Returns `true` if `a` is not equal to `b`.</haxe_doc>
 	</neq>
-	<neqInt get="inline" set="null" line="350" static="1">
+	<neqInt get="inline" set="null" line="355" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="Int"/>
@@ -6860,7 +6910,7 @@
 			<m n=":commutative"/>
 		</meta>
 	</neqInt>
-	<lt get="inline" set="null" line="353" static="1">
+	<lt get="inline" set="null" line="358" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6868,7 +6918,7 @@
 		</f>
 		<meta><m n=":op"><e><![CDATA[A < B]]></e></m></meta>
 	</lt>
-	<ltInt get="inline" set="null" line="356" static="1">
+	<ltInt get="inline" set="null" line="361" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="Int"/>
@@ -6876,7 +6926,7 @@
 		</f>
 		<meta><m n=":op"><e><![CDATA[A < B]]></e></m></meta>
 	</ltInt>
-	<intLt get="inline" set="null" line="359" static="1">
+	<intLt get="inline" set="null" line="364" static="1">
 		<f a="a:b">
 			<x path="Int"/>
 			<x path="haxe.Int64"/>
@@ -6884,7 +6934,7 @@
 		</f>
 		<meta><m n=":op"><e><![CDATA[A < B]]></e></m></meta>
 	</intLt>
-	<lte get="inline" set="null" line="362" static="1">
+	<lte get="inline" set="null" line="367" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6892,7 +6942,7 @@
 		</f>
 		<meta><m n=":op"><e><![CDATA[A <= B]]></e></m></meta>
 	</lte>
-	<lteInt get="inline" set="null" line="365" static="1">
+	<lteInt get="inline" set="null" line="370" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="Int"/>
@@ -6900,7 +6950,7 @@
 		</f>
 		<meta><m n=":op"><e><![CDATA[A <= B]]></e></m></meta>
 	</lteInt>
-	<intLte get="inline" set="null" line="368" static="1">
+	<intLte get="inline" set="null" line="373" static="1">
 		<f a="a:b">
 			<x path="Int"/>
 			<x path="haxe.Int64"/>
@@ -6908,7 +6958,7 @@
 		</f>
 		<meta><m n=":op"><e><![CDATA[A <= B]]></e></m></meta>
 	</intLte>
-	<gt get="inline" set="null" line="371" static="1">
+	<gt get="inline" set="null" line="376" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6916,7 +6966,7 @@
 		</f>
 		<meta><m n=":op"><e><![CDATA[A > B]]></e></m></meta>
 	</gt>
-	<gtInt get="inline" set="null" line="374" static="1">
+	<gtInt get="inline" set="null" line="379" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="Int"/>
@@ -6924,7 +6974,7 @@
 		</f>
 		<meta><m n=":op"><e><![CDATA[A > B]]></e></m></meta>
 	</gtInt>
-	<intGt get="inline" set="null" line="377" static="1">
+	<intGt get="inline" set="null" line="382" static="1">
 		<f a="a:b">
 			<x path="Int"/>
 			<x path="haxe.Int64"/>
@@ -6932,7 +6982,7 @@
 		</f>
 		<meta><m n=":op"><e><![CDATA[A > B]]></e></m></meta>
 	</intGt>
-	<gte get="inline" set="null" line="380" static="1">
+	<gte get="inline" set="null" line="385" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6940,7 +6990,7 @@
 		</f>
 		<meta><m n=":op"><e><![CDATA[A >= B]]></e></m></meta>
 	</gte>
-	<gteInt get="inline" set="null" line="383" static="1">
+	<gteInt get="inline" set="null" line="388" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="Int"/>
@@ -6948,7 +6998,7 @@
 		</f>
 		<meta><m n=":op"><e><![CDATA[A >= B]]></e></m></meta>
 	</gteInt>
-	<intGte get="inline" set="null" line="386" static="1">
+	<intGte get="inline" set="null" line="391" static="1">
 		<f a="a:b">
 			<x path="Int"/>
 			<x path="haxe.Int64"/>
@@ -6956,7 +7006,7 @@
 		</f>
 		<meta><m n=":op"><e><![CDATA[A >= B]]></e></m></meta>
 	</intGte>
-	<complement get="inline" set="null" line="392" static="1">
+	<complement get="inline" set="null" line="397" static="1">
 		<f a="a">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6964,7 +7014,7 @@
 		<meta><m n=":op"><e>~A</e></m></meta>
 		<haxe_doc>Returns the bitwise NOT of `a`.</haxe_doc>
 	</complement>
-	<and public="1" get="inline" set="null" line="398" static="1">
+	<and public="1" get="inline" set="null" line="403" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6973,7 +7023,7 @@
 		<meta><m n=":op"><e><![CDATA[A & B]]></e></m></meta>
 		<haxe_doc>Returns the bitwise AND of `a` and `b`.</haxe_doc>
 	</and>
-	<or public="1" get="inline" set="null" line="404" static="1">
+	<or public="1" get="inline" set="null" line="409" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6982,7 +7032,7 @@
 		<meta><m n=":op"><e>A | B</e></m></meta>
 		<haxe_doc>Returns the bitwise OR of `a` and `b`.</haxe_doc>
 	</or>
-	<xor public="1" get="inline" set="null" line="410" static="1">
+	<xor public="1" get="inline" set="null" line="415" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="haxe.Int64"/>
@@ -6991,7 +7041,7 @@
 		<meta><m n=":op"><e>A ^ B</e></m></meta>
 		<haxe_doc>Returns the bitwise XOR of `a` and `b`.</haxe_doc>
 	</xor>
-	<shl public="1" get="inline" set="null" line="416" static="1">
+	<shl public="1" get="inline" set="null" line="421" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="Int"/>
@@ -7000,7 +7050,7 @@
 		<meta><m n=":op"><e><![CDATA[A << B]]></e></m></meta>
 		<haxe_doc>Returns `a` left-shifted by `b` bits.</haxe_doc>
 	</shl>
-	<shr public="1" get="inline" set="null" line="425" static="1">
+	<shr public="1" get="inline" set="null" line="430" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="Int"/>
@@ -7010,7 +7060,7 @@
 		<haxe_doc>Returns `a` right-shifted by `b` bits in signed mode.
 		`a` is sign-extended.</haxe_doc>
 	</shr>
-	<ushr public="1" get="inline" set="null" line="434" static="1">
+	<ushr public="1" get="inline" set="null" line="439" static="1">
 		<f a="a:b">
 			<x path="haxe.Int64"/>
 			<x path="Int"/>
@@ -7024,14 +7074,14 @@
 		<x path="haxe.Int32"/>
 		<meta><m n=":impl"/></meta>
 	</high>
-	<get_high get="inline" set="null" line="441" static="1">
+	<get_high get="inline" set="null" line="446" static="1">
 		<f a="this">
 			<t path="haxe._Int64.__Int64"/>
 			<x path="haxe.Int32"/>
 		</f>
 		<meta><m n=":impl"/></meta>
 	</get_high>
-	<set_high get="inline" set="null" line="444" static="1">
+	<set_high get="inline" set="null" line="449" static="1">
 		<f a="this:x">
 			<t path="haxe._Int64.__Int64"/>
 			<x path="haxe.Int32"/>
@@ -7043,14 +7093,14 @@
 		<x path="haxe.Int32"/>
 		<meta><m n=":impl"/></meta>
 	</low>
-	<get_low get="inline" set="null" line="449" static="1">
+	<get_low get="inline" set="null" line="454" static="1">
 		<f a="this">
 			<t path="haxe._Int64.__Int64"/>
 			<x path="haxe.Int32"/>
 		</f>
 		<meta><m n=":impl"/></meta>
 	</get_low>
-	<set_low get="inline" set="null" line="452" static="1">
+	<set_low get="inline" set="null" line="457" static="1">
 		<f a="this:x">
 			<t path="haxe._Int64.__Int64"/>
 			<x path="haxe.Int32"/>
@@ -7104,14 +7154,21 @@
 			<haxe_doc>Returns an Int with the value of the Int64 `x`.
 		Throws an exception  if `x` cannot be represented in 32 bits.</haxe_doc>
 		</toInt>
-		<is public="1" get="inline" set="null" line="71" static="1">
+		<is public="1" get="inline" set="null" line="69" static="1">
+			<f a="val">
+				<d/>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":deprecated"><e>"haxe.Int64.is() is deprecated. Use haxe.Int64.isInt64() instead"</e></m></meta>
+		</is>
+		<isInt64 public="1" get="inline" set="null" line="76" static="1">
 			<f a="val">
 				<d/>
 				<x path="Bool"/>
 			</f>
 			<haxe_doc>Returns whether the value `val` is of type `haxe.Int64`</haxe_doc>
-		</is>
-		<getHigh public="1" get="inline" set="null" line="78" static="1">
+		</isInt64>
+		<getHigh public="1" get="inline" set="null" line="83" static="1">
 			<f a="x">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int32"/>
@@ -7119,7 +7176,7 @@
 			<meta><m n=":deprecated"><e>"Use high instead"</e></m></meta>
 			<haxe_doc>Returns the high 32-bit word of `x`.</haxe_doc>
 		</getHigh>
-		<getLow public="1" get="inline" set="null" line="85" static="1">
+		<getLow public="1" get="inline" set="null" line="90" static="1">
 			<f a="x">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int32"/>
@@ -7127,21 +7184,21 @@
 			<meta><m n=":deprecated"><e>"Use low instead"</e></m></meta>
 			<haxe_doc>Returns the low 32-bit word of `x`.</haxe_doc>
 		</getLow>
-		<isNeg public="1" get="inline" set="null" line="91" static="1">
+		<isNeg public="1" get="inline" set="null" line="96" static="1">
 			<f a="x">
 				<x path="haxe.Int64"/>
 				<x path="Bool"/>
 			</f>
 			<haxe_doc>Returns `true` if `x` is less than zero.</haxe_doc>
 		</isNeg>
-		<isZero public="1" get="inline" set="null" line="97" static="1">
+		<isZero public="1" get="inline" set="null" line="102" static="1">
 			<f a="x">
 				<x path="haxe.Int64"/>
 				<x path="Bool"/>
 			</f>
 			<haxe_doc>Returns `true` if `x` is exactly zero.</haxe_doc>
 		</isZero>
-		<compare public="1" get="inline" set="null" line="105" static="1">
+		<compare public="1" get="inline" set="null" line="110" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7151,7 +7208,7 @@
 		Returns a negative value if `a < b`, positive if `a > b`,
 		or 0 if `a == b`.]]></haxe_doc>
 		</compare>
-		<ucompare public="1" get="inline" set="null" line="116" static="1">
+		<ucompare public="1" get="inline" set="null" line="121" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7161,29 +7218,29 @@
 		Returns a negative value if `a < b`, positive if `a > b`,
 		or 0 if `a == b`.]]></haxe_doc>
 		</ucompare>
-		<toStr public="1" get="inline" set="null" line="124" static="1">
+		<toStr public="1" get="inline" set="null" line="129" static="1">
 			<f a="x">
 				<x path="haxe.Int64"/>
 				<c path="String"/>
 			</f>
 			<haxe_doc>Returns a signed decimal `String` representation of `x`.</haxe_doc>
 		</toStr>
-		<toString set="method" line="127" static="1">
+		<toString set="method" line="132" static="1">
 			<f a="this">
 				<t path="haxe._Int64.__Int64"/>
 				<c path="String"/>
 			</f>
 			<meta><m n=":impl"/></meta>
 		</toString>
-		<parseString public="1" get="inline" set="null" line="153" static="1"><f a="sParam">
+		<parseString public="1" get="inline" set="null" line="158" static="1"><f a="sParam">
 	<c path="String"/>
 	<x path="haxe.Int64"/>
 </f></parseString>
-		<fromFloat public="1" get="inline" set="null" line="157" static="1"><f a="f">
+		<fromFloat public="1" get="inline" set="null" line="162" static="1"><f a="f">
 	<x path="Float"/>
 	<x path="haxe.Int64"/>
 </f></fromFloat>
-		<divMod public="1" set="method" line="165" static="1">
+		<divMod public="1" set="method" line="170" static="1">
 			<f a="dividend:divisor">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7195,7 +7252,7 @@
 			<haxe_doc>Performs signed integer divison of `dividend` by `divisor`.
 		Returns `{ quotient : Int64, modulus : Int64 }`.</haxe_doc>
 		</divMod>
-		<neg public="1" get="inline" set="null" line="215" static="1">
+		<neg public="1" get="inline" set="null" line="220" static="1">
 			<f a="x">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7203,7 +7260,7 @@
 			<meta><m n=":op"><e>-A</e></m></meta>
 			<haxe_doc>Returns the negative of `x`.</haxe_doc>
 		</neg>
-		<preIncrement get="inline" set="null" line="223" static="1">
+		<preIncrement get="inline" set="null" line="228" static="1">
 			<f a="this">
 				<t path="haxe._Int64.__Int64"/>
 				<x path="haxe.Int64"/>
@@ -7213,7 +7270,7 @@
 				<m n=":op"><e>++A</e></m>
 			</meta>
 		</preIncrement>
-		<postIncrement get="inline" set="null" line="231" static="1">
+		<postIncrement get="inline" set="null" line="236" static="1">
 			<f a="this">
 				<t path="haxe._Int64.__Int64"/>
 				<x path="haxe.Int64"/>
@@ -7223,7 +7280,7 @@
 				<m n=":op"><e>A++</e></m>
 			</meta>
 		</postIncrement>
-		<preDecrement get="inline" set="null" line="237" static="1">
+		<preDecrement get="inline" set="null" line="242" static="1">
 			<f a="this">
 				<t path="haxe._Int64.__Int64"/>
 				<x path="haxe.Int64"/>
@@ -7233,7 +7290,7 @@
 				<m n=":op"><e>--A</e></m>
 			</meta>
 		</preDecrement>
-		<postDecrement get="inline" set="null" line="245" static="1">
+		<postDecrement get="inline" set="null" line="250" static="1">
 			<f a="this">
 				<t path="haxe._Int64.__Int64"/>
 				<x path="haxe.Int64"/>
@@ -7243,7 +7300,7 @@
 				<m n=":op"><e>A--</e></m>
 			</meta>
 		</postDecrement>
-		<add public="1" get="inline" set="null" line="254" static="1">
+		<add public="1" get="inline" set="null" line="259" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7252,7 +7309,7 @@
 			<meta><m n=":op"><e>A + B</e></m></meta>
 			<haxe_doc>Returns the sum of `a` and `b`.</haxe_doc>
 		</add>
-		<addInt get="inline" set="null" line="262" static="1">
+		<addInt get="inline" set="null" line="267" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="Int"/>
@@ -7263,7 +7320,7 @@
 				<m n=":commutative"/>
 			</meta>
 		</addInt>
-		<sub public="1" get="inline" set="null" line="268" static="1">
+		<sub public="1" get="inline" set="null" line="273" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7272,7 +7329,7 @@
 			<meta><m n=":op"><e>A - B</e></m></meta>
 			<haxe_doc>Returns `a` minus `b`.</haxe_doc>
 		</sub>
-		<subInt get="inline" set="null" line="276" static="1">
+		<subInt get="inline" set="null" line="281" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="Int"/>
@@ -7280,7 +7337,7 @@
 			</f>
 			<meta><m n=":op"><e>A - B</e></m></meta>
 		</subInt>
-		<intSub get="inline" set="null" line="279" static="1">
+		<intSub get="inline" set="null" line="284" static="1">
 			<f a="a:b">
 				<x path="Int"/>
 				<x path="haxe.Int64"/>
@@ -7288,7 +7345,7 @@
 			</f>
 			<meta><m n=":op"><e>A - B</e></m></meta>
 		</intSub>
-		<mul public="1" get="inline" set="null" line="286" static="1">
+		<mul public="1" get="inline" set="null" line="291" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7297,7 +7354,7 @@
 			<meta><m n=":op"><e>A * B</e></m></meta>
 			<haxe_doc>Returns the product of `a` and `b`.</haxe_doc>
 		</mul>
-		<mulInt get="inline" set="null" line="308" static="1">
+		<mulInt get="inline" set="null" line="313" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="Int"/>
@@ -7308,7 +7365,7 @@
 				<m n=":commutative"/>
 			</meta>
 		</mulInt>
-		<div public="1" get="inline" set="null" line="314" static="1">
+		<div public="1" get="inline" set="null" line="319" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7317,7 +7374,7 @@
 			<meta><m n=":op"><e>A / B</e></m></meta>
 			<haxe_doc>Returns the quotient of `a` divided by `b`.</haxe_doc>
 		</div>
-		<divInt get="inline" set="null" line="317" static="1">
+		<divInt get="inline" set="null" line="322" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="Int"/>
@@ -7325,7 +7382,7 @@
 			</f>
 			<meta><m n=":op"><e>A / B</e></m></meta>
 		</divInt>
-		<intDiv get="inline" set="null" line="320" static="1">
+		<intDiv get="inline" set="null" line="325" static="1">
 			<f a="a:b">
 				<x path="Int"/>
 				<x path="haxe.Int64"/>
@@ -7333,7 +7390,7 @@
 			</f>
 			<meta><m n=":op"><e>A / B</e></m></meta>
 		</intDiv>
-		<mod public="1" get="inline" set="null" line="326" static="1">
+		<mod public="1" get="inline" set="null" line="331" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7342,7 +7399,7 @@
 			<meta><m n=":op"><e>A % B</e></m></meta>
 			<haxe_doc>Returns the modulus of `a` divided by `b`.</haxe_doc>
 		</mod>
-		<modInt get="inline" set="null" line="329" static="1">
+		<modInt get="inline" set="null" line="334" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="Int"/>
@@ -7350,7 +7407,7 @@
 			</f>
 			<meta><m n=":op"><e>A % B</e></m></meta>
 		</modInt>
-		<intMod get="inline" set="null" line="332" static="1">
+		<intMod get="inline" set="null" line="337" static="1">
 			<f a="a:b">
 				<x path="Int"/>
 				<x path="haxe.Int64"/>
@@ -7358,7 +7415,7 @@
 			</f>
 			<meta><m n=":op"><e>A % B</e></m></meta>
 		</intMod>
-		<eq public="1" get="inline" set="null" line="338" static="1">
+		<eq public="1" get="inline" set="null" line="343" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7367,7 +7424,7 @@
 			<meta><m n=":op"><e>A == B</e></m></meta>
 			<haxe_doc>Returns `true` if `a` is equal to `b`.</haxe_doc>
 		</eq>
-		<eqInt get="inline" set="null" line="341" static="1">
+		<eqInt get="inline" set="null" line="346" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="Int"/>
@@ -7378,7 +7435,7 @@
 				<m n=":commutative"/>
 			</meta>
 		</eqInt>
-		<neq public="1" get="inline" set="null" line="347" static="1">
+		<neq public="1" get="inline" set="null" line="352" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7387,7 +7444,7 @@
 			<meta><m n=":op"><e>A != B</e></m></meta>
 			<haxe_doc>Returns `true` if `a` is not equal to `b`.</haxe_doc>
 		</neq>
-		<neqInt get="inline" set="null" line="350" static="1">
+		<neqInt get="inline" set="null" line="355" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="Int"/>
@@ -7398,7 +7455,7 @@
 				<m n=":commutative"/>
 			</meta>
 		</neqInt>
-		<lt get="inline" set="null" line="353" static="1">
+		<lt get="inline" set="null" line="358" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7406,7 +7463,7 @@
 			</f>
 			<meta><m n=":op"><e><![CDATA[A < B]]></e></m></meta>
 		</lt>
-		<ltInt get="inline" set="null" line="356" static="1">
+		<ltInt get="inline" set="null" line="361" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="Int"/>
@@ -7414,7 +7471,7 @@
 			</f>
 			<meta><m n=":op"><e><![CDATA[A < B]]></e></m></meta>
 		</ltInt>
-		<intLt get="inline" set="null" line="359" static="1">
+		<intLt get="inline" set="null" line="364" static="1">
 			<f a="a:b">
 				<x path="Int"/>
 				<x path="haxe.Int64"/>
@@ -7422,7 +7479,7 @@
 			</f>
 			<meta><m n=":op"><e><![CDATA[A < B]]></e></m></meta>
 		</intLt>
-		<lte get="inline" set="null" line="362" static="1">
+		<lte get="inline" set="null" line="367" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7430,7 +7487,7 @@
 			</f>
 			<meta><m n=":op"><e><![CDATA[A <= B]]></e></m></meta>
 		</lte>
-		<lteInt get="inline" set="null" line="365" static="1">
+		<lteInt get="inline" set="null" line="370" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="Int"/>
@@ -7438,7 +7495,7 @@
 			</f>
 			<meta><m n=":op"><e><![CDATA[A <= B]]></e></m></meta>
 		</lteInt>
-		<intLte get="inline" set="null" line="368" static="1">
+		<intLte get="inline" set="null" line="373" static="1">
 			<f a="a:b">
 				<x path="Int"/>
 				<x path="haxe.Int64"/>
@@ -7446,7 +7503,7 @@
 			</f>
 			<meta><m n=":op"><e><![CDATA[A <= B]]></e></m></meta>
 		</intLte>
-		<gt get="inline" set="null" line="371" static="1">
+		<gt get="inline" set="null" line="376" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7454,7 +7511,7 @@
 			</f>
 			<meta><m n=":op"><e><![CDATA[A > B]]></e></m></meta>
 		</gt>
-		<gtInt get="inline" set="null" line="374" static="1">
+		<gtInt get="inline" set="null" line="379" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="Int"/>
@@ -7462,7 +7519,7 @@
 			</f>
 			<meta><m n=":op"><e><![CDATA[A > B]]></e></m></meta>
 		</gtInt>
-		<intGt get="inline" set="null" line="377" static="1">
+		<intGt get="inline" set="null" line="382" static="1">
 			<f a="a:b">
 				<x path="Int"/>
 				<x path="haxe.Int64"/>
@@ -7470,7 +7527,7 @@
 			</f>
 			<meta><m n=":op"><e><![CDATA[A > B]]></e></m></meta>
 		</intGt>
-		<gte get="inline" set="null" line="380" static="1">
+		<gte get="inline" set="null" line="385" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7478,7 +7535,7 @@
 			</f>
 			<meta><m n=":op"><e><![CDATA[A >= B]]></e></m></meta>
 		</gte>
-		<gteInt get="inline" set="null" line="383" static="1">
+		<gteInt get="inline" set="null" line="388" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="Int"/>
@@ -7486,7 +7543,7 @@
 			</f>
 			<meta><m n=":op"><e><![CDATA[A >= B]]></e></m></meta>
 		</gteInt>
-		<intGte get="inline" set="null" line="386" static="1">
+		<intGte get="inline" set="null" line="391" static="1">
 			<f a="a:b">
 				<x path="Int"/>
 				<x path="haxe.Int64"/>
@@ -7494,7 +7551,7 @@
 			</f>
 			<meta><m n=":op"><e><![CDATA[A >= B]]></e></m></meta>
 		</intGte>
-		<complement get="inline" set="null" line="392" static="1">
+		<complement get="inline" set="null" line="397" static="1">
 			<f a="a">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7502,7 +7559,7 @@
 			<meta><m n=":op"><e>~A</e></m></meta>
 			<haxe_doc>Returns the bitwise NOT of `a`.</haxe_doc>
 		</complement>
-		<and public="1" get="inline" set="null" line="398" static="1">
+		<and public="1" get="inline" set="null" line="403" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7511,7 +7568,7 @@
 			<meta><m n=":op"><e><![CDATA[A & B]]></e></m></meta>
 			<haxe_doc>Returns the bitwise AND of `a` and `b`.</haxe_doc>
 		</and>
-		<or public="1" get="inline" set="null" line="404" static="1">
+		<or public="1" get="inline" set="null" line="409" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7520,7 +7577,7 @@
 			<meta><m n=":op"><e>A | B</e></m></meta>
 			<haxe_doc>Returns the bitwise OR of `a` and `b`.</haxe_doc>
 		</or>
-		<xor public="1" get="inline" set="null" line="410" static="1">
+		<xor public="1" get="inline" set="null" line="415" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="haxe.Int64"/>
@@ -7529,7 +7586,7 @@
 			<meta><m n=":op"><e>A ^ B</e></m></meta>
 			<haxe_doc>Returns the bitwise XOR of `a` and `b`.</haxe_doc>
 		</xor>
-		<shl public="1" get="inline" set="null" line="416" static="1">
+		<shl public="1" get="inline" set="null" line="421" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="Int"/>
@@ -7538,7 +7595,7 @@
 			<meta><m n=":op"><e><![CDATA[A << B]]></e></m></meta>
 			<haxe_doc>Returns `a` left-shifted by `b` bits.</haxe_doc>
 		</shl>
-		<shr public="1" get="inline" set="null" line="425" static="1">
+		<shr public="1" get="inline" set="null" line="430" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="Int"/>
@@ -7548,7 +7605,7 @@
 			<haxe_doc>Returns `a` right-shifted by `b` bits in signed mode.
 		`a` is sign-extended.</haxe_doc>
 		</shr>
-		<ushr public="1" get="inline" set="null" line="434" static="1">
+		<ushr public="1" get="inline" set="null" line="439" static="1">
 			<f a="a:b">
 				<x path="haxe.Int64"/>
 				<x path="Int"/>
@@ -7562,14 +7619,14 @@
 			<x path="haxe.Int32"/>
 			<meta><m n=":impl"/></meta>
 		</high>
-		<get_high get="inline" set="null" line="441" static="1">
+		<get_high get="inline" set="null" line="446" static="1">
 			<f a="this">
 				<t path="haxe._Int64.__Int64"/>
 				<x path="haxe.Int32"/>
 			</f>
 			<meta><m n=":impl"/></meta>
 		</get_high>
-		<set_high get="inline" set="null" line="444" static="1">
+		<set_high get="inline" set="null" line="449" static="1">
 			<f a="this:x">
 				<t path="haxe._Int64.__Int64"/>
 				<x path="haxe.Int32"/>
@@ -7581,14 +7638,14 @@
 			<x path="haxe.Int32"/>
 			<meta><m n=":impl"/></meta>
 		</low>
-		<get_low get="inline" set="null" line="449" static="1">
+		<get_low get="inline" set="null" line="454" static="1">
 			<f a="this">
 				<t path="haxe._Int64.__Int64"/>
 				<x path="haxe.Int32"/>
 			</f>
 			<meta><m n=":impl"/></meta>
 		</get_low>
-		<set_low get="inline" set="null" line="452" static="1">
+		<set_low get="inline" set="null" line="457" static="1">
 			<f a="this:x">
 				<t path="haxe._Int64.__Int64"/>
 				<x path="haxe.Int32"/>
@@ -7606,13 +7663,13 @@
 	<class path="haxe._Int64.___Int64" params="" file="/home/vsts/work/1/s/std/haxe/Int64.hx" private="1" module="haxe.Int64">
 		<high public="1"><x path="haxe.Int32"/></high>
 		<low public="1"><x path="haxe.Int32"/></low>
-		<toString public="1" set="method" line="477">
+		<toString public="1" set="method" line="482">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>We also define toString here to ensure we always get a pretty string
 		when tracing or calling `Std.string`. This tends not to happen when
 		`toString` is only in the abstract.</haxe_doc>
 		</toString>
-		<new public="1" get="inline" set="null" line="467"><f a="high:low">
+		<new public="1" get="inline" set="null" line="472"><f a="high:low">
 	<x path="haxe.Int32"/>
 	<x path="haxe.Int32"/>
 	<x path="Void"/>
@@ -7871,7 +7928,7 @@
 			<unknown/>
 			<meta><m n=":value"><e>null</e></m></meta>
 		</BASE64_CODES>
-		<run public="1" set="method" line="575" static="1">
+		<run public="1" set="method" line="582" static="1">
 			<f a="v">
 				<d/>
 				<c path="String"/>
@@ -7882,7 +7939,7 @@
 	Serializer, serialize `v` into it and obtain the result through a call
 	to `toString()`.</haxe_doc>
 		</run>
-		<base_encode expr="neko.Lib.load(&quot;std&quot;, &quot;base_encode&quot;, 2)" line="582" static="1">
+		<base_encode expr="neko.Lib.load(&quot;std&quot;, &quot;base_encode&quot;, 2)" line="589" static="1">
 			<f a=":">
 				<t path="haxe.io.BytesData"/>
 				<unknown/>
@@ -7940,12 +7997,12 @@
 	The values of `this.useCache` and `this.useEnumIndex` may affect
 	serialization output.</haxe_doc>
 		</serialize>
-		<__getField get="inline" set="null" line="549"><f a="o:f">
+		<__getField get="inline" set="null" line="556"><f a="o:f">
 	<d/>
 	<c path="String"/>
 	<d/>
 </f></__getField>
-		<serializeException public="1" set="method" line="552"><f a="e">
+		<serializeException public="1" set="method" line="559"><f a="e">
 	<d/>
 	<x path="Void"/>
 </f></serializeException>
@@ -8005,6 +8062,30 @@
 	<s><x path="Bool"/></s>
 	<p><c path="String"/></p>
 </a></typedef>
+	<class path="haxe.iterators.ArrayIterator" params="T" file="/home/vsts/work/1/s/std/haxe/iterators/ArrayIterator.hx">
+		<array final="1"><c path="Array"><c path="haxe.iterators.ArrayIterator.T"/></c></array>
+		<current expr="0">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0</e></m></meta>
+		</current>
+		<hasNext public="1" get="inline" set="null" line="43">
+			<f a=""><x path="Bool"/></f>
+			<haxe_doc>See `Iterator.hasNext`</haxe_doc>
+		</hasNext>
+		<next public="1" get="inline" set="null" line="51">
+			<f a=""><c path="haxe.iterators.ArrayIterator.T"/></f>
+			<haxe_doc>See `Iterator.next`</haxe_doc>
+		</next>
+		<new public="1" get="inline" set="null" line="35">
+			<f a="array">
+				<c path="Array"><c path="haxe.iterators.ArrayIterator.T"/></c>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Create a new `ArrayIterator`.</haxe_doc>
+		</new>
+		<haxe_doc><![CDATA[This iterator is used only when `Array<T>` is passed to `Iterable<T>`]]></haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
 	<class path="haxe.Template" params="" file="/home/vsts/work/1/s/std/haxe/Template.hx">
 		<splitter expr="~/(::[A-Za-z0-9_ ()&amp;|!+=/&gt;&lt;*.&quot;-]+::|\$\$([A-Za-z0-9_-]+)\()/" line="58" static="1">
 			<c path="EReg"/>
@@ -8037,7 +8118,7 @@
 		has lower priority than the context argument of `execute()`.</haxe_doc>
 		</globals>
 		<hxKeepArrayIterator expr="[].iterator()" line="71" static="1">
-			<t path="Iterator"><unknown/></t>
+			<c path="haxe.iterators.ArrayIterator"><unknown/></c>
 			<meta>
 				<m n=":value"><e>[].iterator()</e></m>
 				<m n=":ifFeature"><e>"haxe.Template.run"</e></m>
@@ -8614,15 +8695,15 @@
 		</fromCharCode>
 	</class>
 	<class path="haxe._Unserializer.DefaultResolver" params="" file="/home/vsts/work/1/s/std/haxe/Unserializer.hx" private="1" module="haxe.Unserializer">
-		<resolveClass public="1" get="inline" set="null" line="473"><f a="name">
+		<resolveClass public="1" get="inline" set="null" line="476"><f a="name">
 	<c path="String"/>
 	<x path="Class"><d/></x>
 </f></resolveClass>
-		<resolveEnum public="1" get="inline" set="null" line="476"><f a="name">
+		<resolveEnum public="1" get="inline" set="null" line="479"><f a="name">
 	<c path="String"/>
 	<x path="Enum"><d/></x>
 </f></resolveEnum>
-		<new public="1" set="method" line="471"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="474"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.Unserializer" params="" file="/home/vsts/work/1/s/std/haxe/Unserializer.hx">
 		<DEFAULT_RESOLVER public="1" expr="new DefaultResolver()" line="65" static="1">
@@ -8647,7 +8728,7 @@
 			<c path="String"/>
 			<meta><m n=":value"><e>"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789%:"</e></m></meta>
 		</BASE64>
-		<run public="1" set="method" line="461" static="1">
+		<run public="1" set="method" line="464" static="1">
 			<f a="v">
 				<c path="String"/>
 				<d/>
@@ -8658,7 +8739,7 @@
 		Unserializer with `v` as buffer and calling its `unserialize()` method
 		once.</haxe_doc>
 		</run>
-		<base_decode expr="neko.Lib.load(&quot;std&quot;, &quot;base_decode&quot;, 2)" line="466" static="1">
+		<base_decode expr="neko.Lib.load(&quot;std&quot;, &quot;base_decode&quot;, 2)" line="469" static="1">
 			<f a=":">
 				<unknown/>
 				<unknown/>
@@ -8757,16 +8838,16 @@
 	</class>
 	<class path="haxe._Unserializer.NullResolver" params="" file="/home/vsts/work/1/s/std/haxe/Unserializer.hx" private="1" module="haxe.Unserializer">
 		<instance public="1" get="accessor" set="null" static="1"><c path="haxe._Unserializer.NullResolver"/></instance>
-		<get_instance get="inline" set="null" line="491" static="1"><f a=""><c path="haxe._Unserializer.NullResolver"/></f></get_instance>
-		<resolveClass public="1" get="inline" set="null" line="483"><f a="name">
+		<get_instance get="inline" set="null" line="494" static="1"><f a=""><c path="haxe._Unserializer.NullResolver"/></f></get_instance>
+		<resolveClass public="1" get="inline" set="null" line="486"><f a="name">
 	<c path="String"/>
 	<x path="Class"><d/></x>
 </f></resolveClass>
-		<resolveEnum public="1" get="inline" set="null" line="486"><f a="name">
+		<resolveEnum public="1" get="inline" set="null" line="489"><f a="name">
 	<c path="String"/>
 	<x path="Enum"><d/></x>
 </f></resolveEnum>
-		<new set="method" line="481"><f a=""><x path="Void"/></f></new>
+		<new set="method" line="484"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.Utf8" params="" file="/home/vsts/work/1/s/std/neko/_std/haxe/Utf8.hx">
 		<encode public="1" set="method" line="42" static="1">
@@ -9645,7 +9726,15 @@
 			<meta><m n=":value"><e><![CDATA[new HaxeRequestMethod<PositionParams,GotoDefinitionResult>("display/definition")]]></e></m></meta>
 			<haxe_doc>The goto definition request is sent from the client to Haxe to resolve the definition location(s) of a symbol at a given text document position.</haxe_doc>
 		</GotoDefinition>
-		<GotoTypeDefinition public="1" get="inline" set="null" expr="new HaxeRequestMethod&lt;PositionParams,GotoTypeDefinitionResult&gt;(&quot;display/typeDefinition&quot;)" line="59" static="1">
+		<GotoImplementation public="1" get="inline" set="null" expr="new HaxeRequestMethod&lt;PositionParams,GotoDefinitionResult&gt;(&quot;display/implementation&quot;)" line="59" static="1">
+			<x path="haxe.display.HaxeRequestMethod">
+				<t path="haxe.display.PositionParams"/>
+				<t path="haxe.display.GotoDefinitionResult"/>
+			</x>
+			<meta><m n=":value"><e><![CDATA[new HaxeRequestMethod<PositionParams,GotoDefinitionResult>("display/implementation")]]></e></m></meta>
+			<haxe_doc>The goto implementation request is sent from the client to Haxe to resolve the implementation location(s) of a symbol at a given text document position.</haxe_doc>
+		</GotoImplementation>
+		<GotoTypeDefinition public="1" get="inline" set="null" expr="new HaxeRequestMethod&lt;PositionParams,GotoTypeDefinitionResult&gt;(&quot;display/typeDefinition&quot;)" line="64" static="1">
 			<x path="haxe.display.HaxeRequestMethod">
 				<t path="haxe.display.PositionParams"/>
 				<t path="haxe.display.GotoTypeDefinitionResult"/>
@@ -9653,7 +9742,7 @@
 			<meta><m n=":value"><e><![CDATA[new HaxeRequestMethod<PositionParams,GotoTypeDefinitionResult>("display/typeDefinition")]]></e></m></meta>
 			<haxe_doc>The goto type definition request is sent from the client to Haxe to resolve the type definition location(s) of a symbol at a given text document position.</haxe_doc>
 		</GotoTypeDefinition>
-		<Hover public="1" get="inline" set="null" expr="new HaxeRequestMethod&lt;PositionParams,HoverResult&gt;(&quot;display/hover&quot;)" line="64" static="1">
+		<Hover public="1" get="inline" set="null" expr="new HaxeRequestMethod&lt;PositionParams,HoverResult&gt;(&quot;display/hover&quot;)" line="69" static="1">
 			<x path="haxe.display.HaxeRequestMethod">
 				<t path="haxe.display.PositionParams"/>
 				<t path="haxe.display.HoverResult"/>
@@ -9661,7 +9750,7 @@
 			<meta><m n=":value"><e><![CDATA[new HaxeRequestMethod<PositionParams,HoverResult>("display/hover")]]></e></m></meta>
 			<haxe_doc>The hover request is sent from the client to Haxe to request hover information at a given text document position.</haxe_doc>
 		</Hover>
-		<DeterminePackage public="1" get="inline" set="null" expr="new HaxeRequestMethod&lt;FileParams,DeterminePackageResult&gt;(&quot;display/package&quot;)" line="69" static="1">
+		<DeterminePackage public="1" get="inline" set="null" expr="new HaxeRequestMethod&lt;FileParams,DeterminePackageResult&gt;(&quot;display/package&quot;)" line="74" static="1">
 			<x path="haxe.display.HaxeRequestMethod">
 				<t path="haxe.display.FileParams"/>
 				<t path="haxe.display.DeterminePackageResult"/>
@@ -9669,7 +9758,7 @@
 			<meta><m n=":value"><e><![CDATA[new HaxeRequestMethod<FileParams,DeterminePackageResult>("display/package")]]></e></m></meta>
 			<haxe_doc>This request is sent from the client to Haxe to determine the package for a given file, based on class paths configuration.</haxe_doc>
 		</DeterminePackage>
-		<SignatureHelp public="1" get="inline" set="null" expr="new HaxeRequestMethod&lt;SignatureHelpParams,SignatureHelpResult&gt;(&quot;display/signatureHelp&quot;)" line="74" static="1">
+		<SignatureHelp public="1" get="inline" set="null" expr="new HaxeRequestMethod&lt;SignatureHelpParams,SignatureHelpResult&gt;(&quot;display/signatureHelp&quot;)" line="79" static="1">
 			<x path="haxe.display.HaxeRequestMethod">
 				<t path="haxe.display.SignatureHelpParams"/>
 				<t path="haxe.display.SignatureHelpResult"/>
@@ -10067,7 +10156,7 @@
 		<this><c path="String"/></this>
 		<meta><m n=":enum"/></meta>
 		<impl><class path="haxe.display._Display.Literal_Impl_" params="" file="/home/vsts/work/1/s/std/haxe/display/Display.hx" private="1" module="haxe.display.Display" extern="1">
-	<Null public="1" get="inline" set="null" expr="cast &quot;null&quot;" line="212" static="1">
+	<Null public="1" get="inline" set="null" expr="cast &quot;null&quot;" line="217" static="1">
 		<x path="haxe.display.Literal"/>
 		<meta>
 			<m n=":value"><e>cast "null"</e></m>
@@ -10075,7 +10164,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Null>
-	<True public="1" get="inline" set="null" expr="cast &quot;true&quot;" line="213" static="1">
+	<True public="1" get="inline" set="null" expr="cast &quot;true&quot;" line="218" static="1">
 		<x path="haxe.display.Literal"/>
 		<meta>
 			<m n=":value"><e>cast "true"</e></m>
@@ -10083,7 +10172,7 @@
 			<m n=":impl"/>
 		</meta>
 	</True>
-	<False public="1" get="inline" set="null" expr="cast &quot;false&quot;" line="214" static="1">
+	<False public="1" get="inline" set="null" expr="cast &quot;false&quot;" line="219" static="1">
 		<x path="haxe.display.Literal"/>
 		<meta>
 			<m n=":value"><e>cast "false"</e></m>
@@ -10091,7 +10180,7 @@
 			<m n=":impl"/>
 		</meta>
 	</False>
-	<This public="1" get="inline" set="null" expr="cast &quot;this&quot;" line="215" static="1">
+	<This public="1" get="inline" set="null" expr="cast &quot;this&quot;" line="220" static="1">
 		<x path="haxe.display.Literal"/>
 		<meta>
 			<m n=":value"><e>cast "this"</e></m>
@@ -10099,7 +10188,7 @@
 			<m n=":impl"/>
 		</meta>
 	</This>
-	<Trace public="1" get="inline" set="null" expr="cast &quot;trace&quot;" line="216" static="1">
+	<Trace public="1" get="inline" set="null" expr="cast &quot;trace&quot;" line="221" static="1">
 		<x path="haxe.display.Literal"/>
 		<meta>
 			<m n=":value"><e>cast "trace"</e></m>
@@ -10111,7 +10200,7 @@
 </class></impl>
 	</abstract>
 	<class path="haxe.display._Display.Literal_Impl_" params="" file="/home/vsts/work/1/s/std/haxe/display/Display.hx" private="1" module="haxe.display.Display" extern="1">
-		<Null public="1" get="inline" set="null" expr="cast &quot;null&quot;" line="212" static="1">
+		<Null public="1" get="inline" set="null" expr="cast &quot;null&quot;" line="217" static="1">
 			<x path="haxe.display.Literal"/>
 			<meta>
 				<m n=":value"><e>cast "null"</e></m>
@@ -10119,7 +10208,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Null>
-		<True public="1" get="inline" set="null" expr="cast &quot;true&quot;" line="213" static="1">
+		<True public="1" get="inline" set="null" expr="cast &quot;true&quot;" line="218" static="1">
 			<x path="haxe.display.Literal"/>
 			<meta>
 				<m n=":value"><e>cast "true"</e></m>
@@ -10127,7 +10216,7 @@
 				<m n=":impl"/>
 			</meta>
 		</True>
-		<False public="1" get="inline" set="null" expr="cast &quot;false&quot;" line="214" static="1">
+		<False public="1" get="inline" set="null" expr="cast &quot;false&quot;" line="219" static="1">
 			<x path="haxe.display.Literal"/>
 			<meta>
 				<m n=":value"><e>cast "false"</e></m>
@@ -10135,7 +10224,7 @@
 				<m n=":impl"/>
 			</meta>
 		</False>
-		<This public="1" get="inline" set="null" expr="cast &quot;this&quot;" line="215" static="1">
+		<This public="1" get="inline" set="null" expr="cast &quot;this&quot;" line="220" static="1">
 			<x path="haxe.display.Literal"/>
 			<meta>
 				<m n=":value"><e>cast "this"</e></m>
@@ -10143,7 +10232,7 @@
 				<m n=":impl"/>
 			</meta>
 		</This>
-		<Trace public="1" get="inline" set="null" expr="cast &quot;trace&quot;" line="216" static="1">
+		<Trace public="1" get="inline" set="null" expr="cast &quot;trace&quot;" line="221" static="1">
 			<x path="haxe.display.Literal"/>
 			<meta>
 				<m n=":value"><e>cast "trace"</e></m>
@@ -10300,7 +10389,7 @@
 		<this><c path="String"/></this>
 		<meta><m n=":enum"/></meta>
 		<impl><class path="haxe.display._Display.MetadataTarget_Impl_" params="" file="/home/vsts/work/1/s/std/haxe/display/Display.hx" private="1" module="haxe.display.Display" extern="1">
-	<Class public="1" get="inline" set="null" expr="cast &quot;TClass&quot;" line="259" static="1">
+	<Class public="1" get="inline" set="null" expr="cast &quot;TClass&quot;" line="264" static="1">
 		<x path="haxe.display.MetadataTarget"/>
 		<meta>
 			<m n=":value"><e>cast "TClass"</e></m>
@@ -10308,7 +10397,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Class>
-	<ClassField public="1" get="inline" set="null" expr="cast &quot;TClassField&quot;" line="260" static="1">
+	<ClassField public="1" get="inline" set="null" expr="cast &quot;TClassField&quot;" line="265" static="1">
 		<x path="haxe.display.MetadataTarget"/>
 		<meta>
 			<m n=":value"><e>cast "TClassField"</e></m>
@@ -10316,7 +10405,7 @@
 			<m n=":impl"/>
 		</meta>
 	</ClassField>
-	<Abstract public="1" get="inline" set="null" expr="cast &quot;TAbstract&quot;" line="261" static="1">
+	<Abstract public="1" get="inline" set="null" expr="cast &quot;TAbstract&quot;" line="266" static="1">
 		<x path="haxe.display.MetadataTarget"/>
 		<meta>
 			<m n=":value"><e>cast "TAbstract"</e></m>
@@ -10324,7 +10413,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Abstract>
-	<AbstractField public="1" get="inline" set="null" expr="cast &quot;TAbstractField&quot;" line="262" static="1">
+	<AbstractField public="1" get="inline" set="null" expr="cast &quot;TAbstractField&quot;" line="267" static="1">
 		<x path="haxe.display.MetadataTarget"/>
 		<meta>
 			<m n=":value"><e>cast "TAbstractField"</e></m>
@@ -10332,7 +10421,7 @@
 			<m n=":impl"/>
 		</meta>
 	</AbstractField>
-	<Enum public="1" get="inline" set="null" expr="cast &quot;TEnum&quot;" line="263" static="1">
+	<Enum public="1" get="inline" set="null" expr="cast &quot;TEnum&quot;" line="268" static="1">
 		<x path="haxe.display.MetadataTarget"/>
 		<meta>
 			<m n=":value"><e>cast "TEnum"</e></m>
@@ -10340,7 +10429,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Enum>
-	<Typedef public="1" get="inline" set="null" expr="cast &quot;TTypedef&quot;" line="264" static="1">
+	<Typedef public="1" get="inline" set="null" expr="cast &quot;TTypedef&quot;" line="269" static="1">
 		<x path="haxe.display.MetadataTarget"/>
 		<meta>
 			<m n=":value"><e>cast "TTypedef"</e></m>
@@ -10348,7 +10437,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Typedef>
-	<AnyField public="1" get="inline" set="null" expr="cast &quot;TAnyField&quot;" line="265" static="1">
+	<AnyField public="1" get="inline" set="null" expr="cast &quot;TAnyField&quot;" line="270" static="1">
 		<x path="haxe.display.MetadataTarget"/>
 		<meta>
 			<m n=":value"><e>cast "TAnyField"</e></m>
@@ -10356,7 +10445,7 @@
 			<m n=":impl"/>
 		</meta>
 	</AnyField>
-	<Expr public="1" get="inline" set="null" expr="cast &quot;TExpr&quot;" line="266" static="1">
+	<Expr public="1" get="inline" set="null" expr="cast &quot;TExpr&quot;" line="271" static="1">
 		<x path="haxe.display.MetadataTarget"/>
 		<meta>
 			<m n=":value"><e>cast "TExpr"</e></m>
@@ -10364,7 +10453,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Expr>
-	<TypeParameter public="1" get="inline" set="null" expr="cast &quot;TTypeParameter&quot;" line="267" static="1">
+	<TypeParameter public="1" get="inline" set="null" expr="cast &quot;TTypeParameter&quot;" line="272" static="1">
 		<x path="haxe.display.MetadataTarget"/>
 		<meta>
 			<m n=":value"><e>cast "TTypeParameter"</e></m>
@@ -10376,7 +10465,7 @@
 </class></impl>
 	</abstract>
 	<class path="haxe.display._Display.MetadataTarget_Impl_" params="" file="/home/vsts/work/1/s/std/haxe/display/Display.hx" private="1" module="haxe.display.Display" extern="1">
-		<Class public="1" get="inline" set="null" expr="cast &quot;TClass&quot;" line="259" static="1">
+		<Class public="1" get="inline" set="null" expr="cast &quot;TClass&quot;" line="264" static="1">
 			<x path="haxe.display.MetadataTarget"/>
 			<meta>
 				<m n=":value"><e>cast "TClass"</e></m>
@@ -10384,7 +10473,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Class>
-		<ClassField public="1" get="inline" set="null" expr="cast &quot;TClassField&quot;" line="260" static="1">
+		<ClassField public="1" get="inline" set="null" expr="cast &quot;TClassField&quot;" line="265" static="1">
 			<x path="haxe.display.MetadataTarget"/>
 			<meta>
 				<m n=":value"><e>cast "TClassField"</e></m>
@@ -10392,7 +10481,7 @@
 				<m n=":impl"/>
 			</meta>
 		</ClassField>
-		<Abstract public="1" get="inline" set="null" expr="cast &quot;TAbstract&quot;" line="261" static="1">
+		<Abstract public="1" get="inline" set="null" expr="cast &quot;TAbstract&quot;" line="266" static="1">
 			<x path="haxe.display.MetadataTarget"/>
 			<meta>
 				<m n=":value"><e>cast "TAbstract"</e></m>
@@ -10400,7 +10489,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Abstract>
-		<AbstractField public="1" get="inline" set="null" expr="cast &quot;TAbstractField&quot;" line="262" static="1">
+		<AbstractField public="1" get="inline" set="null" expr="cast &quot;TAbstractField&quot;" line="267" static="1">
 			<x path="haxe.display.MetadataTarget"/>
 			<meta>
 				<m n=":value"><e>cast "TAbstractField"</e></m>
@@ -10408,7 +10497,7 @@
 				<m n=":impl"/>
 			</meta>
 		</AbstractField>
-		<Enum public="1" get="inline" set="null" expr="cast &quot;TEnum&quot;" line="263" static="1">
+		<Enum public="1" get="inline" set="null" expr="cast &quot;TEnum&quot;" line="268" static="1">
 			<x path="haxe.display.MetadataTarget"/>
 			<meta>
 				<m n=":value"><e>cast "TEnum"</e></m>
@@ -10416,7 +10505,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Enum>
-		<Typedef public="1" get="inline" set="null" expr="cast &quot;TTypedef&quot;" line="264" static="1">
+		<Typedef public="1" get="inline" set="null" expr="cast &quot;TTypedef&quot;" line="269" static="1">
 			<x path="haxe.display.MetadataTarget"/>
 			<meta>
 				<m n=":value"><e>cast "TTypedef"</e></m>
@@ -10424,7 +10513,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Typedef>
-		<AnyField public="1" get="inline" set="null" expr="cast &quot;TAnyField&quot;" line="265" static="1">
+		<AnyField public="1" get="inline" set="null" expr="cast &quot;TAnyField&quot;" line="270" static="1">
 			<x path="haxe.display.MetadataTarget"/>
 			<meta>
 				<m n=":value"><e>cast "TAnyField"</e></m>
@@ -10432,7 +10521,7 @@
 				<m n=":impl"/>
 			</meta>
 		</AnyField>
-		<Expr public="1" get="inline" set="null" expr="cast &quot;TExpr&quot;" line="266" static="1">
+		<Expr public="1" get="inline" set="null" expr="cast &quot;TExpr&quot;" line="271" static="1">
 			<x path="haxe.display.MetadataTarget"/>
 			<meta>
 				<m n=":value"><e>cast "TExpr"</e></m>
@@ -10440,7 +10529,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Expr>
-		<TypeParameter public="1" get="inline" set="null" expr="cast &quot;TTypeParameter&quot;" line="267" static="1">
+		<TypeParameter public="1" get="inline" set="null" expr="cast &quot;TTypeParameter&quot;" line="272" static="1">
 			<x path="haxe.display.MetadataTarget"/>
 			<meta>
 				<m n=":value"><e>cast "TTypeParameter"</e></m>
@@ -10454,7 +10543,7 @@
 		<this><c path="String"/></this>
 		<meta><m n=":enum"/></meta>
 		<impl><class path="haxe.display._Display.Platform_Impl_" params="" file="/home/vsts/work/1/s/std/haxe/display/Display.hx" private="1" module="haxe.display.Display" extern="1">
-	<Cross public="1" get="inline" set="null" expr="cast &quot;cross&quot;" line="271" static="1">
+	<Cross public="1" get="inline" set="null" expr="cast &quot;cross&quot;" line="276" static="1">
 		<x path="haxe.display.Platform"/>
 		<meta>
 			<m n=":value"><e>cast "cross"</e></m>
@@ -10462,7 +10551,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Cross>
-	<Js public="1" get="inline" set="null" expr="cast &quot;js&quot;" line="272" static="1">
+	<Js public="1" get="inline" set="null" expr="cast &quot;js&quot;" line="277" static="1">
 		<x path="haxe.display.Platform"/>
 		<meta>
 			<m n=":value"><e>cast "js"</e></m>
@@ -10470,7 +10559,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Js>
-	<Lua public="1" get="inline" set="null" expr="cast &quot;lua&quot;" line="273" static="1">
+	<Lua public="1" get="inline" set="null" expr="cast &quot;lua&quot;" line="278" static="1">
 		<x path="haxe.display.Platform"/>
 		<meta>
 			<m n=":value"><e>cast "lua"</e></m>
@@ -10478,7 +10567,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Lua>
-	<Neko public="1" get="inline" set="null" expr="cast &quot;neko&quot;" line="274" static="1">
+	<Neko public="1" get="inline" set="null" expr="cast &quot;neko&quot;" line="279" static="1">
 		<x path="haxe.display.Platform"/>
 		<meta>
 			<m n=":value"><e>cast "neko"</e></m>
@@ -10486,7 +10575,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Neko>
-	<Flash public="1" get="inline" set="null" expr="cast &quot;flash&quot;" line="275" static="1">
+	<Flash public="1" get="inline" set="null" expr="cast &quot;flash&quot;" line="280" static="1">
 		<x path="haxe.display.Platform"/>
 		<meta>
 			<m n=":value"><e>cast "flash"</e></m>
@@ -10494,7 +10583,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Flash>
-	<Php public="1" get="inline" set="null" expr="cast &quot;php&quot;" line="276" static="1">
+	<Php public="1" get="inline" set="null" expr="cast &quot;php&quot;" line="281" static="1">
 		<x path="haxe.display.Platform"/>
 		<meta>
 			<m n=":value"><e>cast "php"</e></m>
@@ -10502,7 +10591,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Php>
-	<Cpp public="1" get="inline" set="null" expr="cast &quot;cpp&quot;" line="277" static="1">
+	<Cpp public="1" get="inline" set="null" expr="cast &quot;cpp&quot;" line="282" static="1">
 		<x path="haxe.display.Platform"/>
 		<meta>
 			<m n=":value"><e>cast "cpp"</e></m>
@@ -10510,7 +10599,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Cpp>
-	<Cs public="1" get="inline" set="null" expr="cast &quot;cs&quot;" line="278" static="1">
+	<Cs public="1" get="inline" set="null" expr="cast &quot;cs&quot;" line="283" static="1">
 		<x path="haxe.display.Platform"/>
 		<meta>
 			<m n=":value"><e>cast "cs"</e></m>
@@ -10518,7 +10607,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Cs>
-	<Java public="1" get="inline" set="null" expr="cast &quot;java&quot;" line="279" static="1">
+	<Java public="1" get="inline" set="null" expr="cast &quot;java&quot;" line="284" static="1">
 		<x path="haxe.display.Platform"/>
 		<meta>
 			<m n=":value"><e>cast "java"</e></m>
@@ -10526,7 +10615,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Java>
-	<Python public="1" get="inline" set="null" expr="cast &quot;python&quot;" line="280" static="1">
+	<Python public="1" get="inline" set="null" expr="cast &quot;python&quot;" line="285" static="1">
 		<x path="haxe.display.Platform"/>
 		<meta>
 			<m n=":value"><e>cast "python"</e></m>
@@ -10534,7 +10623,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Python>
-	<Hl public="1" get="inline" set="null" expr="cast &quot;hl&quot;" line="281" static="1">
+	<Hl public="1" get="inline" set="null" expr="cast &quot;hl&quot;" line="286" static="1">
 		<x path="haxe.display.Platform"/>
 		<meta>
 			<m n=":value"><e>cast "hl"</e></m>
@@ -10542,7 +10631,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Hl>
-	<Eval public="1" get="inline" set="null" expr="cast &quot;eval&quot;" line="282" static="1">
+	<Eval public="1" get="inline" set="null" expr="cast &quot;eval&quot;" line="287" static="1">
 		<x path="haxe.display.Platform"/>
 		<meta>
 			<m n=":value"><e>cast "eval"</e></m>
@@ -10554,7 +10643,7 @@
 </class></impl>
 	</abstract>
 	<class path="haxe.display._Display.Platform_Impl_" params="" file="/home/vsts/work/1/s/std/haxe/display/Display.hx" private="1" module="haxe.display.Display" extern="1">
-		<Cross public="1" get="inline" set="null" expr="cast &quot;cross&quot;" line="271" static="1">
+		<Cross public="1" get="inline" set="null" expr="cast &quot;cross&quot;" line="276" static="1">
 			<x path="haxe.display.Platform"/>
 			<meta>
 				<m n=":value"><e>cast "cross"</e></m>
@@ -10562,7 +10651,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Cross>
-		<Js public="1" get="inline" set="null" expr="cast &quot;js&quot;" line="272" static="1">
+		<Js public="1" get="inline" set="null" expr="cast &quot;js&quot;" line="277" static="1">
 			<x path="haxe.display.Platform"/>
 			<meta>
 				<m n=":value"><e>cast "js"</e></m>
@@ -10570,7 +10659,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Js>
-		<Lua public="1" get="inline" set="null" expr="cast &quot;lua&quot;" line="273" static="1">
+		<Lua public="1" get="inline" set="null" expr="cast &quot;lua&quot;" line="278" static="1">
 			<x path="haxe.display.Platform"/>
 			<meta>
 				<m n=":value"><e>cast "lua"</e></m>
@@ -10578,7 +10667,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Lua>
-		<Neko public="1" get="inline" set="null" expr="cast &quot;neko&quot;" line="274" static="1">
+		<Neko public="1" get="inline" set="null" expr="cast &quot;neko&quot;" line="279" static="1">
 			<x path="haxe.display.Platform"/>
 			<meta>
 				<m n=":value"><e>cast "neko"</e></m>
@@ -10586,7 +10675,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Neko>
-		<Flash public="1" get="inline" set="null" expr="cast &quot;flash&quot;" line="275" static="1">
+		<Flash public="1" get="inline" set="null" expr="cast &quot;flash&quot;" line="280" static="1">
 			<x path="haxe.display.Platform"/>
 			<meta>
 				<m n=":value"><e>cast "flash"</e></m>
@@ -10594,7 +10683,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Flash>
-		<Php public="1" get="inline" set="null" expr="cast &quot;php&quot;" line="276" static="1">
+		<Php public="1" get="inline" set="null" expr="cast &quot;php&quot;" line="281" static="1">
 			<x path="haxe.display.Platform"/>
 			<meta>
 				<m n=":value"><e>cast "php"</e></m>
@@ -10602,7 +10691,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Php>
-		<Cpp public="1" get="inline" set="null" expr="cast &quot;cpp&quot;" line="277" static="1">
+		<Cpp public="1" get="inline" set="null" expr="cast &quot;cpp&quot;" line="282" static="1">
 			<x path="haxe.display.Platform"/>
 			<meta>
 				<m n=":value"><e>cast "cpp"</e></m>
@@ -10610,7 +10699,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Cpp>
-		<Cs public="1" get="inline" set="null" expr="cast &quot;cs&quot;" line="278" static="1">
+		<Cs public="1" get="inline" set="null" expr="cast &quot;cs&quot;" line="283" static="1">
 			<x path="haxe.display.Platform"/>
 			<meta>
 				<m n=":value"><e>cast "cs"</e></m>
@@ -10618,7 +10707,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Cs>
-		<Java public="1" get="inline" set="null" expr="cast &quot;java&quot;" line="279" static="1">
+		<Java public="1" get="inline" set="null" expr="cast &quot;java&quot;" line="284" static="1">
 			<x path="haxe.display.Platform"/>
 			<meta>
 				<m n=":value"><e>cast "java"</e></m>
@@ -10626,7 +10715,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Java>
-		<Python public="1" get="inline" set="null" expr="cast &quot;python&quot;" line="280" static="1">
+		<Python public="1" get="inline" set="null" expr="cast &quot;python&quot;" line="285" static="1">
 			<x path="haxe.display.Platform"/>
 			<meta>
 				<m n=":value"><e>cast "python"</e></m>
@@ -10634,7 +10723,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Python>
-		<Hl public="1" get="inline" set="null" expr="cast &quot;hl&quot;" line="281" static="1">
+		<Hl public="1" get="inline" set="null" expr="cast &quot;hl&quot;" line="286" static="1">
 			<x path="haxe.display.Platform"/>
 			<meta>
 				<m n=":value"><e>cast "hl"</e></m>
@@ -10642,7 +10731,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Hl>
-		<Eval public="1" get="inline" set="null" expr="cast &quot;eval&quot;" line="282" static="1">
+		<Eval public="1" get="inline" set="null" expr="cast &quot;eval&quot;" line="287" static="1">
 			<x path="haxe.display.Platform"/>
 			<meta>
 				<m n=":value"><e>cast "eval"</e></m>
@@ -10678,7 +10767,7 @@
 		<to><icast><c path="String"/></icast></to>
 		<meta><m n=":enum"/></meta>
 		<impl><class path="haxe.display._Display.KeywordKind_Impl_" params="" file="/home/vsts/work/1/s/std/haxe/display/Display.hx" private="1" module="haxe.display.Display" extern="1">
-	<Implements public="1" get="inline" set="null" expr="cast &quot;implements&quot;" line="309" static="1">
+	<Implements public="1" get="inline" set="null" expr="cast &quot;implements&quot;" line="314" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "implements"</e></m>
@@ -10686,7 +10775,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Implements>
-	<Extends public="1" get="inline" set="null" expr="cast &quot;extends&quot;" line="310" static="1">
+	<Extends public="1" get="inline" set="null" expr="cast &quot;extends&quot;" line="315" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "extends"</e></m>
@@ -10694,7 +10783,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Extends>
-	<Function public="1" get="inline" set="null" expr="cast &quot;function&quot;" line="311" static="1">
+	<Function public="1" get="inline" set="null" expr="cast &quot;function&quot;" line="316" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "function"</e></m>
@@ -10702,7 +10791,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Function>
-	<Var public="1" get="inline" set="null" expr="cast &quot;var&quot;" line="312" static="1">
+	<Var public="1" get="inline" set="null" expr="cast &quot;var&quot;" line="317" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "var"</e></m>
@@ -10710,7 +10799,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Var>
-	<If public="1" get="inline" set="null" expr="cast &quot;if&quot;" line="313" static="1">
+	<If public="1" get="inline" set="null" expr="cast &quot;if&quot;" line="318" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "if"</e></m>
@@ -10718,7 +10807,7 @@
 			<m n=":impl"/>
 		</meta>
 	</If>
-	<Else public="1" get="inline" set="null" expr="cast &quot;else&quot;" line="314" static="1">
+	<Else public="1" get="inline" set="null" expr="cast &quot;else&quot;" line="319" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "else"</e></m>
@@ -10726,7 +10815,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Else>
-	<While public="1" get="inline" set="null" expr="cast &quot;while&quot;" line="315" static="1">
+	<While public="1" get="inline" set="null" expr="cast &quot;while&quot;" line="320" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "while"</e></m>
@@ -10734,7 +10823,7 @@
 			<m n=":impl"/>
 		</meta>
 	</While>
-	<Do public="1" get="inline" set="null" expr="cast &quot;do&quot;" line="316" static="1">
+	<Do public="1" get="inline" set="null" expr="cast &quot;do&quot;" line="321" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "do"</e></m>
@@ -10742,7 +10831,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Do>
-	<For public="1" get="inline" set="null" expr="cast &quot;for&quot;" line="317" static="1">
+	<For public="1" get="inline" set="null" expr="cast &quot;for&quot;" line="322" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "for"</e></m>
@@ -10750,7 +10839,7 @@
 			<m n=":impl"/>
 		</meta>
 	</For>
-	<Break public="1" get="inline" set="null" expr="cast &quot;break&quot;" line="318" static="1">
+	<Break public="1" get="inline" set="null" expr="cast &quot;break&quot;" line="323" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "break"</e></m>
@@ -10758,7 +10847,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Break>
-	<Return public="1" get="inline" set="null" expr="cast &quot;return&quot;" line="319" static="1">
+	<Return public="1" get="inline" set="null" expr="cast &quot;return&quot;" line="324" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "return"</e></m>
@@ -10766,7 +10855,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Return>
-	<Continue public="1" get="inline" set="null" expr="cast &quot;continue&quot;" line="320" static="1">
+	<Continue public="1" get="inline" set="null" expr="cast &quot;continue&quot;" line="325" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "continue"</e></m>
@@ -10774,7 +10863,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Continue>
-	<Switch public="1" get="inline" set="null" expr="cast &quot;switch&quot;" line="321" static="1">
+	<Switch public="1" get="inline" set="null" expr="cast &quot;switch&quot;" line="326" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "switch"</e></m>
@@ -10782,7 +10871,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Switch>
-	<Case public="1" get="inline" set="null" expr="cast &quot;case&quot;" line="322" static="1">
+	<Case public="1" get="inline" set="null" expr="cast &quot;case&quot;" line="327" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "case"</e></m>
@@ -10790,7 +10879,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Case>
-	<Default public="1" get="inline" set="null" expr="cast &quot;default&quot;" line="323" static="1">
+	<Default public="1" get="inline" set="null" expr="cast &quot;default&quot;" line="328" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "default"</e></m>
@@ -10798,7 +10887,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Default>
-	<Try public="1" get="inline" set="null" expr="cast &quot;try&quot;" line="324" static="1">
+	<Try public="1" get="inline" set="null" expr="cast &quot;try&quot;" line="329" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "try"</e></m>
@@ -10806,7 +10895,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Try>
-	<Catch public="1" get="inline" set="null" expr="cast &quot;catch&quot;" line="325" static="1">
+	<Catch public="1" get="inline" set="null" expr="cast &quot;catch&quot;" line="330" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "catch"</e></m>
@@ -10814,7 +10903,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Catch>
-	<New public="1" get="inline" set="null" expr="cast &quot;new&quot;" line="326" static="1">
+	<New public="1" get="inline" set="null" expr="cast &quot;new&quot;" line="331" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "new"</e></m>
@@ -10822,7 +10911,7 @@
 			<m n=":impl"/>
 		</meta>
 	</New>
-	<Throw public="1" get="inline" set="null" expr="cast &quot;throw&quot;" line="327" static="1">
+	<Throw public="1" get="inline" set="null" expr="cast &quot;throw&quot;" line="332" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "throw"</e></m>
@@ -10830,7 +10919,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Throw>
-	<Untyped public="1" get="inline" set="null" expr="cast &quot;untyped&quot;" line="328" static="1">
+	<Untyped public="1" get="inline" set="null" expr="cast &quot;untyped&quot;" line="333" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "untyped"</e></m>
@@ -10838,7 +10927,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Untyped>
-	<Cast public="1" get="inline" set="null" expr="cast &quot;cast&quot;" line="329" static="1">
+	<Cast public="1" get="inline" set="null" expr="cast &quot;cast&quot;" line="334" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "cast"</e></m>
@@ -10846,7 +10935,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Cast>
-	<Macro public="1" get="inline" set="null" expr="cast &quot;macro&quot;" line="330" static="1">
+	<Macro public="1" get="inline" set="null" expr="cast &quot;macro&quot;" line="335" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "macro"</e></m>
@@ -10854,7 +10943,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Macro>
-	<Package public="1" get="inline" set="null" expr="cast &quot;package&quot;" line="331" static="1">
+	<Package public="1" get="inline" set="null" expr="cast &quot;package&quot;" line="336" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "package"</e></m>
@@ -10862,7 +10951,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Package>
-	<Import public="1" get="inline" set="null" expr="cast &quot;import&quot;" line="332" static="1">
+	<Import public="1" get="inline" set="null" expr="cast &quot;import&quot;" line="337" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "import"</e></m>
@@ -10870,7 +10959,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Import>
-	<Using public="1" get="inline" set="null" expr="cast &quot;using&quot;" line="333" static="1">
+	<Using public="1" get="inline" set="null" expr="cast &quot;using&quot;" line="338" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "using"</e></m>
@@ -10878,7 +10967,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Using>
-	<Public public="1" get="inline" set="null" expr="cast &quot;public&quot;" line="334" static="1">
+	<Public public="1" get="inline" set="null" expr="cast &quot;public&quot;" line="339" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "public"</e></m>
@@ -10886,7 +10975,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Public>
-	<Private public="1" get="inline" set="null" expr="cast &quot;private&quot;" line="335" static="1">
+	<Private public="1" get="inline" set="null" expr="cast &quot;private&quot;" line="340" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "private"</e></m>
@@ -10894,7 +10983,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Private>
-	<Static public="1" get="inline" set="null" expr="cast &quot;static&quot;" line="336" static="1">
+	<Static public="1" get="inline" set="null" expr="cast &quot;static&quot;" line="341" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "static"</e></m>
@@ -10902,7 +10991,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Static>
-	<Extern public="1" get="inline" set="null" expr="cast &quot;extern&quot;" line="337" static="1">
+	<Extern public="1" get="inline" set="null" expr="cast &quot;extern&quot;" line="342" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "extern"</e></m>
@@ -10910,7 +10999,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Extern>
-	<Dynamic public="1" get="inline" set="null" expr="cast &quot;dynamic&quot;" line="338" static="1">
+	<Dynamic public="1" get="inline" set="null" expr="cast &quot;dynamic&quot;" line="343" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "dynamic"</e></m>
@@ -10918,7 +11007,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Dynamic>
-	<Override public="1" get="inline" set="null" expr="cast &quot;override&quot;" line="339" static="1">
+	<Override public="1" get="inline" set="null" expr="cast &quot;override&quot;" line="344" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "override"</e></m>
@@ -10926,7 +11015,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Override>
-	<Class public="1" get="inline" set="null" expr="cast &quot;class&quot;" line="340" static="1">
+	<Class public="1" get="inline" set="null" expr="cast &quot;class&quot;" line="345" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "class"</e></m>
@@ -10934,7 +11023,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Class>
-	<Interface public="1" get="inline" set="null" expr="cast &quot;interface&quot;" line="341" static="1">
+	<Interface public="1" get="inline" set="null" expr="cast &quot;interface&quot;" line="346" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "interface"</e></m>
@@ -10942,7 +11031,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Interface>
-	<Enum public="1" get="inline" set="null" expr="cast &quot;enum&quot;" line="342" static="1">
+	<Enum public="1" get="inline" set="null" expr="cast &quot;enum&quot;" line="347" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "enum"</e></m>
@@ -10950,7 +11039,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Enum>
-	<Abstract public="1" get="inline" set="null" expr="cast &quot;abstract&quot;" line="343" static="1">
+	<Abstract public="1" get="inline" set="null" expr="cast &quot;abstract&quot;" line="348" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "abstract"</e></m>
@@ -10958,7 +11047,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Abstract>
-	<Typedef public="1" get="inline" set="null" expr="cast &quot;typedef&quot;" line="344" static="1">
+	<Typedef public="1" get="inline" set="null" expr="cast &quot;typedef&quot;" line="349" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "typedef"</e></m>
@@ -10966,7 +11055,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Typedef>
-	<Final public="1" get="inline" set="null" expr="cast &quot;final&quot;" line="345" static="1">
+	<Final public="1" get="inline" set="null" expr="cast &quot;final&quot;" line="350" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "final"</e></m>
@@ -10974,7 +11063,7 @@
 			<m n=":impl"/>
 		</meta>
 	</Final>
-	<Inline public="1" get="inline" set="null" expr="cast &quot;inline&quot;" line="346" static="1">
+	<Inline public="1" get="inline" set="null" expr="cast &quot;inline&quot;" line="351" static="1">
 		<x path="haxe.display.KeywordKind"/>
 		<meta>
 			<m n=":value"><e>cast "inline"</e></m>
@@ -10986,7 +11075,7 @@
 </class></impl>
 	</abstract>
 	<class path="haxe.display._Display.KeywordKind_Impl_" params="" file="/home/vsts/work/1/s/std/haxe/display/Display.hx" private="1" module="haxe.display.Display" extern="1">
-		<Implements public="1" get="inline" set="null" expr="cast &quot;implements&quot;" line="309" static="1">
+		<Implements public="1" get="inline" set="null" expr="cast &quot;implements&quot;" line="314" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "implements"</e></m>
@@ -10994,7 +11083,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Implements>
-		<Extends public="1" get="inline" set="null" expr="cast &quot;extends&quot;" line="310" static="1">
+		<Extends public="1" get="inline" set="null" expr="cast &quot;extends&quot;" line="315" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "extends"</e></m>
@@ -11002,7 +11091,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Extends>
-		<Function public="1" get="inline" set="null" expr="cast &quot;function&quot;" line="311" static="1">
+		<Function public="1" get="inline" set="null" expr="cast &quot;function&quot;" line="316" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "function"</e></m>
@@ -11010,7 +11099,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Function>
-		<Var public="1" get="inline" set="null" expr="cast &quot;var&quot;" line="312" static="1">
+		<Var public="1" get="inline" set="null" expr="cast &quot;var&quot;" line="317" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "var"</e></m>
@@ -11018,7 +11107,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Var>
-		<If public="1" get="inline" set="null" expr="cast &quot;if&quot;" line="313" static="1">
+		<If public="1" get="inline" set="null" expr="cast &quot;if&quot;" line="318" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "if"</e></m>
@@ -11026,7 +11115,7 @@
 				<m n=":impl"/>
 			</meta>
 		</If>
-		<Else public="1" get="inline" set="null" expr="cast &quot;else&quot;" line="314" static="1">
+		<Else public="1" get="inline" set="null" expr="cast &quot;else&quot;" line="319" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "else"</e></m>
@@ -11034,7 +11123,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Else>
-		<While public="1" get="inline" set="null" expr="cast &quot;while&quot;" line="315" static="1">
+		<While public="1" get="inline" set="null" expr="cast &quot;while&quot;" line="320" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "while"</e></m>
@@ -11042,7 +11131,7 @@
 				<m n=":impl"/>
 			</meta>
 		</While>
-		<Do public="1" get="inline" set="null" expr="cast &quot;do&quot;" line="316" static="1">
+		<Do public="1" get="inline" set="null" expr="cast &quot;do&quot;" line="321" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "do"</e></m>
@@ -11050,7 +11139,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Do>
-		<For public="1" get="inline" set="null" expr="cast &quot;for&quot;" line="317" static="1">
+		<For public="1" get="inline" set="null" expr="cast &quot;for&quot;" line="322" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "for"</e></m>
@@ -11058,7 +11147,7 @@
 				<m n=":impl"/>
 			</meta>
 		</For>
-		<Break public="1" get="inline" set="null" expr="cast &quot;break&quot;" line="318" static="1">
+		<Break public="1" get="inline" set="null" expr="cast &quot;break&quot;" line="323" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "break"</e></m>
@@ -11066,7 +11155,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Break>
-		<Return public="1" get="inline" set="null" expr="cast &quot;return&quot;" line="319" static="1">
+		<Return public="1" get="inline" set="null" expr="cast &quot;return&quot;" line="324" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "return"</e></m>
@@ -11074,7 +11163,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Return>
-		<Continue public="1" get="inline" set="null" expr="cast &quot;continue&quot;" line="320" static="1">
+		<Continue public="1" get="inline" set="null" expr="cast &quot;continue&quot;" line="325" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "continue"</e></m>
@@ -11082,7 +11171,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Continue>
-		<Switch public="1" get="inline" set="null" expr="cast &quot;switch&quot;" line="321" static="1">
+		<Switch public="1" get="inline" set="null" expr="cast &quot;switch&quot;" line="326" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "switch"</e></m>
@@ -11090,7 +11179,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Switch>
-		<Case public="1" get="inline" set="null" expr="cast &quot;case&quot;" line="322" static="1">
+		<Case public="1" get="inline" set="null" expr="cast &quot;case&quot;" line="327" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "case"</e></m>
@@ -11098,7 +11187,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Case>
-		<Default public="1" get="inline" set="null" expr="cast &quot;default&quot;" line="323" static="1">
+		<Default public="1" get="inline" set="null" expr="cast &quot;default&quot;" line="328" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "default"</e></m>
@@ -11106,7 +11195,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Default>
-		<Try public="1" get="inline" set="null" expr="cast &quot;try&quot;" line="324" static="1">
+		<Try public="1" get="inline" set="null" expr="cast &quot;try&quot;" line="329" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "try"</e></m>
@@ -11114,7 +11203,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Try>
-		<Catch public="1" get="inline" set="null" expr="cast &quot;catch&quot;" line="325" static="1">
+		<Catch public="1" get="inline" set="null" expr="cast &quot;catch&quot;" line="330" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "catch"</e></m>
@@ -11122,7 +11211,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Catch>
-		<New public="1" get="inline" set="null" expr="cast &quot;new&quot;" line="326" static="1">
+		<New public="1" get="inline" set="null" expr="cast &quot;new&quot;" line="331" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "new"</e></m>
@@ -11130,7 +11219,7 @@
 				<m n=":impl"/>
 			</meta>
 		</New>
-		<Throw public="1" get="inline" set="null" expr="cast &quot;throw&quot;" line="327" static="1">
+		<Throw public="1" get="inline" set="null" expr="cast &quot;throw&quot;" line="332" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "throw"</e></m>
@@ -11138,7 +11227,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Throw>
-		<Untyped public="1" get="inline" set="null" expr="cast &quot;untyped&quot;" line="328" static="1">
+		<Untyped public="1" get="inline" set="null" expr="cast &quot;untyped&quot;" line="333" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "untyped"</e></m>
@@ -11146,7 +11235,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Untyped>
-		<Cast public="1" get="inline" set="null" expr="cast &quot;cast&quot;" line="329" static="1">
+		<Cast public="1" get="inline" set="null" expr="cast &quot;cast&quot;" line="334" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "cast"</e></m>
@@ -11154,7 +11243,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Cast>
-		<Macro public="1" get="inline" set="null" expr="cast &quot;macro&quot;" line="330" static="1">
+		<Macro public="1" get="inline" set="null" expr="cast &quot;macro&quot;" line="335" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "macro"</e></m>
@@ -11162,7 +11251,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Macro>
-		<Package public="1" get="inline" set="null" expr="cast &quot;package&quot;" line="331" static="1">
+		<Package public="1" get="inline" set="null" expr="cast &quot;package&quot;" line="336" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "package"</e></m>
@@ -11170,7 +11259,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Package>
-		<Import public="1" get="inline" set="null" expr="cast &quot;import&quot;" line="332" static="1">
+		<Import public="1" get="inline" set="null" expr="cast &quot;import&quot;" line="337" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "import"</e></m>
@@ -11178,7 +11267,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Import>
-		<Using public="1" get="inline" set="null" expr="cast &quot;using&quot;" line="333" static="1">
+		<Using public="1" get="inline" set="null" expr="cast &quot;using&quot;" line="338" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "using"</e></m>
@@ -11186,7 +11275,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Using>
-		<Public public="1" get="inline" set="null" expr="cast &quot;public&quot;" line="334" static="1">
+		<Public public="1" get="inline" set="null" expr="cast &quot;public&quot;" line="339" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "public"</e></m>
@@ -11194,7 +11283,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Public>
-		<Private public="1" get="inline" set="null" expr="cast &quot;private&quot;" line="335" static="1">
+		<Private public="1" get="inline" set="null" expr="cast &quot;private&quot;" line="340" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "private"</e></m>
@@ -11202,7 +11291,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Private>
-		<Static public="1" get="inline" set="null" expr="cast &quot;static&quot;" line="336" static="1">
+		<Static public="1" get="inline" set="null" expr="cast &quot;static&quot;" line="341" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "static"</e></m>
@@ -11210,7 +11299,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Static>
-		<Extern public="1" get="inline" set="null" expr="cast &quot;extern&quot;" line="337" static="1">
+		<Extern public="1" get="inline" set="null" expr="cast &quot;extern&quot;" line="342" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "extern"</e></m>
@@ -11218,7 +11307,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Extern>
-		<Dynamic public="1" get="inline" set="null" expr="cast &quot;dynamic&quot;" line="338" static="1">
+		<Dynamic public="1" get="inline" set="null" expr="cast &quot;dynamic&quot;" line="343" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "dynamic"</e></m>
@@ -11226,7 +11315,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Dynamic>
-		<Override public="1" get="inline" set="null" expr="cast &quot;override&quot;" line="339" static="1">
+		<Override public="1" get="inline" set="null" expr="cast &quot;override&quot;" line="344" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "override"</e></m>
@@ -11234,7 +11323,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Override>
-		<Class public="1" get="inline" set="null" expr="cast &quot;class&quot;" line="340" static="1">
+		<Class public="1" get="inline" set="null" expr="cast &quot;class&quot;" line="345" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "class"</e></m>
@@ -11242,7 +11331,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Class>
-		<Interface public="1" get="inline" set="null" expr="cast &quot;interface&quot;" line="341" static="1">
+		<Interface public="1" get="inline" set="null" expr="cast &quot;interface&quot;" line="346" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "interface"</e></m>
@@ -11250,7 +11339,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Interface>
-		<Enum public="1" get="inline" set="null" expr="cast &quot;enum&quot;" line="342" static="1">
+		<Enum public="1" get="inline" set="null" expr="cast &quot;enum&quot;" line="347" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "enum"</e></m>
@@ -11258,7 +11347,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Enum>
-		<Abstract public="1" get="inline" set="null" expr="cast &quot;abstract&quot;" line="343" static="1">
+		<Abstract public="1" get="inline" set="null" expr="cast &quot;abstract&quot;" line="348" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "abstract"</e></m>
@@ -11266,7 +11355,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Abstract>
-		<Typedef public="1" get="inline" set="null" expr="cast &quot;typedef&quot;" line="344" static="1">
+		<Typedef public="1" get="inline" set="null" expr="cast &quot;typedef&quot;" line="349" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "typedef"</e></m>
@@ -11274,7 +11363,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Typedef>
-		<Final public="1" get="inline" set="null" expr="cast &quot;final&quot;" line="345" static="1">
+		<Final public="1" get="inline" set="null" expr="cast &quot;final&quot;" line="350" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "final"</e></m>
@@ -11282,7 +11371,7 @@
 				<m n=":impl"/>
 			</meta>
 		</Final>
-		<Inline public="1" get="inline" set="null" expr="cast &quot;inline&quot;" line="346" static="1">
+		<Inline public="1" get="inline" set="null" expr="cast &quot;inline&quot;" line="351" static="1">
 			<x path="haxe.display.KeywordKind"/>
 			<meta>
 				<m n=":value"><e>cast "inline"</e></m>
@@ -14601,9 +14690,9 @@
 		<key public="1"><c path="haxe.ds.TreeNode.K"/></key>
 		<value public="1"><c path="haxe.ds.TreeNode.V"/></value>
 		<_height><x path="Int"/></_height>
-		<get_height public="1" get="inline" set="null" line="266"><f a=""><x path="Int"/></f></get_height>
-		<toString public="1" set="method" line="269"><f a=""><c path="String"/></f></toString>
-		<new public="1" set="method" line="255">
+		<get_height public="1" get="inline" set="null" line="263"><f a=""><x path="Int"/></f></get_height>
+		<toString public="1" set="method" line="266"><f a=""><c path="String"/></f></toString>
+		<new public="1" set="method" line="252">
 			<f a="l:k:v:r:?h" v="::::-1">
 				<c path="haxe.ds.TreeNode">
 					<c path="haxe.ds.TreeNode.K"/>
@@ -14748,7 +14837,7 @@
 
 	@see https://haxe.org/manual/std-Map.html</haxe_doc>
 		<impl><class path="haxe.ds._HashMap.HashMap_Impl_" params="" file="/home/vsts/work/1/s/std/haxe/ds/HashMap.hx" private="1" module="haxe.ds.HashMap">
-	<_new public="1" get="inline" set="null" line="36" static="1">
+	<_new public="1" get="inline" set="null" line="38" static="1">
 		<f a=""><x path="haxe.ds.HashMap">
 	<c path="haxe.ds.HashMap.K"/>
 	<c path="haxe.ds.HashMap.V"/>
@@ -14759,7 +14848,7 @@
 		</meta>
 		<haxe_doc>Creates a new HashMap.</haxe_doc>
 	</_new>
-	<set public="1" get="inline" set="null" line="43" static="1">
+	<set public="1" get="inline" set="null" line="45" static="1">
 		<f a="this:k:v">
 			<c path="haxe.ds._HashMap.HashMapData">
 				<c path="haxe.ds.HashMap.K"/>
@@ -14769,10 +14858,13 @@
 			<c path="haxe.ds.HashMap.V"/>
 			<x path="Void"/>
 		</f>
-		<meta><m n=":impl"/></meta>
+		<meta>
+			<m n=":impl"/>
+			<m n=":arrayAccess"/>
+		</meta>
 		<haxe_doc>See `Map.set`</haxe_doc>
 	</set>
-	<get public="1" get="inline" set="null" line="51" static="1">
+	<get public="1" get="inline" set="null" line="53" static="1">
 		<f a="this:k">
 			<c path="haxe.ds._HashMap.HashMapData">
 				<c path="haxe.ds.HashMap.K"/>
@@ -14781,10 +14873,13 @@
 			<c path="haxe.ds.HashMap.K"/>
 			<x path="Null"><c path="haxe.ds.HashMap.V"/></x>
 		</f>
-		<meta><m n=":impl"/></meta>
+		<meta>
+			<m n=":impl"/>
+			<m n=":arrayAccess"/>
+		</meta>
 		<haxe_doc>See `Map.get`</haxe_doc>
 	</get>
-	<exists public="1" get="inline" set="null" line="58" static="1">
+	<exists public="1" get="inline" set="null" line="60" static="1">
 		<f a="this:k">
 			<c path="haxe.ds._HashMap.HashMapData">
 				<c path="haxe.ds.HashMap.K"/>
@@ -14796,7 +14891,7 @@
 		<meta><m n=":impl"/></meta>
 		<haxe_doc>See `Map.exists`</haxe_doc>
 	</exists>
-	<remove public="1" get="inline" set="null" line="65" static="1">
+	<remove public="1" get="inline" set="null" line="67" static="1">
 		<f a="this:k">
 			<c path="haxe.ds._HashMap.HashMapData">
 				<c path="haxe.ds.HashMap.K"/>
@@ -14808,7 +14903,7 @@
 		<meta><m n=":impl"/></meta>
 		<haxe_doc>See `Map.remove`</haxe_doc>
 	</remove>
-	<keys public="1" get="inline" set="null" line="73" static="1">
+	<keys public="1" get="inline" set="null" line="75" static="1">
 		<f a="this">
 			<c path="haxe.ds._HashMap.HashMapData">
 				<c path="haxe.ds.HashMap.K"/>
@@ -14819,7 +14914,7 @@
 		<meta><m n=":impl"/></meta>
 		<haxe_doc>See `Map.keys`</haxe_doc>
 	</keys>
-	<copy public="1" set="method" line="80" static="1">
+	<copy public="1" set="method" line="82" static="1">
 		<f a="this">
 			<c path="haxe.ds._HashMap.HashMapData">
 				<c path="haxe.ds.HashMap.K"/>
@@ -14833,7 +14928,7 @@
 		<meta><m n=":impl"/></meta>
 		<haxe_doc>See `Map.copy`</haxe_doc>
 	</copy>
-	<iterator public="1" get="inline" set="null" line="90" static="1">
+	<iterator public="1" get="inline" set="null" line="92" static="1">
 		<f a="this">
 			<c path="haxe.ds._HashMap.HashMapData">
 				<c path="haxe.ds.HashMap.K"/>
@@ -14844,7 +14939,21 @@
 		<meta><m n=":impl"/></meta>
 		<haxe_doc>See `Map.iterator`</haxe_doc>
 	</iterator>
-	<clear public="1" get="inline" set="null" line="97" static="1">
+	<keyValueIterator public="1" get="inline" set="null" line="99" static="1">
+		<f a="this">
+			<c path="haxe.ds._HashMap.HashMapData">
+				<c path="haxe.ds.HashMap.K"/>
+				<c path="haxe.ds.HashMap.V"/>
+			</c>
+			<c path="haxe.iterators.HashMapKeyValueIterator">
+				<c path="haxe.ds.HashMap.K"/>
+				<c path="haxe.ds.HashMap.V"/>
+			</c>
+		</f>
+		<meta><m n=":impl"/></meta>
+		<haxe_doc>See `Map.keyValueIterator`</haxe_doc>
+	</keyValueIterator>
+	<clear public="1" get="inline" set="null" line="106" static="1">
 		<f a="this">
 			<c path="haxe.ds._HashMap.HashMapData">
 				<c path="haxe.ds.HashMap.K"/>
@@ -14858,7 +14967,7 @@
 </class></impl>
 	</abstract>
 	<class path="haxe.ds._HashMap.HashMap_Impl_" params="" file="/home/vsts/work/1/s/std/haxe/ds/HashMap.hx" private="1" module="haxe.ds.HashMap">
-		<_new public="1" get="inline" set="null" line="36" static="1">
+		<_new public="1" get="inline" set="null" line="38" static="1">
 			<f a=""><x path="haxe.ds.HashMap">
 	<c path="haxe.ds.HashMap.K"/>
 	<c path="haxe.ds.HashMap.V"/>
@@ -14869,7 +14978,7 @@
 			</meta>
 			<haxe_doc>Creates a new HashMap.</haxe_doc>
 		</_new>
-		<set public="1" get="inline" set="null" line="43" static="1">
+		<set public="1" get="inline" set="null" line="45" static="1">
 			<f a="this:k:v">
 				<c path="haxe.ds._HashMap.HashMapData">
 					<c path="haxe.ds.HashMap.K"/>
@@ -14879,10 +14988,13 @@
 				<c path="haxe.ds.HashMap.V"/>
 				<x path="Void"/>
 			</f>
-			<meta><m n=":impl"/></meta>
+			<meta>
+				<m n=":impl"/>
+				<m n=":arrayAccess"/>
+			</meta>
 			<haxe_doc>See `Map.set`</haxe_doc>
 		</set>
-		<get public="1" get="inline" set="null" line="51" static="1">
+		<get public="1" get="inline" set="null" line="53" static="1">
 			<f a="this:k">
 				<c path="haxe.ds._HashMap.HashMapData">
 					<c path="haxe.ds.HashMap.K"/>
@@ -14891,10 +15003,13 @@
 				<c path="haxe.ds.HashMap.K"/>
 				<x path="Null"><c path="haxe.ds.HashMap.V"/></x>
 			</f>
-			<meta><m n=":impl"/></meta>
+			<meta>
+				<m n=":impl"/>
+				<m n=":arrayAccess"/>
+			</meta>
 			<haxe_doc>See `Map.get`</haxe_doc>
 		</get>
-		<exists public="1" get="inline" set="null" line="58" static="1">
+		<exists public="1" get="inline" set="null" line="60" static="1">
 			<f a="this:k">
 				<c path="haxe.ds._HashMap.HashMapData">
 					<c path="haxe.ds.HashMap.K"/>
@@ -14906,7 +15021,7 @@
 			<meta><m n=":impl"/></meta>
 			<haxe_doc>See `Map.exists`</haxe_doc>
 		</exists>
-		<remove public="1" get="inline" set="null" line="65" static="1">
+		<remove public="1" get="inline" set="null" line="67" static="1">
 			<f a="this:k">
 				<c path="haxe.ds._HashMap.HashMapData">
 					<c path="haxe.ds.HashMap.K"/>
@@ -14918,7 +15033,7 @@
 			<meta><m n=":impl"/></meta>
 			<haxe_doc>See `Map.remove`</haxe_doc>
 		</remove>
-		<keys public="1" get="inline" set="null" line="73" static="1">
+		<keys public="1" get="inline" set="null" line="75" static="1">
 			<f a="this">
 				<c path="haxe.ds._HashMap.HashMapData">
 					<c path="haxe.ds.HashMap.K"/>
@@ -14929,7 +15044,7 @@
 			<meta><m n=":impl"/></meta>
 			<haxe_doc>See `Map.keys`</haxe_doc>
 		</keys>
-		<copy public="1" set="method" line="80" static="1">
+		<copy public="1" set="method" line="82" static="1">
 			<f a="this">
 				<c path="haxe.ds._HashMap.HashMapData">
 					<c path="haxe.ds.HashMap.K"/>
@@ -14943,7 +15058,7 @@
 			<meta><m n=":impl"/></meta>
 			<haxe_doc>See `Map.copy`</haxe_doc>
 		</copy>
-		<iterator public="1" get="inline" set="null" line="90" static="1">
+		<iterator public="1" get="inline" set="null" line="92" static="1">
 			<f a="this">
 				<c path="haxe.ds._HashMap.HashMapData">
 					<c path="haxe.ds.HashMap.K"/>
@@ -14954,7 +15069,21 @@
 			<meta><m n=":impl"/></meta>
 			<haxe_doc>See `Map.iterator`</haxe_doc>
 		</iterator>
-		<clear public="1" get="inline" set="null" line="97" static="1">
+		<keyValueIterator public="1" get="inline" set="null" line="99" static="1">
+			<f a="this">
+				<c path="haxe.ds._HashMap.HashMapData">
+					<c path="haxe.ds.HashMap.K"/>
+					<c path="haxe.ds.HashMap.V"/>
+				</c>
+				<c path="haxe.iterators.HashMapKeyValueIterator">
+					<c path="haxe.ds.HashMap.K"/>
+					<c path="haxe.ds.HashMap.V"/>
+				</c>
+			</f>
+			<meta><m n=":impl"/></meta>
+			<haxe_doc>See `Map.keyValueIterator`</haxe_doc>
+		</keyValueIterator>
+		<clear public="1" get="inline" set="null" line="106" static="1">
 			<f a="this">
 				<c path="haxe.ds._HashMap.HashMapData">
 					<c path="haxe.ds.HashMap.K"/>
@@ -14969,7 +15098,7 @@
 	<class path="haxe.ds._HashMap.HashMapData" params="K:V" file="/home/vsts/work/1/s/std/haxe/ds/HashMap.hx" private="1" module="haxe.ds.HashMap">
 		<keys public="1"><c path="haxe.ds.IntMap"><c path="haxe.ds._HashMap.HashMapData.K"/></c></keys>
 		<values public="1"><c path="haxe.ds.IntMap"><c path="haxe.ds._HashMap.HashMapData.V"/></c></values>
-		<new public="1" get="inline" set="null" line="107"><f a=""><x path="Void"/></f></new>
+		<new public="1" get="inline" set="null" line="116"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="haxe.ds.IntMap" params="T" file="/home/vsts/work/1/s/std/neko/_std/haxe/ds/IntMap.hx">
 		<implements path="haxe.IMap">
@@ -16055,6 +16184,7 @@
 	<abstract path="haxe.ds.ReadOnlyArray" params="T" file="/home/vsts/work/1/s/std/haxe/ds/ReadOnlyArray.hx">
 		<from><icast><c path="Array"><c path="haxe.ds.ReadOnlyArray.T"/></c></icast></from>
 		<this><c path="Array"><c path="haxe.ds.ReadOnlyArray.T"/></c></this>
+		<to><icast><t path="Iterable"><c path="haxe.ds.ReadOnlyArray.T"/></t></icast></to>
 		<haxe_doc>`ReadOnlyArray` is an abstract over an ordinary `Array` which only exposes
 	APIs that don't modify the instance, hence "read-only".
 
@@ -16331,7 +16461,7 @@
 
 		If `data` is null, the corresponding Vector is also `null`.</haxe_doc>
 	</fromData>
-	<fromArrayCopy public="1" params="T" get="inline" set="null" line="247" static="1">
+	<fromArrayCopy public="1" params="T" get="inline" set="null" line="244" static="1">
 		<f a="array">
 			<c path="Array"><c path="fromArrayCopy.T"/></c>
 			<x path="haxe.ds.Vector"><c path="fromArrayCopy.T"/></x>
@@ -16346,7 +16476,7 @@
 
 		If `array` is null, the result is unspecified.</haxe_doc>
 	</fromArrayCopy>
-	<copy public="1" params="T" get="inline" set="null" line="278" static="1">
+	<copy public="1" params="T" get="inline" set="null" line="275" static="1">
 		<f a="this">
 			<t path="haxe.ds._Vector.VectorData"><c path="copy.T"/></t>
 			<x path="haxe.ds.Vector"><c path="copy.T"/></x>
@@ -16358,7 +16488,7 @@
 		`a[i] == a.copy()[i]` is true for any valid `i`. However,
 		`a == a.copy()` is always false.</haxe_doc>
 	</copy>
-	<join public="1" params="T" get="inline" set="null" line="301" static="1">
+	<join public="1" params="T" get="inline" set="null" line="298" static="1">
 		<f a="this:sep">
 			<t path="haxe.ds._Vector.VectorData"><c path="join.T"/></t>
 			<c path="String"/>
@@ -16377,7 +16507,7 @@
 
 		If `sep` is null, the result is unspecified.</haxe_doc>
 	</join>
-	<map public="1" params="S" get="inline" set="null" line="324" static="1">
+	<map public="1" params="S" get="inline" set="null" line="321" static="1">
 		<f a="this:f">
 			<t path="haxe.ds._Vector.VectorData"><c path="haxe.ds.Vector.T"/></t>
 			<f a="">
@@ -16393,7 +16523,7 @@
 
 		If `f` is null, the result is unspecified.</haxe_doc>
 	</map>
-	<sort public="1" params="T" get="inline" set="null" line="351" static="1">
+	<sort public="1" params="T" get="inline" set="null" line="348" static="1">
 		<f a="this:f">
 			<t path="haxe.ds._Vector.VectorData"><c path="sort.T"/></t>
 			<f a=":">
@@ -16529,7 +16659,7 @@
 
 		If `data` is null, the corresponding Vector is also `null`.</haxe_doc>
 		</fromData>
-		<fromArrayCopy public="1" params="T" get="inline" set="null" line="247" static="1">
+		<fromArrayCopy public="1" params="T" get="inline" set="null" line="244" static="1">
 			<f a="array">
 				<c path="Array"><c path="fromArrayCopy.T"/></c>
 				<x path="haxe.ds.Vector"><c path="fromArrayCopy.T"/></x>
@@ -16544,7 +16674,7 @@
 
 		If `array` is null, the result is unspecified.</haxe_doc>
 		</fromArrayCopy>
-		<copy public="1" params="T" get="inline" set="null" line="278" static="1">
+		<copy public="1" params="T" get="inline" set="null" line="275" static="1">
 			<f a="this">
 				<t path="haxe.ds._Vector.VectorData"><c path="copy.T"/></t>
 				<x path="haxe.ds.Vector"><c path="copy.T"/></x>
@@ -16556,7 +16686,7 @@
 		`a[i] == a.copy()[i]` is true for any valid `i`. However,
 		`a == a.copy()` is always false.</haxe_doc>
 		</copy>
-		<join public="1" params="T" get="inline" set="null" line="301" static="1">
+		<join public="1" params="T" get="inline" set="null" line="298" static="1">
 			<f a="this:sep">
 				<t path="haxe.ds._Vector.VectorData"><c path="join.T"/></t>
 				<c path="String"/>
@@ -16575,7 +16705,7 @@
 
 		If `sep` is null, the result is unspecified.</haxe_doc>
 		</join>
-		<map public="1" params="S" get="inline" set="null" line="324" static="1">
+		<map public="1" params="S" get="inline" set="null" line="321" static="1">
 			<f a="this:f">
 				<t path="haxe.ds._Vector.VectorData"><c path="haxe.ds.Vector.T"/></t>
 				<f a="">
@@ -16591,7 +16721,7 @@
 
 		If `f` is null, the result is unspecified.</haxe_doc>
 		</map>
-		<sort public="1" params="T" get="inline" set="null" line="351" static="1">
+		<sort public="1" params="T" get="inline" set="null" line="348" static="1">
 			<f a="this:f">
 				<t path="haxe.ds._Vector.VectorData"><c path="sort.T"/></t>
 				<f a=":">
@@ -25755,6 +25885,31 @@
 </f></new>
 		<haxe_doc>This Key/Value iterator can be used to iterate over `haxe.DynamicAccess`.</haxe_doc>
 	</class>
+	<class path="haxe.iterators.HashMapKeyValueIterator" params="K:V" file="/home/vsts/work/1/s/std/haxe/iterators/HashMapKeyValueIterator.hx">
+		<map final="1"><x path="haxe.ds.HashMap">
+	<c path="haxe.iterators.HashMapKeyValueIterator.K"/>
+	<c path="haxe.iterators.HashMapKeyValueIterator.V"/>
+</x></map>
+		<keys final="1"><t path="Iterator"><c path="haxe.iterators.HashMapKeyValueIterator.K"/></t></keys>
+		<hasNext public="1" get="inline" set="null" line="17">
+			<f a=""><x path="Bool"/></f>
+			<haxe_doc>See `Iterator.hasNext`</haxe_doc>
+		</hasNext>
+		<next public="1" get="inline" set="null" line="24">
+			<f a=""><a>
+	<value><c path="haxe.iterators.HashMapKeyValueIterator.V"/></value>
+	<key><c path="haxe.iterators.HashMapKeyValueIterator.K"/></key>
+</a></f>
+			<haxe_doc>See `Iterator.next`</haxe_doc>
+		</next>
+		<new public="1" get="inline" set="null" line="9"><f a="map">
+	<x path="haxe.ds.HashMap">
+		<c path="haxe.iterators.HashMapKeyValueIterator.K"/>
+		<c path="haxe.iterators.HashMapKeyValueIterator.V"/>
+	</x>
+	<x path="Void"/>
+</f></new>
+	</class>
 	<class path="haxe.iterators.MapKeyValueIterator" params="K:V" file="/home/vsts/work/1/s/std/haxe/iterators/MapKeyValueIterator.hx">
 		<map><c path="haxe.IMap">
 	<c path="haxe.iterators.MapKeyValueIterator.K"/>
@@ -26314,7 +26469,7 @@
 		<to><icast><c path="String"/></icast></to>
 		<meta><m n=":enum"/></meta>
 		<impl><class path="haxe.macro._Compiler.IncludePosition_Impl_" params="" file="/home/vsts/work/1/s/std/haxe/macro/Compiler.hx" private="1" module="haxe.macro.Compiler" extern="1">
-	<Top public="1" get="inline" set="null" expr="cast &quot;top&quot;" line="505" static="1">
+	<Top public="1" get="inline" set="null" expr="cast &quot;top&quot;" line="508" static="1">
 		<x path="haxe.macro.IncludePosition"/>
 		<meta>
 			<m n=":value"><e>cast "top"</e></m>
@@ -26323,7 +26478,7 @@
 		</meta>
 		<haxe_doc>Prepend the file content to the output file.</haxe_doc>
 	</Top>
-	<Closure public="1" get="inline" set="null" expr="cast &quot;closure&quot;" line="512" static="1">
+	<Closure public="1" get="inline" set="null" expr="cast &quot;closure&quot;" line="515" static="1">
 		<x path="haxe.macro.IncludePosition"/>
 		<meta>
 			<m n=":value"><e>cast "closure"</e></m>
@@ -26334,7 +26489,7 @@
 
 		Since the closure is in strict-mode, there may be run-time error if the input is not strict-mode-compatible.</haxe_doc>
 	</Closure>
-	<Inline public="1" get="inline" set="null" expr="cast &quot;inline&quot;" line="517" static="1">
+	<Inline public="1" get="inline" set="null" expr="cast &quot;inline&quot;" line="520" static="1">
 		<x path="haxe.macro.IncludePosition"/>
 		<meta>
 			<m n=":value"><e>cast "inline"</e></m>
@@ -26347,7 +26502,7 @@
 </class></impl>
 	</abstract>
 	<class path="haxe.macro._Compiler.IncludePosition_Impl_" params="" file="/home/vsts/work/1/s/std/haxe/macro/Compiler.hx" private="1" module="haxe.macro.Compiler" extern="1">
-		<Top public="1" get="inline" set="null" expr="cast &quot;top&quot;" line="505" static="1">
+		<Top public="1" get="inline" set="null" expr="cast &quot;top&quot;" line="508" static="1">
 			<x path="haxe.macro.IncludePosition"/>
 			<meta>
 				<m n=":value"><e>cast "top"</e></m>
@@ -26356,7 +26511,7 @@
 			</meta>
 			<haxe_doc>Prepend the file content to the output file.</haxe_doc>
 		</Top>
-		<Closure public="1" get="inline" set="null" expr="cast &quot;closure&quot;" line="512" static="1">
+		<Closure public="1" get="inline" set="null" expr="cast &quot;closure&quot;" line="515" static="1">
 			<x path="haxe.macro.IncludePosition"/>
 			<meta>
 				<m n=":value"><e>cast "closure"</e></m>
@@ -26367,7 +26522,7 @@
 
 		Since the closure is in strict-mode, there may be run-time error if the input is not strict-mode-compatible.</haxe_doc>
 		</Closure>
-		<Inline public="1" get="inline" set="null" expr="cast &quot;inline&quot;" line="517" static="1">
+		<Inline public="1" get="inline" set="null" expr="cast &quot;inline&quot;" line="520" static="1">
 			<x path="haxe.macro.IncludePosition"/>
 			<meta>
 				<m n=":value"><e>cast "inline"</e></m>
@@ -26392,15 +26547,6 @@
 		</meta>
 		<haxe_doc>Disable null safety.</haxe_doc>
 	</Off>
-	<Strict public="1" get="inline" set="null" expr="cast &quot;Strict&quot;" line="1" static="1">
-		<x path="haxe.macro.NullSafetyMode"/>
-		<meta>
-			<m n=":value"><e>cast "Strict"</e></m>
-			<m n=":enum"/>
-			<m n=":impl"/>
-		</meta>
-		<haxe_doc>Full scale null safety.</haxe_doc>
-	</Strict>
 	<Loose public="1" get="inline" set="null" expr="cast &quot;Loose&quot;" line="1" static="1">
 		<x path="haxe.macro.NullSafetyMode"/>
 		<meta>
@@ -26409,7 +26555,7 @@
 			<m n=":impl"/>
 		</meta>
 		<haxe_doc><![CDATA[Loose safety.
-		If an expression is checked ` != null`, then it's considered safe even if it could be modified after the check.
+		If an expression is checked `!= null`, then it's considered safe even if it could be modified after the check.
 		E.g.
 		```haxe
 		function example(o:{field:Null<String>}) {
@@ -26424,6 +26570,44 @@
 		}
 		```]]></haxe_doc>
 	</Loose>
+	<Strict public="1" get="inline" set="null" expr="cast &quot;Strict&quot;" line="1" static="1">
+		<x path="haxe.macro.NullSafetyMode"/>
+		<meta>
+			<m n=":value"><e>cast "Strict"</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+		<haxe_doc><![CDATA[Full scale null safety.
+		If a field is checked `!= null` it stays safe until a call is made or any field of any object is reassigned,
+		because that could potentially alter an object of the checked field.
+		E.g.
+		```haxe
+		function example(o:{field:Null<String>}, b:{o:{field:Null<String>}}) {
+			if(o.field != null) {
+				var notNullable:String = o.field; //no error
+				someCall();
+				var notNullable:String = o.field; // Error!
+			}
+			if(o.field != null) {
+				var notNullable:String = o.field; //no error
+				b.o = {field:null};
+				var notNullable:String = o.field; // Error!
+			}
+		}
+		```]]></haxe_doc>
+	</Strict>
+	<StrictThreaded public="1" get="inline" set="null" expr="cast &quot;StrictThreaded&quot;" line="1" static="1">
+		<x path="haxe.macro.NullSafetyMode"/>
+		<meta>
+			<m n=":value"><e>cast "StrictThreaded"</e></m>
+			<m n=":enum"/>
+			<m n=":impl"/>
+		</meta>
+		<haxe_doc>Full scale null safety for a multi-threaded environment.
+		With this mode checking a field `!= null` does not make it safe, because it could be changed from another thread
+		at the same time or immediately after the check.
+		The only nullable thing could be safe are local variables.</haxe_doc>
+	</StrictThreaded>
 	<meta><m n=":enum"/></meta>
 </class></impl>
 	</abstract>
@@ -26437,15 +26621,6 @@
 			</meta>
 			<haxe_doc>Disable null safety.</haxe_doc>
 		</Off>
-		<Strict public="1" get="inline" set="null" expr="cast &quot;Strict&quot;" line="1" static="1">
-			<x path="haxe.macro.NullSafetyMode"/>
-			<meta>
-				<m n=":value"><e>cast "Strict"</e></m>
-				<m n=":enum"/>
-				<m n=":impl"/>
-			</meta>
-			<haxe_doc>Full scale null safety.</haxe_doc>
-		</Strict>
 		<Loose public="1" get="inline" set="null" expr="cast &quot;Loose&quot;" line="1" static="1">
 			<x path="haxe.macro.NullSafetyMode"/>
 			<meta>
@@ -26454,7 +26629,7 @@
 				<m n=":impl"/>
 			</meta>
 			<haxe_doc><![CDATA[Loose safety.
-		If an expression is checked ` != null`, then it's considered safe even if it could be modified after the check.
+		If an expression is checked `!= null`, then it's considered safe even if it could be modified after the check.
 		E.g.
 		```haxe
 		function example(o:{field:Null<String>}) {
@@ -26469,6 +26644,44 @@
 		}
 		```]]></haxe_doc>
 		</Loose>
+		<Strict public="1" get="inline" set="null" expr="cast &quot;Strict&quot;" line="1" static="1">
+			<x path="haxe.macro.NullSafetyMode"/>
+			<meta>
+				<m n=":value"><e>cast "Strict"</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
+			<haxe_doc><![CDATA[Full scale null safety.
+		If a field is checked `!= null` it stays safe until a call is made or any field of any object is reassigned,
+		because that could potentially alter an object of the checked field.
+		E.g.
+		```haxe
+		function example(o:{field:Null<String>}, b:{o:{field:Null<String>}}) {
+			if(o.field != null) {
+				var notNullable:String = o.field; //no error
+				someCall();
+				var notNullable:String = o.field; // Error!
+			}
+			if(o.field != null) {
+				var notNullable:String = o.field; //no error
+				b.o = {field:null};
+				var notNullable:String = o.field; // Error!
+			}
+		}
+		```]]></haxe_doc>
+		</Strict>
+		<StrictThreaded public="1" get="inline" set="null" expr="cast &quot;StrictThreaded&quot;" line="1" static="1">
+			<x path="haxe.macro.NullSafetyMode"/>
+			<meta>
+				<m n=":value"><e>cast "StrictThreaded"</e></m>
+				<m n=":enum"/>
+				<m n=":impl"/>
+			</meta>
+			<haxe_doc>Full scale null safety for a multi-threaded environment.
+		With this mode checking a field `!= null` does not make it safe, because it could be changed from another thread
+		at the same time or immediately after the check.
+		The only nullable thing could be safe are local variables.</haxe_doc>
+		</StrictThreaded>
 		<meta><m n=":enum"/></meta>
 	</class>
 	<class path="haxe.macro.ComplexTypeTools" params="" file="/home/vsts/work/1/s/std/haxe/macro/ComplexTypeTools.hx">
@@ -26567,11 +26780,18 @@
 		Modifying the returned array has no effect on the compiler. Class paths
 		can be added using `haxe.macro.Compiler.addClassPath`.</haxe_doc>
 		</getClassPath>
-		<currentPos public="1" set="method" line="118" static="1">
+		<containsDisplayPosition public="1" set="method" line="118" static="1">
+			<f a="pos">
+				<t path="haxe.macro.Position"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Check if current display position is within `pos`.</haxe_doc>
+		</containsDisplayPosition>
+		<currentPos public="1" set="method" line="125" static="1">
 			<f a=""><t path="haxe.macro.Position"/></f>
 			<haxe_doc>Returns the position at which the macro was called.</haxe_doc>
 		</currentPos>
-		<getExpectedType public="1" set="method" line="131" static="1">
+		<getExpectedType public="1" set="method" line="138" static="1">
 			<f a=""><x path="Null"><e path="haxe.macro.Type"/></x></f>
 			<haxe_doc>Returns the type which is expected at the place the macro is called.
 
@@ -26581,49 +26801,49 @@
 		Might return `null` if no specific type is expected or if the calling
 		macro is not an expression-macro.</haxe_doc>
 		</getExpectedType>
-		<getCallArguments public="1" set="method" line="141" static="1">
+		<getCallArguments public="1" set="method" line="148" static="1">
 			<f a=""><x path="Null"><c path="Array"><t path="haxe.macro.Expr"/></c></x></f>
 			<haxe_doc>Returns the call arguments that lead to the invocation of the current
 		`@:genericBuild` macro, if available.
 
 		Returns `null` if the current macro is not a `@:genericBuild` macro.</haxe_doc>
 		</getCallArguments>
-		<getLocalClass public="1" set="method" line="150" static="1">
+		<getLocalClass public="1" set="method" line="157" static="1">
 			<f a=""><x path="Null"><t path="haxe.macro.Ref"><t path="haxe.macro.ClassType"/></t></x></f>
 			<haxe_doc>Returns the current class in which the macro was called.
 
 		If no such class exists, `null` is returned.</haxe_doc>
 		</getLocalClass>
-		<getLocalModule public="1" set="method" line="163" static="1">
+		<getLocalModule public="1" set="method" line="170" static="1">
 			<f a=""><c path="String"/></f>
 			<haxe_doc>Returns the current module path in/on which the macro was called.</haxe_doc>
 		</getLocalModule>
-		<getLocalType public="1" set="method" line="172" static="1">
+		<getLocalType public="1" set="method" line="179" static="1">
 			<f a=""><x path="Null"><e path="haxe.macro.Type"/></x></f>
 			<haxe_doc>Returns the current type in/on which the macro was called.
 
 		If no such type exists, `null` is returned.</haxe_doc>
 		</getLocalType>
-		<getLocalMethod public="1" set="method" line="181" static="1">
+		<getLocalMethod public="1" set="method" line="188" static="1">
 			<f a=""><x path="Null"><c path="String"/></x></f>
 			<haxe_doc>Returns the name of the method from which the macro was called.
 
 		If no such method exists, `null` is returned.</haxe_doc>
 		</getLocalMethod>
-		<getLocalUsing public="1" set="method" line="191" static="1">
+		<getLocalUsing public="1" set="method" line="198" static="1">
 			<f a=""><c path="Array"><t path="haxe.macro.Ref"><t path="haxe.macro.ClassType"/></t></c></f>
 			<haxe_doc>Returns an `Array` of classes which are available for `using` usage in
 		the context the macro was called.
 
 		Modifying the returned array has no effect on the compiler.</haxe_doc>
 		</getLocalUsing>
-		<getLocalImports public="1" set="method" line="200" static="1">
+		<getLocalImports public="1" set="method" line="207" static="1">
 			<f a=""><c path="Array"><t path="haxe.macro.ImportExpr"/></c></f>
 			<haxe_doc>Returns an `Array` of all imports in the context the macro was called.
 
 		Modifying the returned array has no effect on the compiler.</haxe_doc>
 		</getLocalImports>
-		<getLocalVars public="1" set="method" line="214" static="1">
+		<getLocalVars public="1" set="method" line="221" static="1">
 			<f a=""><t path="Map">
 	<c path="String"/>
 	<e path="haxe.macro.Type"/>
@@ -26637,7 +26857,7 @@
 
 		Modifying the returned map has no effect on the compiler.</haxe_doc>
 		</getLocalVars>
-		<getLocalTVars public="1" set="method" line="222" static="1">
+		<getLocalTVars public="1" set="method" line="229" static="1">
 			<f a=""><t path="Map">
 	<c path="String"/>
 	<t path="haxe.macro.TVar"/>
@@ -26645,7 +26865,7 @@
 			<haxe_doc>Similar to `getLocalVars`, but returns elements of type `TVar` instead
 		of `Type`.</haxe_doc>
 		</getLocalTVars>
-		<defined public="1" set="method" line="234" static="1">
+		<defined public="1" set="method" line="241" static="1">
 			<f a="s">
 				<c path="String"/>
 				<x path="Bool"/>
@@ -26657,7 +26877,7 @@
 
 		@see https://haxe.org/manual/lf-condition-compilation.html</haxe_doc>
 		</defined>
-		<definedValue public="1" set="method" line="250" static="1">
+		<definedValue public="1" set="method" line="257" static="1">
 			<f a="key">
 				<c path="String"/>
 				<c path="String"/>
@@ -26673,7 +26893,7 @@
 
 		@see https://haxe.org/manual/lf-condition-compilation.html</haxe_doc>
 		</definedValue>
-		<getDefines public="1" set="method" line="264" static="1">
+		<getDefines public="1" set="method" line="271" static="1">
 			<f a=""><t path="Map">
 	<c path="String"/>
 	<c path="String"/>
@@ -26687,7 +26907,7 @@
 
 		@see https://haxe.org/manual/lf-condition-compilation.html</haxe_doc>
 		</getDefines>
-		<getType public="1" set="method" line="276" static="1">
+		<getType public="1" set="method" line="283" static="1">
 			<f a="name">
 				<c path="String"/>
 				<e path="haxe.macro.Type"/>
@@ -26699,7 +26919,7 @@
 
 		If no type can be found, an exception of type `String` is thrown.</haxe_doc>
 		</getType>
-		<getModule public="1" set="method" line="289" static="1">
+		<getModule public="1" set="method" line="296" static="1">
 			<f a="name">
 				<c path="String"/>
 				<c path="Array"><e path="haxe.macro.Type"/></c>
@@ -26712,7 +26932,7 @@
 
 		If no module can be found, `null` is returned.</haxe_doc>
 		</getModule>
-		<parse public="1" set="method" line="301" static="1">
+		<parse public="1" set="method" line="308" static="1">
 			<f a="expr:pos">
 				<c path="String"/>
 				<t path="haxe.macro.Position"/>
@@ -26725,7 +26945,7 @@
 
 		The provided `Position` `pos` is used for all generated inner AST nodes.</haxe_doc>
 		</parse>
-		<parseInlineString public="1" set="method" line="309" static="1">
+		<parseInlineString public="1" set="method" line="316" static="1">
 			<f a="expr:pos">
 				<c path="String"/>
 				<t path="haxe.macro.Position"/>
@@ -26734,7 +26954,7 @@
 			<haxe_doc>Similar to `parse`, but error positions are reported within the provided
 		String `expr`.</haxe_doc>
 		</parseInlineString>
-		<makeExpr public="1" set="method" line="322" static="1">
+		<makeExpr public="1" set="method" line="329" static="1">
 			<f a="v:pos">
 				<d/>
 				<t path="haxe.macro.Position"/>
@@ -26748,14 +26968,14 @@
 
 		The provided `Position` `pos` is used for all generated inner AST nodes.</haxe_doc>
 		</makeExpr>
-		<signature public="1" set="method" line="329" static="1">
+		<signature public="1" set="method" line="336" static="1">
 			<f a="v">
 				<d/>
 				<c path="String"/>
 			</f>
 			<haxe_doc>Returns a hashed MD5 signature of value `v`.</haxe_doc>
 		</signature>
-		<onGenerate public="1" set="method" line="349" static="1">
+		<onGenerate public="1" set="method" line="356" static="1">
 			<f a="callback:?persistent" v=":true">
 				<f a="">
 					<c path="Array"><e path="haxe.macro.Type"/></c>
@@ -26780,7 +27000,7 @@
 
 		*Note*: the callback is still invoked when generation is disabled with  `--no-output`.</haxe_doc>
 		</onGenerate>
-		<onAfterGenerate public="1" set="method" line="362" static="1">
+		<onAfterGenerate public="1" set="method" line="369" static="1">
 			<f a="callback">
 				<f a=""><x path="Void"/></f>
 				<x path="Void"/>
@@ -26793,7 +27013,7 @@
 
 		*Note*: the callback is still invoked when generation is disabled with  `--no-output`.</haxe_doc>
 		</onAfterGenerate>
-		<onAfterTyping public="1" set="method" line="374" static="1">
+		<onAfterTyping public="1" set="method" line="381" static="1">
 			<f a="callback">
 				<f a="">
 					<c path="Array"><e path="haxe.macro.ModuleType"/></c>
@@ -26808,7 +27028,7 @@
 		It is possible to define new types in the callback, in which case it
 		will be called again with the new types as argument.</haxe_doc>
 		</onAfterTyping>
-		<onTypeNotFound public="1" set="method" line="386" static="1">
+		<onTypeNotFound public="1" set="method" line="393" static="1">
 			<f a="callback">
 				<f a="">
 					<c path="String"/>
@@ -26823,7 +27043,7 @@
 		expected type. If it returns `null`, the type is considered to still not
 		exist.</haxe_doc>
 		</onTypeNotFound>
-		<typeof public="1" set="method" line="396" static="1">
+		<typeof public="1" set="method" line="403" static="1">
 			<f a="e">
 				<t path="haxe.macro.Expr"/>
 				<e path="haxe.macro.Type"/>
@@ -26833,7 +27053,7 @@
 		Typing the expression may result in a compiler error which can be
 		caught using `try ... catch`.</haxe_doc>
 		</typeof>
-		<typeExpr public="1" set="method" line="406" static="1">
+		<typeExpr public="1" set="method" line="413" static="1">
 			<f a="e">
 				<t path="haxe.macro.Expr"/>
 				<t path="haxe.macro.TypedExpr"/>
@@ -26843,7 +27063,7 @@
 		Typing the expression may result in a compiler error which can be
 		caught using `try ... catch`.</haxe_doc>
 		</typeExpr>
-		<resolveType public="1" set="method" line="417" static="1">
+		<resolveType public="1" set="method" line="424" static="1">
 			<f a="t:p">
 				<e path="haxe.macro.ComplexType"/>
 				<t path="haxe.macro.Position"/>
@@ -26855,7 +27075,7 @@
 		caught using `try ... catch`.
 		Resolution is performed based on the current context in which the macro is called.</haxe_doc>
 		</resolveType>
-		<toComplexType public="1" set="method" line="426" static="1">
+		<toComplexType public="1" set="method" line="433" static="1">
 			<f a="t">
 				<e path="haxe.macro.Type"/>
 				<x path="Null"><e path="haxe.macro.ComplexType"/></x>
@@ -26864,7 +27084,7 @@
 
 		See `haxe.macro.TypeTools.toComplexType` for details.</haxe_doc>
 		</toComplexType>
-		<unify public="1" set="method" line="433" static="1">
+		<unify public="1" set="method" line="440" static="1">
 			<f a="t1:t2">
 				<e path="haxe.macro.Type"/>
 				<e path="haxe.macro.Type"/>
@@ -26872,7 +27092,7 @@
 			</f>
 			<haxe_doc>Tries to unify `t1` and `t2` and returns `true` if successful.</haxe_doc>
 		</unify>
-		<follow public="1" set="method" line="442" static="1">
+		<follow public="1" set="method" line="449" static="1">
 			<f a="t:?once">
 				<e path="haxe.macro.Type"/>
 				<x path="Bool"/>
@@ -26882,7 +27102,7 @@
 
 		See `haxe.macro.TypeTools.follow` for details.</haxe_doc>
 		</follow>
-		<followWithAbstracts public="1" set="method" line="451" static="1">
+		<followWithAbstracts public="1" set="method" line="458" static="1">
 			<f a="t:?once" v=":false">
 				<e path="haxe.macro.Type"/>
 				<x path="Bool"/>
@@ -26893,7 +27113,7 @@
 
 		See `haxe.macro.TypeTools.followWithAbstracts` for details.</haxe_doc>
 		</followWithAbstracts>
-		<getPosInfos public="1" set="method" line="458" static="1">
+		<getPosInfos public="1" set="method" line="465" static="1">
 			<f a="p">
 				<t path="haxe.macro.Position"/>
 				<a>
@@ -26904,7 +27124,7 @@
 			</f>
 			<haxe_doc>Returns the information stored in `Position` `p`.</haxe_doc>
 		</getPosInfos>
-		<makePosition public="1" set="method" line="465" static="1">
+		<makePosition public="1" set="method" line="472" static="1">
 			<f a="inf">
 				<a>
 					<min><x path="Int"/></min>
@@ -26915,7 +27135,7 @@
 			</f>
 			<haxe_doc>Builds a `Position` from `inf`.</haxe_doc>
 		</makePosition>
-		<getResources public="1" set="method" line="475" static="1">
+		<getResources public="1" set="method" line="482" static="1">
 			<f a=""><t path="Map">
 	<c path="String"/>
 	<c path="haxe.io.Bytes"/>
@@ -26925,7 +27145,7 @@
 		Modifying the returned map has no effect on the compilation, use
 		`haxe.macro.Context.addResource` to add new resources to the compilation unit.</haxe_doc>
 		</getResources>
-		<addResource public="1" set="method" line="491" static="1">
+		<addResource public="1" set="method" line="498" static="1">
 			<f a="name:data">
 				<c path="String"/>
 				<c path="haxe.io.Bytes"/>
@@ -26942,13 +27162,13 @@
 		that module is reused. If this resource concerns several modules, prefix its
 		name with a `$` sign, this will bind it to the macro module instead.</haxe_doc>
 		</addResource>
-		<getBuildFields public="1" set="method" line="500" static="1">
+		<getBuildFields public="1" set="method" line="507" static="1">
 			<f a=""><c path="Array"><t path="haxe.macro.Field"/></c></f>
 			<haxe_doc>Returns an `Array` of fields of the class which is to be built.
 
 		This is only defined for `@:build/@:autoBuild` macros.</haxe_doc>
 		</getBuildFields>
-		<defineType public="1" set="method" line="511" static="1">
+		<defineType public="1" set="method" line="518" static="1">
 			<f a="t:?moduleDependency">
 				<t path="haxe.macro.TypeDefinition"/>
 				<c path="String"/>
@@ -26960,7 +27180,7 @@
 		a module path that will be used as a dependency for the newly defined module
 		instead of the current module.</haxe_doc>
 		</defineType>
-		<defineModule public="1" set="method" line="523" static="1">
+		<defineModule public="1" set="method" line="530" static="1">
 			<f a="modulePath:types:?imports:?usings">
 				<c path="String"/>
 				<c path="Array"><t path="haxe.macro.TypeDefinition"/></c>
@@ -26975,7 +27195,7 @@
 		respects the `imports` and `usings` as usual, expect that imports are
 		not allowed to have `.*` wildcards or `as s` shorthands.</haxe_doc>
 		</defineModule>
-		<getTypedExpr public="1" set="method" line="536" static="1">
+		<getTypedExpr public="1" set="method" line="543" static="1">
 			<f a="t">
 				<t path="haxe.macro.TypedExpr"/>
 				<t path="haxe.macro.Expr"/>
@@ -26984,7 +27204,7 @@
 
 		This process may lose some information.</haxe_doc>
 		</getTypedExpr>
-		<storeTypedExpr public="1" set="method" line="552" static="1">
+		<storeTypedExpr public="1" set="method" line="559" static="1">
 			<f a="t">
 				<t path="haxe.macro.TypedExpr"/>
 				<t path="haxe.macro.Expr"/>
@@ -27000,7 +27220,7 @@
 		the expression returned by this method in a static variable and using the
 		compilation server.</haxe_doc>
 		</storeTypedExpr>
-		<storeExpr public="1" set="method" line="571" static="1">
+		<storeExpr public="1" set="method" line="578" static="1">
 			<f a="e">
 				<t path="haxe.macro.Expr"/>
 				<t path="haxe.macro.Expr"/>
@@ -27019,7 +27239,7 @@
 		the expression returned by this method in a static variable and using the
 		compilation server.</haxe_doc>
 		</storeExpr>
-		<registerModuleDependency public="1" set="method" line="584" static="1">
+		<registerModuleDependency public="1" set="method" line="591" static="1">
 			<f a="modulePath:externFile">
 				<c path="String"/>
 				<c path="String"/>
@@ -27033,7 +27253,7 @@
 
 		Has no effect if the compilation cache is not used.</haxe_doc>
 		</registerModuleDependency>
-		<timer public="1" set="method" line="602" static="1">
+		<timer public="1" set="method" line="609" static="1">
 			<f a="id">
 				<c path="String"/>
 				<f a=""><x path="Void"/></f>
@@ -27051,7 +27271,7 @@
 		stopTimer();
 		```</haxe_doc>
 		</timer>
-		<registerModuleReuseCall public="1" set="method" line="607" static="1">
+		<registerModuleReuseCall public="1" set="method" line="614" static="1">
 			<f a="modulePath:macroCall">
 				<c path="String"/>
 				<c path="String"/>
@@ -27059,14 +27279,14 @@
 			</f>
 			<meta><m n=":deprecated"/></meta>
 		</registerModuleReuseCall>
-		<onMacroContextReused public="1" set="method" line="612" static="1">
+		<onMacroContextReused public="1" set="method" line="619" static="1">
 			<f a="callb">
 				<f a=""><x path="Bool"/></f>
 				<x path="Void"/>
 			</f>
 			<meta><m n=":deprecated"/></meta>
 		</onMacroContextReused>
-		<load set="method" line="620" static="1">
+		<load set="method" line="627" static="1">
 			<f a="f:nargs">
 				<c path="String"/>
 				<x path="Int"/>
@@ -27079,12 +27299,12 @@
 				<m n=":allow"><e>haxe.macro.PositionTools</e></m>
 			</meta>
 		</load>
-		<includeFile set="method" line="630" static="1"><f a="file:position">
+		<includeFile set="method" line="637" static="1"><f a="file:position">
 	<c path="String"/>
 	<c path="String"/>
 	<x path="Void"/>
 </f></includeFile>
-		<sExpr set="method" line="634" static="1"><f a="e:pretty">
+		<sExpr set="method" line="641" static="1"><f a="e:pretty">
 	<t path="haxe.macro.TypedExpr"/>
 	<x path="Bool"/>
 	<c path="String"/>
@@ -28198,41 +28418,42 @@
 	<t path="haxe.macro.FunctionArg"/>
 	<c path="String"/>
 </f></printFunctionArg>
-		<printFunction public="1" set="method" line="181"><f a="func">
+		<printFunction public="1" set="method" line="181"><f a="func:?kind">
 	<t path="haxe.macro.Function"/>
+	<e path="haxe.macro.FunctionKind"/>
 	<c path="String"/>
 </f></printFunction>
-		<printVar public="1" set="method" line="189"><f a="v">
+		<printVar public="1" set="method" line="195"><f a="v">
 	<t path="haxe.macro.Var"/>
 	<c path="String"/>
 </f></printVar>
-		<printObjectFieldKey public="1" set="method" line="192"><f a="of">
+		<printObjectFieldKey public="1" set="method" line="198"><f a="of">
 	<t path="haxe.macro.ObjectField"/>
 	<c path="String"/>
 </f></printObjectFieldKey>
-		<printObjectField public="1" set="method" line="199"><f a="of">
+		<printObjectField public="1" set="method" line="205"><f a="of">
 	<t path="haxe.macro.ObjectField"/>
 	<c path="String"/>
 </f></printObjectField>
-		<printExpr public="1" set="method" line="203"><f a="e">
+		<printExpr public="1" set="method" line="209"><f a="e">
 	<t path="haxe.macro.Expr"/>
 	<c path="String"/>
 </f></printExpr>
-		<printExprs public="1" set="method" line="262"><f a="el:sep">
+		<printExprs public="1" set="method" line="269"><f a="el:sep">
 	<c path="Array"><t path="haxe.macro.Expr"/></c>
 	<c path="String"/>
 	<c path="String"/>
 </f></printExprs>
-		<printExtension set="method" line="266"><f a="tpl:fields">
+		<printExtension set="method" line="273"><f a="tpl:fields">
 	<c path="Array"><t path="haxe.macro.TypePath"/></c>
 	<c path="Array"><t path="haxe.macro.Field"/></c>
 	<c path="String"/>
 </f></printExtension>
-		<printStructure set="method" line="273"><f a="fields">
+		<printStructure set="method" line="280"><f a="fields">
 	<c path="Array"><t path="haxe.macro.Field"/></c>
 	<c path="String"/>
 </f></printStructure>
-		<printTypeDefinition public="1" set="method" line="277">
+		<printTypeDefinition public="1" set="method" line="284">
 			<f a="t:?printPackage" v=":true">
 				<t path="haxe.macro.TypeDefinition"/>
 				<x path="Bool"/>
@@ -28240,11 +28461,11 @@
 			</f>
 			<meta><m n=":value"><e>{ printPackage : true }</e></m></meta>
 		</printTypeDefinition>
-		<printFieldWithDelimiter set="method" line="369"><f a="f">
+		<printFieldWithDelimiter set="method" line="376"><f a="f">
 	<t path="haxe.macro.Field"/>
 	<c path="String"/>
 </f></printFieldWithDelimiter>
-		<opt params="T" set="method" line="379">
+		<opt params="T" set="method" line="386">
 			<f a="v:f:?prefix" v="::&quot;&quot;">
 				<c path="opt.T"/>
 				<f a="">
@@ -28256,7 +28477,7 @@
 			</f>
 			<meta><m n=":value"><e>{ prefix : "" }</e></m></meta>
 		</opt>
-		<printExprWithPositions public="1" set="method" line="382"><f a="e">
+		<printExprWithPositions public="1" set="method" line="389"><f a="e">
 	<t path="haxe.macro.Expr"/>
 	<c path="String"/>
 </f></printExprWithPositions>
@@ -30033,21 +30254,21 @@
 	<d/>
 	<x path="Bool"/>
 </f></isInterface>
-		<getMeta set="method" line="58" static="1">
+		<getMeta set="method" line="56" static="1">
 			<f a="t">
 				<d/>
 				<t path="haxe.rtti._Meta.MetaObject"/>
 			</f>
 			<meta><m n=":has_untyped"/></meta>
 		</getMeta>
-		<getStatics public="1" set="method" line="83" static="1">
+		<getStatics public="1" set="method" line="81" static="1">
 			<f a="t">
 				<d/>
 				<d><d><c path="Array"><d/></c></d></d>
 			</f>
 			<haxe_doc>Returns the metadata that were declared for the given class static fields</haxe_doc>
 		</getStatics>
-		<getFields public="1" set="method" line="91" static="1">
+		<getFields public="1" set="method" line="89" static="1">
 			<f a="t">
 				<d/>
 				<d><d><c path="Array"><d/></c></d></d>
@@ -32681,17 +32902,17 @@
 			</a>
 			<meta><m n=":value"><e>null</e></m></meta>
 		</PROXY>
-		<requestUrl public="1" set="method" line="486" static="1">
+		<requestUrl public="1" set="method" line="488" static="1">
 			<f a="url">
 				<c path="String"/>
 				<c path="String"/>
 			</f>
 			<haxe_doc>Makes a synchronous request to `url`.
 
-		This creates a new Http instance and makes a GET request by calling its
-		`request(false)` method.
+	This creates a new Http instance and makes a GET request by calling its
+	`request(false)` method.
 
-		If `url` is null, the result is unspecified.</haxe_doc>
+	If `url` is null, the result is unspecified.</haxe_doc>
 		</requestUrl>
 		<noShutdown public="1"><x path="Bool"/></noShutdown>
 		<cnxTimeout public="1"><x path="Float"/></cnxTimeout>
@@ -32745,7 +32966,7 @@
 	<c path="String"/>
 	<x path="Void"/>
 </f></customRequest>
-		<writeBody set="method" line="253"><f a="body:fileInput:fileSize:boundary:sock">
+		<writeBody set="method" line="255"><f a="body:fileInput:fileSize:boundary:sock">
 	<x path="Null"><c path="haxe.io.BytesOutput"/></x>
 	<x path="Null"><c path="haxe.io.Input"/></x>
 	<x path="Int"/>
@@ -32753,12 +32974,12 @@
 	<c path="sys.net.Socket"/>
 	<x path="Void"/>
 </f></writeBody>
-		<readHttpResponse set="method" line="278"><f a="api:sock">
+		<readHttpResponse set="method" line="280"><f a="api:sock">
 	<c path="haxe.io.Output"/>
 	<c path="sys.net.Socket"/>
 	<x path="Void"/>
 </f></readHttpResponse>
-		<readChunk set="method" line="420"><f a="chunk_re:api:buf:len">
+		<readChunk set="method" line="422"><f a="chunk_re:api:buf:len">
 	<c path="EReg"/>
 	<c path="haxe.io.Output"/>
 	<c path="haxe.io.Bytes"/>
@@ -32924,11 +33145,17 @@
 	<class path="sys.db.ResultSet" params="" file="/home/vsts/work/1/s/std/sys/db/ResultSet.hx" interface="1">
 		<get_length public="1" set="method">
 			<f a=""><x path="Int"/></f>
-			<meta><m n=":compilerGenerated"/></meta>
+			<meta>
+				<m n=":compilerGenerated"/>
+				<m n=":noCompletion"/>
+			</meta>
 		</get_length>
 		<get_nfields public="1" set="method">
 			<f a=""><x path="Int"/></f>
-			<meta><m n=":compilerGenerated"/></meta>
+			<meta>
+				<m n=":compilerGenerated"/>
+				<m n=":noCompletion"/>
+			</meta>
 		</get_nfields>
 		<length public="1" get="accessor" set="null"><x path="Int"/></length>
 		<nfields public="1" get="accessor" set="null"><x path="Int"/></nfields>
